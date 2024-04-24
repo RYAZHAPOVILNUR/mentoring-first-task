@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header>
+        <button mat-raised-button color="primary">Тут я тренировался с Ангуляр Материал: сортировка, пагинация</button>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table matSort [dataSource]="datasource">
+            <ng-container matColumnDef="{{innercolumn}}" *ngFor="let innercolumn of displayColums">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>{{innercolumn}}</th>
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="innercolumn !== 'actions'">
+                        {{element[innercolumn]}}
+                    </span>
+                    <div *ngIf="innercolumn == 'actions'">
+                        <button (click)="edituser()" mat-raised-button color="primary">Edit</button>
+                        <button (click)="deleteuser()" mat-raised-button color="accent">Delete</button>
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayColums" style="background-color: blue; color: white;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColums"></tr>
+        </table>
+    </mat-card-content>
+    <mat-card-footer>
+        <mat-paginator [pageSizeOptions]="[10,50]" showFirstLastButtons>
+        </mat-paginator>
+    </mat-card-footer>
+</mat-card>

@@ -1,0 +1,13 @@
+.user-card {
+  width: 23vw;
+  height: 270px;
+  margin: 10px;
+  padding: 7px;
+  display: flex;
+  justify-content: space-between;
+  .user-card-buttons {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
