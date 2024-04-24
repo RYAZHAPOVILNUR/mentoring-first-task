@@ -1,0 +1,8 @@
+.user-card {
+    padding: 8px;
+}
+
+.user-buttons {
+    display: flex;
+    gap: 12px;
+}

@@ -1,0 +1,9 @@
+.user {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    gap: 20px;
+}
+
+.user-card {
+    border: 1px solid black;
+}
