@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core'
+import { RouterOutlet } from '@angular/router'
+import { UsersApi } from './pages/users/services/users-api.service'
+import { HeaderComponent } from './layout/header/header.component'
+import { FooterComponent } from './layout/footer/footer.component'
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+	selector: 'app-root',
+	standalone: true,
+	providers: [],
+	imports: [RouterOutlet, HeaderComponent, FooterComponent],
+	templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'mentoring-first-project';
+	private readonly usersApi = inject(UsersApi)
 }

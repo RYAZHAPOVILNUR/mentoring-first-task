@@ -1,0 +1,32 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+	<h2 mat-dialog-title>{{ user ? 'Update user' : 'Create new user' }}</h2>
+	<mat-dialog-content
+		><ol>
+			<li>
+				<mat-form-field>
+					<mat-label>Name</mat-label>
+					<input matInput formControlName="name" placeholder="example: Ivan Ivanov" />
+				</mat-form-field>
+			</li>
+			<li>
+				<mat-form-field>
+					<mat-label>Email</mat-label>
+					<input matInput type="email" formControlName="email" placeholder="example: Ivanov@gmail.com" />
+				</mat-form-field>
+			</li>
+			<li>
+				<mat-form-field>
+					<mat-label>Username</mat-label>
+					<input matInput formControlName="username" placeholder="example: IVanus" />
+				</mat-form-field>
+			</li>
+		</ol>
+	</mat-dialog-content>
+	<mat-dialog-actions>
+		<button mat-stroked-button color="primary" mat-dialog-close>No Thanks</button>
+
+		<button mat-flat-button color="primary" [disabled]="userForm.invalid" type="submit">
+			{{ user ? 'Save' : 'Add new user' }}
+		</button>
+	</mat-dialog-actions>
+</form>

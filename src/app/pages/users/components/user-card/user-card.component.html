@@ -1,0 +1,12 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>{{ user.name | titlecase }}</mat-card-title>
+		<mat-card-subtitle>ID: {{ user.id }}</mat-card-subtitle>
+		<mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+		<mat-card-subtitle>Username: {{ user.username }}</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-actions style="margin-left: 0.5em; gap: 10px">
+		<button mat-flat-button color="primary" (click)="deleteUser()">DELETE</button>
+		<button mat-stroked-button color="primary" (click)="openEditUserDialog()">CUSTOM</button>
+	</mat-card-actions>
+</mat-card>
