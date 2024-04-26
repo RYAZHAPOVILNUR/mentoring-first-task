@@ -31,7 +31,6 @@ export class CreateEditUserComponent {
   private readonly fb = inject(FormBuilder);
   private readonly dialogRef: MatDialogRef<CreateEditUserComponent> =
     inject(MatDialogRef);
-  private readonly usersService = inject(UsersService);
 
   constructor() {
     this.isEdit = !!this.data;
@@ -48,12 +47,24 @@ export class CreateEditUserComponent {
     phone: ['', Validators.required],
   });
 
+  // onSubmit(): void {
+  //   const updatedUser = { ...this.userForm.value };
+  //   if (this.isEdit) {
+  //     if (this.data !== undefined) {
+  //       updatedUser.id = this.data.id;
+  //     } else {
+  //       // Генерируем id для нового пользователя
+  //       updatedUser.id = generateId();
+  //     }
+  //   } else {
+  //     // Генерируем id для нового пользователя
+  //     updatedUser.id = generateId();
+  //     this.dialogRef.close({ ...updatedUser, ...this.data });
+  //   }
+  // }
+
   onSubmit(): void {
-    if (this.userForm.valid) {
-      const updatedUser = { ...this.userForm.value };
-      if (this.isEdit) {
-        updatedUser.id = this.data.id;
-      }
+    if (this.isEdit) {
       this.dialogRef.close({ ...this.userForm.value, ...this.data });
     }
   }
