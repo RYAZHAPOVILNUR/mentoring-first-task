@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatDialog } from '@angular/material/dialog'
 import { FormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { UserFacade } from './lib/+state/users.facade'
 
 @Component({
 	selector: 'app-user-list',
@@ -28,6 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 export class UserListComponent implements OnInit {
 	private readonly dialog = inject(MatDialog)
 	public readonly usersService = inject(UsersService)
+	public readonly userFacade = inject(UserFacade)
 
 	openAddUserDialog(): void {
 		const dialogRef = this.dialog.open(CreateEditUserComponent, {
@@ -36,7 +38,7 @@ export class UserListComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(userFormData => {
 			if (userFormData) {
-				this.usersService.addUser(userFormData)
+				this.userFacade.addUser(userFormData)
 			}
 		})
 	}
@@ -49,12 +51,13 @@ export class UserListComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(userFormData => {
 			if (userFormData) {
-				this.usersService.editUser(user, userFormData)
+				this.userFacade.editUser(user, userFormData)
 			}
 		})
 	}
 
 	ngOnInit(): void {
-		this.usersService.getUsers().subscribe()
+		this.userFacade.getUsers()
+		// this.usersService.getUsers().subscribe()
 	}
 }

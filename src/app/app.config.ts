@@ -8,9 +8,12 @@ import { provideStoreDevtools } from '@ngrx/store-devtools'
 import { usersFeature } from './pages/users/lib/+state/users.reducer'
 import { environment } from '../environments/environment.development'
 import { API_URL } from './pages/users/lib/api-url.token'
+import { provideEffects } from '@ngrx/effects'
+import { usersEffect } from './pages/users/lib/+state/users.effects'
 
 export const appConfig: ApplicationConfig = {
 	providers: [
+		provideEffects({ usersEffect }),
 		provideRouter(routes),
 		importProvidersFrom(HttpClientModule),
 		provideAnimationsAsync(),

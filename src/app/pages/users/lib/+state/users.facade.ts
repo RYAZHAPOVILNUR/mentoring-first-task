@@ -3,27 +3,29 @@ import { Store } from '@ngrx/store'
 import { usersActions } from './users.actions'
 import { IUser } from '../../interface/user.interface'
 import * as UsersSelectors from './users.selector'
+import { Observable } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
 export class UserFacade {
 	private readonly store = inject(Store)
 
-	counter$ = this.store.select(UsersSelectors.selectUsersCount)
+	public counter$: Observable<number> = this.store.select(UsersSelectors.selectUsersCount)
+	public Users$: Observable<IUser[]> = this.store.select(UsersSelectors.usersArray)
 
-	getUser() {
+	getUsers() {
 		this.store.dispatch(usersActions.getUsers())
 	}
 
-	deleteUser(id: number | undefined) {
-		this.store.dispatch(usersActions.deleteUser({ id }))
+	deleteUser(id: number): void {
+		this.store.dispatch(usersActions.deleteUserSuccess({ id }))
 	}
 
-	addUser(userFormData: IUser) {
-		this.store.dispatch(usersActions.addUser({ userFormData }))
+	addUser(userFormData: IUser): void {
+		this.store.dispatch(usersActions.addUserSuccess({ userFormData }))
 	}
 
-	editUser(user: IUser, userFormData: IUser) {
-		this.store.dispatch(usersActions.editUser({ user, userFormData }))
+	editUser(user: IUser, userFormData: IUser): void {
+		this.store.dispatch(usersActions.editUserSuccess({ user, userFormData }))
 	}
 
 	increment() {

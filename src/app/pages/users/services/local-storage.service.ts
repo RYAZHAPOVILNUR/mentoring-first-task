@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { IUser } from '../interface/user.interface'
 
 @Injectable({
 	providedIn: 'root'
@@ -9,7 +8,7 @@ export class LocalStorageService {
 		return localStorage.getItem(key)
 	}
 
-	setItem(key: string, data?: IUser[]) {
+	setItem(key: string, data?: any) {
 		localStorage.setItem(key, JSON.stringify(data))
 	}
 }
