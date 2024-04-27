@@ -1,0 +1,34 @@
+<h2>{{ data ? "Редактировать" : "Добавить" }}</h2>
+<form
+  [formGroup]="userFormGroup"
+  class="example-form"
+>
+  <mat-form-field class="example-full-width">
+    <mat-label>name</mat-label>
+    <input matInput formControlName="name" placeholder="Enter name" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>username</mat-label>
+    <input matInput formControlName="username" placeholder="Enter username" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>email</mat-label>
+    <input matInput type="email" formControlName="email" placeholder="Enter email"/>
+  </mat-form-field>
+
+   <mat-form-field formGroupName="address" class="example-full-width">
+    <mat-label>city</mat-label>
+    <input matInput formControlName="city" placeholder="Enter city" />
+  </mat-form-field>
+
+  <mat-form-field formGroupName="address" class="example-full-width">
+    <mat-label>street</mat-label>
+    <input matInput formControlName="street" placeholder="Enter street" />
+  </mat-form-field>
+  
+  <button type="button" (click)="onSubmit()">
+    {{ data ? "Сохранить" : "Добавить" }}
+  </button>
+</form>
