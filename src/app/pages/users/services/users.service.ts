@@ -13,22 +13,22 @@ export class UsersService {
 	private readonly usersApiService = inject(UsersApi)
 	private readonly localStorageService = inject(LocalStorageService)
 
-	public getUsers(): Observable<IUser[]> {
-		const cachedData = this.localStorageService.getItem('usersList')
-		const arrCachedData = JSON.parse(cachedData!)
+	// public getUsers(): Observable<IUser[]> {
+	// 	const cachedData = this.localStorageService.getItem('usersList')
+	// 	const arrCachedData = JSON.parse(cachedData!)
 
-		if (cachedData && arrCachedData.length !== 0) {
-			this.usersSubject$.next(arrCachedData)
-			return of(arrCachedData)
-		} else {
-			return this.usersApiService.getUsers().pipe(
-				tap((response: IUser[]) => {
-					this.usersSubject$.next(response)
-					this.localStorageService.setItem('usersList', response)
-				})
-			)
-		}
-	}
+	// 	if (cachedData && arrCachedData.length !== 0) {
+	// 		this.usersSubject$.next(arrCachedData)
+	// 		return of(arrCachedData)
+	// 	} else {
+	// 		return this.usersApiService.getUsers().pipe(
+	// 			tap((response: IUser[]) => {
+	// 				this.usersSubject$.next(response)
+	// 				this.localStorageService.setItem('usersList', response)
+	// 			})
+	// 		)
+	// 	}
+	// }
 
 	public deleteUser(id: number): void {
 		this.usersSubject$.next(this.usersSubject$.value.filter(user => user.id !== id))
