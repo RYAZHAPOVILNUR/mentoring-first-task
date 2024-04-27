@@ -1,5 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core'
-import { UsersService } from './services/users.service'
 import { CommonModule } from '@angular/common'
 import { IUser } from './interface/user.interface'
 import { UserCardComponent } from './components/user-card/user-card.component'
@@ -28,7 +27,6 @@ import { UserFacade } from './lib/+state/users.facade'
 })
 export class UserListComponent implements OnInit {
 	private readonly dialog = inject(MatDialog)
-	public readonly usersService = inject(UsersService)
 	public readonly userFacade = inject(UserFacade)
 
 	openAddUserDialog(): void {
@@ -58,6 +56,5 @@ export class UserListComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.userFacade.getUsers()
-		// this.usersService.getUsers().subscribe()
 	}
 }
