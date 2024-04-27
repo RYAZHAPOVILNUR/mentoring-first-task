@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core'
 import { UsersApi } from './users-api.service'
 import { IUser } from '../interface/user.interface'
-import { BehaviorSubject, Observable, of, reduce, tap } from 'rxjs'
+import { BehaviorSubject, Observable, of, tap } from 'rxjs'
 import { LocalStorageService } from './local-storage.service'
 
 @Injectable({
