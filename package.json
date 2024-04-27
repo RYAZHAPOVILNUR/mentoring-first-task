@@ -1,5 +1,5 @@
 {
-  "name": "my-first-project",
+  "name": "mentoring-first-project",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -30,8 +30,8 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.0",
-    "@angular/cli": "^17.3.0",
-    "@angular/compiler-cli": "^17.3.0",
+    "@angular/cli": "^17.3.5",
+    "@angular/compiler-cli": "^17.3.5",
     "@types/jasmine": "~5.1.0",
     "@types/uuid": "^9.0.8",
     "jasmine-core": "~5.1.0",
