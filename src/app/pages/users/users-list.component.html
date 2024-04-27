@@ -1,5 +1,5 @@
 <mat-grid-list cols="3" rowHeight="15em">
-	@for (user of usersService.users$ | async; track user.id) {
+	@for (user of usersService.users$ | async; track $index) {
 	<mat-grid-tile
 		><app-user-card
 			[user]="user"
