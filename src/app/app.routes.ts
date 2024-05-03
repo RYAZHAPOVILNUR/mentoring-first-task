@@ -4,19 +4,19 @@ import { HomeComponent } from './pages/home/home.component'
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component'
 
 export const routes: Routes = [
-	{
-		path: '',
-		component: HomeComponent,
-		title: 'home'
-	},
-	{
-		path: 'users',
-		component: UserListComponent,
-		title: 'users'
-	},
-	{
-		path: '**',
-		component: PageNotFoundComponent,
-		title: '404'
-	}
+  {
+    path: '',
+    component: HomeComponent,
+    title: 'home'
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
+    title: 'users'
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+    title: '404'
+  }
 ]

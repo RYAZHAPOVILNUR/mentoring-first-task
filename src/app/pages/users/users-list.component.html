@@ -1,26 +1,17 @@
 <mat-grid-list cols="3" rowHeight="15em">
-	<!-- @for (user of usersService.users$ | async; track user.id) {
-	<mat-grid-tile
-		><app-user-card
-			[user]="user"
-			(deleteUserEvent)="this.usersService.deleteUser(user.id)"
-			(openEditUserDialogEvent)="openEditUserDialog(user)"
-		></app-user-card
-	></mat-grid-tile>
-	} -->
-	@for (user of userFacade.Users$ | async; track user.id) {
+  @for (user of userFacade.Users$ | async; track user.id) {
 
-	<mat-grid-tile
-		><app-user-card
-			[user]="user"
-			(deleteUserEvent)="this.userFacade.deleteUser(user.id)"
-			(openEditUserDialogEvent)="openEditUserDialog(user)"
-		></app-user-card
-	></mat-grid-tile>
-	}
-	<mat-grid-tile>
-		<button mat-mini-fab color="primary" aria-label="Add user" (click)="openAddUserDialog()">
-			<mat-icon>plus_one</mat-icon>
-		</button></mat-grid-tile
-	>
+  <mat-grid-tile
+    ><app-user-card
+      [user]="user"
+      (deleteUserEvent)="this.userFacade.deleteUser(user.id)"
+      (openEditUserDialogEvent)="openEditUserDialog(user)"
+    ></app-user-card
+  ></mat-grid-tile>
+  }
+  <mat-grid-tile>
+    <button mat-mini-fab color="primary" aria-label="Add user" (click)="openAddUserDialog()">
+      <mat-icon>plus_one</mat-icon>
+    </button></mat-grid-tile
+  >
 </mat-grid-list>

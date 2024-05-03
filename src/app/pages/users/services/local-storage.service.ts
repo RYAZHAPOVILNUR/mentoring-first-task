@@ -6,25 +6,25 @@ import { UsersApi } from './users-api.service'
 import { Store } from '@ngrx/store'
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class LocalStorageService {
-	private readonly usersApiService = inject(UsersApi)
-	private readonly data = localStorage.getItem(environment.localStorageKey)
-	private store$ = inject(Store<IState>)
+  private readonly usersApiService = inject(UsersApi)
+  private readonly data = localStorage.getItem(environment.localStorageKey)
+  private store$ = inject(Store<IState>)
 
-	public getAllUsers(): Observable<IUser[]> {
-		if (this.data) {
-			return of(JSON.parse(this.data))
-		} else {
-			return this.usersApiService.getUsers().pipe(
-				tap(users => {
-					localStorage.setItem(environment.localStorageKey, JSON.stringify(users))
-				})
-			)
-		}
-	}
-	setItem(key: string, data?: any) {
-		localStorage.setItem(key, JSON.stringify(data))
-	}
+  public getAllUsers(): Observable<IUser[]> {
+    if (this.data) {
+      return of(JSON.parse(this.data))
+    } else {
+      return this.usersApiService.getUsers().pipe(
+        tap(users => {
+          localStorage.setItem(environment.localStorageKey, JSON.stringify(users))
+        })
+      )
+    }
+  }
+  setItem(key: string, data?: any) {
+    localStorage.setItem(key, JSON.stringify(data))
+  }
 }

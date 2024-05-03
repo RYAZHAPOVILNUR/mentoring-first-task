@@ -12,49 +12,49 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { UserFacade } from './lib/+state/users.facade'
 
 @Component({
-	selector: 'app-user-list',
-	standalone: true,
-	imports: [
-		UserCardComponent,
-		MatGridListModule,
-		MatIconModule,
-		MatButtonModule,
-		MatFormFieldModule,
-		FormsModule,
-		CommonModule
-	],
-	templateUrl: './users-list.component.html'
+  selector: 'app-user-list',
+  standalone: true,
+  imports: [
+    UserCardComponent,
+    MatGridListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    CommonModule
+  ],
+  templateUrl: './users-list.component.html'
 })
 export class UserListComponent implements OnInit {
-	private readonly dialog = inject(MatDialog)
-	public readonly userFacade = inject(UserFacade)
+  private readonly dialog = inject(MatDialog)
+  public readonly userFacade = inject(UserFacade)
 
-	openAddUserDialog(): void {
-		const dialogRef = this.dialog.open(CreateEditUserComponent, {
-			disableClose: true
-		})
+  openAddUserDialog(): void {
+    const dialogRef = this.dialog.open(CreateEditUserComponent, {
+      disableClose: true
+    })
 
-		dialogRef.afterClosed().subscribe(userFormData => {
-			if (userFormData) {
-				this.userFacade.addUser(userFormData)
-			}
-		})
-	}
+    dialogRef.afterClosed().subscribe(userFormData => {
+      if (userFormData) {
+        this.userFacade.addUser(userFormData)
+      }
+    })
+  }
 
-	openEditUserDialog(user: IUser): void {
-		const dialogRef = this.dialog.open(CreateEditUserComponent, {
-			disableClose: true,
-			data: user
-		})
+  openEditUserDialog(user: IUser): void {
+    const dialogRef = this.dialog.open(CreateEditUserComponent, {
+      disableClose: true,
+      data: user
+    })
 
-		dialogRef.afterClosed().subscribe(userFormData => {
-			if (userFormData) {
-				this.userFacade.editUser(user, userFormData)
-			}
-		})
-	}
+    dialogRef.afterClosed().subscribe(userFormData => {
+      if (userFormData) {
+        this.userFacade.editUser(user, userFormData)
+      }
+    })
+  }
 
-	ngOnInit(): void {
-		this.userFacade.getUsers()
-	}
+  ngOnInit(): void {
+    this.userFacade.getUsers()
+  }
 }

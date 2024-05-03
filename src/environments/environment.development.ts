@@ -1,5 +1,5 @@
 export const environment = {
-	apiUsersUrl: 'https://jsonplaceholder.typicode.com/users',
-	production: false,
-	localStorageKey: 'usersList'
+  apiUsersUrl: 'https://jsonplaceholder.typicode.com/users',
+  production: false,
+  localStorageKey: 'usersList'
 }

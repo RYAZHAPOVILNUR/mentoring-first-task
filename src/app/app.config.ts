@@ -12,19 +12,19 @@ import { provideEffects } from '@ngrx/effects'
 import { usersEffect } from './pages/users/lib/+state/users.effects'
 
 export const appConfig: ApplicationConfig = {
-	providers: [
-		provideEffects({ usersEffect }),
-		provideRouter(routes),
-		importProvidersFrom(HttpClientModule),
-		provideAnimationsAsync(),
-		provideStore({
-			[usersFeature.name]: usersFeature.reducer
-		}),
-		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-		provideHttpClient(),
-		{
-			provide: API_URL,
-			useValue: environment.apiUsersUrl
-		}
-	]
+  providers: [
+    provideEffects({ usersEffect }),
+    provideRouter(routes),
+    importProvidersFrom(HttpClientModule),
+    provideAnimationsAsync(),
+    provideStore({
+      [usersFeature.name]: usersFeature.reducer
+    }),
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideHttpClient(),
+    {
+      provide: API_URL,
+      useValue: environment.apiUsersUrl
+    }
+  ]
 }
