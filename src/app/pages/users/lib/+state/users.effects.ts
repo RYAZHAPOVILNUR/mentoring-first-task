@@ -13,16 +13,6 @@ export const usersEffect = createEffect(
 
     return actions$.pipe(
       ofType(usersActions.getUsers),
-      // switchMap(() =>
-      // 	usersApi.getUsers().pipe(
-      // 		map(users => usersActions.getUsersSuccess({ users: users.map(user => user) })),
-      // 		tap(users => localStorageService.setItem('usersList', users.users)),
-      // catchError(error => {
-      // 	console.error('Error', error)
-      // 	return of(usersActions.getUsersFailure({ error }))
-      // })
-      // 	)
-      // )
       switchMap(() => {
         return localStorageService.getAllUsers().pipe(
           map(users => usersActions.getUsersSuccess({ users: users })),

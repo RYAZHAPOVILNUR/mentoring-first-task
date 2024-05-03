@@ -17,10 +17,6 @@ export const usersActions = createActionGroup({
     getUsersFailure: props<{ error: any }>(),
     deleteUserFailure: props<{ error: any }>(),
     addUserFailure: props<{ error: any }>(),
-    editUserFailure: props<{ error: any }>(),
-
-    increment: emptyProps(),
-    decrement: emptyProps(),
-    reset: emptyProps()
+    editUserFailure: props<{ error: any }>()
   }
 })

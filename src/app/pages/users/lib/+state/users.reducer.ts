@@ -4,8 +4,7 @@ import { IState } from '../../interface/user.interface'
 
 export const initialUserState: IState = {
   Users: [],
-  error: null,
-  counter: 0
+  error: null
 }
 
 export const usersFeature = createFeature({
@@ -61,18 +60,6 @@ export const usersFeature = createFeature({
     on(usersActions.editUserFailure, (state, { error }) => ({
       ...state,
       error: error
-    })),
-    on(usersActions.increment, state => ({
-      ...state,
-      counter: state.counter + 1
-    })),
-    on(usersActions.decrement, state => ({
-      ...state,
-      counter: state.counter - 1
-    })),
-    on(usersActions.reset, state => ({
-      ...state,
-      counter: 0
     }))
   )
 })

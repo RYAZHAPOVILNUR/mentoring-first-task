@@ -9,7 +9,6 @@ import { Observable } from 'rxjs'
 export class UserFacade {
   private readonly store = inject(Store)
 
-  public counter$: Observable<number> = this.store.select(UsersSelectors.selectUsersCount)
   public Users$: Observable<IUser[]> = this.store.select(UsersSelectors.usersArray)
 
   getUsers() {
@@ -26,15 +25,5 @@ export class UserFacade {
 
   editUser(user: IUser, userFormData: IUser): void {
     this.store.dispatch(usersActions.editUserSuccess({ user, userFormData }))
-  }
-
-  increment() {
-    this.store.dispatch(usersActions.increment())
-  }
-  decrement() {
-    this.store.dispatch(usersActions.decrement())
-  }
-  reset() {
-    this.store.dispatch(usersActions.reset())
   }
 }

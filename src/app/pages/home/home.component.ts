@@ -8,6 +8,4 @@ import { AsyncPipe } from '@angular/common'
   imports: [AsyncPipe],
   templateUrl: './home.component.html'
 })
-export class HomeComponent {
-  userFacade = inject(UserFacade)
-}
+export class HomeComponent {}

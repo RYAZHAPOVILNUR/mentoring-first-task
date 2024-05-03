@@ -24,5 +24,4 @@ export interface IUser {
 export interface IState {
   Users: IUser[]
   error: boolean | null
-  counter: number
 }
