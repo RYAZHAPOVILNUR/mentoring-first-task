@@ -4,9 +4,9 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatButtonModule } from '@angular/material/button'
 
 @Component({
-	selector: 'app-header',
-	standalone: true,
-	imports: [MatButtonModule, MatDividerModule, MatIconModule],
-	templateUrl: './header.component.html'
+  selector: 'app-header',
+  standalone: true,
+  imports: [MatButtonModule, MatDividerModule, MatIconModule],
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent {}

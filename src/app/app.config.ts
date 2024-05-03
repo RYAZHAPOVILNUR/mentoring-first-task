@@ -8,15 +8,15 @@ import { environment } from '../environments/environment.development'
 import { API_URL } from './pages/users/lib/api-url.token'
 
 export const appConfig: ApplicationConfig = {
-	providers: [
-		provideRouter(routes),
-		importProvidersFrom(HttpClientModule),
-		provideAnimationsAsync(),
-		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-		provideHttpClient(),
-		{
-			provide: API_URL,
-			useValue: environment.apiUsersUrl
-		}
-	]
+  providers: [
+    provideRouter(routes),
+    importProvidersFrom(HttpClientModule),
+    provideAnimationsAsync(),
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideHttpClient(),
+    {
+      provide: API_URL,
+      useValue: environment.apiUsersUrl
+    }
+  ]
 }

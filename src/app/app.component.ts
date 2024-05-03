@@ -5,12 +5,12 @@ import { HeaderComponent } from './layout/header/header.component'
 import { FooterComponent } from './layout/footer/footer.component'
 
 @Component({
-	selector: 'app-root',
-	standalone: true,
-	providers: [],
-	imports: [RouterOutlet, HeaderComponent, FooterComponent],
-	templateUrl: './app.component.html'
+  selector: 'app-root',
+  standalone: true,
+  providers: [],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-	private readonly usersApi = inject(UsersApi)
+  private readonly usersApi = inject(UsersApi)
 }

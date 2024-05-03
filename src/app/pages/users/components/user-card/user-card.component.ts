@@ -6,21 +6,21 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
 
 @Component({
-	selector: 'app-user-card',
-	standalone: true,
-	imports: [TitleCasePipe, MatCardModule, MatButtonModule],
-	templateUrl: './user-card.component.html'
+  selector: 'app-user-card',
+  standalone: true,
+  imports: [TitleCasePipe, MatCardModule, MatButtonModule],
+  templateUrl: './user-card.component.html'
 })
 export class UserCardComponent {
-	@Input({ required: true }) user!: IUser
-	@Output() deleteUserEvent = new EventEmitter<number>()
-	@Output() openEditUserDialogEvent = new EventEmitter<IUser>()
+  @Input({ required: true }) user!: IUser
+  @Output() deleteUserEvent = new EventEmitter<number>()
+  @Output() openEditUserDialogEvent = new EventEmitter<IUser>()
 
-	deleteUser(): void {
-		this.deleteUserEvent.emit()
-	}
+  deleteUser(): void {
+    this.deleteUserEvent.emit()
+  }
 
-	openEditUserDialog(): void {
-		this.openEditUserDialogEvent.emit()
-	}
+  openEditUserDialog(): void {
+    this.openEditUserDialogEvent.emit()
+  }
 }
