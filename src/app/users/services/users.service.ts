@@ -7,7 +7,9 @@ import { User } from '../interface/users.interface';
 export class UsersService {
   public users: User[] = [];
 
-  constructor() {}
+  constructor() {
+    this.users = this.getUsersFromLocalStorage();
+  }
 
   getUsersFromLocalStorage(): User[] {
     const storedUsers = localStorage.getItem('users');
@@ -20,7 +22,7 @@ export class UsersService {
 
   setUsers(users: User[]): void {
     this.users = users;
-    this.saveUsersToLocalStorage();
+    this.getUsersFromLocalStorage();
   }
 
   editUser(updatedUser: User): void {
