@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user.model';
-import { UsersApiService } from '../users-api-service.service';
 import { UserCardComponent } from '../user-card/user-card.component';
-import { Observer } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { UsersService } from '../user.service';
 
 @Component({
   selector: 'app-users-list',
@@ -14,20 +12,19 @@ import { CommonModule } from '@angular/common';
 })
 export class UsersListComponent implements OnInit {
 
-  users: User[] = [];
+  public readonly users$ = this.usersService.users$
 
-  constructor(private usersApiService: UsersApiService) { }
+  constructor(
+    private usersService: UsersService
+  ) {}
 
+  
   ngOnInit(): void {
-    this.usersApiService.getUsers().subscribe(
-      (data: User[]) => {
-        this.users = data;
-        console.log(this.users); // Можете здесь обрабатывать полученные данные
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    this.usersService.loadUsers()
+  }
+  
+  onDeleteUser(id: number): void {
+    this.usersService.deleteUser(id);
   }
 
 }

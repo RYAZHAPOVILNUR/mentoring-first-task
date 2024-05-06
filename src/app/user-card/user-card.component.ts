@@ -1,6 +1,5 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../user.model';
-import { UsersListComponent } from '../users-list/users-list.component';
 
 @Component({
   selector: 'app-user-card',
@@ -11,5 +10,9 @@ import { UsersListComponent } from '../users-list/users-list.component';
 })
 export class UserCardComponent {  
   @Input({required:true})user!: User;
-  private readonly userList = inject(UsersListComponent);
+  @Output() deleteUserEvent = new EventEmitter<number>();
+
+  onDeleteUser(): void {
+    this.deleteUserEvent.emit(this.user.id);
+  }
 }
