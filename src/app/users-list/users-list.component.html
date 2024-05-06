@@ -1,5 +1,6 @@
+<div><button mat-raised-button color="primary">Добавить пользователя</button></div>
 <div>
-    <div *ngFor="let user of users$ | async">
-        <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)"></app-user-card>
-    </div>
+  <div *ngFor="let user of users$ | async">
+    <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)"></app-user-card>
+  </div>
 </div>
