@@ -1,15 +1,14 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject} from '@angular/core'
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogRef,
-} from '@angular/material/dialog';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButton } from '@angular/material/button';
-import { User } from '../../interface/users.interface';
-import { UsersService } from '../../services/users.service';
+} from '@angular/material/dialog'
+import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatInputModule} from '@angular/material/input'
+import {MatButton} from '@angular/material/button'
+import {User} from '../../interface/users.interface'
 
 @Component({
   selector: 'app-create-edit-user-modal',
@@ -25,17 +24,17 @@ import { UsersService } from '../../services/users.service';
   styleUrl: './create-edit-user.component.css',
 })
 export class CreateEditUserComponent {
-  public isEdit: boolean;
+  public isEdit: boolean
 
-  private readonly data: User = inject(MAT_DIALOG_DATA);
-  private readonly fb = inject(FormBuilder);
+  private readonly data: User = inject(MAT_DIALOG_DATA)
+  private readonly fb = inject(FormBuilder)
   private readonly dialogRef: MatDialogRef<CreateEditUserComponent> =
-    inject(MatDialogRef);
+    inject(MatDialogRef)
 
   constructor() {
-    this.isEdit = !!this.data;
+    this.isEdit = !!this.data
     if (this.data) {
-      this.userForm.patchValue(this.data);
+      this.userForm.patchValue(this.data)
     }
   }
 
@@ -45,11 +44,11 @@ export class CreateEditUserComponent {
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', Validators.required],
-  });
+  })
 
   onSubmit(): void {
     if (this.isEdit) {
-      this.dialogRef.close({ ...this.userForm.value, ...this.data });
+      this.dialogRef.close({...this.userForm.value, ...this.data})
     }
   }
 }

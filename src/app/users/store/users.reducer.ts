@@ -1,36 +1,33 @@
-import { createReducer, on } from '@ngrx/store';
+import {createReducer, on} from '@ngrx/store'
 import {
   addUserAction,
   deleteUserAction,
   editUserAction,
-  loadUserAction,
-} from './users.action';
-import { User } from '../interface/users.interface';
+  loadUserActionSuccess,
+} from './users.action'
+import {AppState} from '../../app.state'
 
-export interface UsersState {
-  users: User[];
-}
-export const initialUserState: UsersState = {
+export const initialUserState: AppState = {
   users: [],
-};
+}
 
 export const usersReducer = createReducer(
   initialUserState,
-  on(loadUserAction, (state, { users }) => ({ ...state, users: users })),
+  on(loadUserActionSuccess, (state, {users}) => ({...state, users})),
 
-  on(addUserAction, (state, { user }) => ({
+  on(addUserAction, (state, {user}) => ({
     ...state,
     users: [...state.users, user],
   })),
 
-  on(editUserAction, (state, { updatedUser }) => ({
+  on(editUserAction, (state, {updatedUser}) => ({
     ...state,
     users: state.users.map((user) =>
       user.id === updatedUser.id ? updatedUser : user,
     ),
   })),
-  on(deleteUserAction, (state, { userId }) => ({
+  on(deleteUserAction, (state, {userId}) => ({
     ...state,
     users: state.users.filter((user) => user.id !== userId),
   })),
-);
+)

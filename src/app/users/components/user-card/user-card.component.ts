@@ -13,16 +13,14 @@ import {User} from '../../interface/users.interface'
 })
 export class UserCardComponent {
   @Input() user!: User
-  @Output() deleteUser = new EventEmitter<number>();
-  @Output() editUser = new EventEmitter<User>();
+  @Output() deleteUser = new EventEmitter<number>()
+  @Output() editUser = new EventEmitter<User>()
 
-  onDeleteClick():void {
+  onDeleteClick(): void {
     this.deleteUser.emit(this.user.id)
   }
 
   onEditClick(): void {
-    this.editUser.emit(this.user);
-
+    this.editUser.emit(this.user)
   }
-
 }

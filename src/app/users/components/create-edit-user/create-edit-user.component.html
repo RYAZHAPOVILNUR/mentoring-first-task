@@ -1,28 +1,35 @@
 <h2 mat-dialog-title>Add New User</h2>
 <mat-dialog-content>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Name</mat-label>
-      <input matInput formControlName="name">
+      <input matInput formControlName="name" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Username</mat-label>
-      <input matInput formControlName="username">
+      <input matInput formControlName="username" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email">
+      <input matInput formControlName="email" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Phone</mat-label>
-      <input matInput formControlName="phone">
+      <input matInput formControlName="phone" />
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button type="submit" mat-raised-button [mat-dialog-close]="userForm.value" [disabled]="userForm.invalid">{{ isEdit ? 'Save' : 'Create' }}  </button>
+  <button
+    type="submit"
+    mat-raised-button
+    [mat-dialog-close]="userForm.value"
+    [disabled]="userForm.invalid"
+  >
+    {{ isEdit ? 'Save' : 'Create' }}
+  </button>
   <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
