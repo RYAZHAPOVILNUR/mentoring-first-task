@@ -1,0 +1,26 @@
+mat-form-field {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+button {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+}

@@ -1,0 +1,12 @@
+<div class="user-card">
+  <h2>{{ user.name }}</h2>
+  <p>Email: {{ user.username }}</p>
+  <p>Role: {{ user.email }}</p>
+  <p>Status: {{ user.phone }}</p>
+
+  <button mat-raised-button color="warn" (click)="onDeleteClick()">
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
+  <button mat-raised-button (click)="onEditClick()">Edit User</button>
+</div>
