@@ -40,7 +40,7 @@ export class UsersListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(newUser => {
       if (newUser) {
-        this.usersService.addUser();
+        
       }
     });
   }

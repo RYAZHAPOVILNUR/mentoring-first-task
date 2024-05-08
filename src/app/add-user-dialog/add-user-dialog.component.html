@@ -11,8 +11,8 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Введи почту</mat-label>
-    <input type="text" matInput formControlName="mail">
+    <input type="text" matInput formControlName="email">
     <mat-error>Почта обязательна</mat-error>
   </mat-form-field>
-  <button mat-raised-button type="submit">Сохранить</button>
+  <button mat-raised-button type="submit" (click)="saveUser()">Сохранить</button>
 </form>

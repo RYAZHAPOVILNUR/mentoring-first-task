@@ -26,7 +26,10 @@ export class UsersService {
     );
   }
 
-  addUser(): void {
-   
+  addUser(userData: User){
+    const newUsers = [...this.usersSubject$.value, userData]
+    this.usersSubject$.next(newUsers)
+
+    // console.log(this.usersSubject$.value)
   }
 }
