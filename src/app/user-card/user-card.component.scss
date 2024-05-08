@@ -2,17 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 200px;
+    max-width: 300px;
     border: 1px solid #ccc;
     padding: 15px;
     margin: 10px;
     border-radius: 5px;
 }
-  
+.user-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 .user-card h2 {
     color: #333;
 }
-
 .user-card p {
     margin: 5px 0;
 }

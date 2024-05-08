@@ -5,6 +5,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UsersService } from '../user.service';
+import {  Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {  FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -25,26 +28,24 @@ import { UsersService } from '../user.service';
 export class AddUserDialogComponent {
   private usersService = inject(UsersService);
   public readonly users$ = this.usersService.users$;
+  form: FormGroup;
 
-  fb = inject(FormBuilder);
-  form = this.fb.group({
-    name: ['', Validators.required],
-    phone: ['', Validators.required],
-    email: ['', Validators.required]
-  })
+  constructor(private dialogRef: MatDialogRef<AddUserDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      phone: ['', Validators.required],
+      email: ['', Validators.required],
+      username: ['', Validators.required],
+      address: [''],
+      website: [''],
+      company: [''],
+    });
+  }
   saveUser(): void {
     if (this.form.valid) {
-      const userData = {
-        // здесь реализовать айдишник
-        
-        name: this.form.value.name!,
-        phone: this.form.value.phone!,
-        email: this.form.value.email!
-      }
-      this.usersService.addUser(userData)
-      this.users$.subscribe({
-        next: res => console.log(res.length)
-      })
+      const newUser = this.form.value;
+      newUser.id = Math.round(Math.random() * 1000)
+      this.dialogRef.close(newUser);
     }
   }
 }

@@ -5,6 +5,11 @@
     <mat-error>Имя обязательно</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
+    <mat-label>Введи фамилию</mat-label>
+    <input type="text" matInput formControlName="username">
+    <mat-error>Фамилия обязательна</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Введи номер</mat-label>
     <input type="text" matInput formControlName="phone">
     <mat-error>Номер обязателен</mat-error>
@@ -13,6 +18,10 @@
     <mat-label>Введи почту</mat-label>
     <input type="text" matInput formControlName="email">
     <mat-error>Почта обязательна</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Введи сайт</mat-label>
+    <input type="text" matInput formControlName="website">
   </mat-form-field>
   <button mat-raised-button type="submit" (click)="saveUser()">Сохранить</button>
 </form>

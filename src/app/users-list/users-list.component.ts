@@ -37,10 +37,10 @@ export class UsersListComponent implements OnInit {
 
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(AddUserDialogComponent);
-
     dialogRef.afterClosed().subscribe(newUser => {
       if (newUser) {
-        
+        this.usersService.addUser(newUser)
+        this.users$.subscribe({})
       }
     });
   }
