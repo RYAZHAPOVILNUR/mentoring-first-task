@@ -13,6 +13,10 @@ export class UsersApiService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[    ]>(this.userUrl);
+    return this.http.get<User[]>(this.userUrl);
   }
+
+
 }
+
+

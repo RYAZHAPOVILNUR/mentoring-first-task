@@ -1,17 +1,14 @@
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Body</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-        </tr>
-    </tbody>
-</table>
+<div id="login-container">
+<!--  <div class="profile-img"></div>-->
+  <h1>
+    {{user.name}}
+  </h1>
+  <div class="description">
+    {{user.usernames}} is a front end web developer in New York. She has worked in the field for 10 years now. Check out her projects in the links below. She is available for hire as well.
+    {{user.address.street}}
+  </div>
+  <div class="buttons">
+    <button>Edit</button>
+    <button (click)="delete(user)">Delete</button>
+  </div>
+</div>

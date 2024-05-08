@@ -1,21 +1,30 @@
+<div>
+
+<h1>Users</h1>
 <div class="user-list">
-    <h2>users</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Body</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users">
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <app-user-card></app-user-card>
+  <div>
+    <button (click)="backClicked()" class="main-page" >
+      <li>
+        <div class="divInner"></div>
+        <div class="divShadow"></div>
+        <div class="spanTxt iconHome"></div>
+      </li>
+    </button>
+  </div>
+     <ng-container *ngFor="let user of users$ | async">
+       <app-user-card [user]='user' (deleteUser)="deleteUser($event)"></app-user-card>
+     </ng-container>
+
+</div>
+<!--  <div class="add_button">-->
+<!--&lt;!&ndash;      <app-dialog></app-dialog>&ndash;&gt;-->
+<!--    <mat-card>-->
+<!--      <mat-card-header>-->
+<!--        <mat-card-title>My Card</mat-card-title>-->
+<!--      </mat-card-header>-->
+<!--      <mat-card-content>-->
+<!--        This is the content of the card.-->
+<!--      </mat-card-content>-->
+<!--    </mat-card>-->
+<!--  </div>-->
 </div>

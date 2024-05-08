@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../users.interface';
-import { UsersApiService } from '../users.service';
-import { CommonModule } from '@angular/common';
+import {Component, OnInit, Output} from '@angular/core';
+import {CommonModule, Location} from '@angular/common';
 import { UserCardComponent } from '../user-card/user-card.component';
+import {UsersService} from "../Services/user.service";
+// import {DialogOverviewExample} from "../dialog-data/dialog-data.component";
 
 @Component({
   selector: 'app-users-list',
@@ -12,12 +12,23 @@ import { UserCardComponent } from '../user-card/user-card.component';
   styleUrl: './users-list.component.scss',
 })
 export class UsersListComponent implements OnInit {
-  users: User[] = [];
-  constructor(private usersApiService: UsersApiService) {}
+
+  public readonly users$ = this.usersService.users$;
+
+  constructor(
+    private usersService: UsersService,
+    private readonly _location: Location
+  ) {
+
+  }
+  backClicked(){
+    this._location.back();
+  }
 
   ngOnInit(): void {
-    this.usersApiService.getUsers().subscribe((users) => {
-      this.users = users;
-    });
+    this.usersService.loadUsers();
+  }
+  deleteUser(id: number): void {
+    this.usersService.deleteUser(id);
   }
 }
