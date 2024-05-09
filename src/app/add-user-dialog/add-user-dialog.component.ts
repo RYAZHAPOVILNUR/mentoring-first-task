@@ -30,7 +30,10 @@ export class AddUserDialogComponent {
   public readonly users$ = this.usersService.users$;
   form: FormGroup;
 
-  constructor(private dialogRef: MatDialogRef<AddUserDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder) {
+  constructor(
+    private dialogRef: MatDialogRef<AddUserDialogComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
