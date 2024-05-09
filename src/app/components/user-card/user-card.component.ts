@@ -15,13 +15,13 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class UserCardComponent {
-  constructor(public dialog: MatDialog) { }
-
   @Input()
   user?: UsersType
 
   @Output()
   deleteEvent = new EventEmitter<number>();
+
+  constructor(public dialog: MatDialog) { }
 
   deleteCard(id: number) {
     this.deleteEvent.emit(id);
@@ -31,7 +31,8 @@ export class UserCardComponent {
     enterAnimationDuration: string,
     exitAnimationDuration: string,
     redact: boolean,
-    id: number): void {
+    id: number
+  ): void {
     this.dialog.open(UsersListModalWindowComponent,
       {
         width: '500px',

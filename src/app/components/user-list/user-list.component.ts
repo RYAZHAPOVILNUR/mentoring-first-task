@@ -14,17 +14,21 @@ import { deleteUser, loadUsers } from '../../core/state/users/users.actions';
   standalone: true,
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
-  imports: [CommonModule, UserCardComponent, MatButtonModule],
+  imports: [
+    CommonModule,
+    UserCardComponent,
+    MatButtonModule
+  ],
 })
 export class UserListComponent {
+  users: UsersType[] = []
+  user!: UsersType
+  redact: boolean = false
+
   constructor(
     public dialog: MatDialog,
     private store: Store
   ) { }
-
-  users: UsersType[] = []
-  user!: UsersType
-  redact: boolean = false
 
   ngOnInit() {
     this.getUsersForList()
@@ -44,7 +48,8 @@ export class UserListComponent {
   openDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string,
-    redact: boolean): void {
+    redact: boolean
+  ): void {
     this.dialog.open(UsersListModalWindowComponent,
       {
         width: '500px',

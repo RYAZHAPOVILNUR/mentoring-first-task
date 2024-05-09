@@ -12,7 +12,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [RouterOutlet, CommonModule, RouterLink, RouterLinkActive, HttpClientModule, NavigationComponent, HeaderComponent, FooterComponent, FormsModule, ReactiveFormsModule],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+    HttpClientModule,
+    NavigationComponent,
+    HeaderComponent,
+    FooterComponent,
+    FormsModule,
+    ReactiveFormsModule
+  ],
 })
 export class AppComponent {
   title = 'my-first-project';

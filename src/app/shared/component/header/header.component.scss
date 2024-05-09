@@ -14,13 +14,13 @@ header.header {
     border-bottom: 1px solid #c5c5c5;
     font-weight: 500;
 
-    
     .header-top-phone {
       font-size: 16px;
       color: green;
       text-decoration: none;
       margin-right: 59px;
     }
+
     .header-top-actions {
       display: flex;
       align-items: center;
@@ -32,6 +32,7 @@ header.header {
         &:last-child {
           margin-right: 18px;
         }
+
         span {
           position: absolute;
           width: 18px;
@@ -49,6 +50,7 @@ header.header {
       }
     }
   }
+
   .header-bottom {
     padding-top: 16px;
     display: flex;
@@ -68,6 +70,7 @@ header.header {
           &.active {
             border-bottom-color: green;
           }
+
           a {
             color: green;
             font-size: 16px;
@@ -90,9 +93,9 @@ header.header {
         box-sizing: border-box;
         outline: none;
       }
+
       &::after {
         content: "";
-        // background-image: url("../../../../assets/images/icons/search-normal.png");
         background-size: cover;
         position: absolute;
         width: 16px;
@@ -120,6 +123,7 @@ header.header {
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
           }
+
           &:last-child {
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -131,6 +135,7 @@ header.header {
               color: #000;
             }
           }
+
           .search-product-image {
             width: 40px;
             height: 40px;
@@ -139,6 +144,7 @@ header.header {
             background-position: center;
             background-size: cover;
           }
+
           .search-product-name {
             color: #8e8e8e;
             font-size: 16px;

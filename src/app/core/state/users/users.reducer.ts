@@ -3,81 +3,80 @@ import { addUserSuccess, deleteUserSuccess, getUserSuccess, loadUserFail, loadUs
 import { UserModel } from '../../../shared/types/users-types.type'
 
 export const userState: UserModel = {
-    list: [],
-    errormessage: '',
-    editdata: {
+  list: [],
+  errormessage: '',
+  editdata: {
+    id: 0,
+    name: '',
+    email: '',
+    phone: '',
+    company: {
+      name: '',
+    }
+  }
+}
+
+const userReducer = createReducer(userState,
+  on(loadUserSuccess, (state, action) => {
+    return {
+      ...state,
+      list: action.list,
+      errormessage: '',
+      editdata: {
         id: 0,
         name: '',
         email: '',
         phone: '',
         company: {
-            name: '',
+          name: '',
         }
+      }
     }
-}
+  }),
 
-const _UserReducer = createReducer(userState,
+  on(loadUserFail, (state, action) => {
+    return {
+      ...state,
+      list: [],
+      errormessage: action.errormessage
+    }
+  }),
 
-    on(loadUserSuccess, (state, action) => {
-        return {
-            ...state,
-            list: action.list,
-            errormessage: '',
-            editdata: {
-                id: 0,
-                name: '',
-                email: '',
-                phone: '',
-                company: {
-                    name: '',
-                }
-            }
-        }
-    }),
+  on(getUserSuccess, (state, action) => {
+    return {
+      ...state,
+      errormessage: '',
+      editdata: action.obj,
+    }
+  }),
 
-    on(loadUserFail, (state, action) => {
-        return {
-            ...state,
-            list: [],
-            errormessage: action.errormessage
-        }
-    }),
+  on(deleteUserSuccess, (state, action) => {
+    let _newdate = state.list.filter(o => o.id != action.id)
+    return {
+      ...state,
+      list: _newdate,
+      errormessage: ''
+    }
+  }),
 
-    on(getUserSuccess, (state, action) => {
-        return {
-            ...state,
-            errormessage: '',
-            editdata: action.obj,
-        }
-    }),
+  on(updateUserSuccess, (state, action) => {
+    return {
+      ...state,
+      list: state.list.map(item => item.id == action.inputdata.id ? action.inputdata : item),
+      errormessage: ''
+    }
+  }),
 
-    on(deleteUserSuccess, (state, action) => {
-        let _newdate = state.list.filter(o => o.id != action.id)
-        return {
-            ...state,
-            list: _newdate,
-            errormessage: ''
-        }
-    }),
-
-    on(updateUserSuccess, (state, action) => {
-        return {
-            ...state,
-            list: state.list.map(item => item.id == action.inputdata.id ? action.inputdata : item),
-            errormessage: ''
-        }
-    }),
-
-    on(addUserSuccess, (state, action) => {
-        return {
-            ...state,
-            list: [...state.list, action.inputdata],
-            errormessage: ''
-        }
-    }),
+  on(addUserSuccess, (state, action) => {
+    return {
+      ...state,
+      list: [...state.list, action.inputdata],
+      errormessage: ''
+    }
+  }),
 
 )
 
 export function UserReducer(state: any, action: any) {
-    return _UserReducer(state, action)
+  return userReducer(state, action)
 }
