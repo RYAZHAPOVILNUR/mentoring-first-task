@@ -9,13 +9,20 @@ export class ngrxLocalUsersService {
   constructor(private apiServise: MasterService) { }
 
   getAllUsers(): Observable<UsersType[]> {
-    const data = localStorage.getItem('users')
-    if (data) return of(JSON.parse(data))
-    else return this.apiServise.getAllUsers().pipe(
-      tap(users => {
-        localStorage.setItem('users', JSON.stringify(users))
-      })
-    )
+    if (typeof localStorage !== 'undefined') {
+      const data = localStorage.getItem('users');
+      if (data) {
+        return of(JSON.parse(data));
+      } else {
+        return this.apiServise.getAllUsers().pipe(
+          tap(users => {
+            localStorage.setItem('users', JSON.stringify(users));
+          })
+        );
+      }
+    } else {
+      return of([]);
+    }
   }
 
   addUser(user: UsersType): Observable<UsersType> {
