@@ -25,25 +25,3 @@ export class UsersService {
     );
   }
 }
-// public deleteUser(userId: User): void{
-//
-//   this.usersSubject$.pipe(
-//     map.(users=> users.filter(user=> user.id !== userId))
-//   )
-//     .subscribe((filteredUsers)=> {
-//       this.usersSubject$.next(filteredUsers)
-//     })
-// }
-
-// this.api.getUsers().subscribe(
-//   (response: User)=> {
-//     this.usersSubject$.next(
-//       this.usersSubject$.value.filter(
-//         user => user.id != response.id
-//       )
-//     );
-//   }
-// )
-// this.usersSubject$.next([
-//   ...this.usersSubject$.value.filter((user)=> user.id != userToDelete.id)
-// ])
