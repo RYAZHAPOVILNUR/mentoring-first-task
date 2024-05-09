@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store'
-import { addUserSuccess, deleteUserSuccess, getUserSuccess, loadUserFail, loadUserSuccess, updateUserSuccess } from './users.actions'
+import { addUserSuccess, deleteUserSuccess, filteredUsers, getUserSuccess, loadUserFail, loadUserSuccess, updateUserSuccess } from './users.actions'
 import { UserModel } from '../../../shared/types/users-types.type'
 
 export const userState: UserModel = {
@@ -13,7 +13,8 @@ export const userState: UserModel = {
     company: {
       name: '',
     }
-  }
+  },
+  filterName: ''
 }
 
 const userReducer = createReducer(userState,
@@ -74,6 +75,24 @@ const userReducer = createReducer(userState,
       errormessage: ''
     }
   }),
+
+  on(filteredUsers, (state, action) => {
+    if (action.name.trim() === '') {
+      return {
+        ...state,
+        list: state.list,
+        errormessage: '',
+        filterName: ''
+      };
+    }
+    return {
+      ...state,
+      list: state.list,
+      errormessage: '',
+      filterName: action.name
+    };
+  }),
+
 
 )
 

@@ -19,3 +19,6 @@ export const getUserSuccess = createAction('[Users] get user success', props<{ o
 
 export const showAlert = createAction('[Users] show alert', props<{ message: string, resptype: string }>())
 export const emptyAction = createAction('emptyaction')
+
+
+export const filteredUsers = createAction('[Users] filtered users', props<{ name: string }>())

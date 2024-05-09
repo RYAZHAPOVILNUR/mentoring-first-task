@@ -5,9 +5,10 @@ import { UserCardComponent } from "../user-card/user-card.component";
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersListModalWindowComponent } from '../users-list-modal-window/users-list-modal-window.component';
-import { getUserList } from '../../core/state/users/users.selector';
+import { getFilteredUsersList, getUserList } from '../../core/state/users/users.selector';
 import { Store } from '@ngrx/store';
-import { deleteUser, loadUsers } from '../../core/state/users/users.actions';
+import { deleteUser, filteredUsers, loadUsers } from '../../core/state/users/users.actions';
+import { UsersFilterComponent } from './users-filter/users-filter.component';
 
 @Component({
   selector: 'app-user-list',
@@ -17,7 +18,8 @@ import { deleteUser, loadUsers } from '../../core/state/users/users.actions';
   imports: [
     CommonModule,
     UserCardComponent,
-    MatButtonModule
+    MatButtonModule,
+    UsersFilterComponent
   ],
 })
 export class UserListComponent {
@@ -25,6 +27,13 @@ export class UserListComponent {
   user!: UsersType
   redact: boolean = false
 
+  some!: string
+  onFilterChanged(event: string) {
+    this.store.dispatch(filteredUsers({ name: event }))
+    this.store.select(getFilteredUsersList).subscribe(data => {
+      this.users = data
+    });
+  }
   constructor(
     public dialog: MatDialog,
     private store: Store
