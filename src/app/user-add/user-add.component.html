@@ -1,0 +1,24 @@
+<button mat-icon-button style="float:right;margin: 10px;" matDialogClose>
+  <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+  <header>
+    <h1>Добавить нового пользователя</h1>
+  </header>
+  <p><mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="user.name" name="name{{user.name}}">
+  </mat-form-field></p>
+  <p><mat-form-field>
+    <input matInput placeholder="id" [(ngModel)]="user.id" id="id">
+  </mat-form-field></p>
+  <p><mat-form-field>
+    <input matInput placeholder="email" [(ngModel)]="user.email" email="email">
+  </mat-form-field></p>
+  <p><mat-form-field>
+    <input matInput placeholder="phone" [(ngModel)]="user.phone" phone="phone">
+  </mat-form-field></p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button (click)="onAddUser(user)" mat-raised-button color="primary" matDialogClose>Сохранить</button>
+  <button mat-raised-button color="warn" matDialogClose>Отменить</button>
+</mat-dialog-actions>
