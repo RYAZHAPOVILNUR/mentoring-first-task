@@ -11,12 +11,13 @@ export class ngrxLocalUsersService {
   getAllUsers(): Observable<UsersType[]> {
     if (typeof localStorage !== 'undefined') {
       const data = localStorage.getItem('users');
-      if (data) {
+      if (data && JSON.parse(data).length > 0) {
         return of(JSON.parse(data));
       } else {
         return this.apiServise.getAllUsers().pipe(
           tap(users => {
             localStorage.setItem('users', JSON.stringify(users));
+            this.getAllUsers()
           })
         );
       }
