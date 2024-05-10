@@ -14,8 +14,17 @@ export class MaterialService {
   getAllMaterials() {
     return this.http.get<MaterialType[]>(this.apiUrl + 'material')
   }
-  getMaterial(folderId: number) {
-    return this.http.get<MaterialType[]>(this.apiUrl + 'material/' + folderId)
+  getMaterial(materialId: number) {
+    return this.http.get<MaterialType>(this.apiUrl + 'material/' + materialId)
+  }
+
+  addMaterial(materialName: MaterialType) {
+    return this.http.post<MaterialType>(this.apiUrl + 'material', materialName)
+  }
+  deleteMaterial(materialId: number) {
+    console.log(materialId);
+
+    return this.http.delete<{}>(this.apiUrl + 'material/' + materialId)
   }
 
 }

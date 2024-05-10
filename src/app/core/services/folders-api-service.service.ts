@@ -14,5 +14,15 @@ export class FolderService {
   getAllFolders() {
     return this.http.get<FolderType[]>(this.apiUrl + 'folder')
   }
+  getFolder(folderId: number) {
+    return this.http.get<FolderType>(this.apiUrl + 'folder/' + folderId)
+  }
+
+  addFolder(folderName: string) {
+    return this.http.post<{ title: string }>(this.apiUrl + 'folder', { "title": folderName })
+  }
+  deleteFolder(folderId: number) {
+    return this.http.delete<{}>(this.apiUrl + 'folder/' + folderId)
+  }
 
 }

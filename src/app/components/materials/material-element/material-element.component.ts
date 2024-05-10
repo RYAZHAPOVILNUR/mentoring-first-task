@@ -3,6 +3,7 @@ import { MaterialModule } from '../../../shared/_module/Material.Module';
 import { FolderType } from '../../../shared/types/folders-types.type';
 import { CustomDatePipe } from '../../../core/pipes/custom-data.pipe';
 import { Router } from '@angular/router';
+import { FolderService } from '../../../core/services/folders-api-service.service';
 
 @Component({
   selector: 'app-material-element',
@@ -12,11 +13,16 @@ import { Router } from '@angular/router';
   styleUrl: './material-element.component.scss'
 })
 export class MaterialElementComponent {
+
   @Input() folder!: FolderType
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: FolderService) { }
 
   goToFolder(folderId: number) {
     this.router.navigate(['materials/folder/' + folderId])
+  }
+
+  removeFolder(folderId: number) {
+    this.service.deleteFolder(folderId).subscribe()
   }
 }

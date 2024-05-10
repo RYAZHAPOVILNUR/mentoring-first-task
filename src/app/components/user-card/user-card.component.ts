@@ -3,8 +3,8 @@ import { UsersType } from '../../shared/types/users-types.type';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { UsersListModalWindowComponent } from '../users-list-modal-window/users-list-modal-window.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UsersListModalWindowComponent } from '../user-list/users-list-modal-window/users-list-modal-window.component';
 
 @Component({
   selector: 'app-user-card',

@@ -4,11 +4,11 @@ import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, Ma
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { UsersType } from '../../shared/types/users-types.type';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { addUser, getUser, updateUser } from '../../core/state/users/users.actions';
-import { getEditdata } from '../../core/state/users/users.selector';
+import { UsersType } from '../../../shared/types/users-types.type';
+import { addUser, getUser, updateUser } from '../../../core/state/users/users.actions';
+import { getEditdata } from '../../../core/state/users/users.selector';
 
 @Component({
   selector: 'dialog-animations-example-dialog',

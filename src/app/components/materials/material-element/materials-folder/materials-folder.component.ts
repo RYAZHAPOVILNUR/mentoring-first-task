@@ -5,11 +5,14 @@ import { MaterialType } from '../../../../shared/types/folders-types.type';
 import { CommonModule } from '@angular/common';
 import { CustomDatePipe } from '../../../../core/pipes/custom-data.pipe';
 import { MaterialModule } from '../../../../shared/_module/Material.Module';
+import { AddMaterialIconComponent } from './add-material-icon/add-material-icon.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MaterialInfoComponent } from '../../materials-add-folder/material-info/material-info.component';
 
 @Component({
   selector: 'app-materials-folder',
   standalone: true,
-  imports: [CommonModule, CustomDatePipe, MaterialModule],
+  imports: [CommonModule, CustomDatePipe, MaterialModule, AddMaterialIconComponent],
   templateUrl: './materials-folder.component.html',
   styleUrl: './materials-folder.component.scss'
 })
@@ -18,7 +21,11 @@ export class MaterialsFolderComponent implements OnInit {
   id: number;
   materials: MaterialType[] = []
 
-  constructor(private activateRoute: ActivatedRoute, private service: MaterialService) {
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private service: MaterialService,
+    public dialog: MatDialog
+  ) {
     this.id = activateRoute.snapshot.params["id"];
   }
 
@@ -31,6 +38,16 @@ export class MaterialsFolderComponent implements OnInit {
       this.materials = filterData
     }
     )
+  }
+
+  removeMaterial(materialId: number) {
+    this.service.deleteMaterial(materialId).subscribe()
+  }
+
+  openMaterial(materialId: number) {
+    const dialogRef = this.dialog.open(MaterialInfoComponent, { data: { materialId: materialId } });
+    dialogRef.afterClosed().subscribe();
+
   }
 
 }
