@@ -1,0 +1,36 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MaterialService } from '../../../../core/services/materials-api-service.service';
+import { MaterialType } from '../../../../shared/types/folders-types.type';
+import { CommonModule } from '@angular/common';
+import { CustomDatePipe } from '../../../../core/pipes/custom-data.pipe';
+import { MaterialModule } from '../../../../shared/_module/Material.Module';
+
+@Component({
+  selector: 'app-materials-folder',
+  standalone: true,
+  imports: [CommonModule, CustomDatePipe, MaterialModule],
+  templateUrl: './materials-folder.component.html',
+  styleUrl: './materials-folder.component.scss'
+})
+export class MaterialsFolderComponent implements OnInit {
+
+  id: number;
+  materials: MaterialType[] = []
+
+  constructor(private activateRoute: ActivatedRoute, private service: MaterialService) {
+    this.id = activateRoute.snapshot.params["id"];
+  }
+
+  ngOnInit(): void {
+    this.getMaterial(this.id)
+  }
+  getMaterial(idFolder: number) {
+    this.service.getAllMaterials().subscribe(data => {
+      let filterData = data.filter(elem => elem.folder_id == idFolder)
+      this.materials = filterData
+    }
+    )
+  }
+
+}

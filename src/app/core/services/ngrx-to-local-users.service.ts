@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MasterService } from './master-users-api-service.service';
 import { UsersType } from '../../shared/types/users-types.type';
 import { Observable, map, of, tap } from 'rxjs';
+import { UserService } from './users-api-service.service';
 
 @Injectable({ providedIn: 'root' })
 
 export class ngrxLocalUsersService {
-  constructor(private apiServise: MasterService) { }
+  constructor(private apiServise: UserService) { }
 
   getAllUsers(): Observable<UsersType[]> {
     if (typeof localStorage !== 'undefined') {

@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UsersType } from '../../shared/types/users-types.type';
 import { environment } from '../../../environments/environment';
+import { FolderType } from '../../shared/types/folders-types.type';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MasterService {
-  apiUrl = environment.apiUrl;
+export class FolderService {
+  apiUrl = environment.apiMaterialUrl;
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers() {
-    return this.http.get<UsersType[]>(this.apiUrl)
+  getAllFolders() {
+    return this.http.get<FolderType[]>(this.apiUrl + 'folder')
   }
 
 }
