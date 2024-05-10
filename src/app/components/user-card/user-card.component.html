@@ -1,0 +1,28 @@
+<div class="user">
+  <div class="column">
+    <p>
+      {{user.id}}
+    </p>
+  </div>
+  <div class="column">
+    <a [routerLink]="'/users/'+user.id">
+      {{user.name}}
+    </a>
+  </div>
+  <div class="column">
+    <p>{{user.username}}</p>
+  </div>
+  <div class="column">
+    <p>{{user.email}}</p>
+  </div>
+  <div class="tools">
+    <div class="user__edit" (click)="edit(user)" title="Edit">
+      <img src="assets/icons/edit.svg" alt="">
+    </div>
+    <div class="user__delete" (click)="delete(user.id)" title="Delete">
+      <img src="assets/icons/delete.svg" alt="">
+    </div>
+  </div>
+
+</div>
+

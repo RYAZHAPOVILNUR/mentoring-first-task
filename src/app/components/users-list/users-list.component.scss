@@ -1,0 +1,44 @@
+.user-list {
+  padding: 50px 0 100px;
+  width: 100vw;
+}
+
+.btn {
+  background: var(--color-purple);
+  border: none;
+  padding: 18px;
+  border-radius: 10px;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 15px;
+  min-width: 130px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-purple-light);
+  }
+}
+
+.toolbar {
+  padding: 50px 0 30px;
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 27px 21px 28px;
+
+  .column {
+    width: 22%;
+
+    &:nth-child(1) {
+      width: 12%;
+    }
+  }
+
+  .tools {
+    width: 12%;
+  }
+}
+

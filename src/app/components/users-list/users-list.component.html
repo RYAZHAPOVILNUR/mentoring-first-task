@@ -1,0 +1,22 @@
+<div class="user-list">
+  <div class="container">
+    <div class="toolbar">
+      <button class="btn" (click)="openDialog()">Add new user</button>
+    </div>
+
+    <div class="user-nav">
+      <div class="column">ID</div>
+      <div class="column">Name</div>
+      <div class="column">Username</div>
+      <div class="column">Email</div>
+      <div class="tools">Tools</div>
+    </div>
+
+    <ng-container *ngIf="usersList$">
+      <app-user-card
+        *ngFor="let user of usersList$ | async" [user]="user"
+        (deleteEvent)=deleteEvent($event)>
+      </app-user-card>
+    </ng-container>
+  </div>
+</div>

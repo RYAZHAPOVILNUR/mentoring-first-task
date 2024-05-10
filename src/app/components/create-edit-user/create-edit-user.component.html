@@ -1,0 +1,43 @@
+<div class="user-popup">
+  <button class="close" mat-dialog-close>
+    <img src="assets/icons/plus.svg" alt="">
+  </button>
+
+  <h2>
+    {{isNewUser ? 'Add user' : 'Change user'}}
+  </h2>
+
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form__row">
+      <input
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+        [class.valid]="form.controls.name.valid && form.controls.name.touched"
+        [class.invalid]="(form.controls.name.invalid && form.controls.name.touched) || (form.controls.name.invalid && submitted)">
+      <p *ngIf="(form.controls.name.invalid && form.controls.name.touched) || (form.controls.name.invalid && submitted)" class="error">Fill in the field</p>
+    </div>
+    <div class="form__row">
+      <input type="text"
+             placeholder="Username"
+             formControlName="username"
+             [class.valid]="form.controls.username.valid && form.controls.username.touched"
+             [class.invalid]="(form.controls.username.invalid && form.controls.username.touched) || (form.controls.username.invalid && submitted)">
+      <p *ngIf="(form.controls.username.invalid && form.controls.username.touched) || (form.controls.username.invalid && submitted)" class="error">Fill in the field</p>
+    </div>
+    <div class="form__row">
+      <input type="text"
+             placeholder="Email"
+             formControlName="email"
+             [class.valid]="form.controls.email.valid && form.controls.email.touched"
+             [class.invalid]="(form.controls.email.invalid && form.controls.email.touched) || (form.controls.email.invalid && submitted)">
+      <p *ngIf="(form.controls.email.invalid && form.controls.email.touched) || (form.controls.email.invalid && submitted)" class="error">Fill in the field
+        correctly</p>
+    </div>
+
+    <div class="control">
+      <button type="submit" class="add">{{isNewUser ? 'Add' : 'Save'}}</button>
+    </div>
+  </form>
+</div>
+
