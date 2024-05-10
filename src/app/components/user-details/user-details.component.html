@@ -1,0 +1,29 @@
+<div class="user-details">
+  <div class="container">
+    <a class="back" routerLink="/users">
+      <span class="back__wrapper">
+        <img src="assets/icons/back.png" alt="">
+        <span>Back</span>
+      </span>
+    </a>
+    <div class="content" *ngIf="userDetail$ | async as user">
+      <div class="left">
+        <img class="img" src="{{ (user.id % 2) ? this.ava[0] : this.ava[1]}}" alt="ava">
+      </div>
+      <div class="right">
+        <p>
+          <b>ID:</b> {{ user.id }}
+        </p>
+        <p>
+          <b>Name:</b> {{ user.name }}
+        </p>
+        <p>
+          <b>Username:</b> {{ user.username }}
+        </p>
+        <p>
+          <b>Email:</b> {{ user.username }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
