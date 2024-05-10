@@ -41,6 +41,7 @@ export class UsersListComponent implements OnInit {
       if (newUser) {
         this.usersService.addUser(newUser)
         this.users$.subscribe({})
+        console.log(newUser)
       }
     });
   }

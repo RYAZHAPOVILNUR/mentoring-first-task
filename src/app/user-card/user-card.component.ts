@@ -24,11 +24,22 @@ export class UserCardComponent {
 
   constructor(public dialog: MatDialog) {}
   
-  openDialog(user: User): void {
-    this.dialog.open(AddUserDialogComponent, {
+  openDialog(currentUser: User): void {
+    const dialogRef = this.dialog.open(AddUserDialogComponent, {
       data: {
-        user: user
+        currentUser: this.user
       }
     });
+    console.log('open', currentUser)
+
+    dialogRef.afterClosed().subscribe(editUser => {
+      if (editUser) {
+        currentUser = editUser
+        // this.usersService.addUser(newUser)
+        // this.users$.subscribe({})
+        console.log(editUser)
+      }
+    });
+    
   }
 }

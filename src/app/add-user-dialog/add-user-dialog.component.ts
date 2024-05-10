@@ -1,13 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Inject, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { UsersService } from '../user.service';
-import {  Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {  FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -19,7 +16,6 @@ import {  FormGroup } from '@angular/forms';
     MatButtonModule,
     MatDialogModule,
     ReactiveFormsModule,
-
   ],
   templateUrl: './add-user-dialog.component.html',
   styleUrl: './add-user-dialog.component.scss'
@@ -31,8 +27,8 @@ export class AddUserDialogComponent {
   form: FormGroup;
 
   constructor(
-    private dialogRef: MatDialogRef<AddUserDialogComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private dialogRef: MatDialogRef<AddUserDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
