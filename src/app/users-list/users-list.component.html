@@ -5,7 +5,7 @@
 </div>
 <div>
   <div *ngFor="let user of users$ | async">
-    <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)"></app-user-card>
+    <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)" (click)="openDialog(user)"></app-user-card>
   </div>
 </div>
 </section>

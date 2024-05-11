@@ -5,6 +5,7 @@ import { UsersService } from '../user.service';
 import { MatButtonModule } from '@angular/material/button';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-users-list',
@@ -24,6 +25,7 @@ export class UsersListComponent implements OnInit {
   public readonly users$ = this.usersService.users$
 
   dialogOpen = false;
+  user!: User;
 
   constructor(){}
 
@@ -41,7 +43,21 @@ export class UsersListComponent implements OnInit {
       if (newUser) {
         this.usersService.addUser(newUser)
         this.users$.subscribe({})
-        console.log(newUser)
+      }
+    });
+  }
+
+  openDialog(currentUser: User): void {
+    const dialogRef = this.dialog.open(AddUserDialogComponent, {
+      data: {
+        currentUser: this.user
+      }
+    });
+    dialogRef.afterClosed().subscribe(editUser => {
+      if (editUser) {
+        editUser.id = currentUser.id
+        this.usersService.updateUser(editUser)
+        this.users$.subscribe({})
       }
     });
   }
