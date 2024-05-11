@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../user.model';
+import { StorageService } from '../localstorage.service';
 
 @Component({
   selector: 'app-users-list',
@@ -21,17 +22,22 @@ import { User } from '../user.model';
 })
 export class UsersListComponent implements OnInit {
   private usersService = inject(UsersService);
+  private storageService = inject(StorageService);
   private dialog = inject(MatDialog);
   public readonly users$ = this.usersService.users$
 
   dialogOpen = false;
   user!: User;
   data!: User;  
-  
+
   constructor(){}
 
   ngOnInit(): void {
-    this.usersService.loadUsers()
+    if(this.storageService.getItem() === null) {
+      this.usersService.loadUsers()
+    } else {
+      this.usersService.loadStoredData()
+    }
   }
   
   onDeleteUser(id: number): void {
