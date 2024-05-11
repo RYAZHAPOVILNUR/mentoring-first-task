@@ -26,7 +26,8 @@ export class UsersListComponent implements OnInit {
 
   dialogOpen = false;
   user!: User;
-
+  data!: User;  
+  
   constructor(){}
 
   ngOnInit(): void {
@@ -47,10 +48,14 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  openDialog(currentUser: User): void {
+  openDialogWithCard(currentUser: User): void {
     const dialogRef = this.dialog.open(AddUserDialogComponent, {
       data: {
-        currentUser: this.user
+        name: currentUser.name,
+        phone: currentUser.phone,
+        email: currentUser.email,
+        username: currentUser.username,
+        website: currentUser.website,
       }
     });
     dialogRef.afterClosed().subscribe(editUser => {

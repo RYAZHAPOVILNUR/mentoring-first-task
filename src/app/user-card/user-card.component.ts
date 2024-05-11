@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { User } from '../user.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,28 +17,10 @@ export class UserCardComponent {
   @Input({required:true})user!: User;
   @Output() deleteUserEvent = new EventEmitter<number>();
 
+  private dialog = inject(MatDialog);
+
   onDeleteUser(): void {
     this.deleteUserEvent.emit(this.user.id);
   }
-
-  constructor(public dialog: MatDialog) {}
   
-  // openDialog(currentUser: User): void {
-  //   const dialogRef = this.dialog.open(AddUserDialogComponent, {
-  //     data: {
-  //       currentUser: this.user
-  //     }
-  //   });
-  //   console.log('open', currentUser)
-
-  //   dialogRef.afterClosed().subscribe(editUser => {
-  //     if (editUser) {
-  //       currentUser = editUser
-  //       // this.usersService.addUser(newUser)
-  //       // this.users$.subscribe({})
-  //       console.log(editUser)
-  //     }
-  //   });
-    
-  // }
 }

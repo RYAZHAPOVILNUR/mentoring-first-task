@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UsersService } from '../user.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -23,21 +24,20 @@ import { UsersService } from '../user.service';
 
 export class AddUserDialogComponent {
   private usersService = inject(UsersService);
+  private fb = inject(FormBuilder);
+  private dialogRef = inject(MatDialogRef<AddUserDialogComponent>);
+
   public readonly users$ = this.usersService.users$;
+  
   form: FormGroup;
 
-  constructor(
-    private dialogRef: MatDialogRef<AddUserDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: User) {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', Validators.required],
-      username: ['', Validators.required],
-      address: [''],
-      website: [''],
-      company: [''],
+      name: [this.data?.name, Validators.required],
+      phone: [this.data?.phone, Validators.required],
+      email: [this.data?.email, Validators.required],
+      username: [this.data?.username, Validators.required],
+      website: [this.data?.website],
     });
   }
   saveUser(): void {
@@ -47,4 +47,5 @@ export class AddUserDialogComponent {
       this.dialogRef.close(newUser);
     }
   }
+  
 }
