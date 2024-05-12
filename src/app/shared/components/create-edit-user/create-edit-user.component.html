@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Заполните карточку</h2>
+<mat-dialog-content [formGroup]="formnameControl" class="user__form">
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input title="Имя" matInput formControlName="name" tabindex="-1">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Почта</mat-label>
+    <input title="Почта" matInput formControlName="email" tabindex="-1">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Телефон</mat-label>
+    <input title="Телефон" matInput formControlName="phone" tabindex="-1">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" mat-button (click)="closeDialog()" class="button" tabindex="-1">Отменить</button>
+  <button type="button" mat-button (click)="createEditUser()" class="button" tabindex="-1">{{ isEdit ? 'Редактировать' : 'Добавить' }}</button>
+</mat-dialog-actions>

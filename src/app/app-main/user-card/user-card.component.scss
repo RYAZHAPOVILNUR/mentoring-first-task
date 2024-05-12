@@ -1,0 +1,35 @@
+.user__card__detailed {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.user__card__detailed__name {
+  font-size: 1.3rem;
+}
+
+.user__card__instruments {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  height: 50px;
+  text-align: center;
+  background: none;
+  border: none;
+  border-top: 2px solid rgba(132, 71, 255, 0.15);
+  padding: 0;
+}
+
+.btn:hover {
+  background-color: rgba(132, 71, 255, 0.15)
+}
+
+.btn__delete__user {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-left: 1px solid rgba(132, 71, 255, 0.15);
+}

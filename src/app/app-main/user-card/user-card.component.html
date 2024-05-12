@@ -1,0 +1,10 @@
+<div class="user__card__date"></div>
+<div class="user__card__detailed">
+  <span class="user__card__detailed__name">{{ user.name }}</span>
+  <span class="user__card__detailed__phone">{{ user.phone }}</span>
+  <span class="user__card__detailed__email">{{ user.email }}</span>
+</div>
+<div class="user__card__bar"></div>
+<div class="user__card__instruments">
+  <button type="button" title="deleteUser" id="delete__user" class="btn btn__delete__user" (click)="onDeleteUser.emit(user.id)">Удалить</button>
+</div>
