@@ -4,6 +4,11 @@ export type FolderType = {
   "title": string
 }
 
+export type FolderModel = {
+  list: FolderType[];
+  errormessage: string;
+}
+
 export type MaterialType = {
   "id"?: number,
   "created_at"?: number,
@@ -12,7 +17,8 @@ export type MaterialType = {
   "folder_id": number
 }
 
-export type MaterialsDataType = {
-  folder: FolderType[]
-  materials: MaterialType[]
+export type MaterialModel = {
+  list: MaterialType[];
+  errormessage: string;
+  material: MaterialType
 }

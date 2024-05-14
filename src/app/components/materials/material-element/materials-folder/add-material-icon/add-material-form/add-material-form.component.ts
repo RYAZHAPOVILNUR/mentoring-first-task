@@ -9,6 +9,8 @@ import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MaterialService } from '../../../../../../core/services/materials-api-service.service';
 import { FileType } from '../../../../../../shared/enums/file-type.enum';
+import { Store } from '@ngrx/store';
+import { addMaterial } from '../../../../../../core/state/material/materials/materials.actions';
 
 @Component({
   selector: 'app-add-material-form',
@@ -26,7 +28,7 @@ export class AddMaterialFormComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { folderId: number, dataType: FileType },
-    private service: MaterialService
+    private store: Store
   ) {
     if (data.dataType === FileType.PDF) {
       this.formTitle = 'Add pdf'
@@ -49,8 +51,7 @@ export class AddMaterialFormComponent {
         "material_link": this.link.value,
         "folder_id": this.data.folderId
       }
-      console.log(newMaterial);
-      this.service.addMaterial(newMaterial).subscribe(data => console.log(data))
+      this.store.dispatch(addMaterial({ inputdata: newMaterial }))
     }
   }
 

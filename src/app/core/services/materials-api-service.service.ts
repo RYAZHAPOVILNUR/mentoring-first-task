@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { FolderType, MaterialType } from '../../shared/types/folders-types.type';
+import { MaterialType } from '../../shared/types/materials-types.type';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,6 @@ export class MaterialService {
     return this.http.post<MaterialType>(this.apiUrl + 'material', materialName)
   }
   deleteMaterial(materialId: number) {
-    console.log(materialId);
-
     return this.http.delete<{}>(this.apiUrl + 'material/' + materialId)
   }
 

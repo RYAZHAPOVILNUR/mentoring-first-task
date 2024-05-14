@@ -1,98 +1,76 @@
-// import { Injectable } from '@angular/core';
-// import { Actions, createEffect, ofType } from '@ngrx/effects';
-// import { addUser, addUserSuccess, deleteUser, deleteUserSuccess, emptyAction, getUser, getUserSuccess, loadUsers, loadUserFail, loadUserSuccess, showAlert, updateUser, updateUserSuccess } from './folders.actions';
-// import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
-// import { MatSnackBar } from '@angular/material/snack-bar';
-// import { ngrxLocalUsersService } from '../../services/ngrxlocalstorage.service';
-// import { of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { of } from 'rxjs';
+import { FolderService } from '../../../services/folders-api-service.service';
+import { addFolder, addFolderSuccess, deleteFolder, deleteFolderSuccess, emptyActionFolder, getFolder, getFolderSuccess, loadFolders, loadFoldersFail, loadFoldersSuccess, showAlertFolder } from './folders.actions';
 
-// @Injectable()
-// export class CustomerEffects {
-//   constructor(
-//     private actions$: Actions,
-//     private _snackbar: MatSnackBar,
-//     private localService: ngrxLocalUsersService
-//   ) { }
+@Injectable()
+export class FoldersEffects {
+  constructor(
+    private actions$: Actions,
+    private _snackbar: MatSnackBar,
+    private foldersService: FolderService
+  ) { }
 
-//   loadUsers$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(loadUsers),
-//       switchMap(() =>
-//         this.localService.getAllUsers().pipe(
-//           map((data) => loadUserSuccess({ list: data })),
-//           catchError((err) => of(loadUserFail({ errormessage: err.message })))
-//         )
-//       )
-//     )
-//   );
+  loadFolders$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadFolders),
+      switchMap(() =>
+        this.foldersService.getAllFolders().pipe(
+          map((data) => loadFoldersSuccess({ list: data })),
+          catchError((err) => of(loadFoldersFail({ errormessage: err.message })))
+        )
+      )
+    )
+  );
 
-//   addUser$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(addUser),
-//       switchMap((action) =>
-//         this.localService.addUser(action.inputdata).pipe(
-//           map((data) => addUserSuccess({ inputdata: data })),
-//           catchError((err) => of(loadUserFail({ errormessage: err.message })))
-//         )
-//       )
-//     )
-//   );
+  addFolder$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addFolder),
+      switchMap((action) =>
+        this.foldersService.addFolder(action.inputdata).pipe(
+          map((data) =>
+            addFolderSuccess({ inputdata: data })
+          ),
+          catchError((err) => of(loadFoldersFail({ errormessage: err.message })))
+        )
+      )
+    )
+  );
 
-//   getUser$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(getUser),
-//       switchMap((action) =>
-//         this.localService.getUserById(action.id).pipe(
-//           map((data) => getUserSuccess({ obj: data })),
-//           catchError((err) => of(loadUserFail({ errormessage: err.message })))
-//         )
-//       )
-//     )
-//   );
+  deleteFolder$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteFolder),
+      switchMap((action) =>
+        this.foldersService.deleteFolder(action.id).pipe(
+          map(() => deleteFolderSuccess({ id: action.id })),
+          catchError((err) => of(loadFoldersFail({ errormessage: err.message })))
+        )
+      )
+    )
+  );
 
-//   updateUser$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(updateUser),
-//       switchMap((action) =>
-//         this.localService.updateUser(action.inputdata).pipe(
-//           map((data) => updateUserSuccess({ inputdata: data })),
-//           catchError((err) => of(loadUserFail({ errormessage: err.message })))
-//         )
-//       )
-//     )
-//   );
+  showalert$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(showAlertFolder),
+      exhaustMap((action) =>
+        this.showSnackbarAlert(action.message, action.resptype).afterDismissed().pipe(
+          map(() => emptyActionFolder())
+        )
+      )
+    )
+  );
 
-//   deleteUser$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(deleteUser),
-//       switchMap((action) =>
-//         this.localService.deleteUser(action.id).pipe(
-//           map((data) => deleteUserSuccess({ id: data })),
-//           catchError((err) => of(loadUserFail({ errormessage: err.message })))
-//         )
-//       )
-//     )
-//   );
+  showSnackbarAlert(message: string, resptype: string = 'fail') {
+    let _class = resptype === 'pass' ? 'text-green' : 'text-red';
+    return this._snackbar.open(message, 'OK', {
+      verticalPosition: 'top',
+      horizontalPosition: 'end',
+      duration: 5000,
+      panelClass: [_class]
+    });
+  }
 
-//   showalert$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(showAlert),
-//       exhaustMap((action) =>
-//         this.showSnackbarAlert(action.message, action.resptype).afterDismissed().pipe(
-//           map(() => emptyAction())
-//         )
-//       )
-//     )
-//   );
-
-//   showSnackbarAlert(message: string, resptype: string = 'fail') {
-//     let _class = resptype === 'pass' ? 'text-green' : 'text-red';
-//     return this._snackbar.open(message, 'OK', {
-//       verticalPosition: 'top',
-//       horizontalPosition: 'end',
-//       duration: 5000,
-//       panelClass: [_class]
-//     });
-//   }
-
-// }
+}

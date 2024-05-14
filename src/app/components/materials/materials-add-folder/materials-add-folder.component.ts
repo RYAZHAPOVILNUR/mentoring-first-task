@@ -1,8 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MaterialModule } from '../../../shared/_module/Material.Module';
-import { FolderService } from '../../../core/services/folders-api-service.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddFolderComponent } from './add-folderr/add-folderr.component';
+import { Store } from '@ngrx/store';
+import { addFolder, loadFolders } from '../../../core/state/material/folders/folders.actions';
+import { getFolderList } from '../../../core/state/material/folders/folders.selector';
+import { FolderType } from '../../../shared/types/materials-types.type';
 
 @Component({
   selector: 'app-materials-add-folder',
@@ -15,12 +18,13 @@ export class MaterialsAddFolderComponent {
   folderName: string = '';
 
   constructor(
-    private service: FolderService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private store: Store
   ) { }
 
+
   addFolder(folderName: string) {
-    this.service.addFolder(folderName).subscribe(data => console.log(data))
+    this.store.dispatch(addFolder({ inputdata: folderName }));
   }
 
   openDialog(): void {

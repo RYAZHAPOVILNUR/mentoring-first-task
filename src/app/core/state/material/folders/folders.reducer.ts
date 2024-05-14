@@ -1,41 +1,23 @@
 import { createReducer, on } from '@ngrx/store'
-import { addUserSuccess, deleteUserSuccess, filteredUsers, getUserSuccess, loadUserFail, loadUserSuccess, updateUserSuccess } from './folders.actions'
-import { UserModel } from '../../../shared/types/users-types.type'
+import { FolderModel } from '../../../../shared/types/materials-types.type'
+import { addFolderSuccess, deleteFolderSuccess, loadFoldersFail, loadFoldersSuccess } from './folders.actions'
 
-export const userState: UserModel = {
+export const folderState: FolderModel = {
   list: [],
-  errormessage: '',
-  editdata: {
-    id: 0,
-    name: '',
-    email: '',
-    phone: '',
-    company: {
-      name: '',
-    }
-  },
-  filterName: ''
+  errormessage: ''
 }
 
-const userReducer = createReducer(userState,
-  on(loadUserSuccess, (state, action) => {
+const folderReducer = createReducer(folderState,
+
+  on(loadFoldersSuccess, (state, action) => {
     return {
       ...state,
       list: action.list,
       errormessage: '',
-      editdata: {
-        id: 0,
-        name: '',
-        email: '',
-        phone: '',
-        company: {
-          name: '',
-        }
-      }
-    }
+    };
   }),
 
-  on(loadUserFail, (state, action) => {
+  on(loadFoldersFail, (state, action) => {
     return {
       ...state,
       list: [],
@@ -43,15 +25,7 @@ const userReducer = createReducer(userState,
     }
   }),
 
-  on(getUserSuccess, (state, action) => {
-    return {
-      ...state,
-      errormessage: '',
-      editdata: action.obj,
-    }
-  }),
-
-  on(deleteUserSuccess, (state, action) => {
+  on(deleteFolderSuccess, (state, action) => {
     let _newdate = state.list.filter(o => o.id != action.id)
     return {
       ...state,
@@ -60,42 +34,15 @@ const userReducer = createReducer(userState,
     }
   }),
 
-  on(updateUserSuccess, (state, action) => {
-    return {
-      ...state,
-      list: state.list.map(item => item.id == action.inputdata.id ? action.inputdata : item),
-      errormessage: ''
-    }
-  }),
-
-  on(addUserSuccess, (state, action) => {
+  on(addFolderSuccess, (state, action) => {
     return {
       ...state,
       list: [...state.list, action.inputdata],
       errormessage: ''
     }
-  }),
-
-  on(filteredUsers, (state, action) => {
-    if (action.name.trim() === '') {
-      return {
-        ...state,
-        list: state.list,
-        errormessage: '',
-        filterName: ''
-      };
-    }
-    return {
-      ...state,
-      list: state.list,
-      errormessage: '',
-      filterName: action.name
-    };
-  }),
-
-
+  })
 )
 
-export function UserReducer(state: any, action: any) {
-  return userReducer(state, action)
+export function FolderReducer(state: any, action: any) {
+  return folderReducer(state, action)
 }

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MaterialService } from '../../../../core/services/materials-api-service.service';
-import { MaterialType } from '../../../../shared/types/folders-types.type';
 import { CommonModule } from '@angular/common';
 import { CustomDatePipe } from '../../../../core/pipes/custom-data.pipe';
 import { MaterialModule } from '../../../../shared/_module/Material.Module';
 import { AddMaterialIconComponent } from './add-material-icon/add-material-icon.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MaterialInfoComponent } from '../../materials-add-folder/material-info/material-info.component';
+import { MaterialType } from '../../../../shared/types/materials-types.type';
+import { Store } from '@ngrx/store';
+import { deleteMaterial, loadMaterials } from '../../../../core/state/material/materials/materials.actions';
+import { getMaterialList } from '../../../../core/state/material/materials/materials.selector';
 
 @Component({
   selector: 'app-materials-folder',
@@ -23,8 +25,8 @@ export class MaterialsFolderComponent implements OnInit {
 
   constructor(
     private activateRoute: ActivatedRoute,
-    private service: MaterialService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private store: Store
   ) {
     this.id = activateRoute.snapshot.params["id"];
   }
@@ -33,7 +35,8 @@ export class MaterialsFolderComponent implements OnInit {
     this.getMaterial(this.id)
   }
   getMaterial(idFolder: number) {
-    this.service.getAllMaterials().subscribe(data => {
+    this.store.dispatch(loadMaterials())
+    this.store.select(getMaterialList).subscribe(data => {
       let filterData = data.filter(elem => elem.folder_id == idFolder)
       this.materials = filterData
     }
@@ -41,11 +44,11 @@ export class MaterialsFolderComponent implements OnInit {
   }
 
   removeMaterial(materialId: number) {
-    this.service.deleteMaterial(materialId).subscribe()
+    this.store.dispatch(deleteMaterial({ id: materialId }))
   }
 
   openMaterial(materialId: number) {
-    const dialogRef = this.dialog.open(MaterialInfoComponent, { data: { materialId: materialId } });
+    const dialogRef = this.dialog.open(MaterialInfoComponent, { width: '80%', height: '90%', data: { materialId: materialId } });
     dialogRef.afterClosed().subscribe();
 
   }

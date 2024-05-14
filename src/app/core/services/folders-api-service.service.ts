@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { FolderType } from '../../shared/types/folders-types.type';
+import { FolderType } from '../../shared/types/materials-types.type';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +15,10 @@ export class FolderService {
   getAllFolders() {
     return this.http.get<FolderType[]>(this.apiUrl + 'folder')
   }
-  getFolder(folderId: number) {
-    return this.http.get<FolderType>(this.apiUrl + 'folder/' + folderId)
+  addFolder(folder: string) {
+    return this.http.post<FolderType>(this.apiUrl + 'folder', { title: folder });
   }
-
-  addFolder(folderName: string) {
-    return this.http.post<{ title: string }>(this.apiUrl + 'folder', { "title": folderName })
+  deleteFolder(folderId: number): Observable<number> {
+    return this.http.delete<number>(this.apiUrl + 'folder/' + folderId);
   }
-  deleteFolder(folderId: number) {
-    return this.http.delete<{}>(this.apiUrl + 'folder/' + folderId)
-  }
-
 }
