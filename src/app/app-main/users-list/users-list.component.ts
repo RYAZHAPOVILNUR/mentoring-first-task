@@ -1,14 +1,14 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { UsersApiService } from '../../shared/services/users-api.service';
-import { UsersService } from '../../shared/services/users.service';
-import { Observable } from 'rxjs';
 import { IUser } from '../../shared/models/user.models';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateEditUserComponent } from '../../shared/components/create-edit-user/create-edit-user.component';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
-import {MatButton} from "@angular/material/button";
+import { MatButton } from "@angular/material/button";
+import { Store } from '@ngrx/store';
+import * as UsersActions from '../../libs/users/data-access/src/lib/state/users.actions';
+import * as UsersSelectors from '../../libs/users/data-access/src/lib/state/users.selectors';
 
 
 @Component({
@@ -20,39 +20,36 @@ import {MatButton} from "@angular/material/button";
 })
 export class UsersListComponent implements OnInit {
 
-  private readonly localStorageService = inject(LocalStorageService);
-
   private dialog = inject(MatDialog);
   private dialogRef!: MatDialogRef<CreateEditUserComponent>;
 
-  private readonly userService = inject(UsersService);
-  private readonly usersApiService = inject(UsersApiService);
+  private readonly store = inject(Store);
+  private readonly localStorageService = inject(LocalStorageService);
 
-  public readonly users$: Observable<IUser[]> = this.userService.users$.asObservable();
+  public readonly users$ = this.store.select(UsersSelectors.selectAllUsers);
 
   ngOnInit(): void {
     const usersOfStorage = this.localStorageService.getItem('users');
+
     if (usersOfStorage) {
       const users: IUser[] = JSON.parse(usersOfStorage);
       if (users.length !== 0) {
-        this.userService.setUsers(users);
+        this.store.dispatch(UsersActions.setUsers({ users }))
         return;
       }
     }
-    this.usersApiService.getUsers().subscribe((data: IUser[]) => {
-      this.userService.setUsers(data);
-      this.localStorageService.setItem('users', JSON.stringify(data));
-    });
+
+    this.store.dispatch(UsersActions.loadUsers());
   }
 
   openDialog(user?: IUser): void {
-    this.dialogRef = this.dialog.open(CreateEditUserComponent, { data: user });
+    this.dialogRef = this.dialog.open(CreateEditUserComponent);
+
     this.dialogRef.afterOpened().subscribe(() => {
       if (user) {
         this.dialogRef.componentInstance.isEdit = true;
         this.dialogRef.componentInstance.formnameControl.patchValue(user);
-      }
-       else this.dialogRef.componentInstance.isEdit = false;
+      } else this.dialogRef.componentInstance.isEdit = false;
     });
 
     this.dialogRef.afterClosed().subscribe(() => {
@@ -65,15 +62,19 @@ export class UsersListComponent implements OnInit {
   }
 
   addUser(user: IUser): void {
-    this.userService.addUser(user);
+    this.store.dispatch(UsersActions.addUser({ user }));
+    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', JSON.stringify(state.users))).unsubscribe();
   }
 
   deleteUser(id: number): void {
-    this.userService.deleteUser(id);
+    this.store.dispatch(UsersActions.deleteUser({ id }));
+    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', JSON.stringify(state.users))).unsubscribe();
   }
 
-  editUser(user: IUser): void {
-    const newUser = this.dialogRef.componentInstance.formnameControl.value;
-    this.userService.editUser({...user, ...newUser});
+  editUser(userEdit: IUser): void {
+    const user = {...userEdit, ...this.dialogRef.componentInstance.formnameControl.value};
+    this.store.dispatch(UsersActions.editUser({ user }));
+    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', JSON.stringify(state.users))).unsubscribe();
   }
+
 }

@@ -20,10 +20,10 @@ interface IAdress {
 export interface IUser {
   id: number,
   name: string,
-  username: string,
+  username?: string,
   email: string,
-  addres: IAdress,
+  addres?: IAdress,
   phone: string,
-  website: string,
-  company: ICompany,
+  website?: string,
+  company?: ICompany,
 }

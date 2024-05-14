@@ -18,7 +18,7 @@ html {
 
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 80px 1fr 80px;
+  grid-template-rows: max-content 1fr max-content;
   gap: 30px;
   justify-content: center;
   align-content: space-between;
@@ -28,6 +28,7 @@ html {
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 20px 0;
   background-color: rgba(132, 71, 255, 0.15);
 }
 
