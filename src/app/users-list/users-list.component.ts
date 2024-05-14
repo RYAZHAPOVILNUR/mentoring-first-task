@@ -1,12 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { CommonModule } from '@angular/common';
-import { UsersService } from '../../services/user.service';
+import { UsersService } from '../user.service';
 import { MatButtonModule } from '@angular/material/button';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { User } from '../../models/user.model';
-import { StorageService } from '../../services/localstorage.service';
+import { User } from '../user.model';
+import { StorageService } from '../localstorage.service';
 
 @Component({
   selector: 'app-users-list',

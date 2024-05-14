@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UsersService } from '../../services/user.service';
-import { User } from '../../models/user.model';
+import { UsersService } from '../user.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-add-user-dialog',

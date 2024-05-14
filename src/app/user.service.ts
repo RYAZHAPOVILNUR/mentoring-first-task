@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { UsersApiService } from './users-api-service.service';
-import { User } from '../models/user.model';
+import { User } from './user.model';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { StorageService } from './localstorage.service';
 
