@@ -7,6 +7,11 @@ import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.compo
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../user.model';
 import { StorageService } from '../localstorage.service';
+import { Store, select } from '@ngrx/store';
+import * as UsersActions from '../state/users.actions';
+import { errorSelector, isLoadingSelector, usersSelector } from '../state/users.selectors';
+import { Observable } from 'rxjs';
+import { AppStateInterface } from '../state/types/app-state.interface';
 
 @Component({
   selector: 'app-users-list',
@@ -15,7 +20,7 @@ import { StorageService } from '../localstorage.service';
     AddUserDialogComponent,
     UserCardComponent,
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss'
@@ -24,20 +29,29 @@ export class UsersListComponent implements OnInit {
   private usersService = inject(UsersService);
   private storageService = inject(StorageService);
   private dialog = inject(MatDialog);
-  public readonly users$ = this.usersService.users$
+  // public readonly users$ = this.usersService.users$
 
   dialogOpen = false;
   user!: User;
   data!: User;  
 
-  constructor(){}
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
+  users$: Observable<User[]>;
+
+  constructor(private store: Store<AppStateInterface>){
+    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+    this.error$ = this.store.pipe(select(errorSelector));
+    this.users$ = this.store.pipe(select(usersSelector));
+  }
 
   ngOnInit(): void {
-    if(this.storageService.getItem() === null) {
-      this.usersService.loadUsers()
-    } else {
-      this.usersService.loadStoredData()
-    }
+    this.store.dispatch(UsersActions.getUsers())
+    // if(this.storageService.getItem() === null) {
+    //   this.usersService.loadUsers()
+    // } else {
+    //   this.usersService.loadStoredData()
+    // }
   }
   
   onDeleteUser(id: number): void {
