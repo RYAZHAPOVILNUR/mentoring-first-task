@@ -1,0 +1,9 @@
+ 
+<div>
+    @for(user of users$ |async; track $index){
+      <app-user-card [user]="user" (remove)="deleteUser($event)"></app-user-card>
+    }
+</div>
+<div class="btn_addUser" style="margin-top: 7px;">
+  <button mat-flat-button color="warn" (click)="openDialog()">AddUser</button>
+</div>
