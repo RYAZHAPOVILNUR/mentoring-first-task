@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { CommonModule } from '@angular/common';
-import { UsersService } from '../user.service';
 import { MatButtonModule } from '@angular/material/button';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,7 +23,6 @@ import { selectAllUsers } from '../state/users.selectors';
   styleUrl: './users-list.component.scss'
 })
 export class UsersListComponent implements OnInit {
-  private usersService = inject(UsersService);
   private dialog = inject(MatDialog);
 
   dialogOpen = false;
