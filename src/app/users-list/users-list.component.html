@@ -1,0 +1,13 @@
+<!-- <div *ngIf="isLoading$ | async">Loading...</div> -->
+<!-- <div *ngIf="error$ | async as error">{{error}}</div> -->
+<section class="user-list">
+  <div><button class="add-user-btn" mat-raised-button color="primary" (click)="openAddUserDialog()">Добавить пользователя</button></div>
+<div *ngIf="dialogOpen">
+  <app-add-user-dialog></app-add-user-dialog>
+</div>
+<div>
+  <div *ngFor="let user of users$ | async">
+    <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)" (click)="openDialogWithCard(user)"></app-user-card>
+  </div>
+</div>
+</section>
