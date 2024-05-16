@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { MaterialModule } from '../../../shared/_module/Material.Module';
 import { CustomDatePipe } from '../../../core/pipes/custom-data.pipe';
 import { Router } from '@angular/router';
-import { FolderService } from '../../../core/services/folders-api-service.service';
 import { FolderType } from '../../../shared/types/materials-types.type';
 import { Store } from '@ngrx/store';
 import { deleteFolder } from '../../../core/state/material/folders/folders.actions';

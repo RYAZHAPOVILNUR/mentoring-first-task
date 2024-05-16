@@ -1,12 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-import { MaterialService } from '../../../../core/services/materials-api-service.service';
 import { CustomDatePipe } from '../../../../core/pipes/custom-data.pipe';
 import { CommonModule } from '@angular/common';
 import { FileType } from '../../../../shared/enums/file-type.enum';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MaterialType } from '../../../../shared/types/materials-types.type';
 import { Store } from '@ngrx/store';

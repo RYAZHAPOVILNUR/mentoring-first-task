@@ -10,7 +10,6 @@ import {
   PortalModule,
   TemplatePortal
 } from "./chunk-7PML5RRL.js";
-import "./chunk-6PZJ247Z.js";
 import {
   animate,
   animateChild,
@@ -21,6 +20,7 @@ import {
   transition,
   trigger
 } from "./chunk-6KH6SSFW.js";
+import "./chunk-6PZJ247Z.js";
 import {
   A11yModule,
   Directionality,
@@ -83,11 +83,11 @@ import {
   ɵɵtemplate,
   ɵɵviewQuery
 } from "./chunk-KM7ZYQAK.js";
-import "./chunk-5W7TR2ZS.js";
 import {
   defer,
   merge
 } from "./chunk-S6KPQDJK.js";
+import "./chunk-5W7TR2ZS.js";
 import {
   Subject,
   filter,

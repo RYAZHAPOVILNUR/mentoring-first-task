@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersType } from '../../../shared/types/users-types.type';
 import { CommonModule } from '@angular/common';
-import { UserCardComponent } from "../../user-card/user-card.component";
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { getFilteredUsersList, getUserList } from '../../../core/state/users/users.selector';
@@ -9,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { deleteUser, filteredUsers, loadUsers } from '../../../core/state/users/users.actions';
 import { UsersFilterComponent } from '../users-filter/users-filter.component';
 import { UsersListModalWindowComponent } from '../users-list-modal-window/users-list-modal-window.component';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @Component({
   selector: 'app-user-list',
@@ -61,7 +61,8 @@ export class UserListComponent {
   ): void {
     this.dialog.open(UsersListModalWindowComponent,
       {
-        width: '500px',
+        minWidth: '40vw',
+        maxWidth: '90vw',
         enterAnimationDuration,
         exitAnimationDuration,
         data: { redact }

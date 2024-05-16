@@ -24,11 +24,11 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-KM7ZYQAK.js";
-import "./chunk-5W7TR2ZS.js";
 import {
   defer,
   merge
 } from "./chunk-S6KPQDJK.js";
+import "./chunk-5W7TR2ZS.js";
 import {
   Observable,
   Subject,

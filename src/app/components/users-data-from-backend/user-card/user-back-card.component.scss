@@ -1,0 +1,28 @@
+.user-card {
+  width: 23vw;
+  height: 50vh;
+  margin: 10px;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  mat-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .user-photo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 3px solid green;
+    }
+  }
+
+  .user-card-buttons {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

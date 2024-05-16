@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { FolderType } from '../../shared/types/materials-types.type';
 import { Observable } from 'rxjs';
+import { FolderType } from '../../../shared/types/materials-types.type';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

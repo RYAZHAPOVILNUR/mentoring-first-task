@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UsersType } from '../../shared/types/users-types.type';
 import { Observable, map, of, tap } from 'rxjs';
-import { UserService } from './users-api-service.service';
+import { UserService } from './users-api.service';
+import { UsersType } from '../../../shared/types/users-types.type';
 
 @Injectable({ providedIn: 'root' })
 

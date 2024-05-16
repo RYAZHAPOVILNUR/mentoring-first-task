@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { addUser, addUserSuccess, deleteUser, deleteUserSuccess, emptyAction, getUser, getUserSuccess, loadUsers, loadUserFail, loadUserSuccess, showAlert, updateUser, updateUserSuccess } from './users.actions';
 import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ngrxLocalUsersService } from '../../services/ngrx-to-local-users.service';
 import { of } from 'rxjs';
+import { ngrxLocalUsersService } from '../../services/users-list/ngrx-to-local-users.service';
 
 @Injectable()
 export class CustomerEffects {

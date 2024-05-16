@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { MaterialType } from '../../shared/types/materials-types.type';
+import { environment } from '../../../../environments/environment';
+import { MaterialType } from '../../../shared/types/materials-types.type';
 
 @Injectable({
   providedIn: 'root'

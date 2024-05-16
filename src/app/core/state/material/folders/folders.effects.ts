@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
-import { FolderService } from '../../../services/folders-api-service.service';
 import { addFolder, addFolderSuccess, deleteFolder, deleteFolderSuccess, emptyActionFolder, getFolder, getFolderSuccess, loadFolders, loadFoldersFail, loadFoldersSuccess, showAlertFolder } from './folders.actions';
+import { FolderService } from '../../../services/materials/folders-api.service';
 
 @Injectable()
 export class FoldersEffects {

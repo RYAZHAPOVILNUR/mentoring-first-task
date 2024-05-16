@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent } from '@angular/material/dialog';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -7,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MaterialService } from '../../../../../../core/services/materials-api-service.service';
 import { FileType } from '../../../../../../shared/enums/file-type.enum';
 import { Store } from '@ngrx/store';
 import { addMaterial } from '../../../../../../core/state/material/materials/materials.actions';

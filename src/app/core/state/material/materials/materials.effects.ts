@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
-import { MaterialService } from '../../../services/materials-api-service.service';
 import { addMaterial, addMaterialSuccess, deleteMaterial, deleteMaterialSuccess, emptyActionMaterials, loadMaterial, loadMaterialSuccess, loadMaterials, loadMaterialsFail, loadMaterialsSuccess, showAlertMaterials } from './materials.actions';
+import { MaterialService } from '../../../services/materials/materials-api.service';
 
 
 @Injectable()
