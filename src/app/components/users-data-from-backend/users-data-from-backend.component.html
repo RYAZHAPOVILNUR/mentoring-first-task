@@ -1,0 +1,6 @@
+<button mat-raised-button (click)="openDialog('1000ms', '1000ms', false)">Добавить пользователя</button>
+<!-- <app-users-filter (filterChanged)="onFilterChanged($event)"></app-users-filter> -->
+
+<div class="user-cards">
+  <app-back-user-card *ngFor="let one_user of users" [user]="one_user" (deleteEvent)="deleteUser(one_user)"></app-back-user-card>
+</div>

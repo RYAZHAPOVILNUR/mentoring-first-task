@@ -1,0 +1,12 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-around;
+  .buttons {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.form {
+  margin: 50px auto;
+}

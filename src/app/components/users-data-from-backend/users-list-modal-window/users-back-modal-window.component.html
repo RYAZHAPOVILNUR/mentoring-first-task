@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+    <div>
+        <p>{{title_text}}</p>
+        <form class="user-data" [formGroup]="myForm" novalidate>
+            <mat-form-field>
+                <mat-label>User ID</mat-label>
+                <input matInput formControlName="userId">
+                @if(myForm.controls["userId"].invalid && myForm.controls["userId"].touched){
+                <div class="alert">Не указано ID</div>
+                }
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>User name</mat-label>
+                <input matInput formControlName="userName">
+                @if(myForm.controls["userName"].invalid && myForm.controls["userName"].touched){
+                <div class="alert">Не указано имя</div>
+                }
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>User company name</mat-label>
+                <input matInput formControlName="userCompany">
+                @if(myForm.controls["userCompany"].invalid && myForm.controls["userCompany"].touched){
+                <div class="alert">Не указано название компании</div>
+                }
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>User email</mat-label>
+                <input matInput formControlName="userEmail">
+                @if(myForm.controls["userEmail"].invalid && myForm.controls["userEmail"].touched){
+                <div class="alert">Некорректный email</div>
+                }
+            </mat-form-field>
+        </form>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Отмена</button>
+    <button mat-button mat-dialog-close cdkFocusInitial [disabled]="myForm.invalid" (click)="saveData()">Сохранить</button>
+</mat-dialog-actions>

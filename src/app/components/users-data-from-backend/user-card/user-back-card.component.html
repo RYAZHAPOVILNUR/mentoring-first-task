@@ -1,0 +1,45 @@
+<mat-card class="user-card">
+  <button (click)="updateUser()">update</button>
+  <mat-card-header>
+    <img class="user-photo" *ngIf="user?.photo; else defaultImage" src={{user?.photo?.path}} alt="{{user?.photo?.name}}">
+    <mat-card-title *ngIf="user?.name; else defaultName">User name: {{user?.name}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-card-subtitle>User ID: {{user?.id}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user?.email; else defaultEmeil">User e-mail: {{user?.email}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user?.educationStatus; else defaultEducationStatus">User status: {{user?.educationStatus}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user?.city; else defaultCity">User city: {{user?.city}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user?.educationTime">User education time: {{user?.educationTime}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user?.role">User role: {{user?.role}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user?.teams_id">User teams id: {{user?.teams_id}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user?.totalStoryPoints">User total story points: {{user?.totalStoryPoints}}</mat-card-subtitle>
+  </mat-card-content>
+
+  <div class="user-card-actions">
+    <mat-card-actions class="user-card-buttons">
+      <button mat-button (click)="deleteCard(user!.id)">Delete</button>
+      <button mat-button (click)="openDialog('1000ms', '1000ms', user!.id)">Redact</button>
+    </mat-card-actions>
+  </div>
+</mat-card>
+
+<ng-template #defaultImage>
+  <img class="user-photo" src="/favicon.ico" alt="Default Image">
+</ng-template>
+
+<ng-template #defaultName>
+  <mat-card-title>User name: Инкогнито</mat-card-title>
+</ng-template>
+
+<ng-template #defaultEmeil>
+  <mat-card-subtitle>User e-mail: не указан</mat-card-subtitle>
+</ng-template>
+
+<ng-template #defaultEducationStatus>
+  <mat-card-subtitle>User status: не указан</mat-card-subtitle>
+</ng-template>
+
+<ng-template #defaultCity>
+  <mat-card-subtitle>User city: не указан</mat-card-subtitle>
+</ng-template>

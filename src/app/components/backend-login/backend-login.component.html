@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span>You are nit autorizen</span>
+  <div class="buttons">
+    <button mat-raised-button color="accent" (click)="logIn()" *ngIf="!loggedIn">Login</button>
+    <button mat-raised-button color="warn" (click)="signUp()" *ngIf="!signedUp">SignUp</button>
+  </div>
+</mat-toolbar>
+<div class="form">
+
+  <app-backend-sign-in *ngIf="loggedIn"></app-backend-sign-in>
+  <app-backend-sign-up *ngIf="signedUp"></app-backend-sign-up>
+</div>
