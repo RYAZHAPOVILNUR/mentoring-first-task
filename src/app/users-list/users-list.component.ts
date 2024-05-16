@@ -6,12 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../user.model';
-import { StorageService } from '../localstorage.service';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as UsersActions from '../state/users.actions';
-import { errorSelector, isLoadingSelector, usersSelector } from '../state/users.selectors';
-import { Observable } from 'rxjs';
 import { AppStateInterface } from '../state/types/app-state.interface';
+import { selectAllUsers } from '../state/users.selectors';
 
 @Component({
   selector: 'app-users-list',
@@ -27,43 +25,30 @@ import { AppStateInterface } from '../state/types/app-state.interface';
 })
 export class UsersListComponent implements OnInit {
   private usersService = inject(UsersService);
-  private storageService = inject(StorageService);
   private dialog = inject(MatDialog);
-  // public readonly users$ = this.usersService.users$
 
   dialogOpen = false;
   user!: User;
   data!: User;  
 
-  isLoading$: Observable<boolean>;
-  error$: Observable<string | null>;
-  users$: Observable<User[]>;
+  public readonly users$ = this.store$.select(selectAllUsers);
 
-  constructor(private store: Store<AppStateInterface>){
-    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-    this.error$ = this.store.pipe(select(errorSelector));
-    this.users$ = this.store.pipe(select(usersSelector));
+  constructor(private store$: Store<AppStateInterface>){
   }
 
   ngOnInit(): void {
-    this.store.dispatch(UsersActions.getUsers())
-    // if(this.storageService.getItem() === null) {
-    //   this.usersService.loadUsers()
-    // } else {
-    //   this.usersService.loadStoredData()
-    // }
+    this.store$.dispatch(UsersActions.getUsers())
   }
   
   onDeleteUser(id: number): void {
-    this.usersService.deleteUser(id);
+    this.store$.dispatch(UsersActions.deleteUserSuccess({id}))
   }
 
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(AddUserDialogComponent);
     dialogRef.afterClosed().subscribe(newUser => {
       if (newUser) {
-        this.usersService.addUser(newUser)
-        this.users$.subscribe({})
+        this.store$.dispatch(UsersActions.addUserSuccess({user: newUser}));
       }
     });
   }

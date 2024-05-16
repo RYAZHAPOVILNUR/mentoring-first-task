@@ -1,7 +1,9 @@
 import { User } from "../../user.model";
 
+type TLoadingStatus = 'init' | 'loading' | 'loaded' | 'error';
+
 export interface UsersStateInterface {
-  isLoading: boolean;
+  status: TLoadingStatus;
   users: User[];
   error: string | null;
 }

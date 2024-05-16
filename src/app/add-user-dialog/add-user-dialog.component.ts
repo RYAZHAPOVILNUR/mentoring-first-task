@@ -4,8 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UsersService } from '../user.service';
+// import { UsersService } from '../user.service';
 import { User } from '../user.model';
+import { Store, props } from '@ngrx/store';
+import * as UsersActions from '../state/users.actions';
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -23,15 +25,15 @@ import { User } from '../user.model';
 })
 
 export class AddUserDialogComponent {
-  private usersService = inject(UsersService);
+  // private usersService = inject(UsersService);
   private fb = inject(FormBuilder);
   private dialogRef = inject(MatDialogRef<AddUserDialogComponent>);
 
-  public readonly users$ = this.usersService.users$;
+  // public readonly users$ = this.usersService.users$;
   
   form: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: User) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: User, private store: Store ) {
     this.form = this.fb.group({
       name: [this.data?.name, Validators.required],
       phone: [this.data?.phone, Validators.required],
@@ -42,7 +44,7 @@ export class AddUserDialogComponent {
   }
   saveUser(): void {
     if (this.form.valid) {
-      const newUser = this.form.value;
+      const newUser: User = this.form.value;
       newUser.id = Math.round(Math.random() * 1000)
       this.dialogRef.close(newUser);
     }

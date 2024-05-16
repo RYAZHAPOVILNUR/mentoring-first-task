@@ -6,17 +6,20 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { reducers } from './state/users.reducer';
+import { reducer } from './state/users.reducer';
 import { UsersEffects } from './state/users.effects';
+import { USERS_FEATURE_KEY } from './state/users.selectors';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(), 
     provideAnimationsAsync(),
-    provideEffects(UsersEffects),
+    provideEffects(
+      UsersEffects
+    ),
     provideStore({
-      'users': reducers
+      [USERS_FEATURE_KEY]: reducer,
     }),
     provideStoreDevtools({
       maxAge: 25,
