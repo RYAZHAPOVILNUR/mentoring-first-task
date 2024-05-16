@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>
+  {{dialogData.isEdit ? 'Edit user' : 'Add user'}}
+</h2>
+<mat-dialog-content class="modal">
+  <form [formGroup]="userForm">
+    <mat-form-field class="form-filed">
+      <mat-label for="name">Name</mat-label>
+      <input id="name" type="text" matInput formControlName="name">
+      <mat-error *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.dirty || userForm.get('name')?.touched)">
+        {{userForm.get('name')?.errors | json}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-filed">
+      <mat-label for="username">Username</mat-label>
+      <input id="username" type="text" matInput formControlName="username">
+      <mat-error *ngIf="userForm.get('username')?.invalid && (userForm.get('username')?.dirty || userForm.get('name')?.touched)">
+        {{userForm.get('username')?.errors | json}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-filed">
+      <mat-label for="email">Email</mat-label>
+      <input id="email" type="text" matInput formControlName="email">
+      <mat-error *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('name')?.touched)">
+        {{userForm.get('email')?.errors | json}}
+      </mat-error>
+    </mat-form-field>
+    <button [disabled]="!userForm.valid" mat-flat-button color="primary" [mat-dialog-close]="userForm.value">
+      {{dialogData.isEdit ? 'Save user' : 'Add user'}}
+    </button>
+  </form>
+</mat-dialog-content>

@@ -1,0 +1,13 @@
+<div>
+  <h1>Users list:</h1>
+  <button (click)="openCreateEditUserDialog()" mat-flat-button color="accent">Add user</button>
+  <div class="users-list">
+    <app-users-card
+      *ngFor="let user of users$ | async"
+      (deleteUser)="onUserDelete($event)"
+      [user]="user"
+      (click)="openCreateEditUserDialog(user)"
+    >
+    </app-users-card>
+  </div>
+</div>
