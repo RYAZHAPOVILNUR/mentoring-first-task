@@ -66,8 +66,7 @@ export class UsersListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(editUser => {
       if (editUser) {
         editUser.id = currentUser.id
-        this.usersService.updateUser(editUser)
-        this.users$.subscribe({})
+        this.store$.dispatch(UsersActions.editUserSuccess({user: editUser}));
       }
     });
   }
