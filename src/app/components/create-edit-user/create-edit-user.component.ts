@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatError, MatInputModule } from '@angular/material/input';
 import {
   MatDialogTitle,
@@ -13,10 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserEntity } from '../../entities/UserEntity';
 
 type FormType<T> = {
-  [Property in keyof T]: [
-    T[Property] | '',
-    (Validators | ((control: AbstractControl<any, any>) => ValidationErrors | null))[]
-  ]
+  [K in keyof T]: FormControl<T[K] | null>;
 };
 
 @Component({
@@ -38,26 +35,19 @@ type FormType<T> = {
 })
 export class CreateEditUserComponent implements OnInit {
 
-  private readonly fb = inject(FormBuilder);
-  public userForm!: FormGroup;
   public readonly dialogRef = inject(MatDialogRef<CreateEditUserComponent>);
   public readonly dialogData: {user: UserEntity, isEdit: boolean} = inject(MAT_DIALOG_DATA);
 
-  ngOnInit(): void {
-    this.userForm = this.fb.group<FormType<UserEntity>>({
-      id: [0, []],
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
-    });
+  userForm = new FormGroup<FormType<UserEntity>>({
+    id: new FormControl<number>(0, []),
+    name: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
+    username: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl<string>('', [Validators.required, Validators.email, Validators.minLength(3)]),
+  });
 
+  ngOnInit(): void {
     if (this.dialogData.user) {
       this.userForm.patchValue(this.dialogData.user)
     }
   }
-
-  public saveUser() {
-    this.dialogRef.close();
-  }
-
 }
