@@ -1,10 +1,10 @@
+import { EntityState } from "@ngrx/entity";
 import { IUser } from "../../../../../../shared/models/user.models";
 
 type TLoadingStatus = 'init' | 'loading' | 'loaded' | 'error';
 
-export interface IPostsStateInterface {
+export interface IUsersStateInterface extends EntityState<IUser> {
   status: TLoadingStatus,
-  users: IUser[],
   error: string | null;
 }
 

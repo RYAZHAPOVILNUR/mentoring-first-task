@@ -4,6 +4,7 @@ import { catchError, map, of, switchMap, tap } from "rxjs";
 import { UsersApiService } from "../../../../../../shared/services/users-api.service";
 import * as UsersActions from './users.actions';
 import { LocalStorageService } from "../../../../../../shared/services/local-storage.service";
+import { USERS_FEATURE_KEY } from "./users.selectors";
 
 // Loading Users
 export const loadUsersEffects = createEffect(
@@ -17,7 +18,7 @@ export const loadUsersEffects = createEffect(
       switchMap(() =>
         apiService.getUsers().pipe(
           map((users) => UsersActions.loadUsersSuccess({ users })),
-          tap((data) => localStorageService.setItem('users', data.users)),
+          tap((data) => localStorageService.setItem(USERS_FEATURE_KEY, data.users)),
           catchError((error: { message: string }) =>
             of(UsersActions.loadUsersFailure({ error: error.message }))
           )

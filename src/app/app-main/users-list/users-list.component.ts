@@ -9,6 +9,7 @@ import { MatButton } from "@angular/material/button";
 import { Store } from '@ngrx/store';
 import * as UsersActions from '../../libs/users/data-access/src/lib/state/users.actions';
 import * as UsersSelectors from '../../libs/users/data-access/src/lib/state/users.selectors';
+import { USERS_FEATURE_KEY } from '../../libs/users/data-access/src/lib/state/users.selectors';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class UsersListComponent implements OnInit {
   public readonly users$ = this.store.select(UsersSelectors.selectAllUsers);
 
   ngOnInit(): void {
-    const users: IUser[] | null = this.localStorageService.getItem('users');
+    const users: IUser[] | null = this.localStorageService.getItem(USERS_FEATURE_KEY);
     users && users.length !== 0
       ? this.store.dispatch(UsersActions.setUsers({ users }))
       : this.store.dispatch(UsersActions.loadUsers());
@@ -49,7 +50,7 @@ export class UsersListComponent implements OnInit {
   }
 
   private addUser(user: IUser): void {
-    this.store.dispatch(UsersActions.addUser({ user }));
+    this.store.dispatch(UsersActions.addUser({ user: { ...user, id: new Date().getTime() } }));
     this.setUsersLocalStorage();
   }
 
@@ -64,6 +65,6 @@ export class UsersListComponent implements OnInit {
   }
 
   private setUsersLocalStorage(): void {
-    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', state.users)).unsubscribe();
+    this.store.select(UsersSelectors.selectAllUsers).subscribe(users => this.localStorageService.setItem(USERS_FEATURE_KEY, users)).unsubscribe();
   }
 }
