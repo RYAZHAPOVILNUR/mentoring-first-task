@@ -9,6 +9,4 @@ import { RouterOutlet, RouterLink} from '@angular/router';
   templateUrl: './app-main.component.html',
   styleUrl: './app-main.component.scss'
 })
-export class AppMainComponent {
-
-}
+export class AppMainComponent { }

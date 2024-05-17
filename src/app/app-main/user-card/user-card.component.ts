@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IUser } from '../../shared/models/user.models';
+import { TUserEntity } from '../../libs/core/data-access/src/lib/users-data.models';
 
 @Component({
   selector: 'app-user-card',
@@ -9,7 +9,6 @@ import { IUser } from '../../shared/models/user.models';
   styleUrl: './user-card.component.scss'
 })
 export class UserCardComponent {
-  @Input() user!: IUser;
+  @Input() user!: TUserEntity;
   @Output() onDeleteUser = new EventEmitter<number>();
-  @Output() onEditUser = new EventEmitter<IUser>();
 }

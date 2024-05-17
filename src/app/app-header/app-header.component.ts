@@ -9,6 +9,4 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss'
 })
-export class AppHeaderComponent {
-
-}
+export class AppHeaderComponent { }

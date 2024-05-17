@@ -1,10 +1,10 @@
 import { createReducer, on } from "@ngrx/store";
 import * as UsersActions from './users.actions';
 import { EntityAdapter, createEntityAdapter } from "@ngrx/entity";
-import { IUser } from "../../../../../../shared/models/user.models";
 import { IUsersStateInterface } from "./users.models";
+import { TUserEntity } from "../../../../../core/data-access/src/lib/users-data.models";
 
-export const adapter: EntityAdapter<IUser> = createEntityAdapter<IUser>();
+export const adapter: EntityAdapter<TUserEntity> = createEntityAdapter<TUserEntity>();
 
 export const initialState: IUsersStateInterface = adapter.getInitialState({
   status: 'init',

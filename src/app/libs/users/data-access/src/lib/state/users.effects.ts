@@ -5,6 +5,7 @@ import { UsersApiService } from "../../../../../../shared/services/users-api.ser
 import * as UsersActions from './users.actions';
 import { LocalStorageService } from "../../../../../../shared/services/local-storage.service";
 import { USERS_FEATURE_KEY } from "./users.selectors";
+import { usersDataAdapter } from "../../../../../core/data-access/src/lib/users-data.adapter";
 
 // Loading Users
 export const loadUsersEffects = createEffect(
@@ -17,6 +18,7 @@ export const loadUsersEffects = createEffect(
       ofType(UsersActions.loadUsers),
       switchMap(() =>
         apiService.getUsers().pipe(
+          map((users) => users.map(user => usersDataAdapter.DTOtoEntity(user))),
           map((users) => UsersActions.loadUsersSuccess({ users })),
           tap((data) => localStorageService.setItem(USERS_FEATURE_KEY, data.users)),
           catchError((error: { message: string }) =>

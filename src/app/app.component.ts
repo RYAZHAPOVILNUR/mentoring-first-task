@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppMainComponent } from './app-main/app-main.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
@@ -11,6 +11,4 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
-  ngOnInit() { }
-}
+export class AppComponent { }
