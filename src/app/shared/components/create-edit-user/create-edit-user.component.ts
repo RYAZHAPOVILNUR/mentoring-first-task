@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf } from '@angular/common';
+import { IUser } from '../../models/user.models';
 
 @Component({
   selector: 'app-create-edit-user',
@@ -37,9 +38,9 @@ import { NgIf } from '@angular/common';
 export class CreateEditUserComponent implements OnInit {
   private readonly dialogRef = inject(MatDialogRef<CreateEditUserComponent>);
   private readonly formBuilder = inject(FormBuilder);
-  private readonly data = inject(MAT_DIALOG_DATA);
+  private readonly data: { user: IUser | undefined, isEdit: boolean } = inject(MAT_DIALOG_DATA);
 
-  public isEdit: boolean = false;
+  public readonly isEdit: boolean = this.data.isEdit;
   public readonly formControlBuilder: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required, Validators.pattern(/^.+/)]],
     email: ['', [Validators.required, Validators.pattern(/^.+/)]],
@@ -47,11 +48,8 @@ export class CreateEditUserComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    if (this.data) {
-      this.isEdit = true;
-      this.formControlBuilder.patchValue(this.data);
-    } else {
-      this.isEdit = false;
+    if (this.data.user) {
+      this.formControlBuilder.patchValue(this.data.user);
     }
   }
 
