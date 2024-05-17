@@ -1,22 +1,26 @@
-import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { User } from '../users.interface';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-card',
   standalone: true,
-  imports: [],
+  imports: [
+    MatButtonModule
+  ],
   templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.scss',
+  styleUrls: ['./user-card.component.scss']
 })
 export class UserCardComponent {
-  @Input() user!: User;
-  @Output() deleteUser = new EventEmitter();
 
+  @Input({required:true})user!: User;
+  @Output() deleteUserEvent = new EventEmitter<number>();
 
-  delete(user: User): void {
-    if (confirm(`Are you sure you want to delete ${user.name}?`)) {
-      console.log(user.id +' user is deleted');
-      this.deleteUser.emit(user.id);
-    }
+  private dialog = inject(MatDialog);
+
+  onDeleteUser(): void {
+    this.deleteUserEvent.emit(this.user.id);
   }
+
 }

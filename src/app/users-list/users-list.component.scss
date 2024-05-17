@@ -1,8 +1,8 @@
-.user-list{
+.user-card{
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 30px;
+  padding: 30px;
 }
 button {
   background: none;
@@ -10,7 +10,9 @@ button {
   outline: none;
   box-shadow: none;
 }
-
+.user-card{
+  margin: 10px;
+}
 /*
 You can change the color also to pink:
 - Hex: #FF00DC

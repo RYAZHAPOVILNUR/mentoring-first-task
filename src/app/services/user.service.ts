@@ -1,27 +1,74 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { UsersApiService } from '../usersApi.service';
 import { User } from '../users.interface';
-import { BehaviorSubject,map } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { StorageService } from './localestorage.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UsersService {
-  private readonly api = inject(UsersApiService);
 
-  private readonly usersSubject$  = new BehaviorSubject<User[]>([]);
+  private api = inject(UsersApiService);
+  private storageService = inject(StorageService);
+  private usersSubject$ = new BehaviorSubject<User[]>([]); // создали реактивное состояние
+  public readonly users$ = this.usersSubject$.asObservable()
+  public locStor = inject(StorageService);
+  users: User[] = [];
+  data: any;
 
-  public readonly users$ = this.usersSubject$.asObservable();
+  constructor(){}
 
-  public loadUsers(): void {
-    this.api.getUsers().subscribe((users) => {
-      this.usersSubject$.next(users);
-    });
+  deleteUser(id: number): void {
+    this.usersSubject$.next(this.usersSubject$.value
+      .filter(user => user.id !== id)); // Уведомляем подписчиков о изменениях
+    this.locStor.saveData(this.usersSubject$.value);
   }
 
-  public deleteUser(id: number): void {
-    this.usersSubject$.next(
-      this.usersSubject$.value.filter(user => user.id !== id)
+  loadUsers(): void {
+    this.api.getUsers().subscribe(
+      (data: User[]) => {
+        this.usersSubject$.next(data);
+        this.data = data;
+        this.locStor.saveData(data);
+        console.log('Loaded from apiService', data);
+      }
     );
+  }
+
+  loadStoredData(): void {
+    this.storageService.loadData().subscribe(
+      (data: User[]) => {
+        this.usersSubject$.next(data);
+        this.data = data;
+        this.locStor.saveData(data);
+        console.log('Loaded data from localStorage:', data);
+      }
+    );
+  }
+
+  addUser(userData: User){
+    const newUsers = [...this.usersSubject$.value, userData];
+    this.usersSubject$.next(newUsers);
+    this.locStor.saveData(newUsers);
+  }
+
+  updateUser(updatedUser: User): void {
+    const updatedUsers = this.usersSubject$.value.map(user => {
+      if (user.id === updatedUser.id) {
+        return { ...user,
+          name: updatedUser.name,
+          email: updatedUser.email,
+          username: updatedUser.usernames,
+          phone: updatedUser.phone,
+          website: updatedUser.website
+        };
+      }
+      return user;
+    });
+    this.users = updatedUsers;
+    this.usersSubject$.next([...this.users]); // Обновляем список пользователей в Observable
+    this.users$.subscribe({});
+    this.locStor.saveData([...this.users]);
   }
 }

@@ -1,13 +1,10 @@
-<div id="login-container">
-  <h1>
-    {{user.name}}
-  </h1>
-  <div class="description">
-    {{user.usernames}} is a front end web developer in New York. She has worked in the field for 10 years now. Check out her projects in the links below. She is available for hire as well.
-    {{user.address.street}}
+<div class="user-card">
+  <div class="user-card-text">
+    <p>Имя: {{user.name}}</p>
+    <p>Фамилия: {{user.usernames}}</p>
+    <p>Телефон: {{user.phone}}</p>
+    <p>Почта: {{user.email}}</p>
+    <p>Сайт: {{user.website}}</p>
   </div>
-  <div class="buttons">
-    <button>Edit</button>
-    <button (click)="delete(user)">Delete</button>
-  </div>
+  <button mat-raised-button color="warn" (click)="onDeleteUser()">Delete</button>
 </div>

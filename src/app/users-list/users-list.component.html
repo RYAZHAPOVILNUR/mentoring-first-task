@@ -1,22 +1,13 @@
-<div>
-
-<h1>Users</h1>
-<div class="user-list">
+<section class="user-list1">
   <div>
-    <button (click)="backClicked()" class="main-page" >
-      <li>
-        <div class="divInner"></div>
-        <div class="divShadow"></div>
-        <div class="spanTxt iconHome"></div>
-      </li>
-    </button>
+    <button class="add-user-btn" mat-raised-button color="primary" (click)="openAddUserDialog()">Добавить пользователя</button>
   </div>
-     <ng-container *ngFor="let user of users$ | async">
-       <app-user-card [user]='user' (deleteUser)="deleteUser($event)"></app-user-card>
-     </ng-container>
-
-</div>
-  <button mat-button color="primary" (click)="openDialog()">
-    Add user
-  </button>
-</div>
+  <div *ngIf="dialogOpen">
+    <app-add-user-dialog></app-add-user-dialog>
+  </div>
+  <div class="user-card">
+    <div *ngFor="let user of users$ | async">
+      <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)" (click)="openDialogWithCard(user)"></app-user-card>
+    </div>
+  </div>
+</section>
