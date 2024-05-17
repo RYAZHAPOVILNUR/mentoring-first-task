@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
+import { IUser } from '../models/user.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
-  getItem(key: string): string | null {
-    return localStorage.getItem(key) || null;
+  getItem(key: string): IUser[] | null {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
   }
 
-  setItem(key: string, data: string): string {
-    localStorage.setItem(key, data);
-    return data;
-  }
-
-  removeItem(key: string): boolean {
-    localStorage.removeItem(key);
-    return true;
+  setItem(key: string, data: IUser[]) {
+    localStorage.setItem(key, JSON.stringify(data));
   }
 }

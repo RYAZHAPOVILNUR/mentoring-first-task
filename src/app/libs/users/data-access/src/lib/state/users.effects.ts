@@ -17,7 +17,7 @@ export const loadUsersEffects = createEffect(
       switchMap(() =>
         apiService.getUsers().pipe(
           map((users) => UsersActions.loadUsersSuccess({ users })),
-          tap((data) => localStorageService.setItem('users', JSON.stringify(data.users))),
+          tap((data) => localStorageService.setItem('users', data.users)),
           catchError((error: { message: string }) =>
             of(UsersActions.loadUsersFailure({ error: error.message }))
           )

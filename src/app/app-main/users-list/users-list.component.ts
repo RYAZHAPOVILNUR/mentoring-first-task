@@ -29,52 +29,41 @@ export class UsersListComponent implements OnInit {
   public readonly users$ = this.store.select(UsersSelectors.selectAllUsers);
 
   ngOnInit(): void {
-    const usersOfStorage = this.localStorageService.getItem('users');
-
-    if (usersOfStorage) {
-      const users: IUser[] = JSON.parse(usersOfStorage);
-      if (users.length !== 0) {
-        this.store.dispatch(UsersActions.setUsers({ users }))
-        return;
-      }
-    }
-
-    this.store.dispatch(UsersActions.loadUsers());
+    const users: IUser[] | null = this.localStorageService.getItem('users');
+    users && users.length !== 0
+      ? this.store.dispatch(UsersActions.setUsers({ users }))
+      : this.store.dispatch(UsersActions.loadUsers());
   }
 
-  openDialog(user?: IUser): void {
-    this.dialogRef = this.dialog.open(CreateEditUserComponent);
-
-    this.dialogRef.afterOpened().subscribe(() => {
-      if (user) {
-        this.dialogRef.componentInstance.isEdit = true;
-        this.dialogRef.componentInstance.formnameControl.patchValue(user);
-      } else this.dialogRef.componentInstance.isEdit = false;
-    });
-
-    this.dialogRef.afterClosed().subscribe(() => {
-      if (this.dialogRef.componentInstance.isEdit && user && this.dialogRef.componentInstance.formnameControl.valid) {
-        this.editUser(user);
-      } else if (this.dialogRef.componentInstance.formnameControl.valid) {
-        this.addUser(this.dialogRef.componentInstance.formnameControl.value);
+  public openDialog(user?: IUser): void {
+    this.dialogRef = this.dialog.open(CreateEditUserComponent, { data: user });
+    this.dialogRef.afterClosed().subscribe((isClosed: boolean = true) => {
+      const editedUser = this.dialogRef.componentInstance.formControlBuilder.value;
+      const editedUserValid = this.dialogRef.componentInstance.formControlBuilder.valid;
+      if (user && editedUserValid && !isClosed) {
+        this.editUser({ ...user, ...editedUser });
+      } else if (editedUserValid && !isClosed) {
+        this.addUser(editedUser);
       }
     });
   }
 
-  addUser(user: IUser): void {
+  private addUser(user: IUser): void {
     this.store.dispatch(UsersActions.addUser({ user }));
-    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', JSON.stringify(state.users))).unsubscribe();
+    this.setUsersLocalStorage();
   }
 
-  deleteUser(id: number): void {
+  public deleteUser(id: number): void {
     this.store.dispatch(UsersActions.deleteUser({ id }));
-    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', JSON.stringify(state.users))).unsubscribe();
+    this.setUsersLocalStorage();
   }
 
-  editUser(userEdit: IUser): void {
-    const user = {...userEdit, ...this.dialogRef.componentInstance.formnameControl.value};
+  private editUser(user: IUser): void {
     this.store.dispatch(UsersActions.editUser({ user }));
-    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', JSON.stringify(state.users))).unsubscribe();
+    this.setUsersLocalStorage();
   }
 
+  private setUsersLocalStorage(): void {
+    this.store.select('users').subscribe(state => this.localStorageService.setItem('users', state.users)).unsubscribe();
+  }
 }
