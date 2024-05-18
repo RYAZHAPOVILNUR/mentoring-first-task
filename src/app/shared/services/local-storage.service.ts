@@ -5,9 +5,9 @@ import { TUserEntity } from '../../libs/core/data-access/src/lib/users-data.mode
   providedIn: 'root'
 })
 export class LocalStorageService {
-  getItem(key: string): TUserEntity[] | null {
+  getItem<T>(key: string): T | null {
     const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : null;
+    return data ? JSON.parse(data) as T : null;
   }
 
   setItem(key: string, data: TUserEntity[]) {

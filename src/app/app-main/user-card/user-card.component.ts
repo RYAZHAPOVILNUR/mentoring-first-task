@@ -9,6 +9,8 @@ import { TUserEntity } from '../../libs/core/data-access/src/lib/users-data.mode
   styleUrl: './user-card.component.scss'
 })
 export class UserCardComponent {
-  @Input() user!: TUserEntity;
+  @Input({ required: true })
+  user!: TUserEntity;
+
   @Output() onDeleteUser = new EventEmitter<number>();
 }

@@ -14,6 +14,6 @@
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button type="button" mat-button [mat-dialog-close]="true" class="button" tabindex="-1">Отменить</button>
+  <button type="button" mat-button [mat-dialog-close]="{ isClosed: true }" class="button" tabindex="-1">Отменить</button>
   <button type="button" mat-button (click)="createEditUser()" class="button" tabindex="-1">{{ isEdit ? 'Редактировать' : 'Добавить' }}</button>
 </mat-dialog-actions>

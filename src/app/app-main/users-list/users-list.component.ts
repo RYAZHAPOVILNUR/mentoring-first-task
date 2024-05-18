@@ -1,7 +1,7 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { UserCardComponent } from '../user-card/user-card.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CreateEditUserComponent } from '../../shared/components/create-edit-user/create-edit-user.component';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { MatButton } from "@angular/material/button";
@@ -23,7 +23,6 @@ import { usersDataAdapter } from '../../libs/core/data-access/src/lib/users-data
 export class UsersListComponent implements OnInit {
 
   private dialog = inject(MatDialog);
-  private dialogRef!: MatDialogRef<CreateEditUserComponent>;
 
   private readonly store = inject(Store);
   private readonly localStorageService = inject(LocalStorageService);
@@ -31,21 +30,19 @@ export class UsersListComponent implements OnInit {
   public readonly users$ = this.store.select(UsersSelectors.selectAllUsers);
 
   ngOnInit(): void {
-    const users: TUserEntity[] | null = this.localStorageService.getItem(USERS_FEATURE_KEY);
+    const users = this.localStorageService.getItem<TUserEntity[]>(USERS_FEATURE_KEY);
     users && users.length !== 0
       ? this.store.dispatch(UsersActions.setUsers({ users }))
       : this.store.dispatch(UsersActions.loadUsers());
   }
 
   public openDialog(user?: TUserEntity): void {
-    this.dialogRef = this.dialog.open(CreateEditUserComponent, { data: { user, isEdit: user ? true : false } });
-    this.dialogRef.afterClosed().subscribe((isClosed: boolean = true) => {
-      const editedUser: TUserVM = this.dialogRef.componentInstance.formControlBuilder.value;
-      const editedUserValid = this.dialogRef.componentInstance.formControlBuilder.valid;
-      if (user && editedUserValid && !isClosed) {
-        this.editUser({ ...user, ...editedUser });
-      } else if (editedUserValid && !isClosed) {
-        this.addUser(editedUser);
+    const dialogRef = this.dialog.open(CreateEditUserComponent, { data: { user, isEdit: user ? true : false } });
+    dialogRef.afterClosed().subscribe((result: { isClosed: boolean, userForm?: TUserVM } = { isClosed: true }) => {
+      if (user && !result.isClosed && result.userForm) {
+        this.editUser({ ...user, ...result.userForm });
+      } else if (!result.isClosed && result.userForm) {
+        this.addUser(result.userForm);
       }
     });
   }
