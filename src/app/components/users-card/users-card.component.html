@@ -4,6 +4,6 @@
     <p>{{user.name}}</p>
     <p>{{user.username}}</p>
     <p>{{user.email}}</p>
-    <button mat-flat-button color="primary" (click)="onUserDelete(user.id)">Delete user</button>
+    <button mat-flat-button color="primary" (click)="onUserDelete($event, user.id)">Delete user</button>
   </mat-card-content>
 </mat-card>

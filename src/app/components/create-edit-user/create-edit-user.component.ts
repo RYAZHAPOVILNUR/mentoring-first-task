@@ -39,10 +39,10 @@ export class CreateEditUserComponent implements OnInit {
   public readonly dialogData: {user: UserEntity, isEdit: boolean} = inject(MAT_DIALOG_DATA);
 
   userForm = new FormGroup<FormType<UserEntity>>({
-    id: new FormControl<number>(0, []),
-    name: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
-    username: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
-    email: new FormControl<string>('', [Validators.required, Validators.email, Validators.minLength(3)]),
+    id: new FormControl(0, []),
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]),
   });
 
   ngOnInit(): void {

@@ -18,7 +18,8 @@ export class UsersCardComponent {
   @Output()
   public readonly deleteUser = new EventEmitter<number>();
 
-  public onUserDelete(id: number) {
-    this.deleteUser.emit(id)
+  public onUserDelete(event: Event, id: number) {
+    event.stopPropagation();
+    this.deleteUser.emit(id);
   }
 }
