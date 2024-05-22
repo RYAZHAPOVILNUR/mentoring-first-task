@@ -13,6 +13,7 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {UserAddComponent} from "./user-add/user-add.component";
 import {NgIf} from "@angular/common";
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,10 +21,10 @@ import {NgIf} from "@angular/common";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
+
 export class AppComponent implements  OnInit {
   title = 'mentoring-first-project';
   user: User | undefined;
-
   constructor(private userService: UsersService, private matDialog: MatDialog) {
   }
 
@@ -33,20 +34,8 @@ export class AppComponent implements  OnInit {
     })
   }
 
-  loadUsers(): void {
-  }
-
   ngOnInit() {
     this.userService.loadUsers()
   }
 }
-//   saveData() {
-//     let dataUsers = this.userService.usersSubject$;
-//     console.log('dataUsers');
-//     console.log(dataUsers.value);
-//     this.userService.saveData(dataUsers.value)
-//   }
-//   loadData() {
-//     this.userService.loadData()
-//   }
-// }
+

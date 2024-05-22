@@ -42,6 +42,7 @@ import {UsersListComponent} from "../users-list/users-list.component";
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.scss'
 })
+
 export class UserEditComponent {
   constructor(
     private usersService: UsersService,
@@ -51,11 +52,10 @@ export class UserEditComponent {
     console.log(data);  // Добавьте логирование для отладки
     this.initForm(data)
   }
+
   private readonly userService = inject(UsersService);
   public userForm!:FormGroup;
   private initForm(data: User) {
-
-    // formGroup.get
     this.userForm = new FormGroup({
       name: new FormControl(data.name || ''),
       email: new FormControl(data.email || ''),

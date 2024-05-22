@@ -12,22 +12,18 @@ export class UsersService {
   usersSubject$ = new BehaviorSubject<User[]>([]);
   public readonly users$ = this.usersSubject$.asObservable();
   public userForm!:FormGroup;
+
   constructor( private api:UsersApiService) {
     this.loadUsers()
   }
 
-  usersData:any;
-
   saveData() {
     localStorage.setItem("usersData", JSON.stringify(this.usersSubject$.value))
-    console.log(this.usersSubject$.value)
   }
 
   loadSavedData() {
     let data=localStorage.getItem("usersData")
-    let loadData = this.usersData = JSON.parse(data!)
-    console.log('LOAD DATA', loadData)
-    console.log('USERsubject pre edit', this.usersSubject$.value)
+    let loadData = JSON.parse(data!)
     this.usersSubject$.next(loadData)
   }
 
@@ -61,19 +57,12 @@ export class UsersService {
     this.saveData()
   }
 
-  // public editUser(data:User) {
-  //   const userData:User = {...data, ...this.userForm.value}
-  // }
-
   public getUserById(id:number) {
     this.users$.subscribe(users=>{
       const userWithId = users.filter(user => user.id === id);
       this.usersSubject$.next(userWithId);
     })
   }
-
-
-
 }
 
 

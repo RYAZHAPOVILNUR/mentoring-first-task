@@ -21,13 +21,8 @@ import {MatButton} from "@angular/material/button";
 export class UsersListComponent {
   private readonly userService = inject(UsersService);
   users$: Observable<User[]> = this.userService.users$;
-
   constructor(private UsersApiService: UsersApiService) {
     this.userService.loadUsers()
-  }
-
-  addUser(newUser:User) {
-    this.userService.addUser(newUser)
   }
 
   deleteUser(id:number) {

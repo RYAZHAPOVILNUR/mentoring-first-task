@@ -29,6 +29,7 @@ import {NgForOf} from "@angular/common";
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.scss'
 })
+
 export class UserAddComponent {
   private readonly userService = inject(UsersService)
   user: User = {
