@@ -1,7 +1,7 @@
  
 <div>
     @for(user of users$ |async; track $index){
-      <app-user-card [user]="user" (remove)="deleteUser($event)"></app-user-card>
+      <app-user-card [user]="user" (remove)="deleteUser($event)" (editUserEvent)="openDialog($event)"></app-user-card>
     }
 </div>
 <div class="btn_addUser" style="margin-top: 7px;">

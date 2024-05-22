@@ -16,8 +16,8 @@
             </li>
         </ul>
         <div> 
-            <button mat-flat-button color="primary" class="btn">Редактировать</button>
-            <button mat-flat-button color="primary" class="btn" (click)="removeUser(this.user.id)">Удалить</button>
+            <button mat-flat-button color="primary" class="btn" (click)="redaction(user)">Редактировать</button>
+            <button mat-flat-button color="primary" class="btn" (click)="removeUser(user.id)">Удалить</button>
         </div>
       </mat-card>
 </ng-container>
