@@ -8,8 +8,8 @@ import { LocalStorageAct } from "@services/localStorageAct";
   providedIn: 'root',
 })
 export class UsersService {
-  private usersApiService = inject(UserApiService);
-  private localStorageAct = inject(LocalStorageAct);
+  private readonly usersApiService = inject(UserApiService);
+  private readonly localStorageAct = inject(LocalStorageAct);
 
   private readonly _user$ = new BehaviorSubject<IUser[]>([]);
   public readonly users$ = this._user$.asObservable();
@@ -24,10 +24,9 @@ export class UsersService {
     }
   }
 
-  public updateUsers() {
+  public updateUsers(): void {
     this.users$.subscribe(
-      (users) => {
-        this.localStorageAct.removeItem();
+      (users: IUser[]) => {
         this.localStorageAct.setItem(JSON.stringify(users));
       }
     );

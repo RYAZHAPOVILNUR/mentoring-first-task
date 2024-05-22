@@ -7,7 +7,7 @@ import { IUser } from "@models/user.model";
   providedIn: 'root'
 })
 export class UserApiService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   private readonly apiUrl = 'https://jsonplaceholder.typicode.com/users';
 

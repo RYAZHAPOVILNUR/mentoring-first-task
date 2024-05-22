@@ -18,10 +18,10 @@ export class UserCardComponent {
   @Output() userToDelete = new EventEmitter<string>();
   @Output() userToEdit = new EventEmitter<IUser>();
 
-  private readonly userService = inject(UsersService);
+  private readonly usersService = inject(UsersService);
 
   public deleteUserEvent(): void {
-    this.userService.updateUsers();
+    this.usersService.updateUsers();
     this.userToDelete.emit(this.user.username);
   }
 

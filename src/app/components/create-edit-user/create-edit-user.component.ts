@@ -1,4 +1,4 @@
-import {Component, inject, Inject} from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,15 +6,15 @@ import {
   ReactiveFormsModule,
   Validators
 } from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {IUser} from "@models/user.model";
-import {FormType} from "@models/form.model";
-import {UsersService} from "@services/users.service";
-import {MatCardTitle} from "@angular/material/card";
+import { CommonModule } from "@angular/common";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { IUser } from "@models/user.model";
+import { FormType } from "@models/form.model";
+import { UsersService } from "@services/users.service";
+import { MatCardTitle } from "@angular/material/card";
 
 @Component({
   selector: 'app-create-edit-user',
@@ -34,7 +34,7 @@ import {MatCardTitle} from "@angular/material/card";
 export class CreateEditUserComponent {
   private readonly fb = inject(FormBuilder);
   public readonly dialogRef = inject(MatDialogRef<CreateEditUserComponent>);
-  private userService = inject(UsersService);
+  private readonly usersService = inject(UsersService);
 
   public isEdit = false;
 
@@ -84,7 +84,7 @@ export class CreateEditUserComponent {
   }
 
   public onDialogSubmit(): void {
-    this.userService.updateUsers();
+    this.usersService.updateUsers();
     this.dialogRef.close(this.myFormGroup.value);
   }
 }

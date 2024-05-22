@@ -13,8 +13,4 @@ export class LocalStorageAct {
   public getItem(): string | null {
     return localStorage.getItem(this.storageKey);
   }
-
-  public removeItem(): void {
-    localStorage.removeItem(this.storageKey);
-  }
 }

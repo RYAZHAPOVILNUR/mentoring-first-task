@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
 import { LocalStorageAct } from "@services/localStorageAct";
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'app-users-list',
   standalone: true,
   imports: [
     CommonModule,
@@ -19,18 +19,18 @@ import { LocalStorageAct } from "@services/localStorageAct";
     MatButtonModule,
     FormsModule,
   ],
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss',],
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss',],
 })
-export class UserListComponent implements OnInit{
-  private userService = inject(UsersService);
-  private dialog = inject(MatDialog);
+export class UsersListComponent implements OnInit{
+  private readonly usersService = inject(UsersService);
+  private readonly dialog = inject(MatDialog);
   private readonly localStorageAct = inject(LocalStorageAct);
 
   public readonly users$: Observable<IUser[]>;
 
   constructor() {
-    this.users$ = this.userService.users$;
+    this.users$ = this.usersService.users$;
   }
 
   public openCreateEditUser(user?: Partial<IUser>): void {
@@ -44,21 +44,21 @@ export class UserListComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         if(!user) {
-          this.userService.createUser(result);
+          this.usersService.createUser(result);
         } else {
-          this.userService.editUser(result);
+          this.usersService.editUser(result);
         }
       }
     })
   }
 
   public onDeleteUser(username: string): void {
-    this.userService.deleteUser(username);
+    this.usersService.deleteUser(username);
   }
 
   ngOnInit(): void {
     if(this.localStorageAct.getItem() === null) {
-      this.userService.loadUsers();
+      this.usersService.loadUsers();
       this.users$.subscribe(
         (users) => {
             this.localStorageAct.setItem(JSON.stringify(users))
@@ -66,7 +66,7 @@ export class UserListComponent implements OnInit{
       );
     } else {
       const data = this.localStorageAct.getItem();
-      this.userService.loadUsers(JSON.parse(data!));
+      this.usersService.loadUsers(JSON.parse(data!));
     }
   }
 }
