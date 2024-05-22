@@ -1,0 +1,24 @@
+<header>
+    <h1>Редактировать пользователя</h1>
+</header>
+  <form [formGroup]="userForm">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>id</mat-label>
+  <input matInput formControlName="id">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input matInput formControlName="phone">
+  </mat-form-field></form>
+<mat-dialog-actions align="center">
+  <button (click)="editUser(data)" mat-raised-button color="primary" matDialogClose>Сохранить</button>
+  <button mat-raised-button color="warn" matDialogClose>Отменить</button>
+</mat-dialog-actions>
