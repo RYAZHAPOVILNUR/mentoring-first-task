@@ -10,33 +10,9 @@ import { UsersApiService } from './http.service';
   standalone: true,
   imports: [RouterOutlet, HttpClientModule],
   providers: [UsersApiService],
-  // templateUrl: './app.component.html',
-  template: `<ul>
-  @for(user of users; track $index){
-      <li>
-          <p>Name: {{user?.name}}</p>
-          <p>Nick: {{user?.username}}</p>
-      </li>
-}
-</ul>`,
+  templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 
 
-export class AppComponent implements OnInit {
-
-  users: User[] = [];
-
-  constructor(
-    private usersService: UsersApiService
-  ) { }
-
-  getUsers(): void {
-    this.usersService.getUsers()
-      .subscribe((users: any) => this.users = users)
-  }
-
-  ngOnInit() {
-    this.getUsers()
-  }
-}
+export class AppComponent { }
