@@ -1,0 +1,23 @@
+<h2>{{ isEdit ? 'Редактировать пользователя' : 'Добавить пользователя' }} </h2>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()"> 
+    <div>
+        <label for="id">ID</label>
+        <input type="number" id="id" formControlName="id">
+    </div>
+    <div>
+        <label for="name">Имя</label>
+        <input type="text" id="name" formControlName="name">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email">
+    </div>
+    <div>
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" formControlName="phone">
+    </div>
+    <div>
+        <button (click)="save()">{{ isEdit ? 'Cохранить'  : 'Создать' }}</button>
+        <button (click)="onCancel()">Отмена</button>
+    </div>
+</form>

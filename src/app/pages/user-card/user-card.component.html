@@ -1,0 +1,13 @@
+<mat-card style="max-width: 300px;  background-color: gray; border-radius: 20px;">
+    <mat-card-header style="font-size: large;"><b>User: {{user.id}}</b></mat-card-header>
+    <mat-card-content>
+        <div><strong>ID:</strong>{{ user.id }}</div>
+        <div><strong>NAME:</strong>{{ user.name }}</div>
+        <div><strong>EMAIL:</strong>{{ user.email }}</div>
+        <div><strong>PHONE:</strong>{{ user.phone }}</div>
+        <mat-card-actions>
+            <button mat-raised-button (click)="deleteUser()" style="max-block-size: 30px; max-width: 20px; margin-right: 10px;">Delete</button>
+            <button mat-raised-button (click)="editUser()" style="max-block-size: 30px; max-width: 20px; ">Edit</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
