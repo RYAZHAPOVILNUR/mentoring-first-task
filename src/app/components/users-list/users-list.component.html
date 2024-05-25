@@ -1,0 +1,39 @@
+<p>
+  <mat-toolbar>
+    <mat-icon style="margin-right: 5px;">account_balance</mat-icon>
+    <span>My Project</span>
+    <span class="example-spacer"></span>
+    <button (click)="openAddUserDialog()" 
+      mat-flat-button color="accent">
+      + Add users
+    </button>
+  </mat-toolbar>
+</p>
+
+<div class="page">
+  <app-user-card class="card" *ngFor="let user of users$ | async"
+    [user]="user"
+    (deleteUser)="deleteUser(user)"
+    (editUser)="openEditUserDialog(user)">
+  </app-user-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
