@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>
+    {{ data.isEdit ? 'Редактировать пользователя' : 'Добавить пользователя' }}
+</h1>
+<form 
+    mat-dialog-content 
+    style="margin-bottom: -30px;"
+    [formGroup]="myFormGroup">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+    @if(!myFormGroup.controls['name'].valid && myFormGroup.controls['name'].touched) {
+        <div class="constraintField">Это поле обязательно для заполнения</div>
+    }
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error>Это поле обязательно для заполнения</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+    </mat-form-field>
+    <mat-form-field formGroupName="company">
+        <mat-label>Company</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+</form>
+<div mat-dialog-action [align]="'end'">
+    <button 
+        mat-raised-button 
+        type="submit" 
+        color="primary" 
+        style="margin: 20px 20px;"
+        (click)="onSubmit()">
+        {{ data.isEdit ? 'Cохранить'  : 'Создать' }}
+    </button>
+    <button 
+        mat-raised-button 
+        mat-dialog-close 
+        color="warn" 
+        style="margin-right: 10px;"
+        (click)="onClosed()">
+        Close
+    </button>
+</div>
