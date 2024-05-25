@@ -1,0 +1,4 @@
+<div>User-list</div>
+<ul  *ngFor="let user of users">
+    <user-card [name]="user.name" [username]="user.username" [email]="user.email" [phone]="user.phone"></user-card>
+</ul>

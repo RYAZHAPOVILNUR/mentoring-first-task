@@ -1,11 +1,12 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { UsersApiService } from '../http.service';
-import { User } from './user';
+import { UsersApiService } from '../../http.service';
+import { User } from '../../user';
+import { UserCard } from '../user-card/user-card.component';
 
 @Component({
     selector: 'users-list',
-    imports: [NgFor],
+    imports: [NgFor, UserCard],
     standalone: true,
     templateUrl: './users-list.component.html',
     styleUrls: ['./users-list.component.css']

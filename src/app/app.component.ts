@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UsersListComponent } from './components/users-list.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { User } from './components/user';
+import { User } from './user';
 import { UsersApiService } from './http.service';
 
 @Component({
