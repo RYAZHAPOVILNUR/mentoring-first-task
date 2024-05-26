@@ -1,0 +1,13 @@
+<button><a href="/">Home</a></button>
+<h2>Все пользователи</h2>
+<button mat-flat-button color="accent">Добавить пользователя</button>
+
+
+  @for (user of users$ | async; track user){
+    <div class="container">
+      <app-user-card
+        [user]="user"
+        (deleteUserId)="onDeleteUserId($event)">
+      </app-user-card>
+    </div>
+  }

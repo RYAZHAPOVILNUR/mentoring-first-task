@@ -1,0 +1,27 @@
+
+.example-card {
+  min-width: 400px;
+  min-height: 150px;
+  margin-bottom: 10px;
+  color: cornsilk;
+}
+.card-header {
+  background-color: #ba9d61;
+  color: #27231d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header mat-card-title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-header mat-card-title {
+  text-align: center;
+}
+button{
+  margin: 30px;
+}
