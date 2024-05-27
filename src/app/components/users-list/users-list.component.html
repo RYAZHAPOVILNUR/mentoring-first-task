@@ -1,2 +1,6 @@
-<app-user-card [user]="user"></app-user-card>
+<ul>
+  <li *ngFor="let user of users$ | async">
+    <app-user-card (deleteUserEvent)="onDeleteUser($event)" [user]="user"></app-user-card>
+  </li>
+</ul>
 <p>users-list works!</p>

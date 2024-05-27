@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {IUser} from "../types/user.interface";
+import {User} from "../types/user.model";
 import {catchError, Observable, of} from "rxjs";
 import {API_URL} from "../constants/constants";
 
@@ -11,16 +11,11 @@ export class UsersApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getUsers() {
+  getUsers(): Observable<User[]> {
     return this.http
-      .get<IUser[]>(`${API_URL}`)
+      .get<User[]>(`${API_URL}`)
       .pipe(
-        catchError(this.handleError<IUser[]>('getUsers', []))
-      )
-      .subscribe(
-        (res: IUser[]) => {
-          console.log(res)
-        }
+        catchError(this.handleError<User[]>('getUsers', []))
       );
   }
 
