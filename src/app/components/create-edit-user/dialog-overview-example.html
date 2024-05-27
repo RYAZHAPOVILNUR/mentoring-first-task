@@ -1,0 +1,16 @@
+<ol>
+  <li>
+    <mat-form-field>
+      <mat-label>What's your name?</mat-label>
+      <input [(ngModel)]="name" matInput>
+    </mat-form-field>
+  </li>
+  <li>
+    <button (click)="openDialog()" mat-raised-button>Pick one</button>
+  </li>
+  @if (animal) {
+    <li>You chose: <em>{{ animal }}</em></li>
+  }
+</ol>
+
+<p>create-edit-user works!</p>

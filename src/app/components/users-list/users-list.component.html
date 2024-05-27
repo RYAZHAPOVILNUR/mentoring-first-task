@@ -1,3 +1,4 @@
+<dialog-overview-example></dialog-overview-example>
 <ul>
   <li *ngFor="let user of users$ | async">
     <app-user-card (deleteUserEvent)="onDeleteUser($event)" [user]="user"></app-user-card>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserCardComponent} from "../user-card/user-card.component";
 import {UsersService} from "../../services/users.service";
 import {CommonModule} from "@angular/common";
+import {DialogOverviewExample} from "../create-edit-user/dialog-overview-example";
 
 @Component({
   selector: 'app-users-list',
@@ -9,6 +10,7 @@ import {CommonModule} from "@angular/common";
   imports: [
     UserCardComponent,
     CommonModule,
+    DialogOverviewExample,
   ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss'
