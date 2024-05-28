@@ -43,7 +43,7 @@ export class CreateEditUserComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CreateEditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) private data: DialogData,
   ) {
   }
 
@@ -51,6 +51,7 @@ export class CreateEditUserComponent {
     return this.form.get(nameField) as T;
   }
 
-  ngOnInit() {
+  onOk() {
+    this.dialogRef.close(this.form.value);
   }
 }

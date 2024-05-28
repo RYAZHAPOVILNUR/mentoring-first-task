@@ -26,4 +26,13 @@ export class UsersService {
   deleteUser(id: number) {
     this.usersSubject$.next(this.usersSubject$.value.filter(user => user.id !== id));
   }
+
+  addUser(user: User) {
+    const id = this.usersSubject$.value.length;
+    const username = `${user.name}${id}`;
+    this.usersSubject$.next([{...user, id, username}, ...this.usersSubject$.value]);
+  }
+
+  updateUser(user: User) {
+  }
 }

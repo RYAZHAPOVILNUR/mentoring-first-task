@@ -21,8 +21,8 @@ import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dia
 })
 export class UsersListComponent implements OnInit {
   public readonly users$ = this.usersService.users$;
-  name?: string;
-  email?: string;
+  // name?: string;
+  // email?: string;
 
   constructor(
     private readonly usersService: UsersService,
@@ -41,18 +41,16 @@ export class UsersListComponent implements OnInit {
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      name: this.name,
-      email: this.email,
-      title: 'Add User'
-    }
+    // dialogConfig.data = {
+    //   name: this.name,
+    //   email: this.email,
+    // }
 
     const dialogRef = this.dialog.open(CreateEditUserComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      // this.name = result.name;
-      // this.email = result.email;
+      this.usersService.addUser(result);
     });
   }
 }
