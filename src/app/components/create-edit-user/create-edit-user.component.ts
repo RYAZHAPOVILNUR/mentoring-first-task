@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject, Inject} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -8,14 +8,13 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-import {FormBuilder, FormGroup, FormsModule} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 export interface DialogData {
-  description: string;
-  animal: string;
   name: string;
+  email: string;
 }
 
 @Component({
@@ -31,25 +30,27 @@ export interface DialogData {
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    ReactiveFormsModule,
   ],
 })
 export class CreateEditUserComponent {
 
-  form: FormGroup | undefined;
-  description: string;
+  private readonly fb = inject(FormBuilder);
+  public readonly form = this.fb.group(<DialogData>{
+    name: '',
+    email: ''
+  });
 
   constructor(
-    private fb: FormBuilder,
     public dialogRef: MatDialogRef<CreateEditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {
-    this.description = data.description;
+  }
+
+  field<T extends AbstractControl>(nameField: string): T {
+    return this.form.get(nameField) as T;
   }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      description: [this.description, []],
-      // ...
-    });
   }
 }
