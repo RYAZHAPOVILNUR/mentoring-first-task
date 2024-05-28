@@ -7,27 +7,29 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {provideState, provideStore} from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import {provideStoreDevtools} from "@ngrx/store-devtools";
+import {USERS_FEATURE_KEY, usersReducer} from "./states/users/users.reducer";
+import * as userEffects from "./states/users/users.effects";
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
     provideAnimationsAsync(),
-    provideStore(
-      // [USERS_FEATURE_KEY]: usersReducer
+    provideStore({
+        [USERS_FEATURE_KEY]: usersReducer,
+      }
     ),
-    provideEffects(
-    // userEffects
-    ),
+  provideEffects(
+    userEffects
+  ),
     provideStoreDevtools({
         maxAge: 25,
         logOnly: !isDevMode(),
         autoPause: true,
         trace: false,
-        traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+        traceLimit: 75,
     }),
-    provideState(
-
-    )
 ],
 };
+// provideState( userFeatureKey, userReducer )
+

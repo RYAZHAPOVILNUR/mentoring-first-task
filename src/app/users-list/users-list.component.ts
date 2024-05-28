@@ -7,6 +7,10 @@ import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.compo
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../users.interface';
 import { StorageService } from '../services/localestorage.service';
+import {Store} from "@ngrx/store";
+import {addUser, deleteUser, loadStoredData, loadUsers, updateUser} from "../states/users/users.actions";
+import {selectUsers} from "../states/users/users.selectors";
+import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 
 @Component({
   selector: 'app-users-list',
@@ -21,11 +25,15 @@ import { StorageService } from '../services/localestorage.service';
   styleUrl: './users-list.component.scss'
 })
 export class UsersListComponent implements OnInit {
-  private usersService = inject(UsersService);
-  private storageService = inject(StorageService);
-  // private dialog = inject(MatDialog);
-  public readonly users$ = this.usersService.users$
 
+  private store = inject(Store);
+  private usersService = inject(UsersService);
+
+  private usersSubject$ = new BehaviorSubject<User[]>([]);
+  private readonly usersConstant$ = this.usersSubject$.asObservable();
+  private storageService = inject(StorageService);
+
+  public readonly users$ = this.store.select(selectUsers);
   dialogOpen = false;
   user!: User;
   data!: User;
@@ -33,22 +41,31 @@ export class UsersListComponent implements OnInit {
   constructor(private dialog: MatDialog){}
 
   ngOnInit(): void {
+    // this.store.dispatch(loadUsers())
     if(this.storageService.getItem() === null) {
-      this.usersService.loadUsers()
+   //   this.usersService.loadUsers()
+      this.store.dispatch(loadUsers())
+      console.log(this.store)
     } else {
-      this.usersService.loadStoredData()
+     // this.usersService.loadStoredData()
+      this.store.dispatch(loadStoredData())
     }
   }
 
   onDeleteUser(id: number): void {
-    this.usersService.deleteUser(id);
+    console.log(id)
+    this.storageService.saveData(deleteUser({id}));
+    this.store.dispatch(deleteUser({id}));
+
   }
 
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(AddUserDialogComponent);
-    dialogRef.afterClosed().subscribe(newUser => {
+    dialogRef.afterClosed().subscribe((newUser: User) => {
       if (newUser) {
-        this.usersService.addUser(newUser)
+        // this.usersService.addUser(newUser)
+
+        this.store.dispatch(addUser({userData: newUser}))
         this.users$.subscribe({})
       }
     });
@@ -60,14 +77,15 @@ export class UsersListComponent implements OnInit {
         name: currentUser.name,
         phone: currentUser.phone,
         email: currentUser.email,
-        username: currentUser.usernames,
         website: currentUser.website,
+        username: currentUser.username,
       }
     });
-    dialogRef.afterClosed().subscribe(editUser => {
+    dialogRef.afterClosed().subscribe((editUser: User) => {
       if (editUser) {
         editUser.id = currentUser.id
-        this.usersService.updateUser(editUser)
+        this.store.dispatch(updateUser({updatedUser: editUser})); // instead
+
         this.users$.subscribe({})
       }
     });

@@ -7,7 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { UsersService } from '../services/user.service';
 import { User } from '../users.interface';
 import {Store} from "@ngrx/store";
-import {saveUser} from "../states/users/users.actions";
+import {addUser, addUserSuccess} from "../states/users/users.actions";
+
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -32,16 +33,15 @@ export class AddUserDialogComponent {
   public readonly users$ = this.usersService.users$;
 
   form: FormGroup;
-
+  private store = inject(Store);
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: User,
-    private store: Store
   ) {
     this.form = this.fb.group({
       name: [this.data?.name, Validators.required],
       phone: [this.data?.phone, Validators.required],
       email: [this.data?.email, Validators.required],
-      username: [this.data?.usernames, Validators.required],
+      username: [this.data?.username, Validators.required],
       website: [this.data?.website],
     });
   }
@@ -50,10 +50,9 @@ export class AddUserDialogComponent {
       const newUser = this.form.value;
       newUser.id = Math.round(Math.random() * 1000)
       this.dialogRef.close(newUser);
-
       console.log('this.form.value', this.form.value)
 
-      this.store.dispatch(saveUser(newUser));
+      // this.store.dispatch(addUserSuccess(newUser));
     }
   }
 

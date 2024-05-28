@@ -19,14 +19,21 @@ export class UsersService {
 
   constructor(){}
 
+
   deleteUser(id: number): void {
     this.usersSubject$.next(this.usersSubject$.value
       .filter(user => user.id !== id)); // Уведомляем подписчиков о изменениях
     this.locStor.saveData(this.usersSubject$.value);
   }
 
+  addUser(userData: User){
+    const newUsers = [...this.usersSubject$.value, userData];
+    this.usersSubject$.next(newUsers);
+    this.locStor.saveData(newUsers);
+  }
+
   loadUsers(): void {
-    this.api.getUsers().subscribe(
+    this.api.GETUsers().subscribe(
       (data: User[]) => {
         this.usersSubject$.next(data);
         this.data = data;
@@ -47,19 +54,13 @@ export class UsersService {
     );
   }
 
-  addUser(userData: User){
-    const newUsers = [...this.usersSubject$.value, userData];
-    this.usersSubject$.next(newUsers);
-    this.locStor.saveData(newUsers);
-  }
-
   updateUser(updatedUser: User): void {
     const updatedUsers = this.usersSubject$.value.map(user => {
       if (user.id === updatedUser.id) {
         return { ...user,
           name: updatedUser.name,
           email: updatedUser.email,
-          username: updatedUser.usernames,
+          username: updatedUser.username,
           phone: updatedUser.phone,
           website: updatedUser.website
         };
