@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Hi {{ data.name }}</h2>
+
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input [(ngModel)]="data.name" matInput>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close tabindex="-1">Cancel</button>
+  <button [mat-dialog-close]="data.name" mat-button>Ok</button>
+</mat-dialog-actions>
+
+<p>create-edit-user works!</p>
