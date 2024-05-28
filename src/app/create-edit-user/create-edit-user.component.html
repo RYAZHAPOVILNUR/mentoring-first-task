@@ -1,0 +1,35 @@
+<mat-dialog-content>
+    <ol [formGroup]="newForm" (ngSubmit)="saveUser()" #viewMode>
+        <li>
+            <mat-form-field>
+                <mat-label>name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field>
+                <mat-label>username</mat-label>
+                <input matInput formControlName="username">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field>
+                <mat-label>phone</mat-label>
+                <input matInput formControlName="phone">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field>
+                <mat-label>email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+        </li>
+    </ol>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button *ngIf="isEdit; else create" (click)="saveUser()">Save User</button>
+    <ng-template #create>
+        <button mat-raised-button (click)="createUser()">Create User</button>
+    </ng-template>
+    <button mat-raised-button (click)="cancel()">Close</button>
+</mat-dialog-actions>

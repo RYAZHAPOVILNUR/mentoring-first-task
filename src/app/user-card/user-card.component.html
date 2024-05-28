@@ -1,0 +1,9 @@
+<div class="user-card">
+    <p><strong>Id:</strong>{{ user.id }}</p>
+    <p><strong>Username:</strong> {{ user.name }}</p>
+    <p><strong>Phone:</strong> {{ user.phone }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <button (click)="onDeleteUser()">Delete</button>
+    <button (click)="editUser()">Edit</button>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="user-list">
+    @for(user of users$ | async; track user) {
+    <user-card-app 
+        [user]="user" 
+        (deleteUser)="deleteUser(user.id)" 
+        (editUserEvent)="openDialog(user)"
+        >
+    </user-card-app>
+    }
+</div>
+<div class="btn-addUser">
+    <button mat-raised-button (click)="openDialog()">AddUser</button>
+</div>
