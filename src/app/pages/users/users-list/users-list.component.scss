@@ -1,6 +1,9 @@
 .container {
-  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.header-text-button{
+  text-align: center;
 }

@@ -1,0 +1,32 @@
+
+  <form class="container-form" [formGroup]="userForm">
+      <div class="header-text"><h2>Create user</h2></div>
+    <mat-form-field class="example-form-field">
+      <mat-label>Clearable input</mat-label>
+      <input matInput type="text" formControlName="userName" class="form-control">
+          @if (userForm.controls['userName'].invalid && (userForm.controls['userName'].touched || userForm.controls['userName'].dirty)) {
+            <button matSuffix mat-icon-button aria-label="Clear" color="primary" (click)="userForm.controls['userName'].reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+          }
+    </mat-form-field>
+    <mat-form-field class="example-form-field">
+      <mat-label>Clearable input</mat-label>
+      <input matInput type="email"  formControlName="userEmail"  class="form-control" name="userEmail">
+          @if (userForm.controls['userEmail'].invalid && (userForm.controls['userEmail'].touched || userForm.controls['userEmail'].dirty)) {
+            <button matSuffix mat-icon-button aria-label="Clear" color="primary" (click)="userForm.controls['userEmail'].reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+          }
+    </mat-form-field>
+    <mat-form-field class="example-form-field">
+      <mat-label>Clearable input</mat-label>
+      <input matInput type="tel"  formControlName="userPhone"  class="form-control" name="userPhone">
+          @if (userForm.controls['userPhone'].invalid && (userForm.controls['userPhone'].touched || userForm.controls['userPhone'].dirty)) {
+            <button matSuffix mat-icon-button aria-label="Clear" color="primary" (click)="userForm.controls['userPhone'].reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+          }
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onNoClick()">Cancel</button>
+</form>

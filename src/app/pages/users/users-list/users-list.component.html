@@ -1,13 +1,14 @@
-<button><a href="/">Home</a></button>
-<h2>Все пользователи</h2>
-<button mat-flat-button color="accent">Добавить пользователя</button>
-
-
+<div class="header-text-button">
+  <h2>All users</h2>
+  <button mat-flat-button color="primary" (click)="openDialog()">Create user</button>
+</div>
+<div class="container">
   @for (user of users$ | async; track user){
-    <div class="container">
-      <app-user-card
-        [user]="user"
-        (deleteUserId)="onDeleteUserId($event)">
-      </app-user-card>
-    </div>
+    <app-user-card
+      [user]="user"
+      (deleteUserId)="onDeleteUserId($event)">
+    </app-user-card>
   }
+</div>
+
+

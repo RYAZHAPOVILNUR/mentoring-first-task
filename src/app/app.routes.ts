@@ -1,7 +1,15 @@
 import { Routes } from '@angular/router';
-import {AppComponent} from "./app.component";
 import {UsersListComponent} from "./pages/users/users-list/users-list.component";
+import {HeaderComponent} from "./pages/header/header.component";
 
 export const routes: Routes = [
-  {path: 'users', component: UsersListComponent },
+  {
+    path: '',
+    component: HeaderComponent,
+    children: [
+      {
+        path: 'users', component: UsersListComponent
+      }
+    ]
+  },
 ];

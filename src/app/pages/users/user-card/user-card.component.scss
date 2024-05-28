@@ -1,16 +1,19 @@
-
+//
 .example-card {
-  min-width: 400px;
-  min-height: 150px;
-  margin-bottom: 10px;
-  color: cornsilk;
+  min-width: 300px;
+  margin: 30px;
 }
 .card-header {
-  background-color: #ba9d61;
+  background-color: #9c9380;
   color: #27231d;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.card-content {
+  margin-left: 40px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 .card-header mat-card-title-group {

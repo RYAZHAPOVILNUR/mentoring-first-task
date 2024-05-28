@@ -11,6 +11,7 @@ export class UsersService {
   // Реактивное состояние users
   private usersSubject$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   // Подписка на изменения реактивного состояния users
+
   public readonly users$ = this.usersSubject$.asObservable();
 
   constructor(private usersApiService: UsersApiService) { }
