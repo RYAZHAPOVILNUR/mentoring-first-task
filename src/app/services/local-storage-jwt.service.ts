@@ -1,41 +1,25 @@
-// import { Injectable, inject } from "@angular/core";
-// import { UsersService } from "./users.service";
+import { Injectable } from "@angular/core";
+import { User } from "../models/user.interface";
 
-// @Injectable({
-//     providedIn: 'root'
-// })
-// export class LocalStorageService {
-//     private usersService = inject(UsersService);
-//     private readonly users$ = this.usersService.users$;
+@Injectable({
+    providedIn: 'root'
+})
+export class LocalStorageService {
 
-//     // public getItem(): string | null {
-//     //     return localStorage.getItem('jwtToken') || null;
-//     // }
+    public getItem<T>(key: string): User[] | null {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : null;
+    }
 
-//     // public setItem(data: string): void {
-//     //     localStorage.setItem('jwtToken', data);
-//     // }
+    public setItem(key: string, value: User[]): void {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
 
-//     // public removeItem(): boolean {
-//     //     localStorage.removeItem('jwtToken');
-//     //     return true;
-//     // }
+    public removeItem(key: string): void {
+        localStorage.removeItem(key);
+    }
 
-
-//     setItem(key: string, value: any): void {
-//         localStorage.setItem(key, JSON.stringify(value));
-//     }
-
-//     getItem(key: string): any {
-//         const data = localStorage.getItem(key);
-//         return data ? JSON.parse(data) : null;
-//     }
-
-//     removeItem(key: string): void {
-//         localStorage.removeItem(key);
-//     }
-
-//     clear(): void {
-//         localStorage.clear();
-//     }
-// }
+    public clear(): void {
+        localStorage.clear();
+    }
+}

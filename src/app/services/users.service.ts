@@ -1,56 +1,61 @@
-import { Injectable, inject } from "@angular/core";
-import { User } from "../models/user.interface";
-import { UsersApiService } from "./users-api.service";
-import { BehaviorSubject } from "rxjs";
+import { Injectable, inject } from '@angular/core';
+import { User } from '../models/user.interface';
+import { UsersApiService } from './users-api.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { LocalStorageService } from './local-storage-jwt.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UsersService {
     private usersApiService = inject(UsersApiService);
-    private userSubject$ = new BehaviorSubject<User[]>([]);
-    public readonly users$ = this.userSubject$.asObservable();
+    private localStorageService = inject(LocalStorageService);
+    private userSubject$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+    public readonly users$: Observable<User[]> = this.userSubject$.asObservable();
+    private usersLocalStorage: User[] | null = this.localStorageService.getItem<User[]>('users');
 
-    private get getUsers() {
+    constructor() {
+        this.loadUsers();
+    }
+
+    private get getUsers(): User[] {
         return this.userSubject$.getValue();
     }
 
+    private set setUsers(users: User[]) {
+        this.userSubject$.next(users);
+        this.localStorageService.setItem('users', users);
+    }
+
+    public loadUsers(): void {
+        if (!this.usersLocalStorage) {
+            this.loadUsersAPI();
+        } else {
+            this.loadUsersFromLocalStorage();
+        }
+    }
+
     public loadUsersAPI(): void {
-        console.log('Loading users...');
         this.usersApiService.getUsersAPI().subscribe((data: User[]) => {
-            console.log('Received users from API:', data);
-            this.userSubject$.next(data);
+            this.setUsers = data;
         });
+    }
+
+    public loadUsersFromLocalStorage(): void {
+        this.userSubject$.next(this.usersLocalStorage!);
+    }
+
+    public addUser(addedUser: User): void {
+        const newId = new Date().getTime();
+        const newUser = { ...addedUser, id: newId };
+        this.setUsers = [...this.getUsers, newUser];
+    }
+
+    public updateUser(updatedUser: User): void {
+        this.setUsers = this.getUsers.map(user => (user.id === updatedUser.id) ? updatedUser : user);
     }
 
     public deleteUser(id: number): void {
-        console.log('Deleting user with ID:', id);
-        this.userSubject$.next(this.getUsers.filter(user => user.id !== id));
-    }
-
-    public addUser(result: User): void {
-        console.log('Adding user:', result);
-        const newId = this.generateId(this.getUsers);
-        const userId = { ...result, id: newId }
-        this.userSubject$.next([...this.getUsers, userId]);
-        console.log('Updated users list:', this.getUsers);
-    }
-
-    public updateUser(updatedUser: User) {
-        console.log('Updating user:', updatedUser);
-        const updatedUsers = this.getUsers.map(existingUser => {
-            if (existingUser.id === updatedUser.id) {
-                return updatedUser;
-            } else {
-                return existingUser;
-            }
-        });
-        console.log('Updated users list:', updatedUsers);
-        this.userSubject$.next(updatedUsers);
-    }
-
-    private generateId(users: User[]): number {
-        const maxId = Math.max(...users.map(user => user.id));
-        return maxId + 1;
+        this.setUsers = this.getUsers.filter(user => user.id !== id);
     }
 }

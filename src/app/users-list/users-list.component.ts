@@ -5,6 +5,7 @@ import { CreateEditUserComponent } from "../create-edit-user/create-edit-user.co
 import { User } from "../models/user.interface";
 import { CommonModule } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
+import { LocalStorageService } from "../services/local-storage-jwt.service";
 
 @Component({
     selector: 'users-list-app',
@@ -17,39 +18,33 @@ import { MatDialog } from "@angular/material/dialog";
         CreateEditUserComponent,
     ]
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent {
     private usersService = inject(UsersService);
     public readonly users$ = this.usersService.users$;
     private readonly dialog = inject(MatDialog);
-
-    ngOnInit(): void {
-        console.log('Initializing UsersListComponent...');
-        this.usersService.loadUsersAPI();
-    }
-
-    public deleteUser(id: number): void {
-        console.log('Deleting user with ID:', id);
-        this.usersService.deleteUser(id);
-    }
 
     public openDialog(user?: User) {
         const dialogRef = this.dialog.open(CreateEditUserComponent,
             {
                 data: {
-                    isEdit: !!user,
+                    isEdit: Boolean(user),
                     user: user,
                     title: user ? 'editUser' : 'addUser'
                 }
             });
 
         dialogRef.afterClosed().subscribe((result) => {
-            console.log('Dialog result:', result);
+            if(!result) return;
             if (user) {
                 this.usersService.updateUser({ ...user, ...result });
             } else {
                 this.usersService.addUser(result);
             }
         });
+    }
+
+    public deleteUser(id: number): void {
+        this.usersService.deleteUser(id);
     }
 }
 

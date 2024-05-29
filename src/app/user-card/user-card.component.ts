@@ -13,12 +13,10 @@ export class UserCardComponent {
     @Output() editUserEvent = new EventEmitter<User>();
 
     public onDeleteUser(): void {
-        console.log('Deleting user:', this.user);
         this.deleteUser.emit(this.user.id);
     }
 
     public editUser(): void {
-        console.log('Editing user:', this.user);
         this.editUserEvent.emit(this.user);
     }
 }   

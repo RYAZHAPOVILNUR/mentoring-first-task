@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "../models/user.interface";
 
@@ -7,12 +7,10 @@ import { User } from "../models/user.interface";
     providedIn: 'root'
 })
 export class UsersApiService {
-    private APIUrl = 'https://jsonplaceholder.typicode.com/users';
-    
-    constructor(private http: HttpClient) {}
+    private http = inject(HttpClient)
+    private apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
     getUsersAPI(): Observable<User[]> {
-        console.log('Fetching users from API:', this.APIUrl);
-        return this.http.get<User[]>(this.APIUrl);
+        return this.http.get<User[]>(this.apiUrl);
     }
 }
