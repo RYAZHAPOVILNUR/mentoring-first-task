@@ -32,7 +32,7 @@ export class UsersListComponent {
                     title: user ? 'editUser' : 'addUser'
                 }
             });
-
+            
         dialogRef.afterClosed().subscribe((result) => {
             if(!result) return;
             if (user) {
@@ -47,5 +47,3 @@ export class UsersListComponent {
         this.usersService.deleteUser(id);
     }
 }
-
-

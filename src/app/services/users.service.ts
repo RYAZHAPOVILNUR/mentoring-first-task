@@ -8,7 +8,7 @@ import { LocalStorageService } from './local-storage.service';
     providedIn: 'root'
 })
 export class UsersService {
-    
+
     private usersApiService = inject(UsersApiService);
     private localStorageService = inject(LocalStorageService);
     private userSubject$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);

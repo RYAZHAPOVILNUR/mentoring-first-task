@@ -8,10 +8,10 @@ import { User } from "../models/user.interface";
 })
 export class UsersApiService {
     
-    private http = inject(HttpClient)
-    private apiUrl = 'https://jsonplaceholder.typicode.com/users';
+    private readonly http = inject(HttpClient)
+    private readonly apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
-    getUsersAPI(): Observable<User[]> {
+    public getUsersAPI(): Observable<User[]> {
         return this.http.get<User[]>(this.apiUrl);
     }
 }

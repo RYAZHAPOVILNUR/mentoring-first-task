@@ -14,12 +14,4 @@ export class LocalStorageService {
     public setItem(key: string, value: User[]): void {
         localStorage.setItem(key, JSON.stringify(value));
     }
-
-    public removeItem(key: string): void {
-        localStorage.removeItem(key);
-    }
-
-    public clear(): void {
-        localStorage.clear();
-    }
 }

@@ -31,6 +31,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './create-edit-user.component.scss'
 })
 export class CreateEditUserComponent implements OnInit {
+
   public readonly dialogData = inject(MAT_DIALOG_DATA);
   public readonly dialogRef: MatDialogRef<CreateEditUserComponent> = inject(MatDialogRef<CreateEditUserComponent>);
   public readonly isEdit: boolean = this.dialogData.isEdit;
@@ -49,17 +50,17 @@ export class CreateEditUserComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  createUser() {
+  public createUser() {
     console.log('Creating user with dialogData:', this.newForm.value);
     return this.dialogRef.close(this.newForm.value);
   }
 
-  saveUser() {
+  public saveUser() {
     console.log('Saving user with dialogData:', this.newForm.value);
     return this.dialogRef.close(this.newForm.value);
   }
 
-  cancel() {
+  public cancel() {
     console.log('Canceling dialog');
     this.dialogRef.close();
   }
