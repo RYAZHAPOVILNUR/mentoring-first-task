@@ -1,13 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AppHeaderComponent } from './app-header/app-header.component';
+import { AppMainComponent } from './app-main/app-main.component';
+import { AppFooterComponent } from './app-footer/app-footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, AppHeaderComponent, AppMainComponent, AppFooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'mentoring-first-project';
-}
+export class AppComponent { }
