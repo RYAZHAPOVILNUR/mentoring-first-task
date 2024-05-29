@@ -18,6 +18,7 @@ import { MatDialog } from "@angular/material/dialog";
     ]
 })
 export class UsersListComponent {
+    
     private usersService = inject(UsersService);
     public readonly users$ = this.usersService.users$;
     private readonly dialog = inject(MatDialog);

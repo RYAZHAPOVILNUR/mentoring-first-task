@@ -7,6 +7,7 @@ import { User } from "../models/user.interface";
     providedIn: 'root'
 })
 export class UsersApiService {
+    
     private http = inject(HttpClient)
     private apiUrl = 'https://jsonplaceholder.typicode.com/users';
 

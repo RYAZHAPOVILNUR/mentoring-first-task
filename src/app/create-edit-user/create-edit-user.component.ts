@@ -41,7 +41,7 @@ export class CreateEditUserComponent implements OnInit {
       this.newForm.patchValue(this.dialogData.user);
     }
   }
-
+  
   newForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),

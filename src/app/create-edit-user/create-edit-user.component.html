@@ -1,5 +1,5 @@
 <mat-dialog-content>
-    <ol [formGroup]="newForm" (ngSubmit)="saveUser()" #viewMode>
+    <ul [formGroup]="newForm" (ngSubmit)="saveUser()" #viewMode>
         <li>
             <mat-form-field>
                 <mat-label>name</mat-label>
@@ -24,7 +24,7 @@
                 <input matInput formControlName="email">
             </mat-form-field>
         </li>
-    </ol>
+    </ul>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-raised-button *ngIf="isEdit; else create" (click)="saveUser()">Save User</button>

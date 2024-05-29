@@ -2,12 +2,13 @@ import { Injectable, inject } from '@angular/core';
 import { User } from '../models/user.interface';
 import { UsersApiService } from './users-api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { LocalStorageService } from './local-storage-jwt.service';
+import { LocalStorageService } from './local-storage.service';
 
-@Injectable({
+@Injectable({                                                                                                                                                                                                                                                                                                                                                             
     providedIn: 'root'
 })
 export class UsersService {
+    
     private usersApiService = inject(UsersApiService);
     private localStorageService = inject(LocalStorageService);
     private userSubject$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
@@ -18,7 +19,7 @@ export class UsersService {
         this.loadUsers();
     }
 
-    private get getUsers(): User[] {
+    private get getUsers(): User[] {  
         return this.userSubject$.getValue();
     }
 
