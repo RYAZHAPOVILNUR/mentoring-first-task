@@ -2,7 +2,7 @@ import { TUserDTO, TUserEntity, TUserVM } from "./users-data.models";
 
 export type TUsersDataAdapter = {
   DTOtoEntity(dto: TUserDTO): TUserEntity;
-  EntitytoVM(entity: TUserEntity): TUserVM;
+  entityToVM(entity: TUserEntity): TUserVM;
   VMtoEntity(vm: TUserVM): TUserEntity;
 }
 
@@ -12,7 +12,7 @@ export const usersDataAdapter: TUsersDataAdapter = {
     return { id, name, email, phone };
   },
 
-  EntitytoVM(entity) {
+  entityToVM(entity) {
     const { name, email, phone } = entity;
     return { name, email, phone };
   },
