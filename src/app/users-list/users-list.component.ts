@@ -5,7 +5,6 @@ import { CreateEditUserComponent } from "../create-edit-user/create-edit-user.co
 import { User } from "../models/user.interface";
 import { CommonModule } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
-import { LocalStorageService } from "../services/local-storage-jwt.service";
 
 @Component({
     selector: 'users-list-app',
