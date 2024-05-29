@@ -1,5 +1,5 @@
-<form (ngSubmit)="onOk()" [formGroup]="form">
-  <h2 mat-dialog-title>Create User</h2>
+<form (ngSubmit)="onCreateEditUser()" [formGroup]="form">
+  <h2 mat-dialog-title>{{ this.isEdit ? 'Edit' : 'Create' }} User</h2>
 
   <mat-dialog-content>
     <div>
@@ -18,7 +18,10 @@
 
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
-    <button (click)="onOk()" mat-button>Ok</button>
+    <button (click)="onCreateEditUser()" *ngIf="isEdit; else isCreate" mat-button>Edit</button>
+    <ng-template #isCreate>
+      <button (click)="onCreateEditUser()" mat-button>Create</button>
+    </ng-template>
   </mat-dialog-actions>
 </form>
 <p>create-edit-user works!</p>

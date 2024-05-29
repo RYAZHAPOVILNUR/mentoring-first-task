@@ -5,6 +5,7 @@ import {CommonModule} from "@angular/common";
 import {CreateEditUserComponent} from "../create-edit-user/create-edit-user.component";
 import {MatButton} from "@angular/material/button";
 import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dialog";
+import {User} from "../../types/user.model";
 
 @Component({
   selector: 'app-users-list',
@@ -21,8 +22,6 @@ import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dia
 })
 export class UsersListComponent implements OnInit {
   public readonly users$ = this.usersService.users$;
-  // name?: string;
-  // email?: string;
 
   constructor(
     private readonly usersService: UsersService,
@@ -38,19 +37,26 @@ export class UsersListComponent implements OnInit {
     this.usersService.deleteUser(id);
   }
 
-  openDialog() {
+  onEditUser(user: User) {
+    this.openDialog(user)
+  }
+
+  openDialog(user?: User) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    // dialogConfig.data = {
-    //   name: this.name,
-    //   email: this.email,
-    // }
+    dialogConfig.data = user;
 
     const dialogRef = this.dialog.open(CreateEditUserComponent, dialogConfig);
+    dialogRef.componentInstance.isEdit = !!user;
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      this.usersService.addUser(result);
+      if (!result) return;
+      if (dialogRef.componentInstance.isEdit) {
+        this.usersService.editUser({...user, ...result});
+      } else {
+        this.usersService.addUser(result);
+      }
     });
   }
 }

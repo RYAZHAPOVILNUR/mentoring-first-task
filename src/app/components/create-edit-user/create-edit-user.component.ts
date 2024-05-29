@@ -1,4 +1,4 @@
-import {Component, inject, Inject} from '@angular/core';
+import {Component, inject, Inject, OnInit} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -11,11 +11,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {NgIf} from "@angular/common";
+import {User} from "../../types/user.model";
 
-export interface DialogData {
-  name: string;
-  email: string;
-}
+export type DialogData = Pick<User, 'name' | 'email'>
 
 @Component({
   selector: 'app-create-edit-user',
@@ -31,10 +30,12 @@ export interface DialogData {
     MatDialogActions,
     MatDialogClose,
     ReactiveFormsModule,
+    NgIf,
   ],
 })
-export class CreateEditUserComponent {
+export class CreateEditUserComponent implements OnInit {
 
+  isEdit?: boolean;
   private readonly fb = inject(FormBuilder);
   public readonly form = this.fb.group(<DialogData>{
     name: '',
@@ -47,11 +48,15 @@ export class CreateEditUserComponent {
   ) {
   }
 
+  ngOnInit() {
+    this.form.patchValue({...this.data});
+  }
+
   field<T extends AbstractControl>(nameField: string): T {
     return this.form.get(nameField) as T;
   }
 
-  onOk() {
+  onCreateEditUser() {
     this.dialogRef.close(this.form.value);
   }
 }

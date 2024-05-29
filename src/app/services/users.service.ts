@@ -28,11 +28,20 @@ export class UsersService {
   }
 
   addUser(user: User) {
-    const id = this.usersSubject$.value.length;
+    const id = this.getNextId();
     const username = `${user.name}${id}`;
     this.usersSubject$.next([{...user, id, username}, ...this.usersSubject$.value]);
   }
 
-  updateUser(user: User) {
+  editUser(editedUser: User) {
+    this.usersSubject$.next(
+      this.usersSubject$.getValue()
+        .map(user => (user.id === editedUser.id) ? editedUser : user)
+    );
+  }
+
+  getNextId() {
+    return 1 + this.usersSubject$.getValue()
+      .reduce((maxId, user) => Math.max(maxId, user.id), -1);
   }
 }
