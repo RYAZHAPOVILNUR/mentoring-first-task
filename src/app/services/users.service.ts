@@ -7,41 +7,52 @@ import {UsersApiService} from "./usersApi.service";
   providedIn: "root"
 })
 export class UsersService {
-  private usersSubject$ = new BehaviorSubject<User[]>([]); // create reactive state
-  public readonly users$ = this.usersSubject$.asObservable(); // enable outer classes to read the state
+  readonly USERS_STORAGE_KEY: string = 'users';
+  private _users$ = new BehaviorSubject<User[]>([]); // create reactive state
+  public readonly users$ = this._users$.asObservable(); // enable outer classes to read the state
 
   constructor(private usersApiService: UsersApiService) {
   }
 
-  loadUsers(): void {
+  get users(): User[] {
+    return this._users$.getValue()
+  }
+
+  set users(users: User[]) {
+    localStorage.setItem(this.USERS_STORAGE_KEY, JSON.stringify(users));
+    this._users$.next(users);
+  }
+
+  loadUsers() {
     this.usersApiService
       .getUsers()
       .subscribe(
         (data: User[]) => {
-          this.usersSubject$.next(data)
+          console.log(data);
+          this.users = data;
         }
       )
   }
 
   deleteUser(id: number) {
-    this.usersSubject$.next(this.usersSubject$.value.filter(user => user.id !== id));
+    this.users = this._users$.value.filter(user => user.id !== id);
   }
 
   addUser(user: User) {
     const id = this.getNextId();
     const username = `${user.name}${id}`;
-    this.usersSubject$.next([{...user, id, username}, ...this.usersSubject$.value]);
+    this.users = ([{...user, id, username}, ...this._users$.value]);
   }
 
   editUser(editedUser: User) {
-    this.usersSubject$.next(
-      this.usersSubject$.getValue()
+    this.users = (
+      this._users$.getValue()
         .map(user => (user.id === editedUser.id) ? editedUser : user)
     );
   }
 
   getNextId() {
-    return 1 + this.usersSubject$.getValue()
+    return 1 + this._users$.getValue()
       .reduce((maxId, user) => Math.max(maxId, user.id), -1);
   }
 }

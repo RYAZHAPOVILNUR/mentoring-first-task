@@ -30,7 +30,20 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.usersService.loadUsers();
+    const localUsers = localStorage.getItem(this.usersService.USERS_STORAGE_KEY);
+
+    if (localUsers && localUsers.length) {
+      console.log(JSON.parse(localUsers))
+      this.usersService.users = JSON.parse(localUsers);
+    } else {
+      console.log('loading users');
+      this.usersService.loadUsers();
+      localStorage.setItem('users', JSON.stringify(this.usersService.users));
+    }
+  }
+
+  clearLocalStorage() {
+    localStorage.clear()
   }
 
   onDeleteUser(id: number) {
