@@ -29,11 +29,11 @@ export class UsersService{
     }
     deleteUser( id: number ): Observable<void>{
         return this.usersApiService.deleteUser(id).pipe(
-        tap(() => {
-            const updatedUsers = this.usersSubject$.value.filter(user => user.id !== id)
-            this.usersSubject$.next(updatedUsers)
-            localStorage.setItem('users', JSON.stringify(updatedUsers))
-        })
+            tap(() => {
+                const updatedUsers = this.usersSubject$.value.filter(user => user.id !== id)
+                this.usersSubject$.next(updatedUsers)
+                localStorage.setItem('users', JSON.stringify(updatedUsers))
+            })
         )
     }
     editUser(user: User): Observable<User> {
