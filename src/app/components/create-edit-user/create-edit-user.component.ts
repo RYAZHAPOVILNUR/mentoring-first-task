@@ -27,7 +27,7 @@ import { IUser } from '../../types/users.interfase';
     }
 
     public readonly usersFormBuilder = this.fb.group({
-      id:0,
+      id: 0,
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],

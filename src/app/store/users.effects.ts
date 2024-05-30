@@ -2,7 +2,7 @@ import { Injectable, inject } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { EMPTY, catchError, map, switchMap } from "rxjs";
 import { UsersApiService } from "../services/users-api.service";
-import { loadUsers } from "./users.actions";
+import { getUsers, loadUsers } from "./users.actions";
 
 @Injectable()
 export class UsersEffect {
@@ -11,7 +11,7 @@ export class UsersEffect {
 
     public loadUsers$ = createEffect(() => 
         this.actions$.pipe(
-            ofType('[Users Component] GetUsers'),
+            ofType(getUsers),
             switchMap(
                 () => this.userApi.getUsers.pipe(
                     map((users) => loadUsers({newUsers:users})),

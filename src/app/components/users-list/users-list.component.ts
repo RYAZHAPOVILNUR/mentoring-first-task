@@ -35,13 +35,12 @@ export class UsersListComponent implements OnInit {
   openDialog(user?:IUser) {
     const isEdit = Boolean(user);
 
-    const dialogRef = this.dialog.open(CreateEditUserComponent, {data: {user,isEdit}});
+    const dialogRef = this.dialog.open(CreateEditUserComponent, {data: {user, isEdit}});
 
-    dialogRef.afterClosed().subscribe((user:IUser) => {
+    dialogRef.afterClosed().subscribe((user: IUser) => {
       if(!user) return;
-      
-      isEdit ? this.store.dispatch(editUser({user})) : this.store.dispatch(addUser({newUsers:user}));
 
+      isEdit ? this.store.dispatch(editUser({user})) : this.store.dispatch(addUser({newUsers:user}));
     });
   }
 }

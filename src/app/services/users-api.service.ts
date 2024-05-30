@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { IUser } from '../types/users.interfase';
 import { Observable } from 'rxjs';
+import { API_URL } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersApiService {
   private readonly http = inject(HttpClient)
-  constructor(  ) { }
+  private readonly url = inject(API_URL);
 
   public get getUsers():Observable<IUser[]> {
-    return this.http.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
+    return this.http.get<IUser[]>(this.url + 'users')
   }
 }

@@ -5,8 +5,5 @@ export const selectUsersState = createFeatureSelector<UsersState>(USERS_FEATURE)
 
 export const selectUsers = createSelector(
     selectUsersState,
-    (state: UsersState) => {
-        console.log(state)
-        return state.users
-    } 
+    (state: UsersState) => state.users
 )

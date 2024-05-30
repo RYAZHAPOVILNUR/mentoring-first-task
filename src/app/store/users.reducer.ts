@@ -18,10 +18,11 @@ export const USERS_FEATURE = 'users_feature';
 export const usersReducer = createReducer(
     initialUserState,
     on(loadUsers, (state, {newUsers}) => {
-        return {...state, 
-                users: [...newUsers],
-                status : 'succes' as const
-            } 
+        return {
+            ...state, 
+            users: [...newUsers],
+            status : 'succes' as const
+        } 
     }),
     on(deleteUser, (state, {id}) => {
         return {
