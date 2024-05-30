@@ -1,4 +1,4 @@
-import {inject, Injectable} from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { IUser } from "@models/user.model";
@@ -13,5 +13,17 @@ export class UserApiService {
 
   public getUser(): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.apiUrl);
+  }
+
+  public postUser(user: IUser): Observable<IUser> {
+    return this.http.post<IUser>(this.apiUrl, user);
+  }
+
+  public updateUser(user: IUser): Observable<IUser> {
+    return this.http.put<IUser>(`${this.apiUrl}/${user.id}`, user);
+  }
+
+  public deleteUser(user: IUser): Observable<IUser> {
+    return this.http.delete<IUser>(`${this.apiUrl}/${user.id}`);
   }
 }

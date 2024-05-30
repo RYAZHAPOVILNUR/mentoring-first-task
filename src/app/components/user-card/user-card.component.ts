@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { IUser } from '@models/user.model';
 import { MatButton } from "@angular/material/button";
-import { UsersService } from "@services/users.service";
+import { LocalStorageAct } from "@services/localStorageAct";
 
 @Component({
   selector: 'app-user-card',
@@ -15,14 +15,14 @@ import { UsersService } from "@services/users.service";
 })
 export class UserCardComponent {
   @Input({required: true}) user!: IUser;
-  @Output() userToDelete = new EventEmitter<string>();
+  @Output() userToDelete = new EventEmitter<IUser>();
   @Output() userToEdit = new EventEmitter<IUser>();
 
-  private readonly usersService = inject(UsersService);
+  private readonly localStorageAct = inject(LocalStorageAct);
 
   public deleteUserEvent(): void {
-    this.usersService.updateUsers();
-    this.userToDelete.emit(this.user.username);
+    this.localStorageAct.updateUsers();
+    this.userToDelete.emit(this.user);
   }
 
   public editUserEvent(user?: IUser): void {

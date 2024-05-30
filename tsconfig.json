@@ -5,7 +5,8 @@
     "baseUrl": "./src",
     "paths": {
       "@models/*": ["models/*"],
-      "@services/*": ["services/*"]
+      "@services/*": ["services/*"],
+      "@state/*": ["app/state/*"],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

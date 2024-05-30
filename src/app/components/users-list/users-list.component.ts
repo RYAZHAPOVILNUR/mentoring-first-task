@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { UsersService } from '@services/users.service';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { CommonModule } from '@angular/common';
 import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
@@ -9,6 +8,7 @@ import { IUser } from "@models/user.model";
 import { FormsModule } from "@angular/forms";
 import { Observable } from "rxjs";
 import { LocalStorageAct } from "@services/localStorageAct";
+import { UsersFacade } from "@state/users/users.facade";
 
 @Component({
   selector: 'app-users-list',
@@ -23,18 +23,14 @@ import { LocalStorageAct } from "@services/localStorageAct";
   styleUrls: ['./users-list.component.scss',],
 })
 export class UsersListComponent implements OnInit{
-  private readonly usersService = inject(UsersService);
   private readonly dialog = inject(MatDialog);
   private readonly localStorageAct = inject(LocalStorageAct);
+  private readonly usersFacade = inject(UsersFacade);
 
-  public readonly users$: Observable<IUser[]>;
+  public readonly users$: Observable<IUser[]> = this.usersFacade.usersState$;
 
-  constructor() {
-    this.users$ = this.usersService.users$;
-  }
-
-  public openCreateEditUser(user?: Partial<IUser>): void {
-    const dialogRef= this.dialog.open(CreateEditUserComponent, {
+  public openCreateEditUser(user?: IUser): void {
+    const dialogRef = this.dialog.open<CreateEditUserComponent, IUser, IUser>(CreateEditUserComponent, {
       width: '400px',
       data: user,
     });
@@ -44,29 +40,28 @@ export class UsersListComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         if(!user) {
-          this.usersService.createUser(result);
+          this.usersFacade.createUser(result);
         } else {
-          this.usersService.editUser(result);
+          this.usersFacade.editUser(result);
         }
       }
-    })
+    });
   }
 
-  public onDeleteUser(username: string): void {
-    this.usersService.deleteUser(username);
+  public onDeleteUser(user: IUser): void {
+    this.usersFacade.deleteUser(user);
   }
 
   ngOnInit(): void {
     if(this.localStorageAct.getItem() === null) {
-      this.usersService.loadUsers();
+      this.usersFacade.loadUsers();
       this.users$.subscribe(
         (users) => {
-            this.localStorageAct.setItem(JSON.stringify(users))
+            this.localStorageAct.setItem(JSON.stringify(users));
         }
       );
     } else {
-      const data = this.localStorageAct.getItem();
-      this.usersService.loadUsers(JSON.parse(data!));
+      this.usersFacade.loadUsers();
     }
   }
 }
