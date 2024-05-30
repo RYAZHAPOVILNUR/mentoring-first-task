@@ -1,0 +1,17 @@
+<div class="user-list-wrapper">
+  <div class="user-list">
+    <div *ngFor="let user of users$ | async ">
+      <app-user-card
+        [user]="user"
+        (userToDelete)="onDeleteUser($event)"
+        (userToEdit)="openCreateEditUser($event)"
+      ></app-user-card>
+    </div>
+  </div>
+
+  <button
+    mat-flat-button color="primary"
+    (click)="openCreateEditUser()"
+  >Добавить пользователя
+  </button>
+</div>

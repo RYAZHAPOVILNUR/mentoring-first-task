@@ -1,0 +1,52 @@
+<h2 mat-card-title>{{ isEdit ? 'Редактирование' : 'Создание' }} пользователя</h2>
+<form [formGroup]="myFormGroup">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      formControlName="name"
+    >
+    <mat-error>Введите имя</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input
+      matInput
+      formControlName="username"
+    >
+    <mat-error>Введите имя пользователя</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input
+      matInput
+      formControlName="phone"
+    >
+    <mat-error>Введены не коректные данные</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      formControlName="email"
+    >
+    <mat-error>Введите почту</mat-error>
+  </mat-form-field>
+
+  <div class="form-buttons">
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="onDialogClose()"
+    >Отмена</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="myFormGroup.invalid"
+      (click)="onDialogSubmit()"
+    >{{ isEdit ? 'Сохранить' : 'Создать' }}</button>
+  </div>
+</form>

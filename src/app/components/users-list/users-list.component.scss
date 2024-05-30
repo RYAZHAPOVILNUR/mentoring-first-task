@@ -1,0 +1,10 @@
+.user-list-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+}
