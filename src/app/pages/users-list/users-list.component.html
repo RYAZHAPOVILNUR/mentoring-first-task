@@ -1,0 +1,8 @@
+<div *ngIf="loading$ | async">Loading...</div>
+<div *ngIf="errors$ | async" > {{ errors$ }}</div>
+<div *ngFor="let users of users$ | async">
+    <app-user-card [user]="users" (delete)="deleteUser(users.id)" (edit)="editUser(users)" ></app-user-card>
+</div>
+<button mat-raised-button (click)="createUser()" style="margin-left: 20px; margin-right: 20px; margin-top: 20px;">Create User</button>
+<button mat-raised-button (click)="returnUsers()" style="margin-top: 20px;">Return Users</button>
+
