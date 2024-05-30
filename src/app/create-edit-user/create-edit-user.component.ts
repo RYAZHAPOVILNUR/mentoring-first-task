@@ -19,7 +19,7 @@ import { IUser } from '../types/users.interfase';
     public readonly data:{user:IUser,isEdit: boolean} = inject(MAT_DIALOG_DATA);
 
     ngOnInit(): void {
-      this.data.user ? this.usersFormBuilder.patchValue(this.data.user) : false;  
+      this.data.user && this.usersFormBuilder.patchValue(this.data.user);
     }
 
     getFormControl(nameField:string):FormControl  {
