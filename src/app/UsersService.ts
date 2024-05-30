@@ -1,5 +1,26 @@
-import { User } from "./user";
+import { BehaviorSubject, Observable } from "rxjs";
+import { IUser } from "./user";
+import { UsersApiService } from './http.service';
+import { Injectable } from "@angular/core";
 
+@Injectable({
+    providedIn: 'root'
+})
 export class usersService {
-    users: User[] = []
+    private usersSubject = new BehaviorSubject<IUser[]>([]);
+    public readonly users$ = this.usersSubject.asObservable();
+
+    constructor(private UsersApiService: UsersApiService) { }
+
+    loadUsers() {
+        this.UsersApiService.getUsers().subscribe(
+            (data: IUser[]) => {
+                this.usersSubject.next(data)
+            }
+        )
+    }
+
+    deleteUsers(id: number) {
+        this.usersSubject.next(this.usersSubject.value.filter(user => user.id != id))
+    }
 }

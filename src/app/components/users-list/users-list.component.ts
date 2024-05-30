@@ -1,32 +1,23 @@
-import { NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { UsersApiService } from '../../http.service';
-import { User } from '../../user';
+import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { UserCard } from '../user-card/user-card.component';
+import { usersService } from '../../usersService';
 
 @Component({
     selector: 'users-list',
-    imports: [NgFor, UserCard],
+    imports: [NgFor, UserCard, AsyncPipe],
     standalone: true,
     templateUrl: './users-list.component.html',
-    styleUrls: ['./users-list.component.css']
+    styleUrls: ['./users-list.component.css'],
 })
 
-
 export class UsersListComponent implements OnInit {
+    public readonly users$ = this.usersService.users$;
 
-    users: User[] = [];
-
-    constructor(
-        private usersService: UsersApiService
-    ) { }
-
-    getUsers(): void {
-        this.usersService.getUsers()
-            .subscribe((users: any) => this.users = users)
+    constructor(private usersService: usersService) {
     }
 
     ngOnInit() {
-        this.getUsers()
+        this.usersService.loadUsers();
     }
 }
