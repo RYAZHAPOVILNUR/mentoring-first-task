@@ -1,0 +1,17 @@
+.card {
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 260px;
+    padding: 15px;
+    margin: 20px;
+    min-height: 200px;
+}
+
+.button {
+    background: transparent;
+    border: 1px grey solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
