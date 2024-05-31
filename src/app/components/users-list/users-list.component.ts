@@ -8,6 +8,7 @@ import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dia
 import {User} from "../../types/user.model";
 import {Store} from "@ngrx/store";
 import {initUsers} from "../../+state/users.actions";
+import {selectUsers} from "../../+state/users.selectors";
 
 @Component({
   selector: 'app-users-list',
@@ -23,7 +24,7 @@ import {initUsers} from "../../+state/users.actions";
   styleUrl: './users-list.component.scss'
 })
 export class UsersListComponent implements OnInit {
-  public readonly users$ = this.usersService.users$;
+  public readonly users$ = this.store.select(selectUsers);
 
   constructor(
     private readonly usersService: UsersService,
