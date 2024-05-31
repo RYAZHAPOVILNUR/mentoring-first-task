@@ -1,0 +1,192 @@
+.user-card{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 30px;
+}
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.user-card{
+  margin: 10px;
+}
+/*
+You can change the color also to pink:
+- Hex: #FF00DC
+- RGB: (255, 0, 220)
+- Ending imageas: _pink_hollow.png or _pink_filled.png
+*/
+
+.navigation_back{
+  margin: 30px 0;
+}
+
+body {
+  background-color: black;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  margin: 30px;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+
+}
+
+/* yellow */
+ul li:nth-child(1) {
+  border: 1px solid #fff200;
+}
+
+/* blue */
+ul li:nth-child(2) {
+  border: 1px solid #004CFF;
+}
+
+/* red */
+ul li:nth-child(3) {
+  border: 1px solid #FF2A00;
+}
+
+/* green */
+ul li:nth-child(4) {
+  border: 1px solid #08FF00;
+}
+
+/* white */
+ul li:nth-child(5) {
+  border: 1px solid white;
+}
+
+li:hover .divInner {
+  height: 50px;
+  width: 50px;
+  transform: translateX(0px) translateY(0px) rotate(0deg);
+  transition: 0.3s ease-in-out;
+}
+
+ul li:hover .divShadow {
+  z-index: 2;
+  transition: 0.3s ease-in-out;
+}
+
+ul li:nth-child(1):hover .divShadow {
+  box-shadow: 0 0 40px 40px rgba(255, 242, 0, 0.15); /* shadow color yellow */
+}
+
+ul li:nth-child(2):hover .divShadow {
+  box-shadow: 0 0 40px 40px rgba(0, 76, 255, 0.15); /* shadow color blue */
+}
+
+ul li:nth-child(3):hover .divShadow {
+  box-shadow: 0 0 40px 40px rgba(255, 42, 0, 0.15); /* shadow color red */
+}
+
+ul li:nth-child(4):hover .divShadow {
+  box-shadow: 0 0 40px 40px rgba(8, 255, 0, 0.15); /* shadow color green */
+}
+
+ul li:nth-child(5):hover .divShadow {
+  box-shadow: 0 0 40px 40px rgba(255, 255, 255, 0.15); /* shadow color white */
+}
+
+li:hover .iconHome {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_home_yellow_filled.png');
+  transition: 0.3s;
+}
+
+li:hover .iconUser {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_user_blue_filled.png');
+  transition: 0.3s;
+}
+
+li:hover .iconSearch {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_search_red_filled.png');
+  transition: 0.3s;
+}
+
+li:hover .iconMessage {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_message_green_filled.png');
+  transition: 0.3s;
+}
+
+li:hover .iconShoppingCart {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_shopping-cart_white_filled.png');
+  transition: 0.3s;
+}
+
+.divInner {
+  position: absolute;
+  height: 56px;
+  width: 56px;
+  background-color: black;
+  transform: translateX(-3px) translateY(-3px) rotate(45deg);
+  transform-origin: center;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.divShadow {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  height: 0px;
+  width: 0px;
+  z-index: 2;
+  transition: 0.3s ease-in-out;
+}
+
+.spanTxt {
+  text-align: center;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  color: #fff200;
+  line-height: 50px;
+  font-size: 40px;
+  transform: translateX(10px) translateY(10px);
+  z-index: 3;
+  background-position: center;
+  background-size: contain;
+  transition: 0.3s;
+}
+
+.iconHome {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_home_yellow_hollow.png');
+}
+
+.iconUser {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_user_blue_hollow.png');
+}
+
+.iconSearch {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_search_red_hollow.png');
+}
+
+.iconMessage {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_message_green_hollow.png');
+}
+
+.iconShoppingCart {
+  background-image: url('https://rassweiler-it.de/images/rassweiler-it_icon_shopping-cart_white_hollow.png');
+}
+.add_button{
+
+}
