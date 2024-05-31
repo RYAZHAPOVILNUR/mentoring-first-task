@@ -6,6 +6,8 @@ import {CreateEditUserComponent} from "../create-edit-user/create-edit-user.comp
 import {MatButton} from "@angular/material/button";
 import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dialog";
 import {User} from "../../types/user.model";
+import {Store} from "@ngrx/store";
+import {initUsers} from "../../+state/users.actions";
 
 @Component({
   selector: 'app-users-list',
@@ -25,12 +27,16 @@ export class UsersListComponent implements OnInit {
 
   constructor(
     private readonly usersService: UsersService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private store: Store
   ) {
   }
 
   ngOnInit() {
     const localUsers = localStorage.getItem(this.usersService.USERS_STORAGE_KEY);
+
+    this.store.dispatch(initUsers());
+    console.log('store', this.store)
 
     if (localUsers && localUsers.length) {
       console.log(JSON.parse(localUsers))

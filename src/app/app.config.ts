@@ -6,13 +6,16 @@ import {provideHttpClient} from "@angular/common/http";
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {provideStore} from '@ngrx/store';
 import {provideStoreDevtools} from "@ngrx/store-devtools";
+import {USERS_FEATURE_KEY, usersReducer} from "./+state/users.reducer";
+import {provideEffects} from "@ngrx/effects";
+import * as userEffects from "./+state/users.effects";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideHttpClient(), provideAnimationsAsync(),
-    // provideEffects(userEffects),
+    provideEffects(userEffects),
     provideStore(
       {
-        // [USERS_FEATURE_KEY]
+        [USERS_FEATURE_KEY]: usersReducer,
       }
     ),
     provideStoreDevtools({

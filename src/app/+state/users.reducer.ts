@@ -61,14 +61,6 @@ const reducer = createReducer(
     status: 'error' as const,
     error,
   })),
-  on(UsersActions.loadUser, (state) => ({
-    ...state,
-    status: 'loading' as const,
-  })),
-  on(UsersActions.updateUserStatus, (state, {status}) => ({
-    ...state,
-    status,
-  }))
 );
 
 export function usersReducer(state: UsersState | undefined, action: Action) {
