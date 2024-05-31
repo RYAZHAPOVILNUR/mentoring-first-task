@@ -1,6 +1,7 @@
 <li>
-    <p>Name: {{name}}</p>
-    <p>Nick: {{username}}</p>
-    <p>Email: {{email}}</p>
-    <p>Phone: {{phone}}</p>
+    <p>Name: {{user.name}}</p>
+    <p>Nick: {{user.username}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Phone: {{user.phone}}</p>
+    <button (click)="onDeleteUser(user.id)">Delete</button>
 </li>

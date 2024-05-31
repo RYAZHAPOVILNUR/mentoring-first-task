@@ -20,7 +20,7 @@ export class usersService {
         )
     }
 
-    deleteUsers(id: number) {
+    deleteUser(id: number) {
         this.usersSubject.next(this.usersSubject.value.filter(user => user.id != id))
     }
 }

@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { UsersApiService } from "../../http.service";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { IUser } from "../../user";
 
 @Component({
@@ -11,11 +10,15 @@ import { IUser } from "../../user";
 
 export class UserCard implements OnInit {
 
-    @Input() name: string = "";
-    @Input() username: string = "";
-    @Input() email: string = "";
-    @Input() phone: string = "";
-    
+    @Input() user!: IUser;
+
+    @Output() onDelete: EventEmitter<any> = new EventEmitter();
+
+
+    onDeleteUser(id: number) {
+        this.onDelete.emit(id);
+    }
+
     ngOnInit() {
     }
 }

@@ -1,5 +1,5 @@
-import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { AsyncPipe, NgFor } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserCard } from '../user-card/user-card.component';
 import { usersService } from '../../usersService';
 
@@ -12,9 +12,15 @@ import { usersService } from '../../usersService';
 })
 
 export class UsersListComponent implements OnInit {
+    @Input()
+
     public readonly users$ = this.usersService.users$;
 
     constructor(private usersService: usersService) {
+    }
+
+    onDeleteUser(id: number) {
+        this.usersService.deleteUser(id);
     }
 
     ngOnInit() {
