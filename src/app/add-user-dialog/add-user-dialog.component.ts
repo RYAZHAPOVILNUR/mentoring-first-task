@@ -4,10 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UsersService } from '../services/user.service';
+
 import { User } from '../users.interface';
 import {Store} from "@ngrx/store";
-import {addUser, addUserSuccess} from "../states/users/users.actions";
+
 
 
 @Component({
@@ -26,14 +26,14 @@ import {addUser, addUserSuccess} from "../states/users/users.actions";
 })
 
 export class AddUserDialogComponent {
-  private usersService = inject(UsersService);
+
   private fb = inject(FormBuilder);
   private dialogRef = inject(MatDialogRef<AddUserDialogComponent>);
 
-  public readonly users$ = this.usersService.users$;
-
   form: FormGroup;
+
   private store = inject(Store);
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: User,
   ) {
@@ -51,8 +51,6 @@ export class AddUserDialogComponent {
       newUser.id = Math.round(Math.random() * 1000)
       this.dialogRef.close(newUser);
       console.log('this.form.value', this.form.value)
-
-      // this.store.dispatch(addUserSuccess(newUser));
     }
   }
 

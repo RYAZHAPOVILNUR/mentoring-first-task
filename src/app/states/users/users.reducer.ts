@@ -1,7 +1,6 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { User } from "../../users.interface";
 import * as UsersActions from './users.actions';
-import {loadStoredData,} from "./users.actions";
 
 export interface UsersState {
   users: User[];
@@ -37,20 +36,6 @@ export const usersReducer = createReducer(
     loading: false,
     error: error
   })),
-
-  on(UsersActions.loadStoredData, (state)=>({
-    ...state,
-    loading: true,
-    error: null,
-  })),
-
-  // on(UsersActions.loadStoredDataSuccess, (state, {data})=>({
-  //     ...state,
-  //     data: [...data],
-  //     loading: false,
-  //     error: null
-  // })),
-
 
   on(UsersActions.addUser, (state) => ({
     ...state,

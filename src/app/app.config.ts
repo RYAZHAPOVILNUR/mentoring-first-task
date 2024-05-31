@@ -31,5 +31,4 @@ export const appConfig: ApplicationConfig = {
     }),
 ],
 };
-// provideState( userFeatureKey, userReducer )
 
