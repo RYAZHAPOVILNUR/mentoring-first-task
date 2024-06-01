@@ -7,7 +7,7 @@ import {MatButton} from "@angular/material/button";
 import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dialog";
 import {User} from "../../types/user.model";
 import {Store} from "@ngrx/store";
-import {initUsers} from "../../+state/users.actions";
+import {deleteUser, initUsers} from "../../+state/users.actions";
 import {selectUsers} from "../../+state/users.selectors";
 
 @Component({
@@ -34,34 +34,29 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    const localUsers = localStorage.getItem(this.usersService.USERS_STORAGE_KEY);
+    // const localUsers = localStorage.getItem(this.usersService.USERS_STORAGE_KEY);
 
     this.store.dispatch(initUsers());
-    console.log('store', this.store)
 
-    if (localUsers && localUsers.length) {
-      console.log(JSON.parse(localUsers))
-      this.usersService.users = JSON.parse(localUsers);
-    } else {
-      console.log('loading users');
-      this.usersService.loadUsers();
-      localStorage.setItem('users', JSON.stringify(this.usersService.users));
-    }
+    // if (localUsers && localUsers.length) {
+    //   console.log(JSON.parse(localUsers))
+    //   this.usersService.users = JSON.parse(localUsers);
+    // } else {
+    //   console.log('loading users');
+    //   this.usersService.loadUsers();
+    //   localStorage.setItem('users', JSON.stringify(this.usersService.users));
+    // }
   }
 
-  clearLocalStorage() {
+  public onDeleteUser(id: number) {
+    this.store.dispatch(deleteUser({id}));
+  }
+
+  public clearLocalStorage() {
     localStorage.clear()
   }
 
-  onDeleteUser(id: number) {
-    this.usersService.deleteUser(id);
-  }
-
-  onEditUser(user: User) {
-    this.openDialog(user)
-  }
-
-  openDialog(user?: User) {
+  public openDialog(user?: User) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.data = user;
@@ -78,5 +73,9 @@ export class UsersListComponent implements OnInit {
         this.usersService.addUser(result);
       }
     });
+  }
+
+  public onEditUser(user: User) {
+    this.openDialog(user)
   }
 }

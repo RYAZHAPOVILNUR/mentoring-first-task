@@ -11,9 +11,9 @@ export class UsersApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getUsers(): Observable<User[]> {
+  public getUsers(): Observable<User[]> {
     return this.http
-      .get<User[]>(`${API_URL}`)
+      .get<User[]>(`${API_URL}/users`)
       .pipe(
         catchError(this.handleError<User[]>('getUsers', []))
       );

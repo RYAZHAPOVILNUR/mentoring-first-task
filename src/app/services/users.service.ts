@@ -7,23 +7,45 @@ import {UsersApiService} from "./usersApi.service";
   providedIn: "root"
 })
 export class UsersService {
-  readonly USERS_STORAGE_KEY: string = 'users';
-  private _users$ = new BehaviorSubject<User[]>([]); // create reactive state
+  public readonly USERS_STORAGE_KEY: string = 'users';
+  private readonly _users$ = new BehaviorSubject<User[]>([]); // create reactive state
   public readonly users$ = this._users$.asObservable(); // enable outer classes to read the state
 
-  constructor(private usersApiService: UsersApiService) {
+  constructor(private readonly usersApiService: UsersApiService) {
   }
 
-  get users(): User[] {
-    return this._users$.getValue()
+  private get users(): User[] {
+    return this._users$.value;
   }
 
-  set users(users: User[]) {
+  private set users(users: User[]) {
     localStorage.setItem(this.USERS_STORAGE_KEY, JSON.stringify(users));
     this._users$.next(users);
   }
 
-  loadUsers() {
+  public addUser(user: User) {
+    const id = this.getNextId();
+    const username = `${user.name}${id}`;
+    this.users = ([{...user, id, username}, ...this._users$.value]);
+  }
+
+  public editUser(editedUser: User) {
+    this.users = (
+      this._users$.value
+        .map(user => (user.id === editedUser.id) ? editedUser : user)
+    );
+  }
+
+  private deleteUser(id: number) {
+    this.users = this._users$.value.filter(user => user.id !== id);
+  }
+
+  private getNextId() {
+    return 1 + this._users$.value
+      .reduce((maxId, user) => Math.max(maxId, user.id), -1);
+  }
+
+  private loadUsers() {
     this.usersApiService
       .getUsers()
       .subscribe(
@@ -32,27 +54,5 @@ export class UsersService {
           this.users = data;
         }
       )
-  }
-
-  deleteUser(id: number) {
-    this.users = this._users$.value.filter(user => user.id !== id);
-  }
-
-  addUser(user: User) {
-    const id = this.getNextId();
-    const username = `${user.name}${id}`;
-    this.users = ([{...user, id, username}, ...this._users$.value]);
-  }
-
-  editUser(editedUser: User) {
-    this.users = (
-      this._users$.getValue()
-        .map(user => (user.id === editedUser.id) ? editedUser : user)
-    );
-  }
-
-  getNextId() {
-    return 1 + this._users$.getValue()
-      .reduce((maxId, user) => Math.max(maxId, user.id), -1);
   }
 }
