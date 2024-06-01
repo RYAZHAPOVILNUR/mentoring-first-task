@@ -2,10 +2,11 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { UserCard } from '../user-card/user-card.component';
 import { usersService } from '../../usersService';
+import {MatListModule} from '@angular/material/list';
 
 @Component({
     selector: 'users-list',
-    imports: [NgFor, UserCard, AsyncPipe],
+    imports: [NgFor, UserCard, AsyncPipe, MatListModule],
     standalone: true,
     templateUrl: './users-list.component.html',
     styleUrls: ['./users-list.component.css'],
