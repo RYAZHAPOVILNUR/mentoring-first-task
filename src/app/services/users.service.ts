@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject} from "rxjs";
 import {User} from "../types/user.model";
-import {UsersApiService} from "./usersApi.service";
+import {UsersApiService} from "./users-api.service";
 
 @Injectable({
   providedIn: "root"
@@ -36,13 +36,13 @@ export class UsersService {
     );
   }
 
-  private deleteUser(id: number) {
-    this.users = this._users$.value.filter(user => user.id !== id);
-  }
-
-  private getNextId() {
+  public getNextId() {
     return 1 + this._users$.value
       .reduce((maxId, user) => Math.max(maxId, user.id), -1);
+  }
+
+  private deleteUser(id: number) {
+    this.users = this._users$.value.filter(user => user.id !== id);
   }
 
   private loadUsers() {

@@ -7,7 +7,7 @@ import {MatButton} from "@angular/material/button";
 import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dialog";
 import {User} from "../../types/user.model";
 import {Store} from "@ngrx/store";
-import {deleteUser, initUsers} from "../../+state/users.actions";
+import {addUser, deleteUser, editUser, initUsers} from "../../+state/users.actions";
 import {selectUsers} from "../../+state/users.selectors";
 
 @Component({
@@ -34,18 +34,13 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const localUsers = localStorage.getItem(this.usersService.USERS_STORAGE_KEY);
-
-    this.store.dispatch(initUsers());
-
-    // if (localUsers && localUsers.length) {
-    //   console.log(JSON.parse(localUsers))
-    //   this.usersService.users = JSON.parse(localUsers);
-    // } else {
-    //   console.log('loading users');
-    //   this.usersService.loadUsers();
-    //   localStorage.setItem('users', JSON.stringify(this.usersService.users));
-    // }
+    this.users$.subscribe(users => {
+      console.log('length', length)
+      if (!users.length) {
+        console.log('loading users');
+        this.store.dispatch(initUsers());
+      }
+    })
   }
 
   public onDeleteUser(id: number) {
@@ -68,9 +63,9 @@ export class UsersListComponent implements OnInit {
       console.log('The dialog was closed', result);
       if (!result) return;
       if (dialogRef.componentInstance.isEdit) {
-        this.usersService.editUser({...user, ...result});
+        this.store.dispatch(editUser({userData: {...user, ...result}}));
       } else {
-        this.usersService.addUser(result);
+        this.store.dispatch(addUser({userData: result}));
       }
     });
   }
