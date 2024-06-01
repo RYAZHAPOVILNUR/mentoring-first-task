@@ -15,5 +15,4 @@ import { usersService } from './usersService';
   styleUrl: './app.component.scss'
 })
 
-
 export class AppComponent { }

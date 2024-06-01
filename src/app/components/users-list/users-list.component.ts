@@ -2,7 +2,7 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { UserCard } from '../user-card/user-card.component';
 import { usersService } from '../../usersService';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
     selector: 'users-list',

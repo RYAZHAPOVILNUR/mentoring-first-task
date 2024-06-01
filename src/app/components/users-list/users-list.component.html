@@ -1,3 +1,6 @@
 <mat-list class="card-list">
-    <user-card *ngFor="let user of users$ | async" [user]="user" (onDelete)="onDeleteUser(user.id)"></user-card>
+  <user-card
+    *ngFor="let user of users$ | async"
+    [user]="user"
+    (onDelete)="onDeleteUser(user.id)"></user-card>
 </mat-list>

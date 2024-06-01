@@ -12,7 +12,6 @@ import { IUser } from "../../user";
 })
 
 export class UserCard implements OnInit {
-
     @Input() user!: IUser;
 
     @Output() onDelete: EventEmitter<any> = new EventEmitter();
