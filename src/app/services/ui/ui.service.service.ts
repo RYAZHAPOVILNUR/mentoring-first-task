@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class UiService {
-  private _drawer: any;
-  constructor() { }
+    private _drawer: any;
+    constructor() {}
 
-  get drawer(): any {
-    return this._drawer;
-  }
+    get drawer(): any {
+        return this._drawer;
+    }
 
-  set drawer(value: any) {
-    this._drawer = value;
-  }
-
+    set drawer(value: any) {
+        this._drawer = value;
+    }
 }

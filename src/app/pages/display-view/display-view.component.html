@@ -1,0 +1,16 @@
+<div class="container">
+    <span
+        class="display-window"
+        [ngStyle]="{ 'width.px': width, 'height.px': height, transform: 'scale(' + scale + ')' }"
+    >
+        <ng-container *ngComponentOutlet="displayComponent"> </ng-container>
+    </span>
+</div>
+<!--<mat-card class="example-card">-->
+<!--    <div class="background-component">-->
+<!--        <app-matrix></app-matrix>-->
+<!--    </div>-->
+<!--    <div class="foreground-content">-->
+<!--        <app-users-list></app-users-list>-->
+<!--    </div>-->
+<!--</mat-card>-->

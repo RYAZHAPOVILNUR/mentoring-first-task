@@ -1,15 +1,77 @@
-.container-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 10px;
+.container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
 }
-.header-text{
-  display: flex;
-  text-align: center;
-  color: #a37e33;
-  font-size: 20px;
-  margin-bottom: 10px;
+
+.container-form {
+    position: absolute;
+}
+
+.header-text {
+    text-align: center;
+    color: #a37e33;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-error-text {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.example-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.prefix {
+    position: absolute;
+    left: 10px;
+    font-size: 1em;
+    color: #000;
+}
+
+.form-control {
+    padding-left: 30px; /* Adjust padding to make space for the prefix */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+button[mat-flat-button] {
+    width: 100%;
+    max-width: 200px;
+}
+
+.cancel {
+    background-color: #514747;
+}
+.success {
+    background-color: #33c622;
+}
+:host {
+    //display: block;
+    //background-color: transparent; // Прозрачный фон для всего компонента
+    //position: relative;
+    width: 100%;
+    height: 100%; // Убедитесь, что высота 100%
+    //overflow: hidden;
+    //background-color: #bf020a;
+    z-index: 1; // Помещаем компонент на задний план
+    //background-color: rgba(234, 216, 216, 0.9); // Легкий полупрозрачный фон при наведении
+    //background-color: rgba(218, 153, 153, 0);
 }

@@ -1,34 +1,26 @@
-
-
-  <mat-card class="example-card">
+<mat-card class="example-card">
     <mat-card-header class="card-header">
-      <mat-card-title-group>
-        <mat-card-title>
-          <div>{{user.id}}</div>
-          <mat-icon color="primary">
-            person
-          </mat-icon>
-          {{user.name}}
-        </mat-card-title>
-      </mat-card-title-group>
+        <mat-card-title-group>
+            <mat-card-title>
+                <div>{{ user.id }}</div>
+                <mat-icon color="primary"> person </mat-icon>
+                {{ user.name }}
+            </mat-card-title>
+        </mat-card-title-group>
     </mat-card-header>
     <mat-card-content class="card-content">
-      <div>
-        <span>
-            <mat-icon color="primary">
-          phone
-            </mat-icon>
-          {{user.phone}}
-        </span>
-      </div>
-      <div>
-        <span>
-          <mat-icon color="primary">
-            email
-          </mat-icon>
-          {{user.email}}
-        </span>
-      </div>
+        <div>
+            <span>
+                <mat-icon color="primary"> phone </mat-icon>
+                {{ user.phone }}
+            </span>
+        </div>
+        <div>
+            <span>
+                <mat-icon color="primary"> email </mat-icon>
+                {{ user.email }}
+            </span>
+        </div>
     </mat-card-content>
     <button mat-flat-button color="primary" (click)="onDeleteUserId()">Delete</button>
-  </mat-card>
+</mat-card>

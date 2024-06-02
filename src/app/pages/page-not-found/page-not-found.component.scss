@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  background-color: #000;
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Убедитесь, что высота 100% */
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #d8bfff; /* Светло-фиолетовый цвет */
+  font-family: 'monospace';
+  font-size: 72px; /* Увеличиваем размер шрифта */
+  text-align: center;
+  opacity: 0.9;
+  text-shadow: 0 0 10px #d8bfff, 0 0 20px #d8bfff, 0 0 30px #d8bfff, 0 0 40px #d8bfff, 0 0 50px #d8bfff, 0 0 60px #d8bfff, 0 0 70px #d8bfff; /* Добавляем тень */
+}

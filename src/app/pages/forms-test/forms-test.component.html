@@ -1,0 +1,129 @@
+<div class="containers">
+    <div class="content">
+        <form class="container-form" [formGroup]="testForm" (ngSubmit)="submitForm()">
+            <mat-form-field class="example-form-field" appearance="outline">
+                <mat-label>TEST USE FORM</mat-label>
+                <div class="input-wrapper">
+                    <input
+                        matInput
+                        type="string"
+                        formControlName="testName"
+                        class="testClass"
+                        name="testName"
+                    />
+                </div>
+                <button
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                    color="primary"
+                    (click)="testForm.controls['testName'].reset()"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            @if (isLoading) {
+                <span class="loading">Loading...</span>
+            }
+            <span class="btn-submit">
+                <button mat-flat-button color="primary" type="submit" [disabled]="isLoading">
+                    Отправить
+                </button>
+            </span>
+        </form>
+    </div>
+
+    @if (testForm.get('testName')?.untouched) {
+        <div class="message untouched">
+            <h2 class="message">UNTOUCHED</h2>
+            <h3 class="message">Элемент управления формой считается "untouched" (не затронутым)</h3>
+        </div>
+    }
+
+    @if (testForm.get('testName')?.touched) {
+        <div class="message touched">
+            <h2 class="message">TOUCHED</h2>
+            <h3 class="message">
+                Элемент управления формой считается "touched" (затронутым), если пользователь
+                взаимодействовал с ним, то есть элемент получил и потерял фокус. -
+                **Использование**: Полезно для отображения сообщений об ошибках только после того,
+                как пользователь взаимодействовал с полем.
+            </h3>
+            <button mat-flat-button color="primary" (click)="onNoClickButton()">
+                Сбросить параметры
+            </button>
+        </div>
+    }
+
+    @if (testForm.get('testName')?.dirty) {
+        <div class="message dirty">
+            <h2 class="message">DIRTY</h2>
+            <h3 class="message">
+                Элемент управления формой считается "dirty" (изменённым), если пользователь изменил
+                его значение. - **Использование**: Полезно для отслеживания изменений в значениях
+                полей формы.
+            </h3>
+            <button mat-flat-button color="primary" (click)="onNoClickButton()">
+                Сбросить параметры
+            </button>
+        </div>
+    }
+
+    @if (testForm.get('testName')?.pristine) {
+        <div class="message pristine">
+            <h2 class="message">PRISTINE</h2>
+            <h3 class="message">
+                Элемент управления формой считается "pristine" (чистым), если пользователь ещё не
+                изменил его значение. - **Использование**: Полезно для определения, что значение
+                поля формы остаётся неизменным с момента его инициализации.
+            </h3>
+        </div>
+    }
+
+    @if (testForm.get('testName')?.valid) {
+        <div class="message valid">
+            <h2 class="message">VALID</h2>
+            <h3 class="message">
+                Элемент управления формой считается "valid" (действительным), если его текущее
+                значение соответствует всем установленным валидаторам. - **Использование**: Полезно
+                для проверки, что значение поля формы корректно.
+            </h3>
+            <button mat-flat-button color="primary" (click)="onNoClickButton()">
+                Сбросить параметры
+            </button>
+        </div>
+    }
+
+    @if (testForm.get('testName')?.invalid) {
+        <div class="message invalid">
+            <h2 class="message">INVALID</h2>
+            <h3 class="message">
+                Элемент управления формой считается "invalid" (недействительным), если его текущее
+                значение не соответствует хотя бы одному из установленных валидаторов. -
+                **Использование**: Полезно для проверки, что значение поля формы некорректно.
+            </h3>
+        </div>
+    }
+
+    @if (testForm.get('testName')?.pending) {
+        <div class="message pending">
+            <h2 class="message">PENDING</h2>
+            <h3 class="message">
+                Элемент управления формой считается "pending" (в ожидании), если его текущее
+                состояние проверки валидности ещё не завершено. - **Использование**: Полезно для
+                отслеживания асинхронных валидаторов, которые ещё не завершили проверку.
+            </h3>
+        </div>
+    }
+
+    <!--    @if (testForm.get('testName')?.invalid) {-->
+    <!--        <div class="message invalid">-->
+    <!--            <h2 class="message">INVALID</h2>-->
+    <!--            <h3 class="message">-->
+    <!--                Элемент управления формой считается "invalid" (недействительным), если его текущее-->
+    <!--                значение не соответствует хотя бы одному из установленных валидаторов. - -->
+    <!--                **Использование**: Полезно для проверки, что значение поля формы некорректно.-->
+    <!--            </h3>-->
+    <!--        </div>-->
+    <!--    }-->
+</div>

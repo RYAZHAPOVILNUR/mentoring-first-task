@@ -1,9 +1,10 @@
 .container {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    z-index: 1; // Помещаем компонент на задний план
 }
-.header-text-button{
-  text-align: center;
+.header-text-button {
+    text-align: center;
 }
