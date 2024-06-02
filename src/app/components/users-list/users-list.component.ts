@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {UserCardComponent} from "../user-card/user-card.component";
-import {UsersService} from "../../services/users.service";
+import {UsersService} from "@services/users.service";
 import {CommonModule} from "@angular/common";
 import {CreateEditUserComponent} from "../create-edit-user/create-edit-user.component";
 import {MatButton} from "@angular/material/button";
 import {MatDialog, MatDialogConfig, MatDialogModule} from "@angular/material/dialog";
-import {User} from "../../types/user.model";
+import {User} from "@app/types/user.model";
 import {Store} from "@ngrx/store";
-import {addUser, deleteUser, editUser, initUsers} from "../../+state/users.actions";
-import {selectUsers} from "../../+state/users.selectors";
+import {addUser, deleteUser, editUser, initUsers} from "@app/+state/users.actions";
+import {selectUsers} from "@app/+state/users.selectors";
 
 @Component({
   selector: 'app-users-list',

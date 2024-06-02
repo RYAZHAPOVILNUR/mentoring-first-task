@@ -9,8 +9,8 @@ import {provideStoreDevtools} from "@ngrx/store-devtools";
 import {USERS_FEATURE_KEY, usersReducer} from "./+state/users.reducer";
 import {provideEffects} from "@ngrx/effects";
 import * as userEffects from "./+state/users.effects";
-import {API_URL} from "./services/api-url.token";
-import {environment} from "../environments/environment.development";
+import {API_URL} from "@services/api-url.token";
+import {environment} from "@environment/environment.development";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideHttpClient(), provideAnimationsAsync(),

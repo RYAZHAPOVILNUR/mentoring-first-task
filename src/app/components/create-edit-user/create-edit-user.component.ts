@@ -12,7 +12,7 @@ import {AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, Validato
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgIf} from "@angular/common";
-import {User} from "../../types/user.model";
+import {User} from "@app/types/user.model";
 
 export type DialogData = Pick<User, 'name' | 'email'>
 
