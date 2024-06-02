@@ -35,9 +35,7 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
     this.users$.subscribe(users => {
-      console.log('users.length', users.length)
       if (!users.length) {
-        console.log('loading users');
         this.store.dispatch(initUsers());
       }
     })
@@ -60,7 +58,6 @@ export class UsersListComponent implements OnInit {
     dialogRef.componentInstance.isEdit = !!user;
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
       if (!result) return;
       if (dialogRef.componentInstance.isEdit) {
         this.store.dispatch(editUser({userData: {...user, ...result}}));

@@ -50,7 +50,6 @@ export class UsersService {
       .get()
       .subscribe(
         (data: User[]) => {
-          console.log(data);
           this.users = data;
         }
       )

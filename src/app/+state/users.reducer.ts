@@ -53,7 +53,6 @@ const reducer = createReducer(
     }
 
     const id = getNextId();
-    console.log({id})
     const username = `${userData.name}${id}`;
     return ({
       ...state,
@@ -61,8 +60,8 @@ const reducer = createReducer(
     })
   }),
   on(UsersActions.editUserSuccess, (state, {userData}) => {
-    console.log(state, userData)
     return ({
+
         ...state,
         users: state.users.map(user => (user.id === userData.id) ? userData : user),
       }

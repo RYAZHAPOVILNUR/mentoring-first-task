@@ -59,8 +59,6 @@ export class CreateEditUserComponent implements OnInit {
   onCreateEditUser() {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);
-    } else {
-      console.log('invalid input')
     }
   }
 }
