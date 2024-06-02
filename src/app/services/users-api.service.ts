@@ -1,33 +1,35 @@
-import {Injectable} from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../types/user.model";
 import {catchError, Observable, of} from "rxjs";
-import {API_URL} from "../constants/constants";
+import {API_URL} from './api-url.token';
 
 @Injectable({
   providedIn: "root"
 })
 export class UsersApiService {
+  private readonly apiUrl = inject(API_URL);
+
   constructor(private readonly http: HttpClient) {
   }
 
   public get(): Observable<User[]> {
-    return this.http.get<User[]>(`${API_URL}`)
+    return this.http.get<User[]>(`${this.apiUrl}`)
       .pipe(catchError(this.handleError<User[]>('get', [])));
   }
 
   public post(user: User): Observable<User> {
-    return this.http.post<User>(`${API_URL}`, user)
+    return this.http.post<User>(`${this.apiUrl}`, user)
       .pipe(catchError(this.handleError<User>('post')));
   }
 
   public delete(userId: number): Observable<User> {
-    return this.http.delete<User>(`${API_URL}/${userId}`)
+    return this.http.delete<User>(`${this.apiUrl}/${userId}`)
       .pipe(catchError(this.handleError<User>('delete')));
   }
 
   public patch(user: User): Observable<User> {
-    return this.http.patch<User>(`${API_URL}/${user.id}`, user)
+    return this.http.patch<User>(`${this.apiUrl}/${user.id}`, user)
       .pipe(catchError(this.handleError<User>('patch')));
   }
 
