@@ -5,6 +5,7 @@
   <p>Email: {{ user.email }}</p>
   <p>Phone: {{ user.phone }}</p>
   <p>address: {{ user.address.city }}</p> 
-  <p>geo: {{user.address.geo.lat}}</p>
+  <p>geo: lat:{{user.address.geo.lat}} lng:{{user.address.geo.lng}}</p>
+  
   <button (click)="deleteUser()">Удалить</button>
 </div>

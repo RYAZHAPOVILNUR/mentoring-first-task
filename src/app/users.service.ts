@@ -9,11 +9,9 @@ export class UsersService {
   users$ = this.usersSubject.asObservable();
 
   constructor() {}
-
   setUsers(users: any[]): void {
     this.usersSubject.next(users);
   }
-
   deleteUser(id: number): void {
     const currentUsers = this.usersSubject.value;
     const updatedUsers = currentUsers.filter(user => user.id !== id);
