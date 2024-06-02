@@ -6,5 +6,6 @@ export const routes: Routes = [
     path: 'users',
     component: UsersListComponent,
     title: 'Users'
-  }
+  },
+  {path: '', redirectTo: '/users', pathMatch: 'full'}, // redirect to `users-list`
 ];
