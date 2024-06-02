@@ -52,7 +52,6 @@ export class UsersListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(CreateEditUserComponent, dialogConfig);
     dialogRef.componentInstance.isEdit = !!user;
-
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
       if (dialogRef.componentInstance.isEdit) {

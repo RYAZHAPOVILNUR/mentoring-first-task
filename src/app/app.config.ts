@@ -10,6 +10,7 @@ import {USERS_FEATURE_KEY, usersReducer} from "./+state/users.reducer";
 import {provideEffects} from "@ngrx/effects";
 import * as userEffects from "./+state/users.effects";
 import {API_URL} from "./services/api-url.token";
+import {environment} from "../environments/environment.development";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideHttpClient(), provideAnimationsAsync(),
@@ -28,7 +29,7 @@ export const appConfig: ApplicationConfig = {
     }),
     {
       provide: API_URL,
-      useValue: 'https://jsonplaceholder.typicode.com/users',
+      useValue: environment.api_url,
     },
   ]
 };
