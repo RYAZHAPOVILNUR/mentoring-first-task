@@ -8,7 +8,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-import {AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgIf} from "@angular/common";
@@ -37,9 +37,9 @@ export class CreateEditUserComponent implements OnInit {
 
   isEdit?: boolean;
   private readonly fb = inject(FormBuilder);
-  public readonly form = this.fb.group(<DialogData>{
-    name: '',
-    email: ''
+  public readonly form = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', Validators.required],
   });
 
   constructor(
@@ -57,6 +57,10 @@ export class CreateEditUserComponent implements OnInit {
   }
 
   onCreateEditUser() {
-    this.dialogRef.close(this.form.value);
+    if (this.form.valid) {
+      this.dialogRef.close(this.form.value);
+    } else {
+      console.log('invalid input')
+    }
   }
 }
