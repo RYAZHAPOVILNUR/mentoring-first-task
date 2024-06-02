@@ -11,12 +11,24 @@ export class UsersApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  public getUsers(): Observable<User[]> {
-    return this.http
-      .get<User[]>(`${API_URL}/users`)
-      .pipe(
-        catchError(this.handleError<User[]>('getUsers', []))
-      );
+  public get(): Observable<User[]> {
+    return this.http.get<User[]>(`${API_URL}`)
+      .pipe(catchError(this.handleError<User[]>('get', [])));
+  }
+
+  public post(user: User): Observable<User> {
+    return this.http.post<User>(`${API_URL}`, user)
+      .pipe(catchError(this.handleError<User>('post')));
+  }
+
+  public delete(userId: number): Observable<User> {
+    return this.http.delete<User>(`${API_URL}/${userId}`)
+      .pipe(catchError(this.handleError<User>('delete')));
+  }
+
+  public patch(user: User): Observable<User> {
+    return this.http.patch<User>(`${API_URL}/${user.id}`, user)
+      .pipe(catchError(this.handleError<User>('patch')));
   }
 
   /**

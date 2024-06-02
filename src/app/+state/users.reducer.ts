@@ -42,11 +42,11 @@ const reducer = createReducer(
     status: 'error' as const,
     error,
   })),
-  on(UsersActions.deleteUser, (state, {id}) => ({
+  on(UsersActions.deleteUserSuccess, (state, {id}) => ({
     ...state,
     users: state.users.filter(user => user.id !== id),
   })),
-  on(UsersActions.addUser, (state, {userData}) => {
+  on(UsersActions.addUserSuccess, (state, {userData}) => {
     function getNextId() {
       return 1 + state.users
         .reduce((maxId, user) => Math.max(maxId, user.id), -1);
@@ -60,7 +60,7 @@ const reducer = createReducer(
       users: [{...userData, id, username}, ...state.users]
     })
   }),
-  on(UsersActions.editUser, (state, {userData}) => {
+  on(UsersActions.editUserSuccess, (state, {userData}) => {
     console.log(state, userData)
     return ({
         ...state,
@@ -68,6 +68,11 @@ const reducer = createReducer(
       }
     )
   }),
+  on(UsersActions.editUserFailed, (state, {error}) => ({
+    ...state,
+    status: 'error' as const,
+    error,
+  })),
 );
 
 export function usersReducer(state: UsersState | undefined, action: Action) {

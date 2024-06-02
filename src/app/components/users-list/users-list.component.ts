@@ -35,7 +35,7 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
     this.users$.subscribe(users => {
-      console.log('length', length)
+      console.log('users.length', users.length)
       if (!users.length) {
         console.log('loading users');
         this.store.dispatch(initUsers());

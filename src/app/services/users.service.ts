@@ -47,7 +47,7 @@ export class UsersService {
 
   private loadUsers() {
     this.usersApiService
-      .getUsers()
+      .get()
       .subscribe(
         (data: User[]) => {
           console.log(data);

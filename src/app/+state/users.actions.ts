@@ -1,7 +1,6 @@
 import {createAction, props} from '@ngrx/store';
 import {UsersErrors} from './users.reducer';
 import {User} from "../types/user.model";
-import {LoadingStatus} from "../types/loading-status.type";
 
 export const initUsers = createAction('[Users Page] Init');
 
@@ -21,5 +20,3 @@ export const editUser = createAction('[Users Detail] Edit User', props<{ userDat
 );
 export const editUserSuccess = createAction('[Users Detail] Edit User Success', props<{ userData: User }>());
 export const editUserFailed = createAction('[Users Detail] Edit Failed', props<{ error: UsersErrors | null }>());
-
-export const updateUserStatus = createAction('[Users Detail] Update User Status', props<{ status: LoadingStatus }>());
