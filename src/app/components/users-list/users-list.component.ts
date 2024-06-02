@@ -45,10 +45,6 @@ export class UsersListComponent implements OnInit {
     this.store.dispatch(deleteUser({id}));
   }
 
-  public clearLocalStorage() {
-    localStorage.clear()
-  }
-
   public openDialog(user?: User) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
@@ -65,9 +61,5 @@ export class UsersListComponent implements OnInit {
         this.store.dispatch(addUser({userData: result}));
       }
     });
-  }
-
-  public onEditUser(user: User) {
-    this.openDialog(user)
   }
 }

@@ -61,7 +61,6 @@ const reducer = createReducer(
   }),
   on(UsersActions.editUserSuccess, (state, {userData}) => {
     return ({
-
         ...state,
         users: state.users.map(user => (user.id === userData.id) ? userData : user),
       }

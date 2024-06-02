@@ -1,8 +1,7 @@
 <button (click)="openDialog()" mat-raised-button>➕</button>
-<button (click)="clearLocalStorage()" mat-raised-button title="clear localStorage">🧹</button>
 <ul>
   <li *ngFor="let user of users$ | async">
-    <app-user-card (deleteUserEvent)="onDeleteUser($event)" (editUserEvent)="onEditUser($event)"
+    <app-user-card (deleteUserEvent)="onDeleteUser($event)" (editUserEvent)="openDialog($event)"
                    [user]="user"></app-user-card>
   </li>
 </ul>
