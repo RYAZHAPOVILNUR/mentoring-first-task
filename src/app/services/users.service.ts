@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import {BehaviorSubject} from "rxjs";
 import {User} from "../types/user.model";
 import {UsersApiService} from "./users-api.service";
@@ -10,9 +10,7 @@ export class UsersService {
   public readonly USERS_STORAGE_KEY: string = 'users';
   private readonly _users$ = new BehaviorSubject<User[]>([]); // create reactive state
   public readonly users$ = this._users$.asObservable(); // enable outer classes to read the state
-
-  constructor(private readonly usersApiService: UsersApiService) {
-  }
+  private readonly usersApiService = inject(UsersApiService);
 
   private get users(): User[] {
     return this._users$.value;
@@ -23,22 +21,22 @@ export class UsersService {
     this._users$.next(users);
   }
 
-  public addUser(user: User) {
-    const id = this.getNextId();
-    const username = `${user.name}${id}`;
-    this.users = ([{...user, id, username}, ...this._users$.value]);
+  private getNextId() {
+    return 1 + this._users$.value
+      .reduce((maxId, user) => Math.max(maxId, user.id), -1);
   }
 
-  public editUser(editedUser: User) {
+  private editUser(editedUser: User) {
     this.users = (
       this._users$.value
         .map(user => (user.id === editedUser.id) ? editedUser : user)
     );
   }
 
-  public getNextId() {
-    return 1 + this._users$.value
-      .reduce((maxId, user) => Math.max(maxId, user.id), -1);
+  private addUser(user: User) {
+    const id = this.getNextId();
+    const username = `${user.name}${id}`;
+    this.users = ([{...user, id, username}, ...this._users$.value]);
   }
 
   private deleteUser(id: number) {
@@ -46,12 +44,10 @@ export class UsersService {
   }
 
   private loadUsers() {
-    this.usersApiService
-      .get()
-      .subscribe(
-        (data: User[]) => {
-          this.users = data;
-        }
-      )
+    this.usersApiService.get().subscribe(
+      (data: User[]) => {
+        this.users = data;
+      }
+    );
   }
 }

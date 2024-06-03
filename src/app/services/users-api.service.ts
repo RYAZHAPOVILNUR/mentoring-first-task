@@ -9,9 +9,7 @@ import {API_URL} from './api-url.token';
 })
 export class UsersApiService {
   private readonly apiUrl = inject(API_URL);
-
-  constructor(private readonly http: HttpClient) {
-  }
+  private readonly http = inject(HttpClient)
 
   public get(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}`)

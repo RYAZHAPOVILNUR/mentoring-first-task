@@ -34,8 +34,7 @@ export type DialogData = Pick<User, 'name' | 'email'>
   ],
 })
 export class CreateEditUserComponent implements OnInit {
-
-  isEdit?: boolean;
+  public isEdit?: boolean;
   private readonly fb = inject(FormBuilder);
   public readonly form = this.fb.group({
     name: ['', Validators.required],
@@ -43,22 +42,22 @@ export class CreateEditUserComponent implements OnInit {
   });
 
   constructor(
-    public dialogRef: MatDialogRef<CreateEditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: DialogData,
+    private readonly dialogRef: MatDialogRef<CreateEditUserComponent>,
+    @Inject(MAT_DIALOG_DATA) private readonly data: DialogData,
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.form.patchValue({...this.data});
   }
 
-  field<T extends AbstractControl>(nameField: string): T {
-    return this.form.get(nameField) as T;
-  }
-
-  onCreateEditUser() {
+  public onCreateEditUser() {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);
     }
+  }
+
+  private field<T extends AbstractControl>(nameField: string): T {
+    return this.form.get(nameField) as T;
   }
 }

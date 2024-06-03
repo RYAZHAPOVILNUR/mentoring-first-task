@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {UserCardComponent} from "../user-card/user-card.component";
 import {UsersService} from "@services/users.service";
 import {CommonModule} from "@angular/common";
@@ -24,32 +24,16 @@ import {selectUsers} from "@app/+state/users.selectors";
   styleUrl: './users-list.component.scss'
 })
 export class UsersListComponent implements OnInit {
+  private readonly usersService = inject(UsersService);
+  private readonly dialog = inject(MatDialog);
+  private readonly store = inject(Store);
   public readonly users$ = this.store.select(selectUsers);
-
-  constructor(
-    private readonly usersService: UsersService,
-    private dialog: MatDialog,
-    private store: Store
-  ) {
-  }
-
-  ngOnInit() {
-    this.users$.subscribe(users => {
-      if (!users.length) {
-        this.store.dispatch(initUsers());
-      }
-    })
-  }
-
-  public onDeleteUser(id: number) {
-    this.store.dispatch(deleteUser({id}));
-  }
 
   public openDialog(user?: User) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.data = user;
-
+    
     const dialogRef = this.dialog.open(CreateEditUserComponent, dialogConfig);
     dialogRef.componentInstance.isEdit = !!user;
     dialogRef.afterClosed().subscribe(result => {
@@ -60,5 +44,17 @@ export class UsersListComponent implements OnInit {
         this.store.dispatch(addUser({userData: result}));
       }
     });
+  }
+
+  public ngOnInit() {
+    this.users$.subscribe(users => {
+      if (!users.length) {
+        this.store.dispatch(initUsers());
+      }
+    })
+  }
+
+  public onDeleteUser(id: number) {
+    this.store.dispatch(deleteUser({id}));
   }
 }

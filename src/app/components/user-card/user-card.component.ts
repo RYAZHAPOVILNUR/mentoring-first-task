@@ -9,15 +9,15 @@ import {User} from "@app/types/user.model";
   styleUrl: './user-card.component.scss'
 })
 export class UserCardComponent {
-  @Input() user!: User;
-  @Output() deleteUserEvent = new EventEmitter<number>();
-  @Output() editUserEvent = new EventEmitter<User>();
+  @Input() public user!: User;
+  @Output() private readonly editUserEvent = new EventEmitter<User>();
+  @Output() private readonly deleteUserEvent = new EventEmitter<number>();
 
-  onDelete() {
+  public onDelete() {
     this.deleteUserEvent.emit(this.user.id);
   }
 
-  onEdit() {
+  public onEdit() {
     this.editUserEvent.emit(this.user);
   }
 }
