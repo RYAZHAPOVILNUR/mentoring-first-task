@@ -17,4 +17,17 @@ export class UsersService {
     const updatedUsers = currentUsers.filter(user => user.id !== id);
     this.usersSubject.next(updatedUsers);
   }
+  
+  addUser(user: any): void {
+    const users = [...this.usersSubject.getValue(), user];
+    this.usersSubject.next(users);
+  }
+
+  editUser(updatedUser: any): void {
+    const users = this.usersSubject.getValue().map(user =>
+      user.id === updatedUser.id ? updatedUser : user
+    );
+    this.usersSubject.next(users);
+  }
+  
 }

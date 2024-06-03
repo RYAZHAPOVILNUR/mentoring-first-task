@@ -1,0 +1,38 @@
+<!-- <div class="container">
+    <h1>Создать пользователя</h1>
+    <form action="">
+        <input type="text" name="name" placeholder="Имя">
+        <input type="text" name="username" placeholder="Имя пользователя">
+        <input type="email" name="email" placeholder="Email">
+        <input type="tel" name="phone" placeholder="Телефон">
+        <input type="text" name="address" placeholder="Адрес">
+        <input type="text" name="geo" placeholder="Гео">
+        <button type="submit">Создать пользователя</button>
+    </form>
+</div> -->
+
+<h1 mat-dialog-title>{{isEdit ? 'Редактировать пользователя' : 'Создать пользователя'}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="userForm">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button (click)="onSave()" [disabled]="userForm.invalid">{{isEdit ? 'Сохранить' : 'Создать'}}</button>
+</div>
