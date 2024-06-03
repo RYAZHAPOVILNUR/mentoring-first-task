@@ -1,6 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {UserCardComponent} from "../user-card/user-card.component";
-import {UsersService} from "@services/users.service";
 import {CommonModule} from "@angular/common";
 import {CreateEditUserComponent} from "../create-edit-user/create-edit-user.component";
 import {MatButton} from "@angular/material/button";
@@ -24,7 +23,6 @@ import {selectUsers} from "@app/+state/users.selectors";
   styleUrl: './users-list.component.scss'
 })
 export class UsersListComponent implements OnInit {
-  private readonly usersService = inject(UsersService);
   private readonly dialog = inject(MatDialog);
   private readonly store = inject(Store);
   public readonly users$ = this.store.select(selectUsers);
@@ -33,9 +31,10 @@ export class UsersListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.data = user;
-    
+
     const dialogRef = this.dialog.open(CreateEditUserComponent, dialogConfig);
     dialogRef.componentInstance.isEdit = !!user;
+
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
       if (dialogRef.componentInstance.isEdit) {
@@ -46,7 +45,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.users$.subscribe(users => {
       if (!users.length) {
         this.store.dispatch(initUsers());

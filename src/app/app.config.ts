@@ -13,7 +13,10 @@ import {API_URL} from "@services/api-url.token";
 import {environment} from "@environment/environment.development";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(), provideAnimationsAsync(),
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+    provideAnimationsAsync(),
     provideEffects(userEffects),
     provideStore(
       {

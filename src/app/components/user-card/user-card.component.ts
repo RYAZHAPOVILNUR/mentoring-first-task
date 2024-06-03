@@ -9,7 +9,7 @@ import {User} from "@app/types/user.model";
   styleUrl: './user-card.component.scss'
 })
 export class UserCardComponent {
-  @Input() public user!: User;
+  @Input({required: true}) public user!: User;
   @Output() private readonly editUserEvent = new EventEmitter<User>();
   @Output() private readonly deleteUserEvent = new EventEmitter<number>();
 

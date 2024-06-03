@@ -1,4 +1,4 @@
-import {Component, inject, Inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -8,7 +8,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
-import {AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgIf} from "@angular/common";
@@ -35,19 +35,15 @@ export type DialogData = Pick<User, 'name' | 'email'>
 })
 export class CreateEditUserComponent implements OnInit {
   public isEdit?: boolean;
+  private readonly dialogRef: MatDialogRef<CreateEditUserComponent> = inject(MatDialogRef<CreateEditUserComponent>);
+  private readonly data = inject(MAT_DIALOG_DATA);
   private readonly fb = inject(FormBuilder);
   public readonly form = this.fb.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
   });
 
-  constructor(
-    private readonly dialogRef: MatDialogRef<CreateEditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) private readonly data: DialogData,
-  ) {
-  }
-
-  public ngOnInit() {
+  ngOnInit() {
     this.form.patchValue({...this.data});
   }
 
@@ -55,9 +51,5 @@ export class CreateEditUserComponent implements OnInit {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);
     }
-  }
-
-  private field<T extends AbstractControl>(nameField: string): T {
-    return this.form.get(nameField) as T;
   }
 }
