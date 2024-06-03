@@ -21,29 +21,29 @@ export class UsersService {
     this._users$.next(users);
   }
 
-  private getNextId() {
+  private getNextId(): number {
     return 1 + this._users$.value
       .reduce((maxId, user) => Math.max(maxId, user.id), -1);
   }
 
-  private editUser(editedUser: User) {
+  private editUser(editedUser: User): void {
     this.users = (
       this._users$.value
         .map(user => (user.id === editedUser.id) ? editedUser : user)
     );
   }
 
-  private addUser(user: User) {
+  private addUser(user: User): void {
     const id = this.getNextId();
     const username = `${user.name}${id}`;
     this.users = ([{...user, id, username}, ...this._users$.value]);
   }
 
-  private deleteUser(id: number) {
+  private deleteUser(id: number): void {
     this.users = this._users$.value.filter(user => user.id !== id);
   }
 
-  private loadUsers() {
+  private loadUsers(): void {
     this.usersApiService.get().subscribe(
       (data: User[]) => {
         this.users = data;

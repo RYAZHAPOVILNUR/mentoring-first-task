@@ -27,7 +27,7 @@ export class UsersListComponent implements OnInit {
   private readonly store = inject(Store);
   public readonly users$ = this.store.select(selectUsers);
 
-  public openDialog(user?: User) {
+  public openDialog(user?: User): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.data = user;
@@ -45,7 +45,7 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.users$.subscribe(users => {
       if (!users.length) {
         this.store.dispatch(initUsers());
@@ -53,7 +53,7 @@ export class UsersListComponent implements OnInit {
     })
   }
 
-  public onDeleteUser(id: number) {
+  public onDeleteUser(id: number): void {
     this.store.dispatch(deleteUser({id}));
   }
 }

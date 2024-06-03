@@ -13,11 +13,11 @@ export class UserCardComponent {
   @Output() private readonly editUserEvent = new EventEmitter<User>();
   @Output() private readonly deleteUserEvent = new EventEmitter<number>();
 
-  public onDelete() {
+  public onDelete(): void {
     this.deleteUserEvent.emit(this.user.id);
   }
 
-  public onEdit() {
+  public onEdit(): void {
     this.editUserEvent.emit(this.user);
   }
 }

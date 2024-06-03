@@ -43,11 +43,11 @@ export class CreateEditUserComponent implements OnInit {
     email: ['', Validators.required],
   });
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form.patchValue({...this.data});
   }
 
-  public onCreateEditUser() {
+  public onCreateEditUser(): void {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);
     }
