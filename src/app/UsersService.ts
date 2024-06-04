@@ -24,6 +24,12 @@ export class usersService {
         this.usersSubject.next(this.usersSubject.getValue().concat([user]));
     }
 
+    editUser(user: IUser) {
+        this.usersSubject.next(this.usersSubject.value.map(item =>
+            item.id === user.id ? user : item
+        ));
+    }
+
     deleteUser(id: number) {
         this.usersSubject.next(this.usersSubject.value.filter(user => user.id != id))
     }

@@ -7,3 +7,7 @@
   padding: 5px;
   justify-content: space-between;
 }
+
+.card-btns {
+  gap: 10px;
+}

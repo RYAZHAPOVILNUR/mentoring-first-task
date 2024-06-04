@@ -20,6 +20,7 @@ export class UsersListComponent implements OnInit {
     @Input()
 
     public readonly users$ = this.usersService.users$;
+    public isEdit = true;
 
     constructor(private usersService: usersService, public dialog: MatDialog) {
     }
@@ -27,16 +28,32 @@ export class UsersListComponent implements OnInit {
     onCreateUser(user: IUser) {
         this.usersService.createUser(user);
     }
-    
+
+    onEditUser(user: IUser) {
+        this.usersService.editUser(user);
+    }
+
     onDeleteUser(id: number) {
         this.usersService.deleteUser(id);
     }
 
-    openDialog() {
+    openEditDialog(user: IUser) {
+        const dialogRef = this.dialog.open(CreatEditUser, {
+            data: user
+        })
+
+        dialogRef.afterClosed().subscribe(res => {
+            this.onEditUser(res.data)
+        })
+    }
+
+    openAddDialog() {
         const dialogRef = this.dialog.open(CreatEditUser, {})
 
         dialogRef.afterClosed().subscribe(res => {
-            this.onCreateUser(res.data)
+            const id = crypto.randomUUID();
+            const data = {...res.data, id: id}
+            this.onCreateUser(data)
         })
     }
 

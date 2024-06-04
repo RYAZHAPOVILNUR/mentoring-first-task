@@ -16,9 +16,14 @@ export class UserCard implements OnInit {
     @Input() user!: IUser;
     
     @Output() onDelete: EventEmitter<any> = new EventEmitter();
+    @Output() onOpenEditDialog: EventEmitter<any> = new EventEmitter();
 
     onDeleteUser(id: number) {
         this.onDelete.emit(id);
+    }
+
+    openEditDialog(user: IUser) {
+        this.onOpenEditDialog.emit(user);
     }
 
     ngOnInit() {
