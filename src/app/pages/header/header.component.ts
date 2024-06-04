@@ -44,13 +44,8 @@ export class HeaderComponent {
     links = [
         { url: '/', name: 'Home' },
         { url: '/users', name: 'Users' },
-        { url: '/forms', name: 'Forms Tests' },
-        { url: '/display', name: 'Display' },
     ];
-    constructor(
-        private _uiService: UiService,
-        private _router: Router
-    ) {}
+    constructor(private _uiService: UiService) {}
 
     onSidenavSet(drawer: MatSidenav) {
         this._uiService.drawer = drawer;

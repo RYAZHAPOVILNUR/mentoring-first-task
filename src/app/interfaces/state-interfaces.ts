@@ -1,4 +1,4 @@
-export interface IState {
+export interface State<T> {
     stateName: string;
-    array: [];
+    data: T;
 }

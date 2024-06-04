@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../../services/users/users.service';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,8 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
 import { HeaderComponent } from '../../header/header.component';
-import { DisplayViewComponent } from '../../display-view/display-view.component';
-import { MatrixComponent } from '../../components/matrix/matrix.component';
+import { ToastrService } from 'ngx-toastr';
+import { UsersService } from '../../../services/users/users.service';
 
 @Component({
     selector: 'app-users-list',
@@ -25,7 +24,6 @@ import { MatrixComponent } from '../../components/matrix/matrix.component';
         MatButtonModule,
         ReactiveFormsModule,
         HeaderComponent,
-        DisplayViewComponent,
         NgComponentOutlet,
     ],
     templateUrl: './users-list.component.html',
@@ -36,14 +34,19 @@ export class UsersListComponent implements OnInit {
 
     constructor(
         private usersService: UsersService,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private toastr: ToastrService
     ) {}
 
     ngOnInit() {
         this.usersService.loadUsers();
     }
+
     onDeleteUserId(id: number): void {
         this.usersService.deleteUser(id);
+        this.toastr.success('Пользователь удален', 'Success', {
+            // progressBar: true,
+        });
     }
 
     openDialog(): void {
@@ -52,7 +55,12 @@ export class UsersListComponent implements OnInit {
             height: '500px',
             data: {},
         });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                console.log('result', result);
+                this.usersService.updateUser(result);
+                // this.usersService.loadUsers();
+            }
+        });
     }
-
-    protected readonly displayComponent = MatrixComponent;
 }

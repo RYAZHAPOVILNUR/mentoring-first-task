@@ -3,12 +3,11 @@ import { User } from '../../../interfaces/users';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { DisplayViewComponent } from '../../display-view/display-view.component';
 
 @Component({
     selector: 'app-user-card',
     standalone: true,
-    imports: [MatCardModule, MatButtonModule, MatIconModule, DisplayViewComponent],
+    imports: [MatCardModule, MatButtonModule, MatIconModule],
     templateUrl: './user-card.component.html',
     styleUrls: ['./user-card.component.scss'],
 })

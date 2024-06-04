@@ -1,5 +1,4 @@
-<!--<ng-container *ngComponentOutlet="displayComponent">-->
-<form class="container-form" [formGroup]="userForm">
+<form class="container-form" [formGroup]="userForm" (ngSubmit)="submitForm()">
     <div class="header-text">
         <h2>Create user</h2>
     </div>
@@ -14,7 +13,7 @@
             [ngClass]="{
                 invalid: userForm.get('userName')?.invalid && userForm.get('userName')?.touched
             }"
-            (click)="checkFormTouched()"
+            (blur)="onBlur('userName')"
         />
         <button
             matSuffix
@@ -38,7 +37,7 @@
             [ngClass]="{
                 invalid: userForm.get('userEmail')?.invalid && userForm.get('userEmail')?.touched
             }"
-            (click)="checkFormTouched()"
+            (blur)="onBlur('userEmail')"
         />
         <button
             matSuffix
@@ -54,9 +53,11 @@
     <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Телефон</mat-label>
         <div class="input-wrapper">
-            @if (userForm.get('userEmail')?.touched && userForm.get('userPhone')?.dirty) {
-                <span class="prefix">+7</span>
-            }
+            <span
+                class="prefix"
+                *ngIf="userForm.get('userPhone')?.touched && userForm.get('userPhone')?.dirty"
+                >+7</span
+            >
             <input
                 matInput
                 type="tel"
@@ -68,7 +69,7 @@
                         userForm.get('userPhone')?.invalid && userForm.get('userPhone')?.touched
                 }"
                 (input)="onInput($event)"
-                (click)="checkFormTouched()"
+                (blur)="onBlur('userPhone')"
             />
         </div>
         <button
@@ -84,14 +85,14 @@
 
     <div class="button-container">
         <button
-            [class.cancel]="!formValid"
-            [class.success]="formValid"
+            [class.cancel]="!validForms"
+            [class.success]="validForms"
             mat-flat-button
             color="primary"
-            (click)="onNoClick()"
+            type="submit"
         >
-            {{ formValid ? 'Отправить' : 'Cancel' }}
+            {{ validForms ? 'Отправить' : 'Cancel' }}
         </button>
+        <button (click)="testBuutton()">TEST</button>
     </div>
 </form>
-<!--</ng-container>-->
