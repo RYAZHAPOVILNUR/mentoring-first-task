@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Add new user</h2>
+<mat-dialog-content>
+  <form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
+    <div>
+      <label>Username</label><br />
+      <input name="username" formControlName="username" />
+      @if(myForm.controls["username"].invalid &&
+      myForm.controls["username"].touched){
+      <div class="alert">Wrong username</div>
+      }
+    </div>
+    <div>
+      <label>Name</label><br />
+      <input name="name" formControlName="name" />
+      @if(myForm.controls["name"].invalid &&
+      myForm.controls["name"].touched){
+      <div class="alert">Wrong name</div>
+      }
+    </div>
+    <div>
+      <label>Email</label><br />
+      <input name="email" formControlName="email" />
+      @if(myForm.controls["email"].invalid && myForm.controls["email"].touched){
+      <div class="alert">Wrong email</div>
+      }
+    </div>
+    <div>
+      <div>
+        <label>Phone</label><br />
+        <input name="phone" formControlName="phone" />
+        @if(myForm.controls["phone"].invalid &&
+        myForm.controls["phone"].touched){
+        <div class="alert">Wrong phone</div>
+        }
+      </div>
+    </div>
+    <button [disabled]="myForm.invalid">Create User</button>
+  </form>
+</mat-dialog-content>

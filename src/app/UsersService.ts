@@ -20,6 +20,10 @@ export class usersService {
         )
     }
 
+    createUser(user: IUser) {
+        this.usersSubject.next(this.usersSubject.getValue().concat([user]));
+    }
+
     deleteUser(id: number) {
         this.usersSubject.next(this.usersSubject.value.filter(user => user.id != id))
     }

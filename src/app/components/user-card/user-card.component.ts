@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from "@angular/core";
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button'
 
 import { IUser } from "../../user";
+
 @Component({
     selector: 'user-card',
     standalone: true,
@@ -13,7 +14,7 @@ import { IUser } from "../../user";
 
 export class UserCard implements OnInit {
     @Input() user!: IUser;
-
+    
     @Output() onDelete: EventEmitter<any> = new EventEmitter();
 
     onDeleteUser(id: number) {

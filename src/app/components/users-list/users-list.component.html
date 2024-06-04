@@ -2,5 +2,7 @@
   <user-card
     *ngFor="let user of users$ | async"
     [user]="user"
-    (onDelete)="onDeleteUser(user.id)"></user-card>
+    (onDelete)="onDeleteUser(user.id)">
+  </user-card>
 </mat-list>
+<button mat-flat-button color="primary" (click)="openDialog()" class="add-btn">Add user</button>
