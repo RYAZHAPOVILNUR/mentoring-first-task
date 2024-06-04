@@ -27,9 +27,19 @@
     </ul>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button *ngIf="isEdit; else create" (click)="saveUser()">Save User</button>
+    <button 
+        mat-raised-button 
+        *ngIf="isEdit; else create" 
+        (click)="saveUser()"
+        >
+        Save User
+    </button>
     <ng-template #create>
-        <button mat-raised-button (click)="createUser()">Create User</button>
+        <button mat-raised-button (click)="createUser()">
+            Create User
+        </button>
     </ng-template>
-    <button mat-raised-button (click)="cancel()">Close</button>
+    <button mat-raised-button (click)="cancel()">
+        Close
+    </button>
 </mat-dialog-actions>
