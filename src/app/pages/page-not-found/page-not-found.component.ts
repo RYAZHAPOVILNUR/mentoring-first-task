@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-page-not-found',
@@ -8,6 +9,7 @@ import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@
     styleUrl: './page-not-found.component.scss',
 })
 export class PageNotFoundComponent implements AfterViewInit {
+    constructor(private router: Router) {}
     @ViewChild('matrixCodeSpace', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
     private matrixContext!: CanvasRenderingContext2D;
     private width!: number;
@@ -48,5 +50,8 @@ export class PageNotFoundComponent implements AfterViewInit {
                 this.yPosition[index] = y + 20;
             }
         });
+    }
+    onRedirect() {
+        this.router.navigate(['/']);
     }
 }

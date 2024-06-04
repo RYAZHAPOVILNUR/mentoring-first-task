@@ -1,33 +1,43 @@
 :host {
-  display: block;
-  background-color: #000;
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Убедитесь, что высота 100% */
-  overflow: hidden;
+    display: block;
+    //background-color: #b51e1e;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Убедитесь, что высота 100% */
+    overflow: hidden;
 }
 
 .container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    //border: solid 100px red;
+    //border-radius: 500px;
 }
 
 canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
+    //display: block;
+    //width: 100%;
+    //height: 100%;
 }
 
 .centered-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #d8bfff; /* Светло-фиолетовый цвет */
-  font-family: 'monospace';
-  font-size: 72px; /* Увеличиваем размер шрифта */
-  text-align: center;
-  opacity: 0.9;
-  text-shadow: 0 0 10px #d8bfff, 0 0 20px #d8bfff, 0 0 30px #d8bfff, 0 0 40px #d8bfff, 0 0 50px #d8bfff, 0 0 60px #d8bfff, 0 0 70px #d8bfff; /* Добавляем тень */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #16e851; /* Светло-фиолетовый цвет */
+    font-family: 'monospace';
+    font-size: 72px; /* Увеличиваем размер шрифта */
+    text-align: center;
+    opacity: 0.9;
+    text-shadow:
+        0 0 10px #d8bfff,
+        0 0 20px #0d9aba,
+        0 0 30px #d8bfff,
+        0 0 40px #caa808,
+        0 0 50px #d8bfff,
+        0 0 60px #d8bfff,
+        0 0 70px #d8bfff; /* Добавляем тень */
+    background-color: hsla(0, 31%, 55%, 0.1); /* Черный цвет с 50% прозрачностью */
 }
