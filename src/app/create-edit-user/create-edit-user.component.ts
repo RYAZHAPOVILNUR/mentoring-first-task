@@ -7,9 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-create-edit-user',
   standalone: true,
-  imports: [MatInputModule,ReactiveFormsModule],
+  imports: [MatInputModule, ReactiveFormsModule],
   templateUrl: './create-edit-user.component.html',
-  styleUrl: './create-edit-user.component.scss'
+  styleUrl: './create-edit-user.component.scss',
 })
 export class CreateEditUserComponent {
   userForm: FormGroup;
@@ -26,7 +26,7 @@ export class CreateEditUserComponent {
       name: [data?.name || '', Validators.required],
       username: [data?.username || '', Validators.required],
       email: [data?.email || '', [Validators.required, Validators.email]],
-      phone: [data?.phone || '', Validators.required]
+      phone: [data?.phone || '', Validators.required],
     });
   }
 

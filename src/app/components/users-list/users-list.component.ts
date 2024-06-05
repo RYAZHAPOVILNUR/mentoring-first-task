@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersApiService } from '../../users-api.service';
 import { UsersService } from '../../users.service';
 import { CommonModule } from '@angular/common';
@@ -9,43 +9,25 @@ import { CreateEditUserComponent } from '../../create-edit-user/create-edit-user
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [UserCardComponent, CommonModule, ],
+  imports: [UserCardComponent, CommonModule],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent {
   public readonly users$ = this.usersService.users$;
 
   constructor(
     private usersApiService: UsersApiService,
     private usersService: UsersService,
     private dialog: MatDialog
-  ) {};
+  ) {}
 
   ngOnInit(): void {
-    this.usersApiService.getUsers().subscribe((users) => {
-      this.usersService.setUsers(users);
-    });
-  };
-
-  onUserDeleted(userId: number): void {
-    this.usersService.deleteUser(userId);
-  };
-
-  // openAddUserDialog(): void {
-  //   const dialogRef = this.dialog.open(CreateEditUserComponent, {
-  //     data: { isEdit: false }
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-         
-  //     }
-  //   });
-  // }
+    this.loadUsers();
+  }
 
   loadUsers(): void {
-    this.usersApiService.getUsers().subscribe(users => {
+    this.usersApiService.getUsers().subscribe((users) => {
       this.usersService.setUsers(users);
     });
   }
@@ -53,12 +35,13 @@ export class UsersListComponent implements OnInit {
   deleteUser(id: number): void {
     this.usersService.deleteUser(id);
   }
+
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(CreateEditUserComponent, {
-      width: '300px'
+      width: '300px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.usersService.addUser(result);
       }
@@ -68,13 +51,14 @@ export class UsersListComponent implements OnInit {
   openEditUserDialog(user: any): void {
     const dialogRef = this.dialog.open(CreateEditUserComponent, {
       width: '300px',
-      data: user
+      data: user,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.usersService.editUser(result);
       }
     });
+    console.log(this.openEditUserDialog);
   }
-};
+}

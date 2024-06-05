@@ -1,10 +1,9 @@
 <div class="user-card">
   <h3>{{ user.id }}</h3>
   <p>{{ user.name }}</p>
-  <p>username: {{ user.username }}</p>
+  <p>surname: {{ user.username }}</p>
   <p>Email: {{ user.email }}</p>
   <p>Phone: {{ user.phone }}</p>
-  <p>address: {{ user.address.city }}</p> 
-  <p>geo: lat:{{user.address.geo.lat}} lng:{{user.address.geo.lng}}</p>
+
   <button (click)="deleteUser()">Удалить</button>
 </div>

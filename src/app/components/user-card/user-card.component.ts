@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -6,7 +6,7 @@ import { Output, EventEmitter } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.scss'
+  styleUrl: './user-card.component.scss',
 })
 export class UserCardComponent {
   @Input() user: any;
