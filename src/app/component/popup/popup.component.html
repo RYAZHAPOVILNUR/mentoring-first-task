@@ -1,0 +1,27 @@
+<form [formGroup]='myform' (ngSubmit)='saveUser()'>
+	<h1 mat-dialog-title>{{inputdata.title}}</h1>
+
+	<div mat-dialog-content>
+		<mat-form-field>
+			<mat-label>Name</mat-label>
+			<input formControlName='name' matInput>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Username</mat-label>
+			<input formControlName='username' matInput>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>email</mat-label>
+			<input formControlName='email' matInput>
+		</mat-form-field><mat-form-field>
+			<mat-label>phone</mat-label>
+			<input formControlName='phone' matInput>
+		</mat-form-field> <br>
+		<mat-checkbox formControlName='status'>Is Active</mat-checkbox>
+	</div> 
+	
+	<div mat-dialog-actions>
+		<button mat-raised-button color="primary">Save</button>
+		<button mat-raised-button color='warm' (click)="closePopup() ">Close</button>
+	</div>
+</form>

@@ -1,0 +1,7 @@
+<button style='margin-left: 80%;' mat-raised-button color='primary' (click)="openPopup(false)">Add User </button>
+
+<div style='display: flex;  flex-wrap: wrap;' >
+	<div *ngFor="let user of users$ | async ">
+		<app-user-card  [user]="user" (onEditUser)="openPopup(true,user)" (onDeleteUser)="deleteUser($event)"></app-user-card>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<div class='user-card'>
+  <h2>Users-card</h2>
+  <div>
+    <div><strong>ID:</strong> {{ user.id }}</div>
+    <div><strong>Name:</strong> {{ user.name }}</div>
+    <div><strong>Username:</strong>{{user.username}}</div>
+    <div><strong>Email:</strong> {{ user.email }}</div>
+    <div><strong>Phone:{{user.phone}}</strong></div>
+  </div>
+
+  <button (click)="deleteUser()">Delete</button>
+  <button (click)="editUser()">Edit</button>
+</div>
