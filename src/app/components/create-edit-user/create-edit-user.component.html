@@ -33,6 +33,14 @@
         <input name="phone" formControlName="phone" />
       </div>
     </div>
-    <button [disabled]="myForm.invalid">{{data ? "Edit User" : "Create User"}}</button>
   </form>
 </mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    align="end"
+    mat-raised-button
+    color="primary"
+    [disabled]="myForm.invalid">
+    {{ data ? 'Edit User' : 'Create User' }}
+  </button>
+</mat-dialog-actions>

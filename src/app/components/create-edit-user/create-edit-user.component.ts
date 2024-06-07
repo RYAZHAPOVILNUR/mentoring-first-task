@@ -1,14 +1,16 @@
 import { Component, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialogContent, MatDialogTitle, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogContent, MatDialogTitle, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from "@angular/forms";
 import { IUser } from "../../user";
 import { NgIf } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
     selector: 'create-edit-user',
     templateUrl: 'create-edit-user.component.html',
+    styleUrls: ['create-edit-user.component.css'],
     standalone: true,
-    imports: [MatDialogTitle, MatDialogContent, FormsModule, ReactiveFormsModule, NgIf],
+    imports: [MatDialogTitle, MatDialogContent, MatDialogModule, MatButtonModule, FormsModule, ReactiveFormsModule, NgIf],
 })
 
 export class CreatEditUser {
