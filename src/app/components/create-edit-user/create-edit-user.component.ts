@@ -14,9 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserCardComponent } from '../user-card/user-card.component';
-import { User } from '../interface/users.interface';
+import { User } from '../../interface/users.interface';
 import { Dialog, DialogRef } from '@angular/cdk/dialog';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -34,17 +34,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './create-edit-user.component.html',
   styleUrl: './create-edit-user.component.scss',
 })
-export class CreateEditUserComponen implements OnInit {
+
+export class CreateEditUserComponen  {
   isEdit?: boolean;
   public data? = inject(MAT_DIALOG_DATA);
   public userService = inject(UserService);
   public dialogRef?: MatDialogRef<CreateEditUserComponen> = inject(
     MatDialogRef<CreateEditUserComponen>
   );
-
-  public ngOnInit(): void {
-    console.log(this.data);
-  }
 
   public newForm = new FormGroup({
     name: new FormControl(this.data?.user?.name ?? '', [Validators.required]),
@@ -57,15 +54,14 @@ export class CreateEditUserComponen implements OnInit {
   });
 
   public createUser() {
-    console.log(this.newForm.value);
     return this.dialogRef?.close(this.newForm.value);
   }
+
   public saveUser() {
-if(this.newForm.valid){
+  if(this.newForm.valid){
   return this.dialogRef?.close(this.newForm.value);
-}else{
+  }else{
   alert('Заполните корректно!')
-}
-   
-  }
+  }}
+
 }

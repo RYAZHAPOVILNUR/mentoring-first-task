@@ -63,14 +63,6 @@ export class UserService {
         return existingUser;
       }
     });
-    console.log(
-      'up',
-      updatedUsers,
-      'user',
-      user,
-      'users',
-      this.userSubject$.getValue()
-    );
     this.userSubject$.next(updatedUsers);
     this.localService.setItem('data', updatedUsers)
   }

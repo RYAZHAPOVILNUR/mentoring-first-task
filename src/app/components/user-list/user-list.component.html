@@ -1,4 +1,3 @@
- 
 <div>
     @for(user of users$ |async; track $index){
       <app-user-card [user]="user" (remove)="deleteUser($event)" (editUserEvent)="openDialog($event)"></app-user-card>
