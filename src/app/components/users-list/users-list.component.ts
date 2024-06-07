@@ -59,6 +59,5 @@ export class UsersListComponent {
         this.usersService.editUser(result);
       }
     });
-    console.log(this.openEditUserDialog);
   }
 }
