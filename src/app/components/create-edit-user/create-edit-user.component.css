@@ -2,6 +2,8 @@
   align-self: center;
 }
 
-.mat-mdc-dialog-actions {
+.dialog-btn {
+  display: flex;
+  margin-top: 8px;
   justify-content: center;
 }

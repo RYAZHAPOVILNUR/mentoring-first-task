@@ -5,8 +5,8 @@
       <label>Username</label><br />
       <input name="username" formControlName="username" />
       @if (
-        myForm.controls['username'].invalid &&
-        myForm.controls['username'].touched
+        myForm.controls["username"].invalid &&
+        myForm.controls["username"].touched
       ) {
         <div class="alert">Wrong username</div>
       }
@@ -14,7 +14,7 @@
     <div>
       <label>Name</label><br />
       <input name="name" formControlName="name" />
-      @if (myForm.controls['name'].invalid && myForm.controls['name'].touched) {
+      @if (myForm.controls["name"].invalid && myForm.controls["name"].touched) {
         <div class="alert">Wrong name</div>
       }
     </div>
@@ -22,7 +22,7 @@
       <label>Email</label><br />
       <input name="email" formControlName="email" />
       @if (
-        myForm.controls['email'].invalid && myForm.controls['email'].touched
+        myForm.controls["email"].invalid && myForm.controls["email"].touched
       ) {
         <div class="alert">Wrong email</div>
       }
@@ -33,14 +33,10 @@
         <input name="phone" formControlName="phone" />
       </div>
     </div>
+    <div class="dialog-btn">
+      <button [disabled]="myForm.invalid" mat-raised-button color="primary">
+        {{ data ? "Edit User" : "Create User" }}
+      </button>
+    </div>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button
-    align="end"
-    mat-raised-button
-    color="primary"
-    [disabled]="myForm.invalid">
-    {{ data ? 'Edit User' : 'Create User' }}
-  </button>
-</mat-dialog-actions>
