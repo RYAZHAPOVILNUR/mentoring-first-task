@@ -4,10 +4,7 @@
     <div>
       <label>Username</label><br />
       <input name="username" formControlName="username" />
-      @if (
-        myForm.controls["username"].invalid &&
-        myForm.controls["username"].touched
-      ) {
+      @if (myForm.controls["username"].invalid && myForm.controls["username"].touched) {
         <div class="alert">Wrong username</div>
       }
     </div>
@@ -21,9 +18,7 @@
     <div>
       <label>Email</label><br />
       <input name="email" formControlName="email" />
-      @if (
-        myForm.controls["email"].invalid && myForm.controls["email"].touched
-      ) {
+      @if (myForm.controls["email"].invalid && myForm.controls["email"].touched) {
         <div class="alert">Wrong email</div>
       }
     </div>

@@ -1,31 +1,29 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from "@angular/core";
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
 
 import { IUser } from "../../user";
 
 @Component({
-    selector: 'user-card',
-    standalone: true,
-    templateUrl: './user-card.component.html',
-    styleUrls: ['./user-card.component.css'],
-    imports: [MatCardModule, MatButtonModule]
+  selector: "user-card",
+  standalone: true,
+  templateUrl: "./user-card.component.html",
+  styleUrls: ["./user-card.component.css"],
+  imports: [MatCardModule, MatButtonModule],
 })
-
 export class UserCard implements OnInit {
-    @Input() user!: IUser;
-    
-    @Output() onDelete: EventEmitter<any> = new EventEmitter();
-    @Output() onOpenEditDialog: EventEmitter<any> = new EventEmitter();
+  @Input() user!: IUser;
 
-    onDeleteUser(id: number) {
-        this.onDelete.emit(id);
-    }
+  @Output() onDelete: EventEmitter<any> = new EventEmitter();
+  @Output() onOpenEditDialog: EventEmitter<any> = new EventEmitter();
 
-    openEditDialog(user: IUser) {
-        this.onOpenEditDialog.emit(user);
-    }
+  onDeleteUser(id: number) {
+    this.onDelete.emit(id);
+  }
 
-    ngOnInit() {
-    }
+  openEditDialog(user: IUser) {
+    this.onOpenEditDialog.emit(user);
+  }
+
+  ngOnInit() {}
 }

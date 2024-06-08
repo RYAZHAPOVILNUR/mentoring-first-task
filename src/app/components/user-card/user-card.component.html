@@ -1,7 +1,5 @@
 <mat-card class="user-card">
-  <img
-    mat-card-sm-image
-    src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+  <img mat-card-sm-image src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
   <mat-card-content>
     <p>Userame: {{ user.username }}</p>
     <p>Name: {{ user.name }}</p>
@@ -9,11 +7,7 @@
     <p>Phone: {{ user.phone }}</p>
   </mat-card-content>
   <mat-card-actions class="card-btns">
-    <button mat-raised-button color="primary" (click)="openEditDialog(user)">
-      Edit
-    </button>
-    <button mat-raised-button color="warn" (click)="onDeleteUser(user.id)">
-      Delete
-    </button>
+    <button mat-raised-button color="primary" (click)="openEditDialog(user)">Edit</button>
+    <button mat-raised-button color="warn" (click)="onDeleteUser(user.id)">Delete</button>
   </mat-card-actions>
 </mat-card>
