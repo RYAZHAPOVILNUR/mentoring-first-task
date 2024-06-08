@@ -13,11 +13,17 @@ export class usersService {
     constructor(private UsersApiService: UsersApiService) { }
 
     loadUsers() {
-        this.UsersApiService.getUsers().subscribe(
-            (data: IUser[]) => {
-                this.usersSubject.next(data)
-            }
-        )
+        const users = localStorage.getItem('users');
+        if (users) {
+            this.usersSubject.next(JSON.parse(users))
+        } else {
+            this.UsersApiService.getUsers().subscribe(
+                (data: IUser[]) => {
+                    this.usersSubject.next(data)
+                    localStorage.setItem("users", JSON.stringify(data));
+                }
+            )
+        }
     }
 
     createUser(user: IUser) {
