@@ -1,0 +1,30 @@
+<form [formGroup]="formUser" (ngSubmit)="submit()">
+    <!-- <h2 mat-dialog-title>Hi {{data.name}}</h2> -->
+    <mat-dialog-content>
+        <p>What's your favorite animal?</p>
+        <div>
+            <mat-form-field>
+                <mat-label>name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phone" type="number">
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button [disabled]="!formUser.valid" (click)="submit()" cdkFocusInitial>{{ data.isEdit ? 'Edit' :
+            'Create' }}</button>
+    </mat-dialog-actions>
+</form>
