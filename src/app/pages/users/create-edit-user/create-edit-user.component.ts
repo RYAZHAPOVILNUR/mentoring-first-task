@@ -6,15 +6,16 @@ import {
     FormGroup,
     FormsModule,
     ReactiveFormsModule,
+    ValidationErrors,
     Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { MatFormFieldModule, MatSuffix } from '@angular/material/form-field';
-import { MatButton, MatButtonModule, MatIconButton } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { NgClass, NgComponentOutlet } from '@angular/common';
+import { JsonPipe, NgClass, NgComponentOutlet } from '@angular/common';
 
 @Component({
     selector: 'app-create-edit-user',
@@ -28,16 +29,16 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
         ReactiveFormsModule,
         NgClass,
         NgComponentOutlet,
-        MatSuffix,
-        MatIconButton,
-        MatButton,
+        JsonPipe,
     ],
     templateUrl: './create-edit-user.component.html',
     styleUrls: ['./create-edit-user.component.scss'],
 })
 export class CreateEditUserComponent implements OnInit, OnDestroy {
     userForm!: FormGroup;
-    validForms: boolean = false;
+    formControlNameUserNameError!: string;
+    formControlNameEmailError!: string;
+    formControlNamePhoneError!: string;
     private subscriptions: Subscription = new Subscription();
 
     constructor(
@@ -50,65 +51,94 @@ export class CreateEditUserComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.userForm = this.fb.group({
             userName: ['', [Validators.required, Validators.minLength(3)]],
-            userEmail: ['', [Validators.required, Validators.email]],
-            userPhone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+            email: ['', [Validators.required, Validators.email]],
+            phone: ['+7', [Validators.required]],
         });
 
-        this.subscriptions.add(
-            this.userForm.valueChanges.subscribe(() => {
-                this.validForms = this.userForm.valid;
-            })
-        );
-    }
+        if (this.data) {
+            this.userForm.patchValue({
+                userName: this.data.userName,
+                email: this.data.email,
+                phone: this.data.phone,
+            });
+        }
 
-    ngOnDestroy(): void {
-        this.subscriptions.unsubscribe();
-    }
+        if (this.data) {
+            this.userForm.patchValue({
+                userName: this.data.userName,
+            });
+        }
 
-    onInput(event: Event): void {
-        const input = event.target as HTMLInputElement;
-        input.value = input.value.replace(/[^0-9]/g, ''); // Удаляем все нецифровые символы
-        if (input.value.length > 12) {
-            input.value = input.value.slice(0, 12);
+        //Получаем все имена контролов формы
+        // Подписка на изменения значения в полях формы
+        if (Object.keys(this.userForm.getRawValue())) {
+            const controlNames = Object.keys(this.userForm.getRawValue());
+            controlNames.forEach(controlName => {
+                const control = this.userForm.get(controlName);
+                control?.valueChanges.subscribe(value => {
+                    this.formControlNameUserNameError = '';
+                    this.formControlNameEmailError = '';
+                    this.formControlNamePhoneError = '';
+                    const error: ValidationErrors | null = control.errors;
+                    for (let errorKey in error) {
+                        switch (controlName) {
+                            case 'userName':
+                                this.formControlNameUserNameError =
+                                    this.handlerValidatorsErrors(errorKey);
+                                break;
+                            case 'email':
+                                this.formControlNameEmailError =
+                                    this.handlerValidatorsErrors(errorKey);
+                                break;
+                            case 'phone':
+                                this.formControlNamePhoneError =
+                                    this.handlerValidatorsErrors(errorKey);
+                                break;
+                        }
+                        this.handlerValidatorsErrors(errorKey);
+                    }
+                });
+            });
+        } else {
+            console.error('Контрол "name" не найден в форме');
         }
     }
 
-    onBlur(field: string): void {
-        const control = this.userForm.get(field);
-        if (control && control.invalid && control.touched) {
-            const errors = control.errors;
-            if (errors) {
-                if (errors['required']) {
-                    this.toastr.error(`${field} не должно быть пустым`);
-                }
-                if (errors['minlength']) {
-                    this.toastr.error(`${field} не может быть короче 3 символов`);
-                }
-                if (errors['email']) {
-                    this.toastr.error(`Некорректный Email`);
-                }
-                if (errors['pattern']) {
-                    this.toastr.error(`Некорректный формат телефона`);
-                }
-            }
+    handlerValidatorsErrors(errorName: string): string {
+        switch (errorName) {
+            case 'required':
+                return 'Обязательное поле';
+            case 'minlength':
+                return 'Минимальная длина 3 символа';
+            case 'email':
+                return 'Не корректный Email';
+            default:
+                return '';
         }
     }
 
     submitForm(): void {
-        if (this.validForms) {
-            this.dialogRef.close(this.userForm.value);
-            console.log(this.userForm.value);
-            this.toastr.success('Пользователь создан');
+        if (this.userForm.valid) {
+            const user: User = {
+                ...this.data,
+                ...this.userForm.value,
+            };
+            this.dialogRef.close(user);
+            if (this.data) {
+                this.toastr.success('Пользователь Сохранен');
+            } else {
+                this.toastr.success('Пользователь создан');
+            }
         } else {
             this.toastr.error('Форма содержит ошибки');
         }
     }
+    onCancelClick() {
+        this.userForm.reset(); // Сбросить состояние формы до начального
+        this.dialogRef.close(); // Закрыть диалоговое окно
+    }
 
-    testBuutton() {
-        this.dialogRef.close({
-            userName: 'ппавпаы',
-            userEmail: 'ffff@dsd.ru',
-            userPhone: '4745555555555',
-        });
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe();
     }
 }

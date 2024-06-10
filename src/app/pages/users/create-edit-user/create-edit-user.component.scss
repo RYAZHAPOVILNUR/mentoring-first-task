@@ -44,6 +44,7 @@
 }
 
 button[mat-flat-button] {
+    margin: 0 5px;
     width: 100%;
     max-width: 200px;
 }
@@ -53,4 +54,11 @@ button[mat-flat-button] {
 }
 .success {
     background-color: #33c622;
+}
+
+.form-error-messages {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    bottom: 60px;
 }

@@ -1,8 +1,10 @@
-<form class="container-form" [formGroup]="userForm" (ngSubmit)="submitForm()">
+<form class="container-form" [formGroup]="userForm">
     <div class="header-text">
         <h2>Create user</h2>
     </div>
+
     <mat-form-field class="example-form-field" appearance="outline">
+        <span class="form-error-messages">{{ formControlNameUserNameError }}</span>
         <mat-label>Имя</mat-label>
         <input
             matInput
@@ -13,7 +15,6 @@
             [ngClass]="{
                 invalid: userForm.get('userName')?.invalid && userForm.get('userName')?.touched
             }"
-            (blur)="onBlur('userName')"
         />
         <button
             matSuffix
@@ -27,48 +28,42 @@
     </mat-form-field>
 
     <mat-form-field class="example-form-field" appearance="outline">
+        <span class="form-error-messages">{{ formControlNameEmailError }}</span>
         <mat-label>Email</mat-label>
         <input
             matInput
             type="email"
-            formControlName="userEmail"
+            formControlName="email"
             class="form-control"
-            name="userEmail"
+            name="email"
             [ngClass]="{
-                invalid: userForm.get('userEmail')?.invalid && userForm.get('userEmail')?.touched
+                invalid: userForm.get('email')?.invalid && userForm.get('email')?.touched
             }"
-            (blur)="onBlur('userEmail')"
         />
         <button
             matSuffix
             mat-icon-button
             aria-label="Clear"
             color="primary"
-            (click)="userForm.controls['userEmail'].reset()"
+            (click)="userForm.controls['email'].reset()"
         >
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
 
     <mat-form-field class="example-form-field" appearance="outline">
+        <span class="form-error-messages">{{ formControlNamePhoneError }}</span>
         <mat-label>Телефон</mat-label>
         <div class="input-wrapper">
-            @if (userForm.get('userPhone')?.touched && userForm.get('userPhone')?.dirty) {
-                <span class="prefix">+7</span>
-            }
-
             <input
                 matInput
                 type="tel"
-                formControlName="userPhone"
+                formControlName="phone"
                 class="form-control"
-                name="userPhone"
+                name="phone"
                 [ngClass]="{
-                    invalid:
-                        userForm.get('userPhone')?.invalid && userForm.get('userPhone')?.touched
+                    invalid: userForm.get('phone')?.invalid && userForm.get('phone')?.touched
                 }"
-                (input)="onInput($event)"
-                (blur)="onBlur('userPhone')"
             />
         </div>
         <button
@@ -76,7 +71,7 @@
             mat-icon-button
             aria-label="Clear"
             color="primary"
-            (click)="userForm.controls['userPhone'].reset()"
+            (click)="userForm.controls['phone'].reset()"
         >
             <mat-icon>close</mat-icon>
         </button>
@@ -84,14 +79,15 @@
 
     <div class="button-container">
         <button
-            [class.cancel]="!validForms"
-            [class.success]="validForms"
+            [class.cancel]="!userForm.valid"
+            [class.success]="userForm.valid"
             mat-flat-button
             color="primary"
-            type="submit"
+            [disabled]="!userForm.valid"
+            (click)="submitForm()"
         >
-            {{ validForms ? 'Отправить' : 'Cancel' }}
+            {{ this.data ? 'Сохранить' : 'Создать' }}
         </button>
-        <button (click)="testBuutton()">TEST</button>
+        <button mat-flat-button color="primary" (click)="onCancelClick()">Отменить</button>
     </div>
 </form>

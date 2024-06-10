@@ -22,5 +22,8 @@
             </span>
         </div>
     </mat-card-content>
-    <button mat-flat-button color="primary" (click)="onDeleteUserId()">Delete</button>
+    <span>
+        <button mat-flat-button color="error" (click)="onDeleteUserId()">Delete</button>
+        <button mat-flat-button color="primary" (click)="onUpdateUserId()">Update</button>
+    </span>
 </mat-card>

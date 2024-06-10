@@ -5,7 +5,12 @@
 <div class="container">
     @for (user of users$ | async; track user) {
         <div>
-            <app-user-card [user]="user" (deleteUserId)="onDeleteUserId($event)"> </app-user-card>
+            <app-user-card
+                [user]="user"
+                (deleteUserId)="onDeleteUserId($event)"
+                (updateUserId)="updateUserId($event)"
+            >
+            </app-user-card>
         </div>
     }
 </div>

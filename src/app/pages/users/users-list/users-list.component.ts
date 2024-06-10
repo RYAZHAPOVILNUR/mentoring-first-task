@@ -10,6 +10,7 @@ import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.co
 import { HeaderComponent } from '../../header/header.component';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from '../../../services/users/users.service';
+import { User } from '../../../interfaces/users';
 
 @Component({
     selector: 'app-users-list',
@@ -42,6 +43,10 @@ export class UsersListComponent implements OnInit {
         this.usersService.loadUsers();
     }
 
+    updateUserId(user: User): void {
+        this.openDialog(user);
+    }
+
     onDeleteUserId(id: number): void {
         this.usersService.deleteUser(id);
         this.toastr.success('Пользователь удален', 'Success', {
@@ -49,17 +54,19 @@ export class UsersListComponent implements OnInit {
         });
     }
 
-    openDialog(): void {
+    openDialog(data?: User): void {
         const dialogRef = this.dialog.open(CreateEditUserComponent, {
             width: '350px',
             height: '500px',
-            data: {},
+            data: data,
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                console.log('result', result);
-                this.usersService.addUser(result);
-                // this.usersService.loadUsers();
+                if (result.id) {
+                    this.usersService.editUser(result);
+                } else {
+                    this.usersService.addUser(result);
+                }
             }
         });
     }
