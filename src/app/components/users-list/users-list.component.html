@@ -1,0 +1,7 @@
+<button mat-raised-button (click)="openDialog()">Add user</button>
+
+<div>
+    @for (user of users$ | async; track $index) {
+    <app-user-card [user]="user" (deleteUserEvent)="deleteUser($event)" (editUserEvent)="openDialog($event)" />
+    }
+</div>

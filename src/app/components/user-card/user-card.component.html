@@ -1,0 +1,9 @@
+<div>
+    <div>ID: {{user.id}}</div>
+    <div>Name: {{user.name}}</div>
+    <div>Email: {{user.email}}</div>
+    <div>Phone: {{user.phone}}</div>
+    <button (click)="deleteUserEvent.emit(user.id)">Delete</button>
+    <button (click)="editCard()">Edit</button>
+</div>
+<br>
