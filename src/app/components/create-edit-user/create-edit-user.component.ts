@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
@@ -30,14 +30,15 @@ import { User } from '../../interfaces/user';
   templateUrl: './create-edit-user.component.html',
   styleUrl: './create-edit-user.component.scss'
 })
-export class CreateEditUser {
+export class DialogCreateEditUser {
+
+  private readonly dialogRef = inject(MatDialogRef<DialogCreateEditUser, User>);
 
   constructor(
-    public dialogRef: MatDialogRef<CreateEditUser>,
     @Inject(MAT_DIALOG_DATA) public data: { user: User, isEdit: boolean, },
   ) { }
 
-  onNoClick(): void {
+  onClose(): void {
     this.dialogRef.close();
   }
 
@@ -53,9 +54,7 @@ export class CreateEditUser {
       Validators.email,
     ]),
     phone: new FormControl(this.data.user?.phone || '', [
-      Validators.required, 
-      Validators.pattern('^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$'),
+      Validators.required,
     ]),
   })
-
 }

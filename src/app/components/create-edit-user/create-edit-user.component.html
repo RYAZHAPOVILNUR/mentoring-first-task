@@ -1,7 +1,5 @@
 <form [formGroup]="formUser" (ngSubmit)="submit()">
-    <!-- <h2 mat-dialog-title>Hi {{data.name}}</h2> -->
     <mat-dialog-content>
-        <p>What's your favorite animal?</p>
         <div>
             <mat-form-field>
                 <mat-label>name</mat-label>
@@ -17,13 +15,13 @@
         <div>
             <mat-form-field>
                 <mat-label>Phone</mat-label>
-                <input matInput formControlName="phone" type="number">
+                <input matInput formControlName="phone">
             </mat-form-field>
         </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button (click)="onClose()">No Thanks</button>
         <button mat-button [disabled]="!formUser.valid" (click)="submit()" cdkFocusInitial>{{ data.isEdit ? 'Edit' :
             'Create' }}</button>
     </mat-dialog-actions>

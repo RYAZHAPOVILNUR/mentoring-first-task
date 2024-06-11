@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { User } from '../../interfaces/user';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-user-card',
@@ -14,12 +15,7 @@ export class UserCardComponent {
   @Output() deleteUserEvent = new EventEmitter<number>();
   @Output() editUserEvent = new EventEmitter<User>();
 
-  deleteCard(): void {
-    this.deleteUserEvent.emit(this.user.id);
-  }
-
   editCard(): void {
     this.editUserEvent.emit(this.user);
   }
-
 }
