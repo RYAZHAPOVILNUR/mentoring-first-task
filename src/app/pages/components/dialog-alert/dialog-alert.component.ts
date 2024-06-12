@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { MatButton } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 import {
     MatCard,
@@ -9,18 +8,19 @@ import {
     MatCardTitleGroup,
 } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-dialog-alert',
     standalone: true,
     imports: [
+        MatDialogClose,
         MatCard,
         MatCardHeader,
-        MatCardTitle,
         MatCardTitleGroup,
+        MatCardTitle,
         MatIcon,
         MatCardContent,
-        MatDialogClose,
         MatButton,
     ],
     templateUrl: './dialog-alert.component.html',

@@ -9,8 +9,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
 import { HeaderComponent } from '../../header/header.component';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../../../../_model/users';
+import { Store } from '@ngrx/store';
+import { selectAllUsers } from '../../../_store/User/User.Selector';
 import { UsersService } from '../../../services/users/users.service';
-import { User } from '../../../interfaces/users';
+import { editedUser, loadUsers } from '../../../_store/User/User.Action';
 
 @Component({
     selector: 'app-users-list',
@@ -31,16 +34,17 @@ import { User } from '../../../interfaces/users';
     styleUrl: './users-list.component.scss',
 })
 export class UsersListComponent implements OnInit {
-    public readonly users$ = this.usersService.users$;
+    public readonly users$ = this.store.select(selectAllUsers);
 
     constructor(
-        private usersService: UsersService,
+        private store: Store,
         public dialog: MatDialog,
         private toastr: ToastrService
     ) {}
 
     ngOnInit() {
-        this.usersService.loadUsers();
+        // this.service.loadUsers();
+        // this.store.dispatch(loadUsers());
     }
 
     updateUserId(user: User): void {
@@ -48,7 +52,7 @@ export class UsersListComponent implements OnInit {
     }
 
     onDeleteUserId(id: number): void {
-        this.usersService.deleteUser(id);
+        // this.usersService.deleteUser(id);
         this.toastr.success('Пользователь удален', 'Success', {
             // progressBar: true,
         });
@@ -63,9 +67,9 @@ export class UsersListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 if (result.id) {
-                    this.usersService.editUser(result);
+                    this.store.dispatch(editedUser({ editedUser: result }));
                 } else {
-                    this.usersService.addUser(result);
+                    // this.usersService.addUser(result);
                 }
             }
         });

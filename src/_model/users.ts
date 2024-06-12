@@ -27,3 +27,8 @@ interface Company {
     catchPhrase: string;
     bs: string;
 }
+
+export interface UserModel {
+    usersList: User[];
+    loading: boolean;
+}

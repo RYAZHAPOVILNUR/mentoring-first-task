@@ -1,36 +1,36 @@
 import { Component, inject } from '@angular/core';
-import { MatToolbar } from '@angular/material/toolbar';
-import { MatIcon } from '@angular/material/icon';
-import { MatAnchor, MatButton, MatIconButton } from '@angular/material/button';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { ThemePalette } from '@angular/material/core';
-import { MatSidenav, MatSidenavContainer, MatSidenavModule } from '@angular/material/sidenav';
 import { UiService } from '../../services/ui/ui.service.service';
-import { MatListItem, MatNavList } from '@angular/material/list';
 import { map, Observable, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
+import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatListItem, MatNavList } from '@angular/material/list';
+import { MatAnchor, MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MaterialModule } from '../../../_module/Materila.Module';
 
 @Component({
     selector: 'app-header',
     standalone: true,
     imports: [
-        MatToolbar,
-        MatIcon,
-        MatIconButton,
         RouterLink,
         RouterLinkActive,
-        MatAnchor,
         RouterOutlet,
         MatSlideToggle,
-        MatButton,
+        AsyncPipe,
         MatSidenavContainer,
         MatSidenav,
+        MatSidenavContent,
+        MatToolbar,
         MatNavList,
         MatListItem,
-        AsyncPipe,
-        MatSidenavModule,
+        MatIconButton,
+        MatIcon,
+        MatAnchor,
     ],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',

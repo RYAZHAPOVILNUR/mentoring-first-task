@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { User } from '../../../interfaces/users';
+import { User } from '../../../../_model/users';
 import {
     FormBuilder,
     FormGroup,
