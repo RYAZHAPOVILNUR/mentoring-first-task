@@ -1,9 +1,9 @@
 <div class="user-list">
-    @for(user of users$ | async; track user) {
+    @for(user of users$ | async; track $index) {
     <user-card-app 
         [user]="user" 
-        (deleteUser)="deleteUser(user.id)" 
-        (editUserEvent)="openDialog(user)"
+        (deleteUser)="deleteUser(user)" 
+        (editUserEvent)="openDialog($event)"
         >
     </user-card-app>
     }

@@ -12,9 +12,6 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from "@angular/material/dialog";
-import { Store } from '@ngrx/store';
-import { User } from '@app/models/user.interface';
-import * as UserActions from "@store/actions/user.actions";
 
 @Component({
   selector: 'app-create-edit-user',
@@ -35,10 +32,9 @@ import * as UserActions from "@store/actions/user.actions";
 })
 export class CreateEditUserComponent implements OnInit {
   public readonly dialogData = inject(MAT_DIALOG_DATA);
-  public readonly dialogRef: MatDialogRef<CreateEditUserComponent> = inject(MatDialogRef<CreateEditUserComponent>);
+  public readonly dialogRef = inject(MatDialogRef<CreateEditUserComponent>);
   public readonly isEdit: boolean = this.dialogData.isEdit;
-  private readonly store = inject(Store);
-  
+
   public newForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
@@ -52,21 +48,17 @@ export class CreateEditUserComponent implements OnInit {
     }
   }
 
-  public createUser() {
-    // return this.dialogRef.close(this.newForm.value);
-    const user: User = this.newForm.value as User;
-    this.store.dispatch(UserActions.addUser({ user }));
-    this.dialogRef.close();
+  public createUser(): void {
+    const user = {...this.newForm.value, id: Date.now()};
+    this.dialogRef.close(user);
   }
 
-  public saveUser() {
-    // return this.dialogRef.close(this.newForm.value);
-    const user: User = this.newForm.value as User;
-    this.store.dispatch(UserActions.updateUser({ user }));
-    this.dialogRef.close();
+  public saveUser(): void {
+    const user = {...this.newForm.value}
+    this.dialogRef.close(user);
   }
 
-  public cancel() {
+  public cancel(): void {
     this.dialogRef.close();
   }
 }

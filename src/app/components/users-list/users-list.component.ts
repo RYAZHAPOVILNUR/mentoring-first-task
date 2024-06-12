@@ -1,13 +1,11 @@
-import { Component, inject } from "@angular/core";
-import { Store } from "@ngrx/store";
+import { Component, OnInit, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
-import { selectLoadUsers } from "@app/store/selectors/user.selectors";
-import * as UserActions from "@store/actions/user.actions";
 import { User } from "@models/user.interface";
 import { UserCardComponent } from "@components/user-card/user-card.component";
 import { CreateEditUserComponent } from "@components/create-edit-user/create-edit-user.component";
-// import { UsersService } from "@services/users.service";
+import { Observable } from "rxjs";
+import { UsersFacade } from "@app/store/users.facade";
 
 @Component({
     selector: 'users-list-app',
@@ -20,16 +18,14 @@ import { CreateEditUserComponent } from "@components/create-edit-user/create-edi
         CreateEditUserComponent,
     ]
 })
-export class UsersListComponent {
-    // private usersService = inject(UsersService);
-    // public readonly users$ = this.usersService.users$;
+export class UsersListComponent implements OnInit {
     private readonly dialog = inject(MatDialog);
+    private readonly facade = inject(UsersFacade);
+    
+    public readonly users$: Observable<User[]> = this.facade.users$;
 
-    private readonly store = inject(Store);
-    public readonly users$ = this.store.select(selectLoadUsers);
-
-    constructor() {
-        this.store.dispatch(UserActions.loadUsers());
+    ngOnInit(): void {
+        this.facade.loadUsers();
     }
 
     public openDialog(user?: User) {
@@ -42,20 +38,20 @@ export class UsersListComponent {
                 }
             });
 
-        dialogRef.afterClosed().subscribe(result => {
+        dialogRef.afterClosed().subscribe((result: User) => {
             if (!result) return;
             if (user) {
-                // this.usersService.updateUser({ ...user, ...result });
-                this.store.dispatch(UserActions.updateUser({ user: { ...user, ...result }}));
+                this.facade.updateUser({ ...user, ...result });
+                this.facade.setUsers();
             } else {
-                this.store.dispatch(UserActions.addUser({ user: result }))
-                // this.usersService.addUser(result);
+                this.facade.addUser( result);
+                this.facade.setUsers();
             }
         });
     }
 
-    public deleteUser(id: number): void {
-        this.store.dispatch(UserActions.deleteUser({ id }))
-        // this.usersService.deleteUser(id);
-    }
+    public deleteUser(user: User): void {
+        this.facade.deleteUser(user);
+        this.facade.setUsers();
+    }  
 }

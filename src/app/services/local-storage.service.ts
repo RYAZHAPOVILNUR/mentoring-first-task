@@ -1,16 +1,19 @@
 import { Injectable } from "@angular/core";
+import { USERS_FEATURE_KEY } from "@store/users.reducer";
 import { User } from "@models/user.interface";
 
 @Injectable({
     providedIn: 'root'
 })
 export class LocalStorageService {
-    public getItem<T>(key: string): User[] | null {
-        const data = localStorage.getItem(key);
+    private readonly storageKey = USERS_FEATURE_KEY; 
+
+    public getItem(): User[] | null  {
+        const data = localStorage.getItem(this.storageKey);
         return data ? JSON.parse(data) : null;
     }
 
-    public setItem(key: string, value: User[]): void {
-        localStorage.setItem(key, JSON.stringify(value));
+    public setItem(value: User[]): void {
+        localStorage.setItem(this.storageKey, JSON.stringify(value));
     }
 }

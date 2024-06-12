@@ -4,9 +4,10 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
-import { userReducer } from './store/reducers/user.reducer';
+import { userReducer } from '@store/users.reducer';
 import { provideEffects } from '@ngrx/effects';
-import { UserEffects } from './store/effects/user.effects';
+import * as UsersEffects  from '@store/users.effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,12 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(), 
     provideAnimationsAsync(),
     provideStore({ users: userReducer }),
-    provideEffects(UserEffects)
+    provideEffects(UsersEffects),
+    provideStoreDevtools({
+      maxAge: 25,
+      autoPause: true,
+      trace: false,
+      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+    }),
   ]
 };
