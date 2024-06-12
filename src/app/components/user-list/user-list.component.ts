@@ -12,7 +12,7 @@ import { CreateEditUserComponen } from '../create-edit-user/create-edit-user.com
 import { MatDialog } from '@angular/material/dialog';
 import { Store, StoreModule, select } from '@ngrx/store';
 import * as actionsUser from '../../store/user.action';
-import * as selectorUser from '../../store/user.selector'
+import * as selectorUser from '../../store/user.selector';
 import { Observable } from 'rxjs';
 import { StateInterface } from '../../store/user.interface';
 
@@ -35,67 +35,33 @@ export class UserListComponent implements OnInit {
   public readonly userService = inject(UserService);
   public readonly userApi = inject(UserApiService);
 
-  // isLoading$: Observable<boolean>;
-  // erorr$?: Observable<string | null>;
   public users$?: Observable<User[]>;
-  userFerst: User = {
-    id: 0,
-    name: '',
-    username: '',
-    email: '',
-    address: {
-      street: 'string',
-      suite: 'string',
-      city: 'string',
-      zipcode: 'string',
-      geo: {
-        lat: 'string',
-        lng: 'string',
-      },
-    },
-    phone: '',
-    website: 'string',
-    company: {
-      name: 'string',
-      catchPhrase: 'string',
-      bs: 'string',
-    },
-  };
 
   public constructor(
     private dialog: MatDialog,
-    private store: Store<StateInterface>)
-     {
-   
-  }
+    private store: Store<StateInterface>
+  ) {}
 
   public ngOnInit() {
-   this.store.dispatch(actionsUser.actionLoading())
-   this.users$ = this.store.pipe(select(selectorUser.usersSelector))
-  }
-
-  deleteUser(id: number) {
-    this.userService.deleteUser(id);
+    this.store.dispatch(actionsUser.actionLoading());
+    this.users$ = this.store.pipe(select(selectorUser.usersSelector));
   }
 
   public openDialog(user?: User) {
     const dialogRef = this.dialog.open(CreateEditUserComponen, {
       data: {
-        isEdit: true,
         user: user,
-        title: 'addUser',
       },
       width: '400px',
     });
-
     dialogRef.afterClosed().subscribe((result) => {
-      if (user){
-        this.store.dispatch(actionsUser.actionUpdate({...user, ...result}))
-        // this.userService.updateUser({ ...user, ...result });
+      if (user) {
+        this.store.dispatch(
+          actionsUser.actionUpdate({ user: { ...user, ...result } })
+        );
+        console.log({ ...user, ...result });
       } else {
-        this.store.dispatch(actionsUser.actionAddUser(result))
-        // this.store.dispatch(actionsUser.actionAddUser({...result}))
-        // this.userService.addUser(result);
+        this.store.dispatch(actionsUser.actionAddUser({ user: result }));
       }
     });
   }

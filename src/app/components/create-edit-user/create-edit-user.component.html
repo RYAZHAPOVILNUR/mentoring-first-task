@@ -1,34 +1,33 @@
- <mat-dialog-content>
-      <h1>{{data.title}}</h1>
-      <ol [formGroup]="newForm" (ngSubmit)="saveUser()" #viewMode>
-        <li>
-          <mat-form-field>
-            <mat-label>Your name</mat-label>
-            <input matInput formControlName="name">
-          </mat-form-field>
-        </li>
-        <li>
-          <mat-form-field>
-            <mat-label>userName</mat-label>
-            <input matInput formControlName="username">
-          </mat-form-field>
-        </li>
-        <li>
-          <mat-form-field>
-            <mat-label>Phone</mat-label>
-            <input matInput formControlName="phone">
-          </mat-form-field>
-        </li>
-        <li>
-          <mat-form-field>
-            <mat-label>email</mat-label>
-            <input matInput formControlName="email">
-          </mat-form-field>
-        </li>
-      </ol>
-      <button mat-raised-button [mat-dialog-close]="!this.newForm.invalid">close</button>
-      <button *ngIf="isEdit else create" (click)="createUser()">CreateUser</button>
-      <ng-template #create>
-        <button mat-raised-button (click)="saveUser()">save</button>
-      </ng-template>
-    </mat-dialog-content>
+<mat-dialog-content>
+  <h1>{{ data.title }}</h1>
+  <ol [formGroup]="newForm" (ngSubmit)="saveUser()" #viewMode>
+    <li>
+      <mat-form-field>
+        <mat-label>Your name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label>userName</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label>email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+    </li>
+  </ol>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Отмена</button>
+  <button mat-button color="warn" (click)="saveUser()">Сохранить</button>
+</mat-dialog-actions>

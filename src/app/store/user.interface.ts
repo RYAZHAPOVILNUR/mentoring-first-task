@@ -1,7 +1,5 @@
+import { UserState } from './user.reducer';
 
-import { UserState } from "./user.reducer";
-
-
-export interface StateInterface{
-     users: UserState
+export interface StateInterface {
+  users: UserState;
 }
