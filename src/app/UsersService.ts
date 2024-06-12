@@ -27,7 +27,6 @@ export class usersService {
   getUsers() {
     const users: IUser[] = JSON.parse(localStorage.getItem("users")!);
     if (users && users.length > 0) {
-      console.log(users.length);
       this.usersSubject.next(users);
     } else this.loadUsers();
   }
