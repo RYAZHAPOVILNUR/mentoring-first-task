@@ -1,0 +1,17 @@
+.card {
+  border: 9px solid red;
+  padding: 0;
+}
+.container {
+  width: 500px;
+  &_math {
+    margin-top: 10px;
+    width: 350px;
+  }
+}
+.btn {
+  display: inline;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  margin-left: 7px;
+}
