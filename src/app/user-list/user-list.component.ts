@@ -6,26 +6,30 @@ import { UserApiService } from '../service/userApiService';
 import { UserService } from '../service/user.service';
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
-import {MatButtonModule} from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
 import { DialogModule } from '@angular/cdk/dialog';
 import { CreateEditUserComponen } from '../create-edit-user/create-edit-user.component';
-import { MatDialog} from '@angular/material/dialog';
-
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [AppComponent, UserCardComponent, 
-    FormsModule, AsyncPipe, MatButtonModule, 
-    DialogModule,CreateEditUserComponen,],
+  imports: [
+    AppComponent,
+    UserCardComponent,
+    FormsModule,
+    AsyncPipe,
+    MatButtonModule,
+    DialogModule,
+    CreateEditUserComponen,
+  ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
 })
-export class UserListComponent  implements OnInit{
-  public readonly userService= inject(UserService)
-  public readonly userApi= inject(UserApiService)
-  public readonly users$ = this.userService.users$
-
+export class UserListComponent implements OnInit {
+  public readonly userService = inject(UserService);
+  public readonly userApi = inject(UserApiService);
+  public readonly users$ = this.userService.users$;
 
   userFerst: User = {
     id: 0,
@@ -39,49 +43,43 @@ export class UserListComponent  implements OnInit{
       zipcode: 'string',
       geo: {
         lat: 'string',
-        lng: 'string'
-      }
+        lng: 'string',
+      },
     },
     phone: '',
     website: 'string',
     company: {
       name: 'string',
       catchPhrase: 'string',
-      bs: 'string'
-    }
-  }
-  
-public constructor(private dialog: MatDialog){}
-  
-  public ngOnInit(){
-  this.userService.loadUsers()
-  
+      bs: 'string',
+    },
+  };
 
+  public constructor(private dialog: MatDialog) {}
+
+  public ngOnInit() {
+    this.userService.loadUsers();
   }
 
-  deleteUser(id: number){
-    this.userService.deleteUser(id)
+  deleteUser(id: number) {
+    this.userService.deleteUser(id);
   }
 
-public openDialog(user?: User){
-  const dialogRef=this.dialog.open(CreateEditUserComponen, {
-  data: {
-  isEdit: true,
-  user: user,
-  title: 'addUser',
-  },
-    width: '400px'
-  })
- dialogRef.afterClosed().subscribe((result)=>{
-  if(user){
-        this.userService.updateUser({... user, ... result})
-      }else{
-        this.userService.addUser(result)
+  public openDialog(user?: User) {
+    const dialogRef = this.dialog.open(CreateEditUserComponen, {
+     data: {
+        isEdit: true,
+        user: user,
+        title: 'addUser',
+      },
+      width: '400px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (user) {
+        this.userService.updateUser({ ...user, ...result });
+      } else {
+        this.userService.addUser(result);
       }
-    })}
+    });
+  }
 }
-
-
-
-
-

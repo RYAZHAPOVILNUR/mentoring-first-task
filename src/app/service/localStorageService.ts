@@ -1,12 +1,11 @@
-import { Injectable, inject } from "@angular/core";
-import { User } from "../interface/users.interface";
+import { Injectable, inject } from '@angular/core';
+import { User } from '../interface/users.interface';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
-export class LocalStorageService{
-
- setItem(key: string, value: any): void{
+ export class LocalStorageService {
+  setItem(key: string, value: any): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
@@ -22,5 +21,4 @@ export class LocalStorageService{
   clear(): void {
     localStorage.clear();
   }
-
 }

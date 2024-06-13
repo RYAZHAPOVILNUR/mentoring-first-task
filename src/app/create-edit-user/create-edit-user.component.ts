@@ -34,7 +34,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './create-edit-user.component.html',
   styleUrl: './create-edit-user.component.scss',
 })
-export class CreateEditUserComponen implements OnInit {
+export class CreateEditUserComponen {
   isEdit?: boolean;
   public data? = inject(MAT_DIALOG_DATA);
   public userService = inject(UserService);
@@ -42,30 +42,24 @@ export class CreateEditUserComponen implements OnInit {
     MatDialogRef<CreateEditUserComponen>
   );
 
-  public ngOnInit(): void {
-    console.log(this.data);
-  }
-
   public newForm = new FormGroup({
     name: new FormControl(this.data?.user?.name ?? '', [Validators.required]),
     username: new FormControl(this.data?.user?.username, [Validators.required]),
     phone: new FormControl(this.data?.user?.phone, [Validators.required]),
-    email: new FormControl(this.data?.user?.email,
-       [Validators.required,
-        Validators.email,
-   ]),
+    email: new FormControl(this.data?.user?.email, [
+      Validators.required,
+      Validators.email,
+    ]),
   });
 
   public createUser() {
-    console.log(this.newForm.value);
     return this.dialogRef?.close(this.newForm.value);
   }
   public saveUser() {
-if(this.newForm.valid){
-  return this.dialogRef?.close(this.newForm.value);
-}else{
-  alert('Заполните корректно!')
-}
-   
+    if (this.newForm.valid) {
+      return this.dialogRef?.close(this.newForm.value);
+    } else {
+      alert('Заполните корректно!');
+    }
   }
 }
