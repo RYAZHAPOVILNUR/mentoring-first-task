@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-content>
+    <p>id: {{ user.id }}</p>
+    <p>name: {{ user.name }}</p>
+    <p>email: {{ user.email }}</p>
+    <p>phone: {{ user.phone }}</p>
+  </mat-card-content>
+  <mat-card-actions class="jc-center">
+    <button
+      (click)="onDeleteUser()"
+      color="warn"
+      mat-raised-button
+    >Удалить
+    </button>
+    <button
+      (click)="onEditUser()"
+      color="warn"
+      mat-raised-button
+    >Изменить
+    </button>
+  </mat-card-actions>
+</mat-card>

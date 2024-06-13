@@ -1,0 +1,18 @@
+<div class="container">
+  <button
+    (click)="openDialog()"
+    color="primary"
+    mat-raised-button
+  >Добавить пользователя
+  </button>
+</div>
+<div class="container">
+  @for (user of users$ | async; track user.id) {
+    <app-user-card
+      [user]="user"
+      (deleteUserEvent)="onDeleteUser($event)"
+      (editUserEvent)="openDialog($event)"
+    />
+  }
+</div>
+
