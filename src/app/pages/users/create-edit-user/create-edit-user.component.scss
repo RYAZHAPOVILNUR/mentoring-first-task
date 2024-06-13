@@ -1,0 +1,64 @@
+.container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.header-text {
+    text-align: center;
+    color: #a37e33;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.example-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.prefix {
+    position: absolute;
+    left: 10px;
+    font-size: 1em;
+    color: #000;
+}
+
+.form-control {
+    padding-left: 30px; /* Adjust padding to make space for the prefix */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+button[mat-flat-button] {
+    margin: 0 5px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.cancel {
+    background-color: #514747;
+}
+.success {
+    background-color: #33c622;
+}
+
+.form-error-messages {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    bottom: 60px;
+}

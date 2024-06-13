@@ -1,0 +1,93 @@
+<form class="container-form" [formGroup]="userForm">
+    <div class="header-text">
+        <h2>{{ data ? 'Edited user' : 'Create user' }}</h2>
+    </div>
+
+    <mat-form-field class="example-form-field" appearance="outline">
+        <span class="form-error-messages">{{ formControlNameUserNameError }}</span>
+        <mat-label>Имя</mat-label>
+        <input
+            matInput
+            type="text"
+            formControlName="name"
+            class="form-control"
+            placeholder="Введите имя"
+            [ngClass]="{
+                invalid: userForm.get('name')?.invalid && userForm.get('name')?.touched
+            }"
+        />
+        <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            color="primary"
+            (click)="userForm.controls['name'].reset()"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="outline">
+        <span class="form-error-messages">{{ formControlNameEmailError }}</span>
+        <mat-label>Email</mat-label>
+        <input
+            matInput
+            type="email"
+            formControlName="email"
+            class="form-control"
+            name="email"
+            [ngClass]="{
+                invalid: userForm.get('email')?.invalid && userForm.get('email')?.touched
+            }"
+        />
+        <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            color="primary"
+            (click)="userForm.controls['email'].reset()"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="outline">
+        <span class="form-error-messages">{{ formControlNamePhoneError }}</span>
+        <mat-label>Телефон</mat-label>
+        <div class="input-wrapper">
+            <input
+                matInput
+                type="tel"
+                formControlName="phone"
+                class="form-control"
+                name="phone"
+                [ngClass]="{
+                    invalid: userForm.get('phone')?.invalid && userForm.get('phone')?.touched
+                }"
+            />
+        </div>
+        <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            color="primary"
+            (click)="userForm.controls['phone'].reset()"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <div class="button-container">
+        <button
+            [class.cancel]="!userForm.valid"
+            [class.success]="userForm.valid"
+            mat-flat-button
+            color="primary"
+            [disabled]="!userForm.valid"
+            (click)="submitForm()"
+        >
+            {{ this.data ? 'Сохранить' : 'Создать' }}
+        </button>
+        <button mat-flat-button color="primary" (click)="onCancelClick()">Отменить</button>
+    </div>
+</form>

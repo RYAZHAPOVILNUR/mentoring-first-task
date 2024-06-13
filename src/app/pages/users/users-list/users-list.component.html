@@ -1,0 +1,16 @@
+<div class="header-text-button">
+    <h2>All users</h2>
+    <button mat-flat-button color="primary" (click)="openDialog()">Create user</button>
+</div>
+<div class="container">
+    @for (user of users$ | async; track user) {
+        <div>
+            <app-user-card
+                [user]="user"
+                (deleteUserId)="onRemoveUser($event)"
+                (updateUserId)="updateUserId($event)"
+            >
+            </app-user-card>
+        </div>
+    }
+</div>

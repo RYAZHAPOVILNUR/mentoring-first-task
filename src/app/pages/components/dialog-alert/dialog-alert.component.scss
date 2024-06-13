@@ -1,0 +1,23 @@
+.example-card {
+    min-width: 300px;
+    margin: 30px;
+    border-radius: 10px;
+    background-color: rgba(169, 81, 213, 0.5); /* Прозрачный белый фон */
+}
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+.btn {
+    display: flex;
+    //justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px;
+    button {
+        margin-right: 20px;
+    }
+}
