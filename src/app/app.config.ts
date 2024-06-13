@@ -9,7 +9,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { tokenInterceptor } from './_services/token.interceptor';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { UsersReducer } from './_store/User/User.Reducer';
+import { appReducer } from './_store/User/User.Reducer';
 import { UsersEffects } from './_store/User/User.Effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideRouterStore } from '@ngrx/router-store';
@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
         provideAnimations(),
         provideAnimationsAsync(),
         provideToastr(),
-        provideStore({ users: UsersReducer }),
+        provideStore({ app: appReducer }),
         provideEffects([UsersEffects]),
         provideStoreDevtools({
             maxAge: 25,

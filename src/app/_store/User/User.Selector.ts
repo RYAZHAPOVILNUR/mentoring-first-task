@@ -1,21 +1,12 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { UserModel } from '../../../_model/users';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
+import { AppState, User } from '../../../_model/users';
 
-const selectUserState = createFeatureSelector<UserModel>('users');
+// Селектор для всего состояния приложения
+export const selectAppState: MemoizedSelector<object, AppState> =
+    createFeatureSelector<AppState>('app');
 
-export const selectAllUsers = createSelector(
-    selectUserState,
-    (state: UserModel) => state.usersList
-);
+export const selectUsersState = createSelector(selectAppState, (state: AppState) => state.users);
 
-export const selectUsersLoading = createSelector(
-    selectUserState,
-    (state: UserModel) => state.loading
-);
+export const selectAllUsers = createSelector(selectUsersState, (users: User[]) => users);
 
-export const selectUsersError = createSelector(
-    selectUserState,
-    (state: UserModel) => state.loading
-);
-export const selectFilteredUsersId = (userId: number) =>
-    createSelector(selectAllUsers, users => users?.filter(user => user.id !== userId));
+export const selectLastUserId = createSelector(selectUsersState, (users: User[]) => users.at(-1));

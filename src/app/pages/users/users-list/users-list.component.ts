@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,8 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from '../../../../_model/users';
 import { Store } from '@ngrx/store';
 import { selectAllUsers } from '../../../_store/User/User.Selector';
-import { UsersService } from '../../../services/users/users.service';
-import { editedUser, loadUsers } from '../../../_store/User/User.Action';
+import {
+    createUserSuccess,
+    editedUserSuccess,
+    loadUsers,
+    removeUserSuccess,
+} from '../../../_store/User/User.Action';
+import { Observable, take } from 'rxjs';
 
 @Component({
     selector: 'app-users-list',
@@ -33,29 +38,30 @@ import { editedUser, loadUsers } from '../../../_store/User/User.Action';
     templateUrl: './users-list.component.html',
     styleUrl: './users-list.component.scss',
 })
-export class UsersListComponent implements OnInit {
-    public readonly users$ = this.store.select(selectAllUsers);
+export class UsersListComponent {
+    public readonly users$: Observable<User[]> = this.store.select(selectAllUsers);
 
     constructor(
         private store: Store,
         public dialog: MatDialog,
         private toastr: ToastrService
-    ) {}
+    ) {
+        this.checkAndLoadUsers();
+    }
 
-    ngOnInit() {
-        // this.service.loadUsers();
-        // this.store.dispatch(loadUsers());
+    private checkAndLoadUsers(): void {
+        this.users$.pipe(take(1)).subscribe(users => {
+            users && users.length > 0 ? null : this.store.dispatch(loadUsers());
+        });
     }
 
     updateUserId(user: User): void {
         this.openDialog(user);
     }
 
-    onDeleteUserId(id: number): void {
-        // this.usersService.deleteUser(id);
-        this.toastr.success('Пользователь удален', 'Success', {
-            // progressBar: true,
-        });
+    onRemoveUser(id: number): void {
+        this.store.dispatch(removeUserSuccess({ id }));
+        this.toastr.success('Пользователь удален', 'Success', {});
     }
 
     openDialog(data?: User): void {
@@ -67,9 +73,9 @@ export class UsersListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 if (result.id) {
-                    this.store.dispatch(editedUser({ editedUser: result }));
+                    this.store.dispatch(editedUserSuccess({ user: result }));
                 } else {
-                    // this.usersService.addUser(result);
+                    this.store.dispatch(createUserSuccess({ user: result }));
                 }
             }
         });

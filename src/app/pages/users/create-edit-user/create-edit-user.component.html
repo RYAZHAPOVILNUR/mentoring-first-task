@@ -1,6 +1,6 @@
 <form class="container-form" [formGroup]="userForm">
     <div class="header-text">
-        <h2>Create user</h2>
+        <h2>{{ data ? 'Edited user' : 'Create user' }}</h2>
     </div>
 
     <mat-form-field class="example-form-field" appearance="outline">
@@ -9,11 +9,11 @@
         <input
             matInput
             type="text"
-            formControlName="userName"
+            formControlName="name"
             class="form-control"
             placeholder="Введите имя"
             [ngClass]="{
-                invalid: userForm.get('userName')?.invalid && userForm.get('userName')?.touched
+                invalid: userForm.get('name')?.invalid && userForm.get('name')?.touched
             }"
         />
         <button
@@ -21,7 +21,7 @@
             mat-icon-button
             aria-label="Clear"
             color="primary"
-            (click)="userForm.controls['userName'].reset()"
+            (click)="userForm.controls['name'].reset()"
         >
             <mat-icon>close</mat-icon>
         </button>

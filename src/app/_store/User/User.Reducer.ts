@@ -1,32 +1,56 @@
-import { createReducer, on } from '@ngrx/store';
-import { usersState } from './User.State';
-import { editedUser, loadUsers, loadUsersFailure, loadUsersSuccess } from './User.Action';
+import { Action, createReducer, on } from '@ngrx/store';
+import { AppState } from '../../../_model/users';
+import {
+    createUserSuccess,
+    editedUserSuccess,
+    loadUsers,
+    loadUsersFailure,
+    loadUsersSuccess,
+    removeUserSuccess,
+} from './User.Action';
 
-const _usersReducer = createReducer(
-    usersState,
+export const initialState: AppState = {
+    users: [],
+    loading: false,
+    errormessage: '',
+    // Инициализируйте другие состояния здесь
+};
+
+const _appReducer = createReducer(
+    initialState,
+
     on(loadUsers, state => ({
         ...state,
         loading: true,
     })),
-    on(loadUsersSuccess, (state, action) => ({
+    on(loadUsersSuccess, (state, { users }) => ({
         ...state,
         loading: false,
-        usersList: action.usersList,
+        users: users,
     })),
-    on(loadUsersFailure, (state, action) => ({
+    on(loadUsersFailure, (state, { errormessage }) => ({
         ...state,
         loading: false,
-        errormessage: action.errormessage,
+        errormessage: errormessage,
     })),
-    on(editedUser, (state, action) => ({
+    on(editedUserSuccess, (state, { user }) => ({
         ...state,
         loading: false,
-        usersList: state.usersList.map(user =>
-            user.id === action.editedUser.id ? { ...user, ...action.editedUser } : user
-        ),
+        users: state.users.map(item => (item.id === user.id ? { ...item, ...user } : item)),
+    })),
+    on(removeUserSuccess, (state, { id }) => ({
+        ...state,
+        loading: false,
+        users: state.users.filter(item => item.id !== id),
+    })),
+    on(createUserSuccess, (state, { user }) => ({
+        ...state,
+        loading: false,
+        users: [...state.users, { ...user, id: state.users.at(-1)!.id + 1 }],
     }))
+    // Добавьте другие обработчики действий здесь
 );
 
-export function UsersReducer(state: any, action: any) {
-    return _usersReducer(state, action);
+export function appReducer(state: AppState | undefined, action: Action) {
+    return _appReducer(state, action);
 }

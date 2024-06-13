@@ -1,10 +1,10 @@
 export interface User {
-    id?: number;
+    id: number;
     name?: string;
-    userName?: string;
-    email?: string;
+    userName: string;
+    email: string;
     address?: Address;
-    phone?: string;
+    phone: string;
     website?: string;
     company?: Company;
 }
@@ -28,7 +28,9 @@ interface Company {
     bs: string;
 }
 
-export interface UserModel {
-    usersList: User[];
+export interface AppState {
+    users: User[];
     loading: boolean;
+    errormessage?: string;
+    // Добавьте другие состояния здесь
 }

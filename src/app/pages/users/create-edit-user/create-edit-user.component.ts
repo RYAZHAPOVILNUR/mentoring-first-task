@@ -50,14 +50,14 @@ export class CreateEditUserComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.userForm = this.fb.group({
-            userName: ['', [Validators.required, Validators.minLength(3)]],
+            name: ['', [Validators.required, Validators.minLength(3)]],
             email: ['', [Validators.required, Validators.email]],
             phone: ['+7', [Validators.required]],
         });
 
         if (this.data) {
             this.userForm.patchValue({
-                userName: this.data.userName,
+                name: this.data.name,
                 email: this.data.email,
                 phone: this.data.phone,
             });
@@ -65,24 +65,22 @@ export class CreateEditUserComponent implements OnInit, OnDestroy {
 
         if (this.data) {
             this.userForm.patchValue({
-                userName: this.data.userName,
+                name: this.data.name,
             });
         }
 
-        //Получаем все имена контролов формы
-        // Подписка на изменения значения в полях формы
         if (Object.keys(this.userForm.getRawValue())) {
             const controlNames = Object.keys(this.userForm.getRawValue());
             controlNames.forEach(controlName => {
                 const control = this.userForm.get(controlName);
-                control?.valueChanges.subscribe(value => {
+                control?.valueChanges.subscribe(() => {
                     this.formControlNameUserNameError = '';
                     this.formControlNameEmailError = '';
                     this.formControlNamePhoneError = '';
                     const error: ValidationErrors | null = control.errors;
                     for (let errorKey in error) {
                         switch (controlName) {
-                            case 'userName':
+                            case 'name':
                                 this.formControlNameUserNameError =
                                     this.handlerValidatorsErrors(errorKey);
                                 break;
@@ -124,18 +122,17 @@ export class CreateEditUserComponent implements OnInit, OnDestroy {
                 ...this.userForm.value,
             };
             this.dialogRef.close(user);
-            if (this.data) {
-                this.toastr.success('Пользователь Сохранен');
-            } else {
-                this.toastr.success('Пользователь создан');
-            }
+            this.data
+                ? this.toastr.success('Пользователь Сохранен')
+                : this.toastr.success('Пользователь создан');
         } else {
             this.toastr.error('Форма содержит ошибки');
         }
     }
+
     onCancelClick() {
-        this.userForm.reset(); // Сбросить состояние формы до начального
-        this.dialogRef.close(); // Закрыть диалоговое окно
+        this.userForm.reset();
+        this.dialogRef.close();
     }
 
     ngOnDestroy(): void {
