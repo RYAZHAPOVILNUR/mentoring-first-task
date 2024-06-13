@@ -1,0 +1,36 @@
+<ng-container class="container">
+  <mat-card class="container_math">
+    <ul>
+      <li>
+        {{ user.name }}
+      </li>
+      <li>
+        {{ user.username }}
+      </li>
+      <li>
+        {{ user.phone }}
+      </li>
+      <li>
+        {{ user.email }}
+      </li>
+    </ul>
+    <div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn"
+        (click)="redaction(user)"
+      >
+        Редактировать
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn"
+        (click)="removeUser(user.id)"
+      >
+        Удалить
+      </button>
+    </div>
+  </mat-card>
+</ng-container>
