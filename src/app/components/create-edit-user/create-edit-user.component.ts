@@ -32,7 +32,7 @@ import {
 })
 export class CreateEditUserComponent implements OnInit {
   public readonly dialogData = inject(MAT_DIALOG_DATA);
-  public readonly dialogRef = inject(MatDialogRef<CreateEditUserComponent>);
+  public readonly dialogRef = inject<MatDialogRef<CreateEditUserComponent>>(MatDialogRef);
   public readonly isEdit: boolean = this.dialogData.isEdit;
 
   public newForm = new FormGroup({
@@ -49,12 +49,12 @@ export class CreateEditUserComponent implements OnInit {
   }
 
   public createUser(): void {
-    const user = {...this.newForm.value, id: Date.now()};
+    const user = {...this.newForm.value, id: new Date().getTime()};
     this.dialogRef.close(user);
   }
 
   public saveUser(): void {
-    const user = {...this.newForm.value}
+    const user = this.newForm.value;
     this.dialogRef.close(user);
   }
 

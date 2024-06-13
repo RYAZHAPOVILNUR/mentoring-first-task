@@ -16,17 +16,14 @@ export const loadUsersEffect = createEffect(
         return action$.pipe(
             ofType(UsersActions.loadUsers),
             switchMap(() => { 
-                if(getLocalStorage) {
-                    const local$ = new BehaviorSubject<User[]>(getLocalStorage).asObservable();
-                    return local$.pipe(
+                return (getLocalStorage && getLocalStorage.length > 0)
+                    ? new BehaviorSubject<User[]>(getLocalStorage).asObservable().pipe(
                         map(users => UsersActions.loadUsersSuccess({ users }))
                     )
-                } else {
-                    return usersApiService.getUsersApi().pipe(
-                    map(users => UsersActions.loadUsersSuccess({ users })),
-                    catchError(error => of(UsersActions.loadUsersFailure({ error })))
-                    )
-                }
+                    : usersApiService.getUsersApi().pipe(
+                        map(users => UsersActions.loadUsersSuccess({ users })),
+                        catchError(error => of(UsersActions.loadUsersFailure({ error })))
+                    );
             })
         );
     }, { functional: true }
@@ -74,7 +71,7 @@ export const deleteUserEffect = createEffect(
         return action$.pipe(
             ofType(UsersActions.deleteUser),
             switchMap(({ user }) => {
-                return usersApiService.deleteUserAPI(user).pipe(
+                return usersApiService.deleteUserApi(user).pipe(
                     map(() => UsersActions.deleteUserSuccess({ user })),
                     catchError(error => of(UsersActions.deleteUserFailure({ error })))   
                 );   

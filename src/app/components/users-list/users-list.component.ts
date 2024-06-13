@@ -29,14 +29,7 @@ export class UsersListComponent implements OnInit {
     }
 
     public openDialog(user?: User) {
-        const dialogRef = this.dialog.open(CreateEditUserComponent,
-            {
-                data: {
-                    isEdit: Boolean(user),
-                    user: user,
-                    title: user ? 'editUser' : 'addUser'
-                }
-            });
+        const dialogRef = this.dialog.open(CreateEditUserComponent, { data: { isEdit: Boolean(user) } });
 
         dialogRef.afterClosed().subscribe((result: User) => {
             if (!result) return;
@@ -44,7 +37,7 @@ export class UsersListComponent implements OnInit {
                 this.facade.updateUser({ ...user, ...result });
                 this.facade.setUsers();
             } else {
-                this.facade.addUser( result);
+                this.facade.addUser(result);
                 this.facade.setUsers();
             }
         });
