@@ -1,0 +1,9 @@
+.mat-mdc-dialog-title {
+  align-self: center;
+}
+
+.dialog-btn {
+  display: flex;
+  margin-top: 8px;
+  justify-content: center;
+}

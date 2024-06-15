@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
+
+import { UsersApiService } from "./http.service";
+import { usersService } from "./users.service";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [RouterOutlet, HttpClientModule],
+  providers: [UsersApiService, usersService],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
-export class AppComponent {
-  title = 'mentoring-first-project';
-}
+export class AppComponent {}

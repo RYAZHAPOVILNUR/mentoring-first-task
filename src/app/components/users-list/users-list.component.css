@@ -1,0 +1,9 @@
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.add-btn {
+  width: 250px;
+}
