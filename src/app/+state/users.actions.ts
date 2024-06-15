@@ -20,8 +20,7 @@ export const addUserSuccess = createAction('[Users/Api] Add User Success', props
 
 export const addUserFailed = createAction('[Users/Api] Add User Failed', props<{ error: any }>());
 
-export const editUser = createAction('[Users Detail] Edit User', props<{ userData: User }>()
-);
+export const editUser = createAction('[Users Detail] Edit User', props<{ userData: User }>());
 
 export const editUserSuccess = createAction('[Users Detail] Edit User Success', props<{ userData: User }>());
 
