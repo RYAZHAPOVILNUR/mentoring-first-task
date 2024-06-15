@@ -3,7 +3,7 @@ import { RouterOutlet } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
 import { UsersApiService } from "./http.service";
-import { usersService } from "./UsersService";
+import { usersService } from "./users.service";
 
 @Component({
   selector: "app-root",

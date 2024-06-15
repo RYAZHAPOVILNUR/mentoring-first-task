@@ -11,7 +11,7 @@ import { IUser } from "../../user";
   styleUrls: ["./user-card.component.css"],
   imports: [MatCardModule, MatButtonModule],
 })
-export class UserCard implements OnInit {
+export class UserCard {
   @Input() user!: IUser;
 
   @Output() onDelete: EventEmitter<any> = new EventEmitter();
@@ -24,6 +24,4 @@ export class UserCard implements OnInit {
   openEditDialog(user: IUser) {
     this.onOpenEditDialog.emit(user);
   }
-
-  ngOnInit() {}
 }

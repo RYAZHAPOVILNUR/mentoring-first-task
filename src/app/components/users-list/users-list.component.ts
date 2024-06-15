@@ -5,7 +5,7 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
 
 import { UserCard } from "../user-card/user-card.component";
-import { usersService } from "../../UsersService";
+import { usersService } from "../../users.service";
 import { CreatEditUser } from "../create-edit-user/create-edit-user.component";
 import { IUser } from "../../user";
 
