@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Adding a new user</h1>
+<mat-dialog-content>
+    <ul [formGroup]="newForm"  #viewMode>
+        <li>
+            <mat-form-field>
+                <mat-label>name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field>
+                <mat-label>username</mat-label>
+                <input matInput formControlName="username">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field>
+                <mat-label>phone</mat-label>
+                <input matInput formControlName="phone">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field>
+                <mat-label>email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+        </li>
+    </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button 
+        mat-raised-button 
+        *ngIf="isEdit; else create" 
+        (click)="saveUser()"
+        >
+        Save User
+    </button>
+    <ng-template #create>
+        <button mat-raised-button (click)="createUser()">
+            Create User
+        </button>
+    </ng-template>
+    <button mat-raised-button (click)="cancel()">
+        Close
+    </button>
+</mat-dialog-actions>
