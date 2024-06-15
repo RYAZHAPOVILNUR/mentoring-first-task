@@ -1,10 +1,12 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogContent, MatDialogTitle, MatDialogRef, MatDialogModule } from "@angular/material/dialog";
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from "@angular/forms";
 import { NgIf } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 
 import { IUser } from "../../user";
+import { Store } from "@ngrx/store";
+import { IAppState } from "../../store/state";
 
 @Component({
   selector: "create-edit-user",
@@ -16,7 +18,8 @@ import { IUser } from "../../user";
 export class CreatEditUser {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: IUser,
-    private dialogRef: MatDialogRef<CreatEditUser>
+    private dialogRef: MatDialogRef<CreatEditUser>,
+    private readonly store:Store<IAppState> = inject(Store)
   ) {
     this.myForm = new FormGroup({
       name: new FormControl("", [Validators.required]),

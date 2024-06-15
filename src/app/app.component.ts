@@ -3,13 +3,12 @@ import { RouterOutlet } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
 import { UsersApiService } from "./http.service";
-import { usersService } from "./UsersService";
 
 @Component({
   selector: "app-root",
   standalone: true,
   imports: [RouterOutlet, HttpClientModule],
-  providers: [UsersApiService, usersService],
+  providers: [UsersApiService],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })

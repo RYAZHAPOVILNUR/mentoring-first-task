@@ -1,9 +1,7 @@
-export class IUser {
-  constructor(
-    public name: string,
-    public username: string,
-    public email: string,
-    public phone: string,
-    public id: number
-  ) {}
+export interface IUser {
+  name: string,
+  username: string,
+  email: string,
+  phone: string,
+  id: number;
 }

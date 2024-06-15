@@ -1,44 +1,25 @@
-import { Injectable, inject } from "@angular/core";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { of, catchError } from "rxjs";
+import { map, switchMap } from "rxjs/operators";
+
 import * as UsersActions from "./actions";
-import { mergeMap, of, Observable, catchError } from "rxjs";
-import { map } from "rxjs/operators";
 import { IUser } from "../user";
 
 @Injectable()
 export class UsersEffects {
+  constructor(private actions$: Actions, private http: HttpClient) { }
 
-    actions$ = inject(Actions);
-
-    getPosts$ = createEffect(() => {
-        return this.actions$.pipe(ofType(UsersActions.getUsers),
-            mergeMap(() => {
-                //posts$ might represent a call to a service that returns an observable -- similar to a response from an API
-                const users$: Observable<IUser[]> = of([
-                    {
-                        id: 1,
-                        name: "Leanne Graham",
-                        username: "Bret",
-                        email: "Sincere@april.biz",
-                        phone: "1-770-736-8031 x56442",
-
-                    },
-                    {
-                        id: 2,
-                        name: "Ervin Howell",
-                        username: "Antonette",
-                        email: "Shanna@melissa.tv",
-                        phone: "010-692-6593 x09125",
-
-                    },
-                ]); //service
-                return users$.pipe(map((users) => {
-                    return UsersActions.getUsersSuccess({ users });
-                }),
-                    catchError((error) => of(UsersActions.getUsersFailure({ error: error.message })))
-                );//endof pipe
-            }));
-    });
-
-
+  loadData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UsersActions.getUsers),
+      switchMap(() =>
+        this.http.get<IUser[]>('https://jsonplaceholder.typicode.com/users').pipe(
+          map(users => UsersActions.getUsersSuccess({ users: users })),
+          catchError(error => of(UsersActions.getUsersFailure({ error: error.message })))
+        )
+      )
+    )
+  );
 }
