@@ -18,10 +18,7 @@
 
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
-    <button (click)="onCreateEditUser()" *ngIf="isEdit; else isCreate" mat-button>Edit</button>
-    <ng-template #isCreate>
-      <button (click)="onCreateEditUser()" mat-button>Create</button>
-    </ng-template>
+    <button (click)="onCreateEditUser()" mat-button>{{ this.isEdit ? 'Edit' : 'Create' }}</button>
   </mat-dialog-actions>
 </form>
 <p>create-edit-user works!</p>
