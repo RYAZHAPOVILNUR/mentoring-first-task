@@ -1,8 +1,12 @@
 <button (click)="openDialog()" mat-raised-button>➕</button>
 <ul>
   <li *ngFor="let user of users$ | async">
-    <app-user-card (deleteUserEvent)="onDeleteUser($event)" (editUserEvent)="openDialog($event)"
-                   [user]="user"></app-user-card>
+    <app-user-card
+      [user]="user"
+      (deleteUserEvent)="onDeleteUser($event)"
+      (editUserEvent)="openDialog($event)"
+    >
+    </app-user-card>
   </li>
 </ul>
 <p>users-list works!</p>
