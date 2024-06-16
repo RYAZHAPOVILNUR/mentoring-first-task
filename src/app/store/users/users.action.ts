@@ -1,6 +1,6 @@
 // src/app/store/users/users.actions.ts
 import { createAction, props } from '@ngrx/store';
-import { User } from '../models/user';
+import { User } from '../../models/user';
 
 export const loadUsers = createAction('[Users] Load Users');
 export const loadUsersSuccess = createAction(

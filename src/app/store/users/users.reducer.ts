@@ -1,7 +1,7 @@
 // src/app/store/users/users.reducer.ts
 import { createReducer, on } from '@ngrx/store';
 import * as UsersActions from './users.action';
-import { User } from '../models/user';
+import { User } from '../../models/user';
 
 export interface State {
   users: User[];
@@ -29,10 +29,10 @@ export const usersReducer = createReducer(
   })),
   on(UsersActions.deleteUser, (state, { id }) => ({
     ...state,
-    users: state.users.filter(user => user.id !== id),
+    users: state.users.filter((user) => user.id !== id),
   })),
   on(UsersActions.editUser, (state, { user }) => ({
     ...state,
-    users: state.users.map(u => (u.id === user.id ? user : u)),
+    users: state.users.map((u) => (u.id === user.id ? user : u)),
   }))
 );

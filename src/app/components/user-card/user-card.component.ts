@@ -1,18 +1,21 @@
-import { Component, Input } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
+// src/app/components/user-card/user-card.component.ts
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-card',
   standalone: true,
-  imports: [],
   templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.scss',
+  styleUrls: ['./user-card.component.scss'],
 })
 export class UserCardComponent {
   @Input() user!: User;
+  @Output() edit = new EventEmitter<User>();
   @Output() userDeleted = new EventEmitter<number>();
 
+  onEdit(): void {
+    this.edit.emit(this.user);
+  }
   deleteUser(): void {
     this.userDeleted.emit(this.user.id);
   }

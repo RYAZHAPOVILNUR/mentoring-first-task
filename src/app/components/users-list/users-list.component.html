@@ -1,5 +1,5 @@
 <div>
-  <button mat-raised-button color="primary" (click)="openAddUserDialog()">
+  <button mat-raised-button color="primary" (click)="openUserDialog()">
     Добавить пользователя
   </button>
 
@@ -7,7 +7,7 @@
     <app-user-card
       [user]="user"
       (userDeleted)="deleteUser($event)"
-      (click)="openEditUserDialog(user)"
+      (click)="editUser(user)"
     ></app-user-card>
   </div>
 </div>

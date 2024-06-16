@@ -4,6 +4,6 @@
   <p>surname: {{ user.username }}</p>
   <p>Email: {{ user.email }}</p>
   <p>Phone: {{ user.phone }}</p>
-
-  <button (click)="deleteUser()">Удалить</button>
+  <button (click)="onEdit()">Редактировать</button>
+  <button mat-button (click)="deleteUser()">Удалить</button>
 </div>
