@@ -1,63 +1,71 @@
-import { Component } from '@angular/core';
-import { UsersApiService } from '../../users-api.service';
-import { UsersService } from '../../users.service';
+// src/app/components/users-list/users-list.component.ts
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
+import * as fromUsers from '../../store/users/users.selectors';
+import * as UsersActions from '../../store/users/users.action';
+import { User } from '../../models/user';
 import { CommonModule } from '@angular/common';
 import { UserCardComponent } from '../user-card/user-card.component';
-import { MatDialog } from '@angular/material/dialog';
-import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [UserCardComponent, CommonModule],
+  imports: [CommonModule, UserCardComponent],
   templateUrl: './users-list.component.html',
-  styleUrl: './users-list.component.scss',
+  styleUrls: ['./users-list.component.scss'],
 })
-export class UsersListComponent {
-  public readonly users$ = this.usersService.users$;
+export class UsersListComponent implements OnInit {
+  users$: Observable<User[]>;
 
-  constructor(
-    private readonly usersApiService: UsersApiService,
-    private readonly usersService: UsersService,
-    private readonly dialog: MatDialog
-  ) {}
+  constructor(private store: Store, private dialog: MatDialog) {
+    this.users$ = this.store.select(fromUsers.selectAllUsers);
+  }
 
   ngOnInit(): void {
-    this.loadUsers();
+    const localUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    if (localUsers.length) {
+      this.store.dispatch(UsersActions.loadUsersSuccess({ users: localUsers }));
+    } else {
+      this.store.dispatch(UsersActions.loadUsers());
+    }
   }
 
-  loadUsers(): void {
-    this.usersApiService.getUsers().subscribe((users) => {
-      this.usersService.setUsers(users);
-    });
-  }
-
-  deleteUser(id: number): void {
-    this.usersService.deleteUser(id);
-  }
-
-  openAddUserDialog(): void {
+  openUserDialog(): void {
     const dialogRef = this.dialog.open(CreateEditUserComponent, {
-      width: '300px',
+      data: null,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.usersService.addUser(result);
+        this.store.dispatch(UsersActions.addUser({ user: result }));
+        this.updateLocalStorage();
       }
     });
   }
 
-  openEditUserDialog(user: any): void {
+  editUser(user: User): void {
     const dialogRef = this.dialog.open(CreateEditUserComponent, {
-      width: '300px',
       data: user,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.usersService.editUser(result);
+        this.store.dispatch(UsersActions.editUser({ user: result }));
+        this.updateLocalStorage();
       }
+    });
+  }
+  deleteUser(id: number): void {
+    this.store.dispatch(UsersActions.deleteUser({ id }));
+    this.updateLocalStorage();
+  }
+
+  private updateLocalStorage(): void {
+    this.users$.subscribe((users) => {
+      localStorage.setItem('users', JSON.stringify(users));
     });
   }
 }
