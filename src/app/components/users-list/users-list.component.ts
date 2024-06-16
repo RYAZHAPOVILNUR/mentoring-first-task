@@ -4,7 +4,7 @@ import { UsersService } from '../../users.service';
 import { CommonModule } from '@angular/common';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateEditUserComponent } from '../../create-edit-user/create-edit-user.component';
+import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
 
 @Component({
   selector: 'app-users-list',
@@ -17,9 +17,9 @@ export class UsersListComponent {
   public readonly users$ = this.usersService.users$;
 
   constructor(
-    private usersApiService: UsersApiService,
-    private usersService: UsersService,
-    private dialog: MatDialog
+    private readonly usersApiService: UsersApiService,
+    private readonly usersService: UsersService,
+    private readonly dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root',
+  
 })
 export class UsersService {
-  private usersSubject = new BehaviorSubject<any[]>(
+  private usersSubject = new BehaviorSubject<User[]>(
     this.loadFromLocalStorage()
   );
   users$ = this.usersSubject.asObservable();
 
   constructor() {}
 
-  private saveToLocalStorage(users: any[]): void {
+  private saveToLocalStorage(users: User[]): void {
     localStorage.setItem('users', JSON.stringify(users));
   }
 
-  private loadFromLocalStorage(): any[] {
+  private loadFromLocalStorage(): User[] {
     const users = localStorage.getItem('users');
     return users ? JSON.parse(users) : [];
   }
 
-  setUsers(users: any[]): void {
+  setUsers(users: User[]): void {
     this.usersSubject.next(users);
     this.saveToLocalStorage(users);
   }
@@ -32,13 +34,13 @@ export class UsersService {
     this.saveToLocalStorage(users);
   }
 
-  addUser(user: any): void {
+  addUser(user: User): void {
     const users = [...this.usersSubject.getValue(), user];
     this.usersSubject.next(users);
     this.saveToLocalStorage(users);
   }
 
-  editUser(updatedUser: any): void {
+  editUser(updatedUser: User): void {
     const users = this.usersSubject
       .getValue()
       .map((user) => (user.id === updatedUser.id ? updatedUser : user));
