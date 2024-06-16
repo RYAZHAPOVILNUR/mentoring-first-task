@@ -1,0 +1,9 @@
+<div class="user-card">
+  <h3>{{ user.id }}</h3>
+  <p>{{ user.name }}</p>
+  <p>surname: {{ user.username }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Phone: {{ user.phone }}</p>
+  <button (click)="onEdit()">Редактировать</button>
+  <button mat-button (click)="deleteUser()">Удалить</button>
+</div>
