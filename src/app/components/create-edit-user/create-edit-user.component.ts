@@ -16,8 +16,8 @@ export class CreateEditUserComponent {
   isEdit: boolean;
 
   constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<CreateEditUserComponent>,
+    private readonly fb: FormBuilder,
+    private readonly dialogRef: MatDialogRef<CreateEditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.isEdit = !!data;
