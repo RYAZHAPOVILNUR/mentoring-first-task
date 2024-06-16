@@ -10,14 +10,14 @@ import {User} from "@app/types/user.model";
 })
 export class UserCardComponent {
   @Input({required: true}) public user!: User;
-  @Output() private readonly editUserEvent = new EventEmitter<User>();
-  @Output() private readonly deleteUserEvent = new EventEmitter<number>();
+  @Output() private readonly editUser = new EventEmitter<User>();
+  @Output() private readonly deleteUser = new EventEmitter<number>();
 
   public onDelete(): void {
-    this.deleteUserEvent.emit(this.user.id);
+    this.deleteUser.emit(this.user.id);
   }
 
   public onEdit(): void {
-    this.editUserEvent.emit(this.user);
+    this.editUser.emit(this.user);
   }
 }
