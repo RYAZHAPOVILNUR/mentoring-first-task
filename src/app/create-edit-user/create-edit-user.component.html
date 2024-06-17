@@ -1,0 +1,55 @@
+<mat-dialog-content>
+  <p>Создание нового пользователя</p>
+  <form
+    (ngSubmit)="onSaveUser()"
+    [formGroup]="userForm"
+    class="new-user-form"
+  >
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input formControlName="username" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Ex. pat@example.com" type="email">
+      @if (userForm.controls.email.hasError('email') &&
+      !userForm.controls.email.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+      }
+      @if (userForm.controls.email.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>phone</mat-label>
+      <span matTextPrefix>+ &nbsp;</span>
+      <input formControlName="phone" matInput placeholder="79999999999" type="tel">
+      @if (userForm.controls.phone.hasError('pattern') &&
+      !userForm.controls.phone.hasError('required')) {
+        <mat-error>Please enter a valid phone number</mat-error>
+      }
+      @if (userForm.controls.phone.hasError('required')) {
+        <mat-error>Phone is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Website</mat-label>
+      <input formControlName="website" matInput>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="btn-container-center">
+  <button (click)="onNoClick()" mat-raised-button>Отмена</button>
+
+  <button (click)="onSaveUser()" [disabled]="!userForm.valid" color="primary" mat-raised-button>
+    @if (this.data) {
+      Изменить
+    } @else {
+      Создать
+    }
+  </button>
+</mat-dialog-actions>
