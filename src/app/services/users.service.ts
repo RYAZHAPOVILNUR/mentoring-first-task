@@ -37,13 +37,9 @@ export class UsersService {
   }
 
   public editUser(editedUser: User): void {
-    const users = this.usersSubject$.getValue().map((user) => {
-      if (user.id === editedUser.id) {
-        return editedUser;
-      } else {
-        return user;
-      }
-    });
+    const users = this.usersSubject$
+      .getValue()
+      .map((user) => (user.id === editedUser.id ? editedUser : user));
     this.usersSubject$.next(users);
     this.localStorageSetItems();
   }

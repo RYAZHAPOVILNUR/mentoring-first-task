@@ -1,6 +1,10 @@
 <mat-dialog-content>
   <p>Создание нового пользователя</p>
-  <form [formGroup]="userForm" action="" class="new-user-form">
+  <form
+    (ngSubmit)="onSaveUser()"
+    [formGroup]="userForm"
+    class="new-user-form"
+  >
     <mat-form-field>
       <mat-label>Имя</mat-label>
       <input formControlName="name" matInput>
@@ -41,8 +45,8 @@
 <mat-dialog-actions class="btn-container-center">
   <button (click)="onNoClick()" mat-raised-button>Отмена</button>
 
-  <button [disabled]="!userForm.valid" [mat-dialog-close]="saveUser()" color="primary" mat-raised-button>
-    @if (this.data.user) {
+  <button (click)="onSaveUser()" [disabled]="!userForm.valid" color="primary" mat-raised-button>
+    @if (this.data) {
       Изменить
     } @else {
       Создать

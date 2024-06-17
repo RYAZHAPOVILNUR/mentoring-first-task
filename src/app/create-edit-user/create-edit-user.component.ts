@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -35,27 +35,30 @@ import { User } from '../model/user';
   templateUrl: './create-edit-user.component.html',
   styleUrl: './create-edit-user.component.scss',
 })
-export class CreateEditUserComponent {
+export class CreateEditUserComponent implements OnInit {
   public data? = inject(MAT_DIALOG_DATA);
-  private fb = inject(FormBuilder);
-  public userForm = this.fb.nonNullable.group({
-    name: [this.data?.user?.name ?? '', Validators.required],
-    username: [this.data?.user?.username ?? '', Validators.required],
-    email: [
-      this.data?.user?.email ?? '',
-      [Validators.required, Validators.email],
-    ],
-    phone: [this.data?.user?.phone ?? '', [Validators.required]],
-    website: [this.data?.user?.website ?? '', Validators.required],
-  });
   private dialogRef =
     inject<MatDialogRef<CreateEditUserComponent>>(MatDialogRef);
+  private fb = inject(FormBuilder);
+  public userForm = this.fb.group({
+    name: ['', Validators.required],
+    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['', [Validators.required]],
+    website: ['', Validators.required],
+  });
+
+  ngOnInit(): void {
+    this.userForm.patchValue({ ...this.data });
+  }
 
   public onNoClick(): void {
     this.dialogRef.close();
   }
 
-  public saveUser(): User {
-    return <User>this.userForm.getRawValue();
+  public onSaveUser(): void {
+    if (this.userForm.valid) {
+      this.dialogRef.close(<User>this.userForm.getRawValue());
+    }
   }
 }
