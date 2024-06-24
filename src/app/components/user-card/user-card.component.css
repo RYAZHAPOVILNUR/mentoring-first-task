@@ -1,0 +1,13 @@
+.user-card {
+  width: 250px;
+  height: 315px;
+  border: 3px solid #556080;
+  border-radius: 30px;
+  align-items: center;
+  padding: 5px;
+  justify-content: space-between;
+}
+
+.card-btns {
+  gap: 10px;
+}
