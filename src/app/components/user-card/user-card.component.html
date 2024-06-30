@@ -1,0 +1,17 @@
+<div class="user-card">
+  <h3>{{ user.name }}</h3>
+  <p>Username: {{ user.username }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Phone: {{ user.phone }}</p>
+  <button
+    style="margin-right: 10px"
+    mat-raised-button
+    color="primary"
+    (click)="onEdit()"
+  >
+    Редактировать
+  </button>
+  <button mat-raised-button color="primary" (click)="onDelete()">
+    Удалить
+  </button>
+</div>

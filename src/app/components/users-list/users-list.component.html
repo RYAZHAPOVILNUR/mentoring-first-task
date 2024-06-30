@@ -1,0 +1,43 @@
+<button
+  mat-raised-button
+  color="primary"
+  class="add-btn"
+  (click)="openCreateEditUserDialog()"
+>
+  Добавить пользователя
+</button>
+
+<form (submit)="onSearch($event)">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    name="searchQuery"
+    placeholder="Search..."
+  />
+  <button mat-raised-button color="primary" type="submit">Применить</button>
+</form>
+
+<div *ngIf="loading$ | async; else userList">
+  <p>Загрузка...</p>
+</div>
+
+<ng-template #userList>
+  <div *ngIf="error$ | async as error; else noError">
+    <p>Ошибка: {{ error }}</p>
+  </div>
+  <ng-template #noError>
+    <ng-container *ngIf="filteredUsers.length > 0; else noUsers">
+      <div *ngFor="let user of filteredUsers">
+        <app-user-card
+          [user]="user"
+          (deleteUser)="onUserDelete($event)"
+          (editUser)="openCreateEditUserDialog($event)"
+        >
+        </app-user-card>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #noUsers>
+    <p>Нет пользователей</p>
+  </ng-template>
+</ng-template>
