@@ -1,0 +1,15 @@
+<mat-form-field [formGroup]="userForm">
+
+    <label mat-label for="name">Name: </label>
+    <input matInput formControlName="name">
+
+    <label mat-label for="username">User name: </label>
+    <input matInput formControlName="username">
+
+    <label mat-label for="phone">Phone: </label>
+    <input matInput formControlName="phone">
+
+    <label mat-label for="email">Email: </label>
+    <input matInput formControlName="email">
+</mat-form-field>
+<button (click)="saveUser()">{{data.isEdit ? "Save" : "Create"}}</button>
