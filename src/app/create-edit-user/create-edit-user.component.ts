@@ -12,9 +12,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 export class CreateEditUserComponent implements OnInit {
   public data = inject(MAT_DIALOG_DATA);
   private readonly fb = inject(FormBuilder);
-  public dialogRef: MatDialogRef<CreateEditUserComponent> = inject(
-    MatDialogRef<CreateEditUserComponent>
-  );
+  public dialogRef: MatDialogRef<CreateEditUserComponent> = inject(MatDialogRef<CreateEditUserComponent>);
 
   userForm = this.fb.group({
     id: [new Date().getTime(), Validators.required],
