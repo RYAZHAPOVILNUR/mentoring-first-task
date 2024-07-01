@@ -1,0 +1,10 @@
+<div>
+    <div *ngFor="let user of usersService.users$ | async">
+        <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)"></app-user-card>
+    </div>
+</div>
+
+<div>
+    <button (click)="openDialog()">Add User</button>
+</div>
+
