@@ -1,0 +1,17 @@
+<div class="user-card" (click)="editUser.emit(user)">
+  <p class="text">
+    Name: <span> {{ user.name }}</span>
+  </p>
+  <p class="text">
+    UserName:<span> {{ user.username }}</span>
+  </p>
+  <p class="text">
+    Email:<span> {{ user.email }}</span>
+  </p>
+  <p class="text">
+    Website:<span> {{ user.website }}</span>
+  </p>
+  <button class="user-card-btn" (click)="deleteUser.emit(user.id)">
+    Delete
+  </button>
+</div>

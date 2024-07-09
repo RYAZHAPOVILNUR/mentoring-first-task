@@ -1,0 +1,60 @@
+<form class="form-container" [formGroup]="form">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Enter name"
+      formControlName="name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      placeholder="Enter username"
+      formControlName="username"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      placeholder="Enter email"
+      formControlName="email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="website">Website</label>
+    <input
+      type="website"
+      class="form-control"
+      id="website"
+      placeholder="Enter website"
+      formControlName="website"
+    />
+  </div>
+  <ng-container>
+    <button
+      *ngIf="data.isEdit"
+      class="create-btn"
+      type="button"
+      (click)="updateUser()"
+    >
+      Update User
+    </button>
+    <button
+      *ngIf="!data.isEdit"
+      class="create-btn"
+      type="button"
+      (click)="createUser()"
+    >
+      Create User
+    </button>
+  </ng-container>
+</form>
