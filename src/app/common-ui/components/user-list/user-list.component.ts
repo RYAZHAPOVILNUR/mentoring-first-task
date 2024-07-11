@@ -1,11 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { CommonModule } from '@angular/common';
-import { UsersService } from '../../../data/services/users.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { CreateEditUserComponent } from '../create-edit-user/create-edit-user.component';
 import { User } from '../../../data/intefaces/user.interface';
+import { Store } from '@ngrx/store';
+import {
+  createUser,
+  deleteUser,
+  loadUserData,
+  updateUser,
+} from '../../../reducer/users.actions';
+import { selectUsers } from '../../../reducer/users.selectors';
 
 @Component({
   selector: 'app-user-list',
@@ -15,14 +22,14 @@ import { User } from '../../../data/intefaces/user.interface';
   styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-  usersService = inject(UsersService);
-  public readonly users$ = this.usersService.users$;
   private isEdit: boolean = false;
 
   constructor(public dialog: MatDialog) {}
+  private readonly store = inject(Store);
+  public readonly users$ = this.store.select(selectUsers);
 
   ngOnInit(): void {
-    this.usersService.loadUserData();
+    this.store.dispatch(loadUserData());
   }
 
   openDialog(user?: User) {
@@ -40,10 +47,10 @@ export class UserListComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (this.isEdit) {
-          this.usersService.updateUser({ ...user, ...result });
+          this.store.dispatch(updateUser({ user: { ...user, ...result } }));
         } else {
           const newUser = { ...result, id: this.generateId() };
-          this.usersService.createUser(newUser);
+          this.store.dispatch(createUser({ user: { ...user, ...result } }));
         }
       }
     });
@@ -54,6 +61,6 @@ export class UserListComponent {
   }
 
   onDeleteUser(id: number) {
-    this.usersService.deleteUser(id);
+    this.store.dispatch(deleteUser({ id }));
   }
 }
