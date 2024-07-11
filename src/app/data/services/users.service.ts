@@ -11,12 +11,12 @@ export class UsersService {
   userApiSevice = inject(UsersApiService);
   private readonly localStorageService = inject(LocalStorageService);
   private usersSubject$ = new BehaviorSubject<User[]>(
-    this.localStorageService.loadUsersLocalStorage()
+    this.localStorageService.getUsersLocalStorage()
   );
   public readonly users$ = this.usersSubject$.asObservable();
 
   public loadUserData() {
-    const localUsers = this.localStorageService.loadUsersLocalStorage();
+    const localUsers = this.localStorageService.getUsersLocalStorage();
     if (localUsers.length > 0) {
       this.usersSubject$.next(localUsers);
     } else {

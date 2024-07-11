@@ -7,7 +7,7 @@ import { User } from '../intefaces/user.interface';
 export class LocalStorageService {
   public readonly localStorageKey = 'users';
 
-  public loadUsersLocalStorage(): User[] {
+  public getUsersLocalStorage(): User[] {
     const storedUsers = localStorage.getItem('users');
     return storedUsers ? JSON.parse(storedUsers) : [];
   }
