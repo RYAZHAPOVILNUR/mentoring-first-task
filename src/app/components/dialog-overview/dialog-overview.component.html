@@ -1,0 +1,23 @@
+<button mat-icon-button style="margin: 5px" mat-dialog-close>
+  <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+  <form [formGroup]="newForm" (ngSubmit)="saveUser()">
+    <input matInput placeholder="Имя" formControlName="name">
+    <input matInput placeholder="Ник" formControlName="username">
+    <input matInput placeholder="Номер телефона" formControlName="phone">
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button style="background-color: red" mat-dialog-close>Закрыть</button>
+  <button mat-raised-button *ngIf="data?.isEdit; else create" style="background-color: #727e66" [disabled]="newForm.invalid"
+          (click)="saveUser()">Изменить
+  </button>
+</mat-dialog-actions>
+<ng-template #create>
+  <button [disabled]="newForm.invalid" mat-raised-button
+          style="background-color: #727e66" (click)="createUser()">Создать
+  </button>
+</ng-template>
+
+

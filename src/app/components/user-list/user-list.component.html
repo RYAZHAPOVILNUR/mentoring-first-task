@@ -1,0 +1,8 @@
+<div>
+  <mat-dialog-actions>
+    <button id="add-user" (click)="statementIsEdit = false; openDialog();">Добавить пользователя</button>
+  </mat-dialog-actions>
+  <ng-container *ngFor="let user of users$ | async">
+    <app-user-card [user]="user" (deleteUserEvent)="onDeleteUser($event)" (editUserEvent)="statementIsEdit = true; openDialog($event)"></app-user-card>
+  </ng-container>
+</div>
