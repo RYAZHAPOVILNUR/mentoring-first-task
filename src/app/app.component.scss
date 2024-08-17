@@ -4,6 +4,31 @@
   font-family: Inter;
 }
 
+@mixin clear-input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  outline: none;
+}
+
+@mixin clear-button {
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+
+
 .position-center {
   margin: 0 auto;
 }
@@ -93,7 +118,18 @@
 
 }
 
-/* стилизовать инпут*/
+.search-region {
+  margin-left: 4px;
+}
+
+.search-input {
+  @include clear-input;
+  width: 400px;
+  height: 28px;
+  background-color:#F0BA4E;
+  outline: none;
+  text-decoration: underline;
+}
 
 .services {
   display: flex;
@@ -143,6 +179,7 @@
   margin-top: 63px;
   margin-bottom: 56px;
   height: 463px;
+  margin-left: 300px;
 }
 
 .product-cards-block {
@@ -184,7 +221,7 @@
 }
 
 .product-cards1 {
-  background-image: url(assets/Card1-image.svg);
+  background-image: url(../assets/Card1-image.svg);
   background-repeat: no-repeat;
   overflow: hidden;
   font-family: Inter;
@@ -198,7 +235,7 @@
 }
 
 .product-cards2 {
-  background-image: url(assets/Card2-image.svg);
+  background-image: url(../assets/Card2-image.svg);
   background-repeat: no-repeat;
   overflow: hidden;
   font-family: Inter;
@@ -212,7 +249,7 @@
 }
 
 .product-cards3 {
-  background-image: url(assets/Card3-image.svg);
+  background-image: url(../assets/Card3-image.svg);
   background-repeat: no-repeat;
   overflow: hidden;
   font-family: Inter;
@@ -221,10 +258,13 @@
   line-height: 33px;
   background-position-y: bottom;
   background-position-x: right;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .product-cards4 {
-  background-image: url(assets/Card4-image.svg);
+  background-image: url(../assets/Card4-image.svg);
   background-repeat: no-repeat;
   overflow: hidden;
   font-family: Inter;
@@ -233,10 +273,17 @@
   line-height: 33px;
   background-position-y: bottom;
   background-position-x: right;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.product-card4-title {
+  width: 218px;
 }
 
 .product-cards5 {
-  background-image: url(assets/Card5-image.svg);
+  background-image: url(../assets/Card5-image.svg);
   background-repeat: no-repeat;
   overflow: hidden;
   font-family: Inter;
@@ -247,6 +294,10 @@
   background-position-x: left;
   margin-right: 0px;
   margin-bottom: 0px;
+}
+
+.product-card5-title {
+  width: 336px;
 }
 
 .product-cards1, .product-cards2, .product-cards3, .product-cards4, .product-cards5 {
@@ -298,6 +349,7 @@
 
 .load-catalog-img {
   width: 40px;
+  height: 40px;
 }
 
 .load-catalog-text {
@@ -317,7 +369,7 @@
   line-height: 16px;
   display: flex;
   align-items: center;
-  align-self: flex-start;
+
 }
 
 .load-catalog-text4 {
@@ -413,6 +465,7 @@
   margin-bottom: 6px;
   color: #3C3C3B;
   margin-right: 16px;
+  text-decoration: line-through;
 }
 
 .product-new-price {
@@ -464,8 +517,8 @@
 
 .advertesement {
   margin-bottom: 56px;
-  margin-left: 300px;
-  margin-right: 300px;
+
+
 }
 
 .advertisement-content {
@@ -477,6 +530,7 @@
   background-color: #F6F6F6;
   margin-left: 46px;
   padding: 28px;
+  margin-left: 300px;
 }
 
 .advertisement-heading {
@@ -574,6 +628,10 @@
   height: 73px;
 }
 
+.footer-text {
+  margin-bottom: 8px;
+}
+
 .footer-container-wrapper2 {
   width: 534px;
   height: 162px;
@@ -611,6 +669,9 @@
 }
 
 .navigation-text {
+  font-size: 14px;
+  font-weight: 400px;
+  line-height: 16px;
   margin-right: 28px;
   margin-top: 86px;
   margin-bottom: 36px;
@@ -618,4 +679,58 @@
 
 .media-icons {
   margin-right: 20px;
+}
+
+.contact-phone {
+  font-size: 12px;
+  font-weight: 400px;
+  line-height: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.copyright-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 400px;
+  line-height: 16px;
+}
+
+.footer-sender-email {
+  width: 534px;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid #F0BA4E;
+  padding-left: 6px;
+
+}
+
+.email-submit {
+  @include clear-button;
+  width: 94px;
+  height: 36px;
+  border-radius: 30px;
+  background-color: #F0BA4E;
+  font-family: Inter;
+  font-weight: 700px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #FFFFFF;
+  margin: 6px;
+  cursor: pointer;
+}
+
+.footer-input {
+  @include clear-input;
+  width: 381px;
+  background-color: #4B565E;
+  outline: none;
+
+}
+
+.footer-mail-icon {
+  margin-right: 9px;
+  margin-left: 24px;
+  width: 16px;
+  height: 16px;
 }
