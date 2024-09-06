@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-content>
+    <h3>
+      <strong>{{ user.name }}</strong>
+      <p>(<strong>ID:</strong> {{ user.id }})</p>
+    </h3>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Phone:</strong> {{ user.phone }}</p>
+    <button
+      class="user-btn"
+      mat-fab extended
+      (click)="onEditUser(user)">
+      Edit User
+    </button>
+    <button
+      class="user-btn"
+      mat-fab extended
+      color="warn"
+      (click)="onDeleteUser(user)">
+      Delete User
+    </button>
+  </mat-card-content>
+</mat-card>
