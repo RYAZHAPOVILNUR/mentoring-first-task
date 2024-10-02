@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2" style="margin-left:15px; margin-top: 15px">
+      <button class="btn btn-success" (click)="openDialog()" >Create user</button>
+    </div>
+  </div>
+  <div class="row">
+    <user-card
+      *ngFor="let user of users$ | async"
+      [user]="user"
+      (deleteUser)="deleteUser($event)"
+      (editUser)="openDialog($event)"
+      class="col-4">
+    </user-card>
+  </div>
+
+</div>

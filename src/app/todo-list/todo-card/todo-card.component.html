@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-content">
+    Id: {{todo.id}} <br>
+    User: {{userName}} <br>
+    Title:  {{todo.title}} <br>
+    Completed: <span style="color: #aaa;font-size: 19px;font-weight: bold;">{{todo.completed ? '✔️' : '✖️'}}</span>
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-danger" (click)="onDeleteTodo(todo.id)">Delete</button>
+  </div>
+</div>

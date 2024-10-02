@@ -1,0 +1,6 @@
+<div class="container">
+  <div class="row">
+    <todo-card *ngFor="let todo of todos$ | async" [todo]="todo" (deleteTodo)="deleteTodo($event)" class="col-6"></todo-card>
+
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.header {
+  background-color: #6ab8d0;
+  padding: 1rem;
+  .container {
+    align-items: start;
+  }
+  .nav {
+    display: flex;
+    gap: 15px;
+    &-link{
+      color: white;
+    }
+  }
+}
