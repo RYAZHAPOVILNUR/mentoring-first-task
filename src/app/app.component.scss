@@ -1,0 +1,32 @@
+.header {
+    display: flex; /*в длину текст*/
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 200px;
+    height: 80px;
+    color: white;
+    background-color: #4b565e;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    margin-right: 20px;
+    
+}
+
+.header-nav {
+    display: flex;
+}
+
+.header-nav-item {
+    margin-right: 20px;
+    margin-left: 35px;
+}
+
+.telephone {
+    margin-right: 20px;
+}
