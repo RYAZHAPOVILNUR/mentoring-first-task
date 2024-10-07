@@ -1,0 +1,33 @@
+.card {
+  width: 400px;
+  margin: 20px;
+  padding: 20px;
+  border: 3px solid #17b7b7;
+  border-radius: 20px;
+}
+.card-date {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.card-date span{
+  font-weight: bold;
+}
+
+.deleteButton{
+  width: 30px;
+  height: 30px;
+  margin: 0 0 10px 0;
+  background-color: #17b7b7;
+}
+
+.button {
+  margin: 0 0 0 30px;
+  font-size: 18px;
+  color: white !important;
+  background-color: #17b7b7 !important;
+}
+
+.button:hover {
+  opacity: 0.6;
+}

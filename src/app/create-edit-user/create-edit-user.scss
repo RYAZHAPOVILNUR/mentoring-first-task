@@ -1,0 +1,15 @@
+.button {
+  margin: 0 0 0 30px;
+  font-size: 18px;
+  color: white !important;
+  background-color: #17b7b7 !important;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+}
