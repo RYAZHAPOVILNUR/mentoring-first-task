@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{data.isEdit}}</h2>
+<!--тут мы применяем ту строчку из users-list которая проверяет true или false: true - первый параметр и т.д -->
+<form [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username">
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email">
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Phone</mat-label>
+    <input matInput formControlName="phone" type="tel">
+  </mat-form-field>
+
+  <mat-dialog-actions>
+    <button mat-flat-button mat-dialog-close>Close</button>
+    <button (click)="onSaveButton()" [disabled]="form.invalid" mat-flat-button color="primary">{{data.isEdit ? "Save" : "Edit"}}</button>
+  </mat-dialog-actions>
+</form>
+

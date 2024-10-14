@@ -1,0 +1,14 @@
+<ng-container *ngIf="(status$ | async) === 'loading'; else isSuccess ">
+    <mat-spinner></mat-spinner>
+</ng-container>
+
+<ng-template #isSuccess>
+    <div class="user-list">
+        <p class="user-list__title">Список пользователей</p>
+        <ng-container *ngFor="let user of users$ | async">
+            <app-user-card (userDelete)="onDelete(user.id)" (userEdit)="editDialog($event)" [user]="user"></app-user-card>
+        </ng-container>
+    </div>
+    
+    <button mat-button mat-flat-button (click)="openDialog()">Добавить пользователя</button>
+</ng-template>
