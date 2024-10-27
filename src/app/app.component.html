@@ -16,7 +16,7 @@
       <div class="header__left">
         <div class="header__logo"><img src="../assets/Frame.svg" alt="logo"></div>
         <nav class="header__up">
-          <div class="nav__item">{{headerItem1}}</div>
+          <a routerLink="/main" class="nav__item">{{headerItem1}}</a>
           <div class="nav__item">{{aboutCompany}}</div>
           <div class="nav__item" *ngIf="isShowCatalog">{{headerItem3}}</div>
           <button (click)="isShowCatalog = !isShowCatalog">Скрыть/Показать каталог</button>
@@ -47,14 +47,15 @@
         </nav>
       </div>
       <div class="hl__right">
+        <button routerLink="/users">Админка</button>
         <input type="text" placeholder="Поиск, например Круг зачистной " class="hl__input">
         <div class="location">
           <img src="../assets/map-pin (2) 1.svg" alt="" class="location__img">
           <p class="location__txt">Москва</p>
         </div>
-        <button (click)="isShowPromo = !isShowPromo">Открыть/Скрыть фото</button>
       </div>
     </div>
+    <!-- <button (click)="isShowPromo = !isShowPromo">Открыть/Скрыть фото</button>
     <div class="promo">
       <img src="../assets/баннер.png" alt="" class="promo" *ngIf="isShowPromo">
     </div>
@@ -119,6 +120,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <router-outlet></router-outlet>
 </body>
 </html>

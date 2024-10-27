@@ -1,0 +1,36 @@
+body {
+    background-color: rgba(251, 251, 251, 1);
+}
+
+.userCards {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.userCard {
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(240, 186, 78, 1);
+    margin: 5px;
+    padding: 10px;
+    font-family: Inter;
+
+}
+
+.cardName {
+    font-weight: bold;
+}
+
+.cardCompName {
+    color: rgba(75, 86, 94, 1);
+}
+
+.deleteButton {
+    border: solid;
+    border-color: rgba(240, 186, 78, 1);
+    background-color: white;
+    border-width: 2px;
+    border-radius: 5%;
+    width: 100px;
+    height: 40px;
+}

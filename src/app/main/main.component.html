@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <button (click)="isShowPromo = !isShowPromo">Открыть/Скрыть фото</button>
+        <div class="promo">
+          <img src="../../assets/баннер.png" alt="" class="promo" *ngIf="isShowPromo">
+        </div>
+        <div class="container">
+          <div class="shop__pluss">
+            <div class="shop__pluss__item">
+              <div class="shop__pluss__item__logo"><img src="../assets/32.png" alt="" class="spi__logo"></div>
+              <div class="shop__pluss__item__txt"><span class="bold__txt">Большой ассортимент</span><br>
+              строительных материалов всегда в наличии</div>
+            </div>
+            <div class="shop__pluss__item">
+              <div class="shop__pluss__item__logo"><img src="../assets/33.png" alt="" class="spi__logo"></div>
+              <div class="shop__pluss__item__txt"><span class="bold__txt">Доставка стройматериалов</span><br>
+              в течении четырех часов или в любое удобное время</div>
+            </div>
+            <div class="shop__pluss__item">
+              <div class="shop__pluss__item__logo"><img src="../assets/34.png" alt="" class="spi__logo"></div>
+              <div class="shop__pluss__item__txt">Многоуровневая <span class="bold__txt">система<br> управления качеством</span> по стандарту ISO 9001</div>
+            </div>
+          </div>
+          <div class="product">
+            <div class="product__page">
+              <button *ngFor="let item of newPages" class="product__page__btn">{{item}}</button>
+            </div>
+            <div class="product__assort">
+              <div class="product__assort__big pa__item">
+                <h2 class="pab__name">Строительный отделочный инструмент</h2>
+                <div class="pab__action">
+                  <p class="pab__action__txt">Перейти в каталог</p>
+                  <button class="pab__action__btn"><img src="../assets/Arrow 6.svg" alt=""></button>
+                </div>
+              </div>
+              <div class="product__assort__smalls">
+                <div class="pas__item pi__1">
+                  <h2 class="pas__name">Эмали</h2>
+                  <div class="pas__action">
+                    <p class="pab__action__txt">Перейти в каталог</p>
+                    <button class="pab__action__btn"><img src="../assets/Arrow 6.svg" alt=""></button>
+                  </div>
+                </div>
+                <div class="pas__item pi__2">
+                  <h2 class="pas__name">Лакокрасочные<br> материалы</h2>
+                  <div class="pas__action">
+                    <p class="pab__action__txt">Перейти в каталог</p>
+                    <button class="pab__action__btn"><img src="../assets/Arrow 6.svg" alt=""></button>
+                  </div>
+                </div>
+                <div class="pas__item pi__3">
+                  <h2 class="pas__name">Пены, клеи и<br> герметики</h2>
+                  <div class="pas__action">
+                    <p class="pab__action__txt">Перейти в каталог</p>
+                    <button class="pab__action__btn"><img src="../assets/Arrow 6.svg" alt=""></button>
+                  </div>
+                </div>
+                <div class="pas__item pi__4">
+                  <h2 class="pas__name__4 pas__name">Розетки и выключатели</h2>
+                  <div class="pas__action">
+                    <p class="pab__action__txt">Перейти в каталог</p>
+                    <button class="pab__action__btn"><img src="../assets/Arrow 6.svg" alt=""></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</body>
+</html>
