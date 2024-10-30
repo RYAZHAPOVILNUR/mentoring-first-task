@@ -1,0 +1,137 @@
+.header{
+    display: flex;
+    height: 80px;
+    background-color: #4B565E;
+    color: whitesmoke;
+    justify-content: space-between;
+    padding: 0px 240px;
+    align-items: center;
+}
+.header-left{
+    display:flex;
+    align-items: center;
+    
+    
+}
+.header-nav{
+    display:flex
+}
+.header-nav-item{
+    align-items: center;
+    display: flex;
+    margin-right: 20px;
+    display:flex;
+    font-family: sans-serif;
+
+}
+
+.header-right{
+    align-items: center;
+    display:flex;
+    margin-right: 30px;
+}
+
+.header-right-items{
+    align-items: center;
+    display: center;
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+.header-left-items{
+    align-items: center;
+    flex: center;
+    margin-left: 20px;
+
+}
+.contactNumber{
+    align-items: center;
+
+}
+.goldBorder{
+    border: 1.5px solid black;
+    border-radius: 40px;
+    align-items: center;
+    padding: 7px;
+    display: flex;
+    flex: center;
+    border-color: #F0BA4E;
+    height: 40px;
+    width: 85px;
+    
+
+}
+.light-bar{
+    background-color: #F0BA4E;
+    display: flex;
+    height: 80px;
+    color: #3C3C3B;
+    justify-content: space-between;
+    padding: 0px 240px;
+    align-items: center;
+}
+.left-items{
+    display: flex;
+    margin-left: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
+
+}
+.left-items-uniq{
+
+    display: flex;
+    margin-top: -5px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.searching{
+    border: none;
+    background-color: #F0BA4E;
+    height: 19px;
+    width: 262px;
+    background-image: url("/assets/search.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 50px;
+    font-family: sans-serif;
+    border-bottom: 1px solid;
+}
+
+.right-bar{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    margin-top: -5px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-left: 40px;
+
+}
+
+.right-items{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-left: 20px;
+
+}
+.di{
+    width: 9px;
+    height: 11px;
+    top: 0.5px;
+    left: 1.5px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    
+}
+.moscow{
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding-left: 15px;
+}
