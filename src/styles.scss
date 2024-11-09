@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-color: #f1ecec;
+  --secondary-color: #373b3f;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.btn-add {
+  width: 200px;
+  background: green;
+  border: none;
+  color: white;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 16px;
+  &:hover{
+    opacity: 0.9;
+  }
+  &:active{
+    opacity: 0.8;
+  }
+}
+
+.btn-delete {
+  width: 200px;
+  background: #4f080f;
+  border: none;
+  color: white;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 16px;
+  &:hover{
+    opacity: 0.8;
+  }
+  &:active{
+    opacity: 1;
+  }
+}
+
+
+
+
+
+

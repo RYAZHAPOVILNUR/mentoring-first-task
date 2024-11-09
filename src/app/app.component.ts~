@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import {HeaderComponent} from "./shared-ui/header/header.component";
+import {FooterComponent} from "./shared-ui/footer/footer.component";
+import {HomeComponent} from "./shared-ui/home/home.component";
+import {UsersListComponent} from "./shared-ui/users-list/users-list.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserModule} from "@angular/platform-browser";
+
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent, UsersListComponent,BrowserModule, BrowserAnimationsModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'mentoring-first-project';
+}

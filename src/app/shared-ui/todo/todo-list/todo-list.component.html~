@@ -1,0 +1,25 @@
+<div class="todo-containers-list">
+  <div class="table-container">
+    <div class="table-header">
+      <div>Aufgaben</div>
+    </div>
+    <div class="table-body">
+      <div class="table-row">
+        <div>
+          <input type="checkbox" [(ngModel)]="todo.completed" (change)="onCheckTodo(todo)"/>
+        </div>
+        <div [ngClass]="{'strikethrough': !todo.completed}">{{ todo.title }}</div>
+        <div class="btn-delete-table-container">
+          <button class="btn-delete-table" (click)="onDeleteTodo(todo)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

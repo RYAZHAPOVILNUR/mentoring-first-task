@@ -1,0 +1,66 @@
+.todo-containers-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.table-container {
+  width: 1200px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  background-color: #8c91e6;
+  color: white;
+  padding: 10px;
+}
+
+.table-body {
+  display: grid;
+  gap: 10px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.table-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table-row:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-delete-table {
+  width: 100px;
+  background: red;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.btn-delete-table:hover {
+  opacity: 0.9;
+}
+
+.btn-delete-table:active {
+  opacity: 0.8;
+}
+
+.strikethrough {
+  text-decoration: line-through; 
+  color: gray; /* Optional: Ändere die Farbe */
+}

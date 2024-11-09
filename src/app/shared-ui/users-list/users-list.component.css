@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-card {
+  flex: 1 1 calc(25% - 20px); /* Stelle sicher, dass die Karten 25% der Breite minus dem Abstand einnehmen */
+  background-color: var(--secondary-color);
+  color: White;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/*# sourceMappingURL=users-list.component.css.map */

@@ -1,0 +1,19 @@
+<div class="user-card">
+  <mat-card-content class="container-content">
+    <mat-card-title class="card-title">
+      {{ user.name }} <!-- Zeigt den Namen des Benutzers an -->
+    </mat-card-title>
+    <mat-card-subtitle class="mat-card-subtitle">
+      {{ user.email }} <!-- Zeigt die E-Mail des Benutzers an -->
+    </mat-card-subtitle>
+    <mat-card-subtitle class="mat-card-subtitle">
+      {{ user.website }} <!-- Zeigt die Website des Benutzers an -->
+    </mat-card-subtitle>
+    <mat-card-subtitle class="mat-card-subtitle">
+      {{ user.company.name }} <!-- Zeigt den Firmennamen des Benutzers an -->
+    </mat-card-subtitle>
+  </mat-card-content>
+  <div>
+    <button class="btn-delete" (click)="removeUser()">Entfernen</button> <!-- Aufruf der removeUser-Methode -->
+  </div>
+</div>

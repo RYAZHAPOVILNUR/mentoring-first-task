@@ -1,0 +1,40 @@
+.menu {
+  background-color: #3f51b5;
+}
+
+.toolbar-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.menu-list {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  margin-left: 20px;
+}
+
+.router-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.router-link:hover {
+  color: #ffeb3b;
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=header.component.css.map */

@@ -1,0 +1,6 @@
+<p-panel >
+  <div class="angular-logo">
+    <img src="/assets/angular-seeklogo.svg" alt="Angular">
+  </div>
+</p-panel>
+

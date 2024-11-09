@@ -1,0 +1,19 @@
+<div class="user-card">
+  <mat-card-content class="container-content">
+    <mat-card-title class="card-title">
+      {{ userUser.name }}
+    </mat-card-title>
+    <mat-card-subtitle class="mat-card-subtitle">
+      {{ userUser.email }}
+    </mat-card-subtitle>
+    <mat-card-subtitle class="mat-card-subtitle">
+      {{ userUser.website }}
+    </mat-card-subtitle>
+    <mat-card-subtitle class="mat-card-subtitle">
+      {{ userUser.company.name }}
+    </mat-card-subtitle>
+  </mat-card-content>
+  <div>
+    <button class="btn-delete" (click)="deleteUser()">Entfernen</button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.user-card {
+  flex: 1 1 calc(25% - 20px); /* Stelle sicher, dass die Karten 25% der Breite minus dem Abstand einnehmen */
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+container-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mat-card-subtitle {
+  color: white;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=user-card.component.css.map */

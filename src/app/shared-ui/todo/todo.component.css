@@ -1,0 +1,66 @@
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 1200px;
+  margin: 90px auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.todo-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.example-full-width {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input {
+  margin-right: 5px;
+}
+
+.btn-add {
+  padding: 10px 20px;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #3700b3;
+}
+
+.hero-table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.btn-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=todo.component.css.map */

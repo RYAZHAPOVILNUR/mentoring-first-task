@@ -1,0 +1,14 @@
+<mat-toolbar class="menu mat-primary">
+  <div class="toolbar-content">
+    <span class="logo">Angular Mentoring</span>
+    <ul class="menu-list">
+      <li class="menu-item" *ngFor="let item of menuItem">
+        <a [routerLink]="item.link" class="router-link">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

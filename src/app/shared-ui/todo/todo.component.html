@@ -1,0 +1,28 @@
+<div class="todo-container">
+  <h1>Todo Anwendung</h1>
+  <div class="todo-input-container">
+    <mat-form-field class="example-full-width">
+      <mat-label>Neue Aufgabe eingeben</mat-label>
+      <input class="todo-input" matInput placeholder="Aufgabe" [(ngModel)]="newTodoTitle">
+    </mat-form-field>
+  </div>
+  <div class="btn-buttons">
+    <button class="btn-add" (click)="addTodo()">Add new Task</button>
+    <button class="btn-add" (click)="setDisplayMode('all')">All Tasks</button>
+    <button class="btn-add" (click)="setDisplayMode('completed')">Completed Tasks</button>
+    <button class="btn-add" (click)="setDisplayMode('uncompleted')">Uncompleted Tasks</button>
+  </div>
+</div>
+<div>
+  <div class="hero-table-container">
+    @for (todo of todos; track todo.id) {
+      @if (displayMode === 'all' || (displayMode === 'completed' && todo.completed) || (displayMode === 'uncompleted' && !todo.completed)) {
+        <app-todo-list [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-list>
+      }
+    } @empty {
+      <p>Es gibt keine Aufgaben.</p>
+    }
+  </div>
+</div>
+
+
