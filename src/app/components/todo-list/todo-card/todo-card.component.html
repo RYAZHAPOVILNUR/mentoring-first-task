@@ -1,0 +1,10 @@
+<div style="width: 200px; border: 1px solid black;padding: 20px">
+  <p>ТЕКСТ ЗАДАЧИ:</p>
+  <div [innerHTML]="todo.title | customTodoHiddenText"></div>
+  <p>АВТОР ЗАДАЧИ</p>
+  <div [innerHTML]="todo.userId"></div>
+  <p>ЗАДАЧА ЗАВЕРШЕНА:</p>
+  <div [innerHTML]="todo.completed? 'ДА' : 'НЕТ'"></div>
+  <button (click)="onDeleteTodo(todo.id)">УДАЛИТЬ ЗАДАЧУ</button>
+  <button (click)="openDialog()">Редактировать задачу</button>
+</div>

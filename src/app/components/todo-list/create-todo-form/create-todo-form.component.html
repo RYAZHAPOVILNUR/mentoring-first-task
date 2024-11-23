@@ -1,0 +1,28 @@
+<div class="form__container">
+  <h1 class="form__header">Todo Form</h1>
+  <form action="" [formGroup]="form" style="display: flex; flex-direction: column">
+    <label class="form__text">
+      ТЕКСТ ЗАДАЧИ:
+      <input type="text" formControlName="title" class="form__input">
+    </label>
+    <div *ngIf="(form.controls['title'].touched || form.controls['title'].dirty) && form.controls['title'].invalid" class="alert">
+      <div *ngIf="form.controls['title'].errors">
+        ТЕКСТ ЗАДАЧИ НЕКОРРЕКТЕН
+      </div>
+    </div>
+    <label class="form__text">
+      АВТОР ЗАДАЧИ:
+      <input type="text" formControlName="userId" class="form__input">
+    </label>
+    <div *ngIf="(form.controls['userId'].touched || form.controls['userId'].dirty) && form.controls['userId'].invalid" class="alert">
+      <div *ngIf="form.controls['userId'].errors">
+        АВТОР ЗАДАЧИ НЕКОРРЕКТЕН
+      </div>
+    </div>
+    <label class="form__checked">
+      Задача завершена:
+      <input mat-checkbox type="checkbox" formControlName="completed" class="form__input--check">
+    </label>
+    <button class="form__button" [disabled]="form.invalid" [mat-dialog-close]="infoTodo">ДОБАВИТЬ ЗАДАЧУ</button>
+  </form>
+</div>

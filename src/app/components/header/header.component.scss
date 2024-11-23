@@ -1,0 +1,62 @@
+.header{
+  display: flex;
+  padding: 0 240px;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  background-color: #4B565E;
+  color: white;
+
+  &__left{
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav{
+    display: flex;
+    gap: 24px;
+    div{
+      padding: 10px;
+    }
+  }
+
+  &__logo{
+    margin-right: 40px;
+  }
+
+  &__right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__inner-court{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    img{
+      width: 20px;
+      height: 30px;
+    }
+    p{
+      margin: 0;
+      padding: 5px;
+    }
+  }
+
+  &__court{
+    margin-left: 40px;
+    border: 1px solid #F0BA4E;
+    border-radius: 50px;
+    max-width: 106px;
+    max-height: 48px;
+  }
+
+  &__heart{
+    margin-left: 40px;
+  }
+
+  &__phone-number{
+    margin-left: 10px;
+  }
+}

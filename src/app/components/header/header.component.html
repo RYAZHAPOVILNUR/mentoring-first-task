@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="header__left">
+    <div class="header__logo">
+      <img src="/assets/logo.svg" alt="">
+    </div>
+    <nav class="header__nav">
+      <div>Главная</div>
+      <div *ngIf="showCompany">{{header1}}</div>
+      <div>Каталог</div>
+      <button (click)="showCompany = !showCompany">Скрыть/Показать</button>
+    </nav>
+  </div>
+  <div class="header__right">
+    <div class="header__phone">
+      <img src="/assets/phone.svg" alt="">
+    </div>
+    <div class="header__phone-number">
+      +7 (965) 084-29-29
+    </div>
+    <div class="header__heart">
+      <img src="/assets/heart.svg" alt="">
+    </div>
+    <div class="header__court">
+      <div class="header__inner-court">
+        <img src="/assets/shop.svg" alt="">
+        <p>Пусто</p>
+      </div>
+    </div>
+  </div>
+</div>
