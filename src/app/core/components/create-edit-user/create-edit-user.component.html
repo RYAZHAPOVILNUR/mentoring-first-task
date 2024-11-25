@@ -1,0 +1,49 @@
+<div class="modal-container">
+    <h2>Пользователь</h2>
+  
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Имя</mat-label>
+        <input matInput formControlName="name" placeholder="ИМЯ" />
+        <mat-error *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+          Имя должно быть не менее 3 символов
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Телефон</mat-label>
+        <input matInput formControlName="phone" placeholder="ТЕЛЕФОН"/>
+        <mat-error *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched">
+          Введите корректный телефон
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Сайт</mat-label>
+        <input matInput formControlName="website" placeholder="САЙТ" />
+        <mat-error *ngIf="userForm.get('website')?.invalid && userForm.get('website')?.touched">
+          Введите корректный URL
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Почта</mat-label>
+        <input matInput formControlName="email" placeholder="ПОЧТА" />
+        <mat-error *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+          Введите корректный email
+        </mat-error>
+      </mat-form-field>
+  
+      <button 
+       mat-raised-button color="primary"
+       type="submit"
+       [disabled]="userForm.invalid"
+       [mat-dialog-close]="userWithUpdateFields">
+       {{ isEdit ? 'Редактировать' : 'Добавить' }}
+      </button>
+      <button mat-button type="button" 
+      (click)="closeModal()">
+      Отмена
+      </button>
+    </form>
+  </div>
