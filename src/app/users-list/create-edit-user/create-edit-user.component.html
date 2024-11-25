@@ -1,0 +1,44 @@
+<form class="login-form" [formGroup]="createForm">
+  <div>
+    <label for="name">Имя: </label>
+    <input type="text" name="name" id="name" formControlName="name" />
+    @if(!createForm.controls.name.valid && createForm.controls.name.touched){
+    <small style="color: red">Это поле обязательно!</small>
+    }
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input type="email" name="email" id="email" formControlName="email" />
+    @if(!createForm.controls.email.valid && createForm.controls.email.touched){
+    <small style="color: red">Это поле обязательно!</small>
+    }
+  </div>
+  <div>
+    <label for="website">Веб-сайт: </label>
+    <input type="text" name="website" id="website" formControlName="website" />
+    @if(!createForm.controls.website.valid &&
+    createForm.controls.website.touched){
+    <small style="color: red">Это поле обязательно!</small>
+    }
+  </div>
+  <div>
+    <label for="username">Имя пользователя: </label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      formControlName="username"
+    />
+    @if(!createForm.controls.username.valid &&
+    createForm.controls.username.touched){
+    <small style="color: red">Это поле обязательно!</small>
+    }
+  </div>
+  <button (click)="onNoClick()">No Thanks</button>
+  <button
+    [mat-dialog-close]="userWithUpdatedFields"
+    [disabled]="!createForm.valid"
+  >
+    {{ isEdit ? "Сохранить" : "Создать" }}
+  </button>
+</form>

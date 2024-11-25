@@ -1,0 +1,11 @@
+<h1>Карточки пользователей</h1>
+<div style="display: flex; flex-wrap: wrap">
+  <div *ngFor="let user of users$ | async">
+    <app-user-card
+      [user]="user"
+      (deleteUser)="deleteUser($event)"
+      (editUser)="editUser($event)"
+    ></app-user-card>
+  </div>
+</div>
+<button (click)="openCreateDialog()">Добавить пользователя</button>
