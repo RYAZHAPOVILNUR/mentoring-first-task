@@ -1,0 +1,14 @@
+.delete{
+  padding: 50px;
+
+  &__buttons{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  &__header{
+    font-weight: 700;
+  }
+}

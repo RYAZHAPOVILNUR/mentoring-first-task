@@ -1,0 +1,12 @@
+<mat-card class="card" appRedDirectiveJs>
+  <mat-card-title [innerHTML]="user.name | customUpperCase"></mat-card-title>
+  <mat-card-subtitle [innerHTML]="user.email | customUpperCase"></mat-card-subtitle>
+  <mat-card-subtitle [innerHTML]="user.website | customUpperCase"></mat-card-subtitle>
+  <mat-card-subtitle [innerHTML]="user.company.name  | customUpperCase"></mat-card-subtitle>
+  <mat-card-subtitle [innerHTML]="user.phone | customFormPhone"></mat-card-subtitle>
+  <mat-card-actions class="card__button">
+    <button mat-raised-button (click)="openDialogDelete()">Delete User</button>
+    <button mat-raised-button (click)="toEditUser()">Edit User</button>
+  </mat-card-actions>
+</mat-card>
+

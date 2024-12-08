@@ -1,0 +1,9 @@
+<div class="delete">
+  <h1 class="delete__header">Вы действительно хотите удалить пользователя?</h1>
+  <mat-card-actions class="delete__buttons">
+    <button [mat-dialog-close]="true" mat-raised-button (click)="openSnackBar('User is delited successfully','Nice!')">Да</button>
+    <button [mat-dialog-close]="false" mat-raised-button>Нет</button>
+  </mat-card-actions>
+</div>
+
+

@@ -1,0 +1,82 @@
+
+<!--<form [formGroup]="form" action="" style="display: flex;flex-direction: column; margin: 0 auto;max-width: 1440px;padding: 100px">-->
+<!--  <p>NAME:</p>-->
+<!--  <input type="text" class="form__input" formControlName="name">-->
+<!--  <div *ngIf="(form.controls['name'].touched || form.controls['name'].dirty) && form.controls['name'].invalid" class="alert">-->
+<!--    <div *ngIf="form.controls['name'].errors">ИМЯ ВВЕДЕНО НЕПРАВИЛЬНО</div>-->
+<!--  </div>-->
+<!--  <p>EMAIL:</p>-->
+<!--  <input type="text" class="form__input" formControlName="email">-->
+<!--  <div *ngIf="(form.controls['email'].touched || form.controls['email'].dirty) && form.controls['email'].invalid" class="alert">-->
+<!--    <div *ngIf="form.controls['email'].errors">EMAIL ВВЕДЕН НЕПРАВИЛЬНО</div>-->
+<!--  </div>-->
+<!--  <p>WEBSITE:</p>-->
+<!--  <input type="text" class="form__input" formControlName="website">-->
+<!--  <div *ngIf="(form.controls['website'].touched || form.controls['website'].dirty) && form.controls['website'].invalid" class="alert">-->
+<!--    <div *ngIf="form.controls['website'].errors">WEBSITE ВВЕДЕН НЕПРАВИЛЬНО</div>-->
+<!--  </div>-->
+<!--  <p>COMPANY NAME:</p>-->
+<!--  <input type="text" class="form__input" formControlName="companyName">-->
+<!--  <div *ngIf="(form.controls['companyName'].touched || form.controls['companyName'].dirty) && form.controls['companyName'].invalid" class="alert">-->
+<!--    <div *ngIf="form.controls['companyName'].errors">ИМЯ КОМПАНИИ ВВЕДЕНО НЕПРАВИЛЬНО</div>-->
+<!--  </div>-->
+<!--  <button style="width: 150px;margin-top: 20px;" [disabled]="form.invalid" [mat-dialog-close]="fullInfoField" (click)="openSnackBar('User is edited successfully','Nice!')">EDIT USER</button>-->
+<!--</form>-->
+
+
+<form class="form" [formGroup]="form">
+  <h1 class="form__header" *ngIf="data.isEdit">Edit User</h1>
+  <h1 class="form__header" *ngIf="!data.isEdit">Create User</h1>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input type="name" matInput formControlName="name" placeholder="Nikita">
+    @if ((form.controls['name'].touched || form.controls['name'].dirty) && form.controls['name'].invalid) {
+      <mat-error>Please enter a correct name</mat-error>
+    }
+    @if (form.controls['email'].hasError('required')) {
+      <mat-error>Name is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="name" matInput formControlName="email" placeholder="Nikita">
+    @if ((form.controls['email'].touched || form.controls['email'].dirty) && form.controls['email'].invalid) {
+      <mat-error>Please enter a correct email</mat-error>
+    }
+    @if (form.controls['email'].hasError('required')) {
+      <mat-error>Email is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Website</mat-label>
+    <input type="website" matInput formControlName="website" placeholder="saba.ru">
+    @if ((form.controls['website'].touched || form.controls['website'].dirty) && form.controls['website'].invalid) {
+      <mat-error>Please enter a correct website</mat-error>
+    }
+    @if (form.controls['website'].hasError('required')) {
+      <mat-error>Website is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>companyName</mat-label>
+    <input type="companyName" matInput formControlName="companyName" placeholder="google">
+    @if ((form.controls['companyName'].touched || form.controls['companyName'].dirty) && form.controls['companyName'].invalid) {
+      <mat-error>Please enter a correct name</mat-error>
+    }
+    @if (form.controls['companyName'].hasError('required')) {
+      <mat-error>companyName is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Phone</mat-label>
+    <input type="phone" matInput formControlName="phone" placeholder="+7-920-074-68-07" >
+    @if ((form.controls['phone'].touched || form.controls['phone'].dirty) && form.controls['phone'].invalid) {
+      <mat-error>Please enter a correct phone</mat-error>
+    }
+    @if (form.controls['phone'].hasError('required')) {
+      <mat-error>Phone is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <button mat-raised-button [disabled]="form.invalid" [mat-dialog-close]="fullInfoField" (click)="openSnackBar('User is edited successfully','Nice!')" *ngIf="data.isEdit">Edit User</button>
+  <button mat-raised-button [disabled]="form.invalid" [mat-dialog-close]="fullInfoField" (click)="openSnackBar('User is created successfully','Nice!')" *ngIf="!data.isEdit">Create User</button>
+</form>
