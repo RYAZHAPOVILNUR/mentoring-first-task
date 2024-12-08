@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {DatePipe, NgIf} from "@angular/common";
-import {UsersListComponent} from "./components/users-list/users-list.component";
-import {HeaderComponent} from "./components/header/header.component";
-import {TodoListComponent} from "./components/todo-list/todo-list.component";
+import {UsersListComponent} from "./components/admin/components/users-list/users-list.component";
+import {HeaderComponent} from "./components/admin/components/header/header.component";
+import {TodoListComponent} from "./components/admin/components/todo-list/todo-list.component";
 
 
 
