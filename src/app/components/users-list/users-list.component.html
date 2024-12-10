@@ -1,0 +1,19 @@
+<div class="container">
+  <button
+    (click)="openUserDialog()"
+    class="btnAddUser"
+    matTooltip="Добавить пользователя"
+    matTooltipPosition="right"
+  >
+    ADD USER
+  </button>
+  <div class="users-list">
+    <div *ngFor="let user of users$ | async">
+      <app-user-card
+        (deleteUser)="deleteUser($event, user.name)"
+        (editUser)="editUser($event)"
+        [user]="user"
+      ></app-user-card>
+    </div>
+  </div>
+</div>

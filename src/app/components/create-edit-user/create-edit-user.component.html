@@ -1,0 +1,83 @@
+<div class="container">
+  <h2>
+    {{ isEdit ? "Редактировать пользователя" : "Добавить пользователя" }}
+  </h2>
+  <div class="column">
+    <form (ngSubmit)="submitForm()" [formGroup]="form">
+      <div class="input-box">
+        <p>ИМЯ</p>
+        <input formControlName="name" placeholder="Введите имя"/>
+        <small
+          *ngIf="
+            form.controls['name'].invalid &&
+            (form.controls['name'].dirty || form.controls['name'].touched)
+          "
+          class="alert"
+        >
+          *Поле имя не может быть пустым.
+        </small>
+      </div>
+
+      <div class="input-box">
+        <p>USERNAME</p>
+        <input formControlName="username" placeholder="Введите логин"/>
+        <small
+          *ngIf="
+            form.controls['username'].invalid &&
+            (form.controls['username'].dirty ||
+              form.controls['username'].touched)
+          "
+          class="alert"
+        >
+          *Поле логин не может быть пустым.
+        </small>
+      </div>
+
+      <div class="input-box">
+        <p>EMAIL</p>
+        <input formControlName="email" placeholder="Введите email"/>
+
+        <div
+          *ngIf="
+            form.get('email')?.invalid &&
+            (form.get('email')?.touched || form.get('email')?.dirty)
+          "
+          class="alert"
+        >
+          <small *ngIf="form.get('email')?.errors?.['required']" class="alert">
+            *Поле email не может быть пустым.
+          </small>
+          <small *ngIf="form.get('email')?.errors?.['email']" class="alert">
+            *Ведите корректный email.
+          </small>
+        </div>
+      </div>
+
+      <div class="input-box">
+        <p>ТЕЛЕФОН</p>
+        <input formControlName="phone" placeholder="Введите номер телефона"/>
+        <small
+          *ngIf="
+            form.controls['phone'].invalid &&
+            (form.controls['phone'].dirty || form.controls['phone'].touched)
+          "
+          class="alert"
+        >
+          *Поле телефона не может быть пустым.
+        </small>
+      </div>
+
+      <div class="buttons">
+        <button (click)="onCancel()" class="btn-cancel">Отмена</button>
+        <button
+          [disabled]="form.invalid"
+          [mat-dialog-close]="userWithUpdateFields"
+          class="btn-create"
+          type="submit"
+        >
+          {{ isEdit ? "Сохранить" : "Создать" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
