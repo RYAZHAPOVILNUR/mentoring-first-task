@@ -1,0 +1,28 @@
+<mat-dialog-content class="container">
+<h2 mat-dialog-title>{{ data.isEdit ? 'Edit user' : 'Create user' }}</h2>
+  <form [formGroup]="form" class="form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Website</mat-label>
+      <input matInput formControlName="website">
+    </mat-form-field>
+  </form>
+  <div class="btn-container">
+    <button mat-dialog-close>closed</button>
+    <button [disabled]="form.invalid || !form.dirty" (click)="submitForm()">{{data.isEdit ? 'Edit' : 'Create'}}</button>
+  </div>
+</mat-dialog-content>

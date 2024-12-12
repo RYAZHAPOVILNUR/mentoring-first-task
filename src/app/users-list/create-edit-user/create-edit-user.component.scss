@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.btn-container button {
+  border-radius: 25px;
+  background: black;
+  color: white;
+}

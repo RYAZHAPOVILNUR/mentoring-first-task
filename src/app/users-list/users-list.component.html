@@ -1,0 +1,18 @@
+<div class="users">
+  <div class="card-wrapper" *ngFor="let user of users$ | async">
+    <app-user-card
+      [user]="user"
+      (onDeleteUser)="delete(user.id)"
+      (onEditUser)="openDialog(true, user)"
+    ></app-user-card>
+  </div>
+</div>
+<button
+  mat-flat-button
+  class="btn-add"
+  color="primary"
+  (click)="openDialog(false)"
+> Add user
+  <mat-icon>add</mat-icon>
+</button>
+

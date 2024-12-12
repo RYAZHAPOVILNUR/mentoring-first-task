@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card">
+    <p>{{user.name}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.phone}}</p>
+    <p>{{user.website}}</p>
+  </div>
+  <div class="card__btn">
+    <button
+      mat-flat-button
+      color="primary"
+      class="card__btn-delete"
+      (click)="onDeleteUser.emit(user.id)"
+    >
+      Delete
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="card__btn-delete"
+      (click)="onEditUser.emit(user)"
+    >
+      Edit
+      <mat-icon>edit_note</mat-icon>
+    </button>
+  </div>
+</div>
+
+
