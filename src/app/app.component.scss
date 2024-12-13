@@ -1,0 +1,130 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:  80px;
+    color: white;
+    background-color: #4B565E;
+    padding: 0 200px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    margin-right: 20px;
+}
+.header-nav {
+    display: flex;
+}
+
+.header-nav-item {
+    margin-right: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    .header-Phone {
+        margin-right: 5px;
+    }
+    .phone-nav {
+        display: flex;
+            .phone-nav-one {
+                margin-right: 30px;
+        }
+
+    }
+    .header-heart {
+        margin-right: 30px; 
+    }
+
+    .one {
+        display: flex;
+        align-items: center;
+        border: 1px solid #F0BA4E; 
+        border-radius: 25px;
+        background-color: #4B565E;
+        color: white;
+        padding: 10px;
+        width: 126px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        .nav-one {
+            margin-left: 10px; display: flex; align-items: center;
+          }
+    }    
+}
+
+.light {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    height: 48px;
+    background-color: #F0BA4E;
+    padding: 0 200px;
+    font-size: 14px;
+    
+} 
+
+.light-left {
+    display: flex;
+    align-items: center;
+  
+}
+
+.light-line {
+    margin-right: 10px;
+}
+
+.light-nav {
+    display: flex;
+}
+
+.light-nav-apple {
+    margin-right: 20px;
+}
+.light-right {
+    display: flex;
+    align-items: center;
+    background-color: #F0BA4E;
+}
+.search{
+    display: flex;
+    width: 372px;
+    height: 28px;
+    background-color: #F0BA4E;
+    border: none;
+     
+}
+
+.mask{
+    display: flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    margin-right: 20px;
+    justify-content: center;
+    background-color: #F0BA4E;
+    border: none;
+    
+}
+
+.map{
+    display: flex;
+    align-items: center;
+}
+
+.country{
+    background-color: #F0BA4E;
+    border: 1px solid #F0BA4E;
+    color: white;
+   }
+
+.item-cards__pagination{
+    display: flex;
+    justify-content: end;  
+}   
