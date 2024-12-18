@@ -1,0 +1,34 @@
+<h1 *ngIf="!data.isEdit" class="header">Create User</h1>
+<h1 *ngIf="data.isEdit" class="header">Edit User</h1>
+<form [formGroup]="form" class="form">
+  <mat-form-field>
+    <mat-label>Name:</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <p style="color: red" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+    Введите имя
+  </p>
+  <mat-form-field>
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+  <p style="color: red" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+    Введите email
+  </p>
+  <mat-form-field>
+    <mat-label>Phone:</mat-label>
+    <input matInput formControlName="phone">
+  </mat-form-field>
+  <p style="color: red" *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">
+    Введите телефон
+  </p>
+  <mat-form-field>
+    <mat-label>WebSite:</mat-label>
+    <input matInput formControlName="website">
+  </mat-form-field>
+  <p style="color: red" *ngIf="form.get('website')?.invalid && form.get('website')?.touched">
+    Введите адрес
+  </p>
+  <button mat-raised-button color="accent" [disabled]="form.invalid" *ngIf="!data.isEdit" [mat-dialog-close]="infoFullFields">Create</button>
+  <button mat-raised-button color="primary" [disabled]="form.invalid" *ngIf="data.isEdit" [mat-dialog-close]="infoFullFields">Edit</button>
+</form>

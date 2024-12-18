@@ -1,0 +1,13 @@
+.cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding-top: 200px;
+  flex-wrap: wrap;
+}
+
+.addUser{
+  display: block;
+  margin: 100px auto 0px;
+}
