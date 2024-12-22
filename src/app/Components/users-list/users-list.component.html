@@ -5,11 +5,10 @@
   </div>
 
   <div class="content_users_card">
-    <div *ngFor="let user of usersService.users$ | async">
+    <div *ngFor="let user of users$ | async"> <!-- usersService.users$ заменили на users$ -->
       <app-user-card [user]="user" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user-card>
     </div>
   </div>
-
 
   <app-create-user-btn (createUserBtn)="createUser($event)"></app-create-user-btn>
 

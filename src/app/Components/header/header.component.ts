@@ -70,8 +70,14 @@ export class HeaderComponent {
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result === 'admin') {
         this.userService.loginAsAdmin();
+        this.snackBar.open('Вы вошли как Админ!', 'Ok', {
+          duration: 3000
+        });
       } else if (result === 'user') {
         this.userService.loginAsUser();
+        this.snackBar.open('Вы вошли как Юзер!', 'Ok', {
+          duration: 3000
+        });
       } else {
         return undefined;
       }
@@ -83,7 +89,13 @@ export class HeaderComponent {
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result === 'logout') {
         this.userService.logout();
+        this.snackBar.open('Вы вышли из кабинета!', 'Ok', {
+          duration: 3000
+        });
       } else {
+        this.snackBar.open('Отмена выхода!', 'Ok', {
+          duration: 3000
+        });
         return undefined;
       }
     });

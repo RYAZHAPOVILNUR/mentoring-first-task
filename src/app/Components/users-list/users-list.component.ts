@@ -6,6 +6,10 @@ import {IUser, IUserCreate} from "../../Interfaces/IUser";
 import {UserCardComponent} from "./user-card/user-card.component";
 import {CreateUserFormComponent} from "./create-user-form/create-user-form.component";
 import {CreateUserBtnComponent} from "./create-user-btn/create-user-btn.component";
+import {Store} from "@ngrx/store";
+import {selectUsers} from "../../store/users.selectors";
+import {Observable} from "rxjs";
+import {UsersActions} from "../../store/users.actions";
 
 @Component({
   selector: 'app-users-list',
@@ -18,34 +22,33 @@ import {CreateUserBtnComponent} from "./create-user-btn/create-user-btn.componen
 export class UsersListComponent {
   public readonly usersApiService: UsersApiService = inject(UsersApiService);
   public readonly usersService: UsersService = inject(UsersService);
+  private readonly store = inject(Store);
+  public readonly users$: Observable<IUser[]> = this.store.select(selectUsers);
 
   constructor() {
-    this.usersService.loadUsers();
+    this.store.dispatch(UsersActions.load());
   }
 
   public createUser(user: IUserCreate): void {
-    this.usersService.createUser({
-      id: new Date().getTime(),
-      name: user.name,
-      email: user.email,
-      website: user.website,
-      phone: user.phone,
-      company: {
-        name: user.company.name,
-      },
-    });
+    this.store.dispatch(UsersActions.create({
+      user: {
+        id: new Date().getTime(),
+        name: user.name,
+        email: user.email,
+        website: user.website,
+        phone: user.phone,
+        company: {
+          name: user.company.name,
+        },
+      }
+    }));
   }
 
   public editUser(user: IUser): void {
-    this.usersService.editUser({
-      ...user,
-      company: {
-        name: user.company.name,
-      },
-    });
+    this.store.dispatch(UsersActions.edit({user}));
   }
 
   public deleteUser(id: number): void {
-    this.usersService.deleteUser(id);
+    this.store.dispatch(UsersActions.delete({id}));
   }
 }
