@@ -1,0 +1,123 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 300px;
+    height: 80px;
+    background-color: #4B565E;
+    align-items: center;
+    font-size: 16px;
+    color: #F9FAFB;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 19.36px;
+}
+.header__left {
+    display: flex;
+}
+.header-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+.header-ul {
+    display: flex;
+}
+.header-items {
+    margin-right: 24px;
+}
+.header__right {
+    display: flex;
+}
+.header-contact {
+    display: flex;
+    align-items: center;
+    a {
+        color: #F9FAFB!important;
+        padding-left: 38px;
+        position: relative;
+        img {
+            position: absolute;
+            top: -4px;
+            left: 0px;
+        }
+    }
+}
+.header-heart {
+    display: flex;
+    align-items: center;
+    a {
+        display: block;
+        margin: 0 40px;
+    }
+}
+.header-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 106px;
+    height: 48px;
+    border-radius: 50px;
+    border: 1px solid #F0BA4E;
+    background-color: inherit;
+    p {
+        color: #F9FAFB;
+        font-weight: 700;
+    }
+}
+
+/* catalog*/
+
+.catalog {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 300px;
+    height: 48px;
+    background-color: #F0BA4E;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.94px;
+    color: #3C3C3B;
+}
+.catalog-ul {
+    display: flex;
+    li {
+        margin-right: 24px;
+    }
+    li:first-child {
+        padding-left: 26px;
+        position: relative;
+        img {
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+    }
+}
+.catalog__right {
+    display: flex;
+    align-items: center;
+    form {
+        display: flex;
+        input {
+            background-color: inherit;
+            border: 0px;
+            border-bottom: 1px solid #3C3C3B;
+        }
+        button {
+            background-color: inherit;
+            border: 0px;
+            border-bottom: 1px solid #3C3C3B;
+        }
+    }
+}
+.catalog-local {
+    margin-left: 24px;
+    display: flex;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #FFFFFF;
+    gap: 4px;
+}
