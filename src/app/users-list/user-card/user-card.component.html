@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Пользователь</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <p class="title">Name:</p>
+        <p>{{ user.name }}</p>
+      </div>
+      <div>
+        <p class="title">Email:</p>
+        <p>{{ user.email }}</p>
+      </div>
+      <div>
+        <p class="title">Username:</p>
+        <p>{{ user.username }}</p>
+      </div>
+      <div>
+        <p class="title">Phone:</p>
+        <p>{{ user.phone }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" (click)="onDelete(user.id)">
+        Удалить
+      </button>
+    </mat-card-actions>
+    <button mat-raised-button color="green" (click)="openDialog()">
+      Редактировать
+    </button>
+  </mat-card>
+  

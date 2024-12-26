@@ -1,0 +1,82 @@
+<div class="container">
+    <h2>
+      {{ isEdit ? "Редактировать пользователя" : "Добавить пользователя" }}
+    </h2>
+    <div class="column">
+      <form (ngSubmit)="submitForm()" [formGroup]="formUsers">
+        <mat-form-field appearance="fill" class="input-box">
+          <mat-label>ИМЯ</mat-label>
+          <input matInput formControlName="name" placeholder="Введите имя" />
+          <mat-error
+            *ngIf="
+              formUsers.controls['name'].invalid &&
+              (formUsers.controls['name'].dirty ||
+                formUsers.controls['name'].touched)
+            "
+          >
+            *Поле имя не может быть пустым.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" class="input-box">
+          <mat-label>USERNAME</mat-label>
+          <input matInput formControlName="username" placeholder="Введите логин" />
+          <mat-error
+            *ngIf="
+              formUsers.controls['username'].invalid &&
+              (formUsers.controls['username'].dirty ||
+                formUsers.controls['username'].touched)
+            "
+          >
+            *Поле логин не может быть пустым.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" class="input-box">
+          <mat-label>EMAIL</mat-label>
+          <input matInput formControlName="email" placeholder="Введите email" />
+          <mat-error
+            *ngIf="
+              formUsers.get('email')?.invalid &&
+              (formUsers.get('email')?.touched || formUsers.get('email')?.dirty)
+            "
+          >
+            <small *ngIf="formUsers.get('email')?.errors?.['required']">
+              *Поле email не может быть пустым.
+            </small>
+            <small *ngIf="formUsers.get('email')?.errors?.['email']">
+              *Введите корректный email.
+            </small>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" class="input-box">
+          <mat-label>ТЕЛЕФОН</mat-label>
+          <input matInput formControlName="phone" placeholder="Введите номер телефона" />
+          <mat-error
+            *ngIf="
+              formUsers.controls['phone'].invalid &&
+              (formUsers.controls['phone'].dirty ||
+                formUsers.controls['phone'].touched)
+            "
+          >
+            *Поле телефона не может быть пустым.
+          </mat-error>
+        </mat-form-field>
+  
+        <div class="buttons">
+          <button mat-button (click)="onCancel()" class="btn-cancel">Отмена</button>
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="formUsers.invalid"
+            [mat-dialog-close]="userWithUpdateFields"
+            class="btn-create"
+            type="submit"
+          >
+            {{ isEdit ? "Сохранить" : "Создать" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
