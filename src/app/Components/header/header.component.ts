@@ -9,7 +9,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserService} from "../../services/user.service";
 import {AuthComponent} from "../auth/auth.component";
-import {MatAnchor, MatButton} from "@angular/material/button";
+import {MatButton} from "@angular/material/button";
 import {LogoutComponent} from "../logout/logout.component";
 
 const textCatalogCompany: (textMenu: string) => string = (textMenu: string): string => textMenu;
@@ -40,6 +40,7 @@ const upperCaseMenuItems: string[] = menuItems.map((item: string): string => {
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
   private readonly dialog: MatDialog = inject(MatDialog);
   private snackBar: MatSnackBar = inject(MatSnackBar);
   public userService: UserService = inject(UserService);
@@ -47,7 +48,6 @@ export class HeaderComponent {
   public readonly headerItem1 = 'Главная';
   public readonly aboutCompany: string = text;
   public readonly headerItem3 = 'Каталог';
-
   public readonly headerDate = 'Дата';
   public readonly currentDate: Date = new Date();
 

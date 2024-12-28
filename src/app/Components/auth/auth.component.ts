@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {MatDialogClose} from "@angular/material/dialog";
 import {MatTooltip} from "@angular/material/tooltip";

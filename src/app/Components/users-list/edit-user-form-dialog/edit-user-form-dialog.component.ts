@@ -1,12 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from "@angular/material/dialog";
-import { IUser } from "../../../Interfaces/IUser";
-import { MatButton } from "@angular/material/button";
-import { MatError, MatFormField, MatLabel, MatPrefix, MatSuffix } from "@angular/material/form-field";
-import { MatIcon } from "@angular/material/icon";
-import { MatInput } from "@angular/material/input";
-import { NgIf } from "@angular/common";
+import {Component, inject} from '@angular/core';
+import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MAT_DIALOG_DATA, MatDialogClose, MatDialogRef} from "@angular/material/dialog";
+import {IUser} from "../../../Interfaces/IUser";
+import {MatButton} from "@angular/material/button";
+import {MatError, MatFormField, MatLabel, MatPrefix, MatSuffix} from "@angular/material/form-field";
+import {MatIcon} from "@angular/material/icon";
+import {MatInput} from "@angular/material/input";
+import {NgIf} from "@angular/common";
 import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
@@ -49,6 +49,6 @@ export class EditUserFormDialogComponent {
   });
 
   submitForm(): void {
-    this.dialogRef.close({ ...this.form.value, id: this.data.user.id });
+    this.dialogRef.close({...this.form.value, id: this.data.user.id});
   }
 }

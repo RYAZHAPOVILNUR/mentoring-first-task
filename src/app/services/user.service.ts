@@ -4,43 +4,39 @@ import {Router} from "@angular/router";
 import {IUserRole} from "../Interfaces/IUser";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class UserService {
-    private readonly userSubject$: BehaviorSubject<IUserRole | null> = new BehaviorSubject<IUserRole | null>(null);
-    public readonly user$: Observable<IUserRole | null> = this.userSubject$.asObservable();
+  private readonly userSubject$: BehaviorSubject<IUserRole | null> = new BehaviorSubject<IUserRole | null>(null);
+  public readonly user$: Observable<IUserRole | null> = this.userSubject$.asObservable();
 
-    constructor(private router: Router) {
-    };
+  constructor(private router: Router) {
+  };
 
-    private user: IUserRole = {
-        name: 'daniyar',
-        email: 'the.happy@gmail.com',
-        isAdmin: null,
-    };
+  private user: IUserRole = {
+    name: 'daniyar',
+    email: 'the.happy@gmail.com',
+    isAdmin: null,
+  };
 
-    public loginAsAdmin() {
-        this.userSubject$.next({...this.user, isAdmin: true});
-    };
+  public loginAsAdmin(): void {
+    this.userSubject$.next({...this.user, isAdmin: true});
+  };
 
-    public loginAsUser() {
-        this.userSubject$.next({...this.user, isAdmin: false});
-    };
+  public loginAsUser(): void {
+    this.userSubject$.next({...this.user, isAdmin: false});
+  };
 
-    // public get isAdmin() {
-    //     return this.userSubject$.value?.isAdmin;
-    // };
-
-    public get isAdmin() {
-        if (this.userSubject$.value) {
-            return this.userSubject$.value.isAdmin;
-        } else {
-            return false;
-        }
+  public get isAdmin(): boolean | null {
+    if (this.userSubject$.value) {
+      return this.userSubject$.value.isAdmin;
+    } else {
+      return false;
     }
+  }
 
-    public logout() {
-        this.userSubject$.next(null);
-        this.router.navigate(['']).then((result: boolean) => false);
-    }
+  public logout(): void {
+    this.userSubject$.next(null);
+    this.router.navigate(['']).then((result: boolean) => false);
+  }
 }

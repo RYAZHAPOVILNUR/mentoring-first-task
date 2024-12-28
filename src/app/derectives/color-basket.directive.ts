@@ -22,14 +22,14 @@ export class ColorBasketDirective {
   @HostListener('mouseenter')
   enter(): void {
     this.color = '#f0ba4e'
-    this.textColor='#333946'
+    this.textColor = '#333946'
     console.log('ENTER');
   }
 
   @HostListener('mouseleave')
   leave(): void {
     this.color = '#4c565f';
-    this.textColor='#f0ba4e'
+    this.textColor = '#f0ba4e'
     console.log("LEAVE");
   }
 

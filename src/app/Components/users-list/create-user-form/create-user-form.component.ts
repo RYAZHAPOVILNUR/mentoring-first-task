@@ -3,7 +3,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CreateUserFormDialogComponent} from "../create-user-form-dialog/create-user-form-dialog.component";
 import {IUserCreate} from "../../../Interfaces/IUser";
-import { MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
 
@@ -19,7 +19,6 @@ import {MatTooltip} from "@angular/material/tooltip";
   styleUrl: './create-user-form.component.scss'
 })
 export class CreateUserFormComponent {
-
   private readonly dialog: MatDialog = inject(MatDialog);
   private snackBar: MatSnackBar = inject(MatSnackBar);
 
@@ -39,7 +38,7 @@ export class CreateUserFormComponent {
         this.snackBar.open('Юзер создан!', 'Ok', {
           duration: 3000
         });
-      } else  {
+      } else {
         this.snackBar.open('Отмена создания!', 'Ok', {
           duration: 3000
         });

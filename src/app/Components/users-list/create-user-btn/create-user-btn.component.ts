@@ -19,7 +19,6 @@ import {MatTooltip} from "@angular/material/tooltip";
   styleUrl: './create-user-btn.component.scss'
 })
 export class CreateUserBtnComponent {
-
   private readonly dialog: MatDialog = inject(MatDialog);
   private snackBar: MatSnackBar = inject(MatSnackBar);
 

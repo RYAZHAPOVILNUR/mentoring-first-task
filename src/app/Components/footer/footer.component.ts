@@ -11,6 +11,5 @@ const menuItems: string[] = ['Главная', 'О компании', 'Ката�
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-
   public readonly menuItems: string[] = menuItems;
 }

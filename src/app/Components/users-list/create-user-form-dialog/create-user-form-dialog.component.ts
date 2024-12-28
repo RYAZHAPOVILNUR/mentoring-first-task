@@ -1,13 +1,13 @@
-import { Component, inject } from '@angular/core';
-import { MatDialogClose, MatDialogRef } from "@angular/material/dialog";
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { MatError, MatFormField, MatLabel, MatPrefix, MatSuffix } from "@angular/material/form-field";
-import { MatInput } from "@angular/material/input";
-import { MatIcon } from "@angular/material/icon";
-import { NgIf } from "@angular/common";
-import { MyErrorStateMatcher } from "../../utils/error-state-matcher";
-import { MatButton } from "@angular/material/button";
-import { IUserCreate } from "../../../Interfaces/IUser";
+import {Component, inject} from '@angular/core';
+import {MatDialogClose, MatDialogRef} from "@angular/material/dialog";
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatError, MatFormField, MatLabel, MatPrefix, MatSuffix} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {NgIf} from "@angular/common";
+import {MyErrorStateMatcher} from "../../utils/error-state-matcher";
+import {MatButton} from "@angular/material/button";
+import {IUserCreate} from "../../../Interfaces/IUser";
 import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
@@ -31,7 +31,6 @@ import {MatTooltip} from "@angular/material/tooltip";
   styleUrl: './create-user-form-dialog.component.scss'
 })
 export class CreateUserFormDialogComponent {
-
   private readonly dialogRef: MatDialogRef<IUserCreate> = inject(MatDialogRef<CreateUserFormDialogComponent>);
 
   private fb: FormBuilder = inject(FormBuilder);
