@@ -8,7 +8,6 @@ import {UsersApiService} from "./users-api.service";
   providedIn: 'root'
 })
 export class UsersService {
-
   private readonly localStorageService: LocalStorageService = inject(LocalStorageService);
   private readonly usersApiService: UsersApiService = inject(UsersApiService);
   private readonly localStorageUsersKey: string = 'users';
