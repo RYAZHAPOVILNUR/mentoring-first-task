@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {AsyncPipe, DatePipe, NgFor, NgIf} from "@angular/common";
-import {map} from "rxjs";
+import {first, map, Subscription, take} from "rxjs";
 import {RouterLink} from "@angular/router";
 import {CustomCurrentDateTimePipe} from "../../pipes/current-date-time.pipe";
 import {RemoveDashesPipe} from "../../pipes/remove-dashes.pipe";
@@ -11,10 +11,9 @@ import {UserService} from "../../services/user.service";
 import {AuthComponent} from "../auth/auth.component";
 import {MatButton} from "@angular/material/button";
 import {LogoutComponent} from "../logout/logout.component";
+import {TextMenuCatalogCompany} from "../utils/text-catalog-company";
 
-const textCatalogCompany: (textMenu: string) => string = (textMenu: string): string => textMenu;
-
-const text: string = textCatalogCompany('О компании');
+const text: string = TextMenuCatalogCompany('О компании');
 
 const menuItems: string[] = ['Каталог', 'Запчасти', 'Интерьер', 'Стиль', 'Партнеры'];
 
@@ -40,7 +39,6 @@ const upperCaseMenuItems: string[] = menuItems.map((item: string): string => {
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-
   private readonly dialog: MatDialog = inject(MatDialog);
   private snackBar: MatSnackBar = inject(MatSnackBar);
   public userService: UserService = inject(UserService);
@@ -50,7 +48,6 @@ export class HeaderComponent {
   public readonly headerItem3 = 'Каталог';
   public readonly headerDate = 'Дата';
   public readonly currentDate: Date = new Date();
-
   public showCatalogCompany: boolean = true;
   public menuItems: string[] = upperCaseMenuItems;
 
@@ -67,7 +64,7 @@ export class HeaderComponent {
   public openLoginDialog(): void {
     const dialogRef: MatDialogRef<AuthComponent> = this.dialog.open(AuthComponent);
 
-    dialogRef.afterClosed().subscribe((result: string) => {
+    dialogRef.afterClosed().pipe(take(1)).subscribe((result: string): void | null => {
       if (result === 'admin') {
         this.userService.loginAsAdmin();
         this.snackBar.open('Вы вошли как Админ!', 'Ok', {
@@ -79,14 +76,15 @@ export class HeaderComponent {
           duration: 3000
         });
       } else {
-        return undefined;
+        return null;
       }
     });
   };
 
   public logoutOpenDialog(): void {
     const dialogRef: MatDialogRef<LogoutComponent> = this.dialog.open(LogoutComponent);
-    dialogRef.afterClosed().subscribe((result: string) => {
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe((result: string | null): void | null => {
       if (result === 'logout') {
         this.userService.logout();
         this.snackBar.open('Вы вышли из кабинета!', 'Ok', {
@@ -96,9 +94,8 @@ export class HeaderComponent {
         this.snackBar.open('Отмена выхода!', 'Ok', {
           duration: 3000
         });
-        return undefined;
+        return null;
       }
     });
   };
-
 }

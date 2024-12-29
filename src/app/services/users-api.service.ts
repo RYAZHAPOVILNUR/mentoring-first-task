@@ -5,7 +5,6 @@ import {Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class UsersApiService {
-
   public readonly apiService: HttpClient = inject(HttpClient);
 
   public getUsers(): Observable<IUser[]> {

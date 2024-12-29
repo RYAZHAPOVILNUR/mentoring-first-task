@@ -8,11 +8,11 @@ import {UsersApiService} from "./users-api.service";
   providedIn: 'root'
 })
 export class UsersService {
-  private readonly usersSubject$: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
-  public readonly users$: Observable<IUser[]> = this.usersSubject$.asObservable();
   private readonly localStorageService: LocalStorageService = inject(LocalStorageService);
   private readonly usersApiService: UsersApiService = inject(UsersApiService);
   private readonly localStorageUsersKey: string = 'users';
+  private readonly usersSubject$: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
+  public readonly users$: Observable<IUser[]> = this.usersSubject$.asObservable();
 
   private setUsers(usersData: IUser[]): void {
     this.localStorageService.saveDataLocalStorage<IUser[]>(
@@ -60,9 +60,7 @@ export class UsersService {
     const newArrayUsers: IUser[] = this.usersSubject$.value.filter((user: IUser): boolean => user.id !== id);
     const findUser: IUser | undefined = this.usersSubject$.value.find((user: IUser): boolean => user.id === id);
 
-    if (findUser) {
-      this.setUsers(newArrayUsers);
-    }
+    if (findUser) this.setUsers(newArrayUsers);
 
     if (!this.usersSubject$.value.length) {
       this.localStorageService.removeDataLocalStorage(this.localStorageUsersKey);

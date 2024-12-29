@@ -12,13 +12,12 @@ export class CustomCurrentDateTimePipe implements PipeTransform {
   }
 
   private getFormatOptions(format: string): Intl.DateTimeFormatOptions {
-    switch (format) {
-      case 'short':
-        return {dateStyle: 'short', timeStyle: 'short'};
-      case 'long':
-        return {dateStyle: 'long', timeStyle: 'long'};
-      default:
-        return {dateStyle: 'medium', timeStyle: 'medium'};
-    }
+    const formats: { [key: string]: Intl.DateTimeFormatOptions } = {
+      short: {dateStyle: 'short', timeStyle: 'short'},
+      long: {dateStyle: 'long', timeStyle: 'long'},
+      default: {dateStyle: 'medium', timeStyle: 'medium'}
+    };
+
+    return formats[format] || formats['default'];
   }
 }

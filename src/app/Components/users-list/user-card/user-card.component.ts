@@ -9,6 +9,7 @@ import {DeleteUserDialogComponent} from '../delete-user-dialog/delete-user-dialo
 import {MatTooltip} from "@angular/material/tooltip";
 import {CustomUpperCasePipe} from "../../../pipes/upper-case.pipe";
 import {YellowDirective} from "../../../derectives/yellow.directive";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-user-card',
@@ -24,7 +25,6 @@ import {YellowDirective} from "../../../derectives/yellow.directive";
   styleUrl: './user-card.component.scss'
 })
 export class UserCardComponent {
-
   private readonly dialog: MatDialog = inject(MatDialog);
   private readonly snackBar: MatSnackBar = inject(MatSnackBar);
 
@@ -43,7 +43,7 @@ export class UserCardComponent {
       data: {user: this.user},
     });
 
-    dialogRef.afterClosed().subscribe((result: Boolean | undefined): void => {
+    dialogRef.afterClosed().pipe(take(1)).subscribe((result: Boolean | undefined): void => {
       if (result) {
         this.deleteUser.emit(this.user.id);
         this.snackBar.open('Пользователь удален!', 'Ok', {

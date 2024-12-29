@@ -30,18 +30,15 @@ import {MatTooltip} from "@angular/material/tooltip";
   styleUrl: './edit-user-form-dialog.component.scss'
 })
 export class EditUserFormDialogComponent {
-
   public data: { user: IUser } = inject<{ user: IUser }>(MAT_DIALOG_DATA);
-
-  public readonly dialogRef: MatDialogRef<IUser> = inject(MatDialogRef<EditUserFormDialogComponent>);
-
   private fb: FormBuilder = inject(FormBuilder);
+  public readonly dialogRef: MatDialogRef<IUser> = inject(MatDialogRef<EditUserFormDialogComponent>);
 
   public form = this.fb.group({
     id: [this.data.user.id, Validators.required],
     name: [this.data.user.name, [Validators.required, Validators.minLength(3)]],
     email: [this.data.user.email, [Validators.required, Validators.minLength(3), Validators.email]],
-    phone: [this.data.user.phone, [Validators.required, Validators.minLength(5)]],
+    phone: [this.data.user.phone, [Validators.required, Validators.minLength(5), Validators.pattern(/^[0-9]+$/)]],
     website: [this.data.user.website, [Validators.required, Validators.minLength(5)]],
     company: this.fb.group({
       name: [this.data.user.company.name, [Validators.required, Validators.minLength(5)]],

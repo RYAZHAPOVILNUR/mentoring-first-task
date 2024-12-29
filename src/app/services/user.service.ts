@@ -28,11 +28,7 @@ export class UserService {
   };
 
   public get isAdmin(): boolean | null {
-    if (this.userSubject$.value) {
-      return this.userSubject$.value.isAdmin;
-    } else {
-      return false;
-    }
+    return this.userSubject$.value ? this.userSubject$.value.isAdmin : false;
   }
 
   public logout(): void {

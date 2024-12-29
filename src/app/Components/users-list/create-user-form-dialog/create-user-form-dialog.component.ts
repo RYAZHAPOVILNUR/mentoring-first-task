@@ -38,7 +38,7 @@ export class CreateUserFormDialogComponent {
   public form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.minLength(3), Validators.email]],
-    phone: ['', [Validators.required, Validators.minLength(5)]],
+    phone: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[0-9]+$/)]],
     website: ['', [Validators.required, Validators.minLength(5)]],
     company: this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],

@@ -6,6 +6,7 @@ import {IUserCreate} from "../../../Interfaces/IUser";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-create-user-form',
@@ -31,10 +32,9 @@ export class CreateUserFormComponent {
       width: '500px',
     });
 
-    dialogRef.afterClosed().subscribe((result: IUserCreate): void => {
+    dialogRef.afterClosed().pipe(take(1)).subscribe((result: IUserCreate): void => {
       if (result) {
         this.createUser.emit(result);
-        // console.log('если result true, передаем эти данные:', result)
         this.snackBar.open('Юзер создан!', 'Ok', {
           duration: 3000
         });

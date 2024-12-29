@@ -9,7 +9,5 @@ import {NgIf} from "@angular/common";
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent {
-
-  showImageCar = true
-
+  public showImageCar: boolean = true;
 }

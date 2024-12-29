@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CreateUserFormDialogComponent} from "../create-user-form-dialog/create-user-form-dialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatTooltip} from "@angular/material/tooltip";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-create-user-btn',
@@ -31,7 +32,7 @@ export class CreateUserBtnComponent {
       width: '500px'
     });
 
-    dialog.afterClosed().subscribe((result: IUserCreate): void => {
+    dialog.afterClosed().pipe(take(1)).subscribe((result: IUserCreate): void => {
       if (result) {
         this.createUserBtn.emit(result);
         this.snackBar.open('Юзер создан!', 'Ok', {
