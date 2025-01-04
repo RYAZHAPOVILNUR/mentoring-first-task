@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { User } from '../../../interfaces/User.interface';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 
@@ -8,6 +14,7 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
   imports: [MatButton, MatButtonModule],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserCardComponent {
   @Input()
@@ -16,7 +23,9 @@ export class UserCardComponent {
   @Output()
   onDeletedUser = new EventEmitter();
 
-  deleteUser(user: any) {
+  deleteUser(user: User) {
     this.onDeletedUser.emit(user);
   }
+
+  editUser() {}
 }

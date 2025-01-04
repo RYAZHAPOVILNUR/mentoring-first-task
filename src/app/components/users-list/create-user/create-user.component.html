@@ -1,0 +1,46 @@
+<form [formGroup]="form" class="p-4 w-80 flex flex-col items-center">
+  <mat-form-field>
+    <mat-label>Enter your Name</mat-label>
+    <input #inputElement matInput placeholder="Name" formControlName="name" />
+    <mat-error>Not correct</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input
+      #inputElement
+      matInput
+      placeholder="pat@example.com"
+      formControlName="email"
+    />
+    <mat-error>Not correct</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enter your Website</mat-label>
+    <input
+      #inputElement
+      matInput
+      placeholder="Website"
+      formControlName="website"
+    />
+    <mat-error>Not correct</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enter your Company</mat-label>
+    <input
+      #inputElement
+      matInput
+      placeholder="Company name"
+      formControlName="companyName"
+    />
+    <mat-error>Not correct</mat-error>
+  </mat-form-field>
+  <button
+    [mat-dialog-close]="form.value"
+    (click)="submitForm(inputElement)"
+    type="submit"
+    [disabled]="form.invalid"
+    mat-stroked-button
+  >
+    Create User
+  </button>
+</form>

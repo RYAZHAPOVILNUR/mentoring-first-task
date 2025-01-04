@@ -1,15 +1,21 @@
 <li
-  class="flex flex-col justify-between gap-6 h-full w-64 rounded-lg p-2 shadow-xl"
+  class="flex flex-col justify-between gap-6 h-full w-64 rounded-lg p-2 shadow-blue-800 shadow-sm"
 >
   <h4>Name: {{ user.name }}</h4>
   <p>E-Mail: {{ user.email }}</p>
-  <p>Username: {{ user.username }}</p>
-  <p>Phone: {{ user.phone }}</p>
-  <button
-    type="button"
-    (click)="deleteUser(user)"
-    class="bg-red-400 rounded-md"
-  >
-    Delete
-  </button>
+  <p>Username: {{ user.company.name }}</p>
+  <p>Phone: {{ user.website }}</p>
+  <div class="flex justify-center gap-4">
+    <button
+      class="w-20"
+      mat-stroked-button
+      type="button"
+      (click)="deleteUser(user)"
+    >
+      Delete
+    </button>
+    <button class="w-20" mat-stroked-button type="button" (click)="editUser()">
+      Edit
+    </button>
+  </div>
 </li>
