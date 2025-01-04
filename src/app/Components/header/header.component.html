@@ -1,0 +1,68 @@
+<div class="header_1">
+  <div class="header_left">
+    <div class="header_logo">
+      <img src="/assets/Maserati_logo_2.svg" alt="Логотип сайта" style="width: 150px">
+    </div>
+
+    <nav class="header_nav">
+      <div class="header_nav_item"><a routerLink="">{{ headerItem1 }}</a></div>
+      <div class="header_nav_item"><a>{{ aboutCompany }}</a></div>
+      <div class="header_nav_item" *ngIf="showCatalogCompany"><a>{{ headerItem3 }}</a></div>
+    </nav>
+
+    <button class="btn"><a (click)="showCatalogCompany = !showCatalogCompany">Скрыть/Показать каталог</a></button>
+    <button class="btn"><a (click)="changeMenuText()">Изменить текст</a></button>
+    <button class="btn"><a routerLink="users">Users</a></button>
+    <button class="btn"><a routerLink="admin">Admin</a></button>
+  </div>
+
+  <div class="header_right">
+    <div class="header_item">
+      <img src="/assets/phone.svg" alt="Логотип телефона" style="width: 25px">
+      <div class="header_phone_number">
+        <a href="tel:+7 (708) 070-70-70">
+          <p>{{ '+7(708) 070 - 70 - 70' | removeDashes }}</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="header_item">
+      <button class="btn_shop_cart" colorBasket>
+        <img src="/assets/shop-cart.svg" alt="Логотип корзина" style="width: 25px">
+        <span>Пусто</span>
+      </button>
+    </div>
+
+    <button (click)="openLoginDialog()" mat-raised-button color="primary" class="btn_enter"
+            *ngIf="(userService.user$ | async) === null">Войти
+    </button>
+    <button (click)="logoutOpenDialog()" mat-raised-button color="accent" class="btn_exit"
+            *ngIf="(userService.user$ | async) !== null">Выйти
+    </button>
+  </div>
+</div>
+
+<div class="header_2">
+  <div class="header_2_left">
+    <div class="header_2_logo">
+      <img src="/assets/light.svg" alt="Логотип меню">
+    </div>
+
+    <nav class="header_nav_2" *ngIf="changeMenuText">
+      <div class="header_2_nav_item" *ngFor="let item of menuItems">{{ item }}</div>
+      <div class="current_date">
+        <p>{{ headerDate }}: {{ '' | customCurrentDateTime }}</p>
+      </div>
+    </nav>
+  </div>
+
+  <div class="header_2_right">
+    <form>
+      <input type="search" class="header_2_input" placeholder="Найти автомобиль?">
+    </form>
+    <div class="header_map_nav">
+      <img src="/assets/map-pin.svg" alt="Логотип навигация">
+      <button class="map_nav">Калифорния</button>
+    </div>
+  </div>
+</div>

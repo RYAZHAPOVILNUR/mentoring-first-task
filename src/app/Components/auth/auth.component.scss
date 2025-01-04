@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #171c25;
+  border-radius: 5px;
+  width: 500px;
+  height: 150px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #F0BA4E;
+}
+
+.btn-wrapper {
+  display: flex;
+}
+
+.btn {
+  margin: 0 auto;
+  width: 150px;
+  height: 30px;
+}
+
+.mat-icon {
+  margin-right: 15px;
+}

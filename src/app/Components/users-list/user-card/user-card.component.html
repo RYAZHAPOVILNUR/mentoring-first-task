@@ -1,0 +1,23 @@
+<h3 class="text">ПОКУПАТЕЛЬ</h3>
+<div class="content_block">
+  
+  <div class="block_user_card">
+    <p yellow>{{ user.name | customUpperCase }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.phone }}</p>
+    <p>{{ user.website }}</p>
+    <p >{{ user.company.name }}</p>
+  </div>
+
+  <div class="content_btn">
+    <button (click)="openEditDialog()" shadowHighLight class="btn" mat-raised-button color="primary" matTooltip="Изменить юзера">
+      <mat-icon>download_done</mat-icon>
+      Редактировать
+    </button>
+    
+    <button class="btn" shadowHighLight mat-raised-button color="warn" (click)="openDeleteDialog()" matTooltip="Удалить юзера">
+      <mat-icon>close</mat-icon>
+      Удалить
+    </button>
+  </div>
+</div>

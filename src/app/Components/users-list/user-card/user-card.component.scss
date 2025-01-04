@@ -1,0 +1,38 @@
+.text {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.content_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #4B565E;
+  border-radius: 15px;
+  padding: 15px 50px 30px;
+  width: 170px;
+  height: 300px;
+
+  &:hover {
+    background-color: #1e2631;
+  }
+}
+
+.block_user_card {
+  margin-top: 15px;
+  overflow-wrap: break-word;
+}
+
+.content_btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.btn {
+  &:hover {
+    background-color: #1e2631;
+    color: #F0BA4E;
+  }
+}

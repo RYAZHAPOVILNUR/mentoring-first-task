@@ -1,0 +1,70 @@
+<div class="container_form">
+  <h2 class="title">Редактирование юзера</h2>
+  <form class="container_form" [formGroup]="form">
+
+    <mat-form-field class="content_form">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" placeholder="Enter your name:" formControlName="name"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error
+        *ngIf="form.controls['name'].hasError('minlength') && !form.controls['name'].hasError('required')">Слишком
+        короткое!
+      </mat-error>
+      <mat-error *ngIf="form.controls['name'].hasError('required')">Поле имя пустое!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="content_form">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" placeholder="Enter your name:" formControlName="email"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error
+        *ngIf="form.controls['name'].hasError('minlength') && !form.controls['name'].hasError('required')">Слишком
+        короткое!
+      </mat-error>
+      <mat-error *ngIf="form.controls['name'].hasError('required')">Поле Email пустое!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example_full_width">
+      <mat-label>Phone</mat-label>
+      <span matTextPrefix>+7 &nbsp;</span>
+      <input matInput type="tel" placeholder="Enter your name:" formControlName="phone"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error
+        *ngIf="form.controls['name'].hasError('minlength') && !form.controls['name'].hasError('required')">Слишком
+        короткое!
+      </mat-error>
+      <mat-error *ngIf="form.controls['name'].hasError('required')">Поле Phone пустое!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example_full_width">
+      <mat-label>Website</mat-label>
+      <input matInput type="text" placeholder="Enter your Website:" formControlName="website"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error
+        *ngIf="form.controls['website'].hasError('minlength') && !form.controls['website'].hasError('required')">Слишком
+        короткий веб-сайт
+      </mat-error>
+      <mat-error *ngIf="form.controls['website'].hasError('required')">Поле Website пустое!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example_full_width" formGroupName="company">
+      <mat-label>Company name</mat-label>
+      <input matInput type="text" placeholder="Enter your Company:" formControlName="name"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error *ngIf="form.controls['name'].hasError('required')">Поле Company пустое!</mat-error>
+    </mat-form-field>
+
+    <div class="form_btn">
+      <button class="btn" type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
+              (click)="submitForm()" matTooltip="Сохранить">
+        <mat-icon>download_done</mat-icon>
+        Сохранить
+      </button>
+      <button class="btn" type="submit" mat-raised-button color="primary" [mat-dialog-close]="false"
+              matTooltip="Отмена">
+        <mat-icon>close</mat-icon>
+        Отмена
+      </button>
+    </div>
+  </form>
+</div>

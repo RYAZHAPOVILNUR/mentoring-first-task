@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 mat-dialog-title class="title">Удалить юзера {{ this.data.user.name }}</h1>
+  
+  <mat-dialog-actions class="content_btn">
+    <button mat-button mat-raised-button color="warn " [mat-dialog-close]="true" class="btn">
+      <mat-icon>download_done</mat-icon>
+      Удалить
+    </button>
+    
+    <button mat-button mat-raised-button color="primary" [mat-dialog-close]="false" class="btn">
+      <mat-icon>close</mat-icon>
+      Отмена
+    </button>
+  </mat-dialog-actions>
+</div>

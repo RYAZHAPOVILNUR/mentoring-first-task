@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background: #171c22;
+  align-items: center;
+  color: #F0BA4E;
+  padding: 0 250px;
+  height: 150px;
+}
+
+.header_nav {
+  display: flex;
+  gap: 50px;
+  font-weight: 600;
+}
+
+.header_nav_item {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.nav_icons {
+  display: flex;
+  gap: 100px;
+  height: 50px;
+}
