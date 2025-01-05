@@ -1,0 +1,9 @@
+<div *ngFor="let user of users$ | async" (click)="editUser(user)" class = "card">
+  <div>{{ user.id }}</div>
+  <div>{{ user.name }}</div>
+  <div>{{ user.email }}</div>
+  <div>{{ user.username }}</div>
+  <button (click)="deleteUser(user.id)">Delete User</button>
+</div>
+
+<button (click)="openModal()">+ Add User</button>

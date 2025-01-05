@@ -1,0 +1,31 @@
+<form class="modal-form" [formGroup]="form" (ngSubmit)="save()">
+  <label>
+    Name:
+    <input type="text" name="name" formControlName="name" />
+  </label>
+  <br />
+  <label>
+    Email:
+    <input type="email" name="email" formControlName="email" />
+  </label>
+  <br />
+  <label>
+    Username:
+    <input type="text" name="username" formControlName="username" />
+  </label>
+  <br />
+  <label>
+    ID:
+    <input
+      type="ID"
+      [readonly]="isEdit"
+      formControlName="id"
+      name="id"
+      required
+    />
+  </label>
+  <button type="submit">
+    {{ isEdit ? "Сохранить" : "Создать" }}
+  </button>
+  <button type="button" [mat-dialog-close]>Close</button>
+</form>
