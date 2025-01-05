@@ -4,4 +4,5 @@ export interface CreateUser {
   email: string;
   website: string;
   companyName: string;
+  isEdit: boolean;
 }

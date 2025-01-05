@@ -11,7 +11,17 @@ export class UserService {
     this.usersSubject$.next(users);
   }
 
-  public editUser() {}
+  public editUser(editedUser: User) {
+    this.usersSubject$.next(
+      this.usersSubject$.value.map((user) => {
+        if (user.id === editedUser.id) {
+          return editedUser;
+        } else {
+          return user;
+        }
+      })
+    );
+  }
 
   public createUser(createUser: User) {
     const existingUser = this.usersSubject$.value.find(

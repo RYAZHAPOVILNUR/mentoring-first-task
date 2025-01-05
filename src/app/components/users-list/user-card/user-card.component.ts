@@ -23,9 +23,14 @@ export class UserCardComponent {
   @Output()
   onDeletedUser = new EventEmitter();
 
+  @Output()
+  onEditUser = new EventEmitter();
+
   deleteUser(user: User) {
     this.onDeletedUser.emit(user);
   }
 
-  editUser() {}
+  editUser(user: User) {
+    this.onEditUser.emit(user);
+  }
 }
