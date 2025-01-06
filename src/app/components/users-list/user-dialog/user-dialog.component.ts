@@ -10,7 +10,6 @@ import {
 import { MatInput } from '@angular/material/input';
 import { MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
-import { User } from '../../../interfaces/User.interface';
 
 @Component({
   selector: 'app-user-dialog',

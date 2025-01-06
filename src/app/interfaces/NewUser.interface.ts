@@ -1,9 +1,9 @@
 export interface NewUser {
-  name: null;
-  email: null;
-  website: null;
+  name: string;
+  email: string;
+  website: string;
   company: {
-    name: null;
+    name: string;
   };
   isEdit: boolean;
 }

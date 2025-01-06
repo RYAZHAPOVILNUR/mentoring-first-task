@@ -30,30 +30,44 @@ export class UsersListComponent {
   readonly userService = inject(UserService);
   readonly userApiService = inject(UsersApiService);
   readonly createUserDialog = inject(MatDialog);
-  // readonly form = inject(UserDialogComponent);
 
   private createUserItem: NewUser = {
-    name: null,
-    email: null,
-    website: null,
+    name: '',
+    email: '',
+    website: '',
     company: {
-      name: null,
+      name: '',
     },
     isEdit: false,
   };
 
+  usersText = 'test';
+  key = 'users';
+
   constructor() {
     this.userApiService.getUsers().subscribe((response: User[]) => {
       this.userService.setUsers(response);
+      this.setToLocaleStorage();
     });
+  }
+
+  private setToLocaleStorage() {
+    JSON.parse(localStorage.getItem(this.key) | null);
+
+    localStorage.setItem(
+      this.key,
+      JSON.stringify(this.userService.usersSubject$.value)
+    );
   }
 
   public onCreateUserDialog() {
     this.openDialog(this.createUserItem);
+    this.setToLocaleStorage();
   }
 
   public editedUser(editUser: NewUser) {
     this.openDialog({ ...editUser, isEdit: true });
+    this.setToLocaleStorage();
   }
 
   public openDialog(item: NewUser): void {
