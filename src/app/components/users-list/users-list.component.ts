@@ -52,12 +52,17 @@ export class UsersListComponent {
   }
 
   private setToLocaleStorage() {
-    JSON.parse(localStorage.getItem(this.key) | null);
-
     localStorage.setItem(
       this.key,
       JSON.stringify(this.userService.usersSubject$.value)
     );
+  }
+
+  public getToLocaleStorage() {
+    if (localStorage) {
+      let locale = JSON.parse(localStorage.getItem(this.key));
+      console.log(locale);
+    }
   }
 
   public onCreateUserDialog() {
