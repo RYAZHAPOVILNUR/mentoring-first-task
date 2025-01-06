@@ -1,11 +1,21 @@
 <div>
   <div class="container px-4 py-6 mx-auto border border-red-950">
-    <div class="flex justify-center pb-5">
-      <button type="button" mat-stroked-button (click)="onCreateUserDialog()">
+    <div class="flex gap-2 justify-center pb-5">
+      <button
+        class="w-28"
+        type="button"
+        mat-stroked-button
+        (click)="onCreateUserDialog()"
+      >
         Add User
       </button>
-      <button type="button" mat-stroked-button (click)="getToLocaleStorage()">
-        Locale
+      <button
+        class="w-28"
+        type="button"
+        mat-stroked-button
+        (click)="localeStorageServices.clear()"
+      >
+        Reset
       </button>
     </div>
     <div>

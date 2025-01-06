@@ -1,30 +1,47 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { UserService } from './users.service';
+import { User } from '../interfaces/User.interface';
+import { UsersApiService } from './users-api-service';
 
 @Injectable({
-  providedIn: 'root', // Сервис будет доступен во всем приложении
+  providedIn: 'root',
 })
 export class LocalStorageService {
+  readonly userServices = inject(UserService);
+  readonly userApiServices = inject(UsersApiService);
+  usersKey = 'users';
+  data = [];
+
   constructor() {}
 
-  // Метод для записи данных
-  setItem(key: string, value: any): void {
-    const jsonData = JSON.stringify(value); // Преобразуем данные в JSON
-    localStorage.setItem(key, jsonData);
+  setToStore() {
+    const fromLocaleStorage = localStorage.getItem(this.usersKey);
+    const pars = JSON.parse(fromLocaleStorage!);
+    this.userServices.setUsers(pars);
   }
 
-  // Метод для чтения данных
-  getItem<T>(key: string): T | null {
-    const jsonData = localStorage.getItem(key);
-    return jsonData ? JSON.parse(jsonData) : null; // Парсим JSON, если данные существуют
+  setToLocale(): void {
+    if (!localStorage.getItem(this.usersKey)) {
+      const localeData = JSON.stringify(this.userServices.usersSubject$.value);
+      localStorage.setItem(this.usersKey, localeData);
+    }
   }
 
-  // Метод для удаления данных
-  removeItem(key: string): void {
-    localStorage.removeItem(key);
+  editToLocale(): void {
+    localStorage.clear();
+    localStorage.setItem(
+      this.usersKey,
+      JSON.stringify(this.userServices.usersSubject$.value)
+    );
   }
 
-  // Метод для очистки всего хранилища
   clear(): void {
     localStorage.clear();
+    this.userApiServices.getUsers().subscribe((response: User[]) => {
+      if (!localStorage.getItem('users')) {
+        this.userServices.setUsers(response);
+        this.setToLocale();
+      }
+    });
   }
 }

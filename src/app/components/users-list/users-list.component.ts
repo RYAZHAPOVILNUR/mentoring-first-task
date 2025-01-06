@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { CreateUser } from '../../interfaces/CreateUser.interface';
 import { NewUser } from '../../interfaces/NewUser.interface';
+import { LocalStorageService } from '../../services/locale-storage.service';
 
 @Component({
   selector: 'app-users-list',
@@ -29,6 +30,7 @@ import { NewUser } from '../../interfaces/NewUser.interface';
 export class UsersListComponent {
   readonly userService = inject(UserService);
   readonly userApiService = inject(UsersApiService);
+  readonly localeStorageServices = inject(LocalStorageService);
   readonly createUserDialog = inject(MatDialog);
 
   private createUserItem: NewUser = {
@@ -41,38 +43,23 @@ export class UsersListComponent {
     isEdit: false,
   };
 
-  usersText = 'test';
-  key = 'users';
-
   constructor() {
     this.userApiService.getUsers().subscribe((response: User[]) => {
-      this.userService.setUsers(response);
-      this.setToLocaleStorage();
+      if (!localStorage.getItem('users')) {
+        this.userService.setUsers(response);
+        this.localeStorageServices.setToLocale();
+      } else {
+        this.localeStorageServices.setToStore();
+      }
     });
-  }
-
-  private setToLocaleStorage() {
-    localStorage.setItem(
-      this.key,
-      JSON.stringify(this.userService.usersSubject$.value)
-    );
-  }
-
-  public getToLocaleStorage() {
-    if (localStorage) {
-      let locale = JSON.parse(localStorage.getItem(this.key));
-      console.log(locale);
-    }
   }
 
   public onCreateUserDialog() {
     this.openDialog(this.createUserItem);
-    this.setToLocaleStorage();
   }
 
   public editedUser(editUser: NewUser) {
     this.openDialog({ ...editUser, isEdit: true });
-    this.setToLocaleStorage();
   }
 
   public openDialog(item: NewUser): void {
@@ -88,6 +75,7 @@ export class UsersListComponent {
             name: result.companyName,
           },
         });
+        this.localeStorageServices.editToLocale();
       } else if (result && result.isEdit) {
         this.userService.editUser({
           ...result,
@@ -95,11 +83,13 @@ export class UsersListComponent {
             name: result.companyName,
           },
         });
+        this.localeStorageServices.editToLocale();
       }
     });
   }
 
   public deletedUser(deletedUser: User) {
     this.userService.deleteuser(deletedUser);
+    this.localeStorageServices.editToLocale();
   }
 }
