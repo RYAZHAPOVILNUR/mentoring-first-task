@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UsersApiService } from '../../services/users-api-service';
 import { User } from '../../interfaces/User.interface';
-import { UserService } from '../../services/users.service';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { UserCardComponent } from './user-card/user-card.component';
 import { MatButton } from '@angular/material/button';
@@ -11,6 +10,9 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { CreateUser } from '../../interfaces/CreateUser.interface';
 import { NewUser } from '../../interfaces/NewUser.interface';
 import { LocalStorageService } from '../../services/locale-storage.service';
+import { Store } from '@ngrx/store';
+import { UsersActions } from './store/user.actions';
+import { selectUsers } from './store/users.selectors';
 
 @Component({
   selector: 'app-users-list',
@@ -28,10 +30,11 @@ import { LocalStorageService } from '../../services/locale-storage.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
-  readonly userService = inject(UserService);
-  readonly userApiService = inject(UsersApiService);
-  readonly localeStorageServices = inject(LocalStorageService);
-  readonly createUserDialog = inject(MatDialog);
+  private readonly userApiService = inject(UsersApiService);
+  private readonly localeStorageServices = inject(LocalStorageService);
+  private readonly createUserDialog = inject(MatDialog);
+  private readonly store = inject(Store);
+  public readonly users$ = this.store.select(selectUsers);
 
   private createUserItem: NewUser = {
     name: '',
@@ -45,11 +48,15 @@ export class UsersListComponent {
 
   constructor() {
     this.userApiService.getUsers().subscribe((response: User[]) => {
-      if (!localStorage.getItem('users')) {
-        this.userService.setUsers(response);
-        this.localeStorageServices.setToLocale();
+      if (this.localeStorageServices.getItem()) {
+        this.store.dispatch(
+          UsersActions.set({
+            users: this.localeStorageServices.getItem(),
+          })
+        );
       } else {
-        this.localeStorageServices.setToStore();
+        this.store.dispatch(UsersActions.set({ users: response }));
+        this.localeStorageServices.updateLocaleStorage();
       }
     });
   }
@@ -58,7 +65,7 @@ export class UsersListComponent {
     this.openDialog(this.createUserItem);
   }
 
-  public editedUser(editUser: NewUser) {
+  public onEditedUser(editUser: NewUser) {
     this.openDialog({ ...editUser, isEdit: true });
   }
 
@@ -69,27 +76,35 @@ export class UsersListComponent {
 
     dialogRef.afterClosed().subscribe((result: CreateUser) => {
       if (result && result.isEdit === false) {
-        this.userService.createUser({
-          ...result,
-          company: {
-            name: result.companyName,
-          },
-        });
-        this.localeStorageServices.editToLocale();
+        this.store.dispatch(
+          UsersActions.create({
+            user: {
+              ...result,
+              company: {
+                name: result.companyName,
+              },
+            },
+          })
+        );
+        this.localeStorageServices.updateLocaleStorage();
       } else if (result && result.isEdit) {
-        this.userService.editUser({
-          ...result,
-          company: {
-            name: result.companyName,
-          },
-        });
-        this.localeStorageServices.editToLocale();
+        this.store.dispatch(
+          UsersActions.edit({
+            user: {
+              ...result,
+              company: {
+                name: result.companyName,
+              },
+            },
+          })
+        );
+        this.localeStorageServices.updateLocaleStorage();
       }
     });
   }
 
   public deletedUser(deletedUser: User) {
-    this.userService.deleteuser(deletedUser);
-    this.localeStorageServices.editToLocale();
+    this.store.dispatch(UsersActions.delete({ id: deletedUser.id }));
+    this.localeStorageServices.updateLocaleStorage();
   }
 }

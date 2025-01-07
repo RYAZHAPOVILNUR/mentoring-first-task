@@ -9,24 +9,16 @@
       >
         Add User
       </button>
-      <button
-        class="w-28"
-        type="button"
-        mat-stroked-button
-        (click)="localeStorageServices.clear()"
-      >
-        Reset
-      </button>
     </div>
     <div>
       <ul
         class="flex flex-wrap justify-between gap-4 py-3 border border-green-600"
       >
-        <ng-container *ngFor="let user of userService.usersSubject$ | async">
+        <ng-container *ngFor="let user of users$ | async">
           <app-user-card
             [user]="user"
             (onDeletedUser)="deletedUser($event)"
-            (onEditUser)="editedUser($event)"
+            (onEditUser)="onEditedUser($event)"
           ></app-user-card>
         </ng-container>
       </ul>
