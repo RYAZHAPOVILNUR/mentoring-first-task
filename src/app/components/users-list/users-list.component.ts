@@ -13,6 +13,7 @@ import { LocalStorageService } from '../../services/locale-storage.service';
 import { Store } from '@ngrx/store';
 import { UsersActions } from './store/user.actions';
 import { selectUsers } from './store/users.selectors';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -35,6 +36,7 @@ export class UsersListComponent {
   private readonly createUserDialog = inject(MatDialog);
   private readonly store = inject(Store);
   public readonly users$ = this.store.select(selectUsers);
+  private destroy$ = new Subject<void>();
 
   private createUserItem: NewUser = {
     name: '',
@@ -106,5 +108,10 @@ export class UsersListComponent {
   public deletedUser(deletedUser: User) {
     this.store.dispatch(UsersActions.delete({ id: deletedUser.id }));
     this.localeStorageServices.updateLocaleStorage();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

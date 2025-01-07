@@ -8,7 +8,7 @@ import { User } from '../interfaces/User.interface';
 })
 export class LocalStorageService {
   private readonly store = inject(Store);
-  users$ = this.store.select(selectUsers);
+  readonly users$ = this.store.select(selectUsers);
 
   getItem(): User[] {
     const data = localStorage.getItem('users') || null;

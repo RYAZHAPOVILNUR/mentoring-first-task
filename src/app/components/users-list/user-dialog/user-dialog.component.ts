@@ -27,8 +27,8 @@ import { MatButton } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserDialogComponent {
-  readonly data = inject(MAT_DIALOG_DATA);
-  public IsEdit = this.data.isEdit;
+  private readonly data = inject(MAT_DIALOG_DATA);
+  public readonly isEdit = this.data.isEdit;
 
   public form = new FormGroup({
     name: new FormControl(this.data.name, [
@@ -54,13 +54,13 @@ export class UserDialogComponent {
       return {
         ...this.form.value,
         id: this.data.id,
-        isEdit: this.IsEdit,
+        isEdit: this.isEdit,
       };
     } else {
       return {
         ...this.form.value,
         id: new Date().getTime(),
-        isEdit: this.IsEdit,
+        isEdit: this.isEdit,
       };
     }
   }
