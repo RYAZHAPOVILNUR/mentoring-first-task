@@ -1,0 +1,27 @@
+<div>
+  <div class="container px-4 py-6 mx-auto border border-red-950">
+    <div class="flex gap-2 justify-center pb-5">
+      <button
+        class="w-28"
+        type="button"
+        mat-stroked-button
+        (click)="onCreateUserDialog()"
+      >
+        Add User
+      </button>
+    </div>
+    <div>
+      <ul
+        class="flex flex-wrap justify-between gap-4 py-3 border border-green-600"
+      >
+        <ng-container *ngFor="let user of users$ | async">
+          <app-user-card
+            [user]="user"
+            (onDeletedUser)="deletedUser($event)"
+            (onEditUser)="onEditedUser($event)"
+          ></app-user-card>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>
