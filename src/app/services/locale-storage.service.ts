@@ -21,7 +21,7 @@ export class LocalStorageService {
   }
 
   updateLocaleStorage() {
-    localStorage.removeItem('users');
+    localStorage.clear();
     this.users$.subscribe((users) => {
       this.setItem(users);
     });
