@@ -1,0 +1,13 @@
+<div class="content_block">
+  <div class="create_user">
+    <app-create-user-form (createUser)="createUser($event)">Контент создание юзера</app-create-user-form>
+  </div>
+
+  <div class="content_users_card">
+    <div *ngFor="let user of users$ | async">
+      <app-user-card [user]="user" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user-card>
+    </div>
+  </div>
+  
+  <app-create-user-btn (createUserBtn)="createUser($event)"></app-create-user-btn>
+</div>

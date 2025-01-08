@@ -1,0 +1,9 @@
+<div class="content_image">
+  <button class="btn" (click)="showImageCar = !showImageCar">
+    Скрыть машину
+  </button>
+  <div *ngIf="showImageCar" style="display: flex; margin: 0; padding: 0">
+    <img src="/assets/orig1.jpg" alt="" style="width: 100%" />
+  </div>
+  <img src="/assets/orig2.jpg" alt="" style="width: 100%" />
+</div>

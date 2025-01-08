@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container_create_user {
+  background-color: #171c25;
+  color: #F0BA4E;
+  border: 1.5px solid #F0BA4E;
+  padding: 25px 50px;
+  border-radius: 10px;
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn {
+  color: silver;
+  margin-top: 25px;
+  border-radius: 5px;
+  padding: 5px 35px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1e2631;
+    color: #F0BA4E;
+  }
+}

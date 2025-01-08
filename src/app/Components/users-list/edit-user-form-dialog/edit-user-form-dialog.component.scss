@@ -1,0 +1,28 @@
+.container_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  text-align: center;
+  background: #171c25;
+}
+
+.title {
+  color: #F0BA4E;
+  margin-top: 25px;
+  font-size: 25px;
+}
+
+.form_btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  margin: 0 auto;
+  height: 100px;
+}
+
+.form_btn button {
+  height: 45px;
+}
+
