@@ -1,0 +1,16 @@
+<mat-card class="users-card">
+  <mat-card-header>
+    <mat-card-title>
+      <p>{{user.name}}</p>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{user.email}}</p>
+    <p>{{user.website}}</p>
+    <p>{{user.company.name}}</p>
+  </mat-card-content>
+  <mat-card-actions class="users-card-btns">
+    <button class="users-card-btn" mat-raised-button (click)="onUserEdit(user)">Редактировать юзера</button>
+    <button class="users-card-btn delete" mat-raised-button (click)="onDeleteUser(user.id)">Удалить юзера</button>
+  </mat-card-actions>
+</mat-card>

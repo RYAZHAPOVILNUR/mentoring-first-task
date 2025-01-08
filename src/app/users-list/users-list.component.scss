@@ -1,0 +1,19 @@
+
+.users-list{
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.add-user-btn{
+  margin: 20px 0;
+}
+
+.users-list-cards{
+  display: flex;
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+

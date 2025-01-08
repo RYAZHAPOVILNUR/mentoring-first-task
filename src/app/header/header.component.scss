@@ -1,0 +1,14 @@
+.header{
+  display: flex;
+  gap: 220px;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+}
+
+.nav{
+  display: flex;
+  gap: 20px;
+}
+
+.nav>a{
+  font-size: medium;
+}

@@ -1,0 +1,22 @@
+<div class="dialog">
+  <h1>{{this.data.isEdit ? 'Редактирование пользователя' : 'Создание пользователя'}}</h1>
+  <form [formGroup] = "form" class="form">
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input matInput class="form-input" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Почта</mat-label>
+      <input matInput class="form-input" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Вебсайт</mat-label>
+      <input matInput class="form-input" formControlName="website" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Компания</mat-label>
+      <input matInput class="form-input" formControlName="companyName" />
+    </mat-form-field>
+    <button color="accent" mat-flat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">{{this.data.isEdit ? 'Edit user' : 'Create user'}}</button>
+  </form>
+</div>
