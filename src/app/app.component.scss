@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px; 
+    color: white;
+    background-color: #4B565E;
+    padding: 0 240px;
+    }
+.header-left { 
+    display: flex;
+    align-items: center;
+    }
+.header-logo {
+    margin-right: 20px;
+
+}
+.header-nav {
+    display: flex;
+}
+.header-nav-item {
+    margin-right: 20px;
+}
