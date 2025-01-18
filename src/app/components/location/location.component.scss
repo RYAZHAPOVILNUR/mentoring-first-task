@@ -1,0 +1,39 @@
+.compani_1 {
+    width: 1920px;
+    height: 137px;
+    max-width: 100%;
+}
+
+.pages {
+    display: flex;
+    gap: 16px;
+    padding-left: 290px;
+    margin-top: 28px;
+    color: #A1A0A0;
+}
+
+.compani_2 {
+    margin-left: 290px;
+    margin-top: 28px;
+    font-family: Inter;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.map {
+    background-image: url('/assets/Map_location.png');
+    height: 759px;
+    width: 1920px;
+    max-width: 100%; 
+}
+
+.information {
+    width: 646px;
+    height: 723px;
+    padding: 28px 0px 28px 0px;
+    gap: 16px;
+    background-color: white;
+    margin-left: 290px;
+
+}
+

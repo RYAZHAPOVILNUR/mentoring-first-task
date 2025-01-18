@@ -1,0 +1,409 @@
+<div class="container_3">
+    <img class="men" *ngIf="isShowMen" src="/assets/Rectangle_5.png" alt="" />
+    <button class="button_men" (click)="isShowMen = !isShowMen">Скрыть/Показать</button>
+  </div>
+  
+  <div class="container_4">
+    <div class="container_4_left">
+      <div><img src="/assets/Mask_group_1.svg" alt="" /></div>
+      <div>
+        <div class="container_4_text_left_1">Большой ассортимент</div>
+        <div class="container_4_text_left_2">
+          строительных материалов всегда в наличии
+        </div>
+      </div>
+    </div>
+    <div class="container_4_centr">
+      <div><img src="/assets/car.svg" alt="" /></div>
+      <div>
+        <div class="container_4_text_centr_1">Доставка стройматериалов</div>
+        <div class="container_4_text_centr_2">
+          в течении четырех часов или в любое удобное время
+        </div>
+      </div>
+    </div>
+    <div class="container_4_right">
+      <div><img src="/assets/laike.svg" alt="" /></div>
+      <div>
+        <div class="container_4_text_right_1">Многоуровневая система</div>
+        <div class="container_4_text_right_2">
+          управления качеством по стандарту ISO 9001
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container_5_buttons">
+    <div class="pagination_1" *ngFor="let item of menuPagination">
+      <button class="pagination_2">{{item}}</button>
+    </div>
+    <!-- <button class="item_cards_pagination_active_button">1</button>
+    <button class="item_cards_pagination">2</button>
+    <button class="item_cards_pagination">3</button>
+    <button class="item_cards_pagination">4</button>
+    <button class="item_cards_pagination">5</button> -->
+  </div>
+  
+  <div class="container_6">
+    <div class="container_6_header_left">
+      <div class="container_6_header_left_text">
+        Строительный отделочный инструмент
+      </div>
+      <div class="container_6_header_right_text">
+        <span class="span">Перейти в каталог</span>
+        <a>
+          <img src="/assets/Frame_20.svg" alt="" />
+        </a>
+      </div>
+    </div>
+    <div class="container_6_header_right">
+      <div class="container_6_header_right_cards">
+        <div class="enamel">
+          <div class="container_6_header_text_enamel_1">Эмали</div>
+          <div class="container_6_header_text_enamel_2">
+            <span class="span">Перейти в каталог</span>
+            <a>
+              <img src="/assets/Frame_20.svg" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="container_6_header_right_cards">
+        <div class="paint">
+          <div class="container_6_header_text_paint_1">
+            Лакокрасочные материалы
+          </div>
+          <div class="container_6_header_text_paint_2">
+            <span class="span">Перейти в каталог</span>
+            <a>
+              <img src="/assets/Frame_20.svg" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="container_6_header_right_cards">
+        <div class="sealants">
+          <div class="container_6_header_text_sealants_1">
+            Пены, клеи и герметики
+          </div>
+          <div class="container_6_header_text_sealants_2">
+            <span class="span">Перейти в каталог</span>
+            <a>
+              <img src="/assets/Frame_20.svg" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="container_6_header_right_cards">
+        <div class="rosettes">
+          <div class="container_6_header_text_rosettes_1">
+            Розетки и выключатели
+          </div>
+          <div class="container_6_header_text_rosettes_2">
+            <span class="span">Перейти в каталог</span>
+            <a>
+              <img src="/assets/Frame_20.svg" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container_7">
+    <div class="container_7_verh">
+      <div class="container_7_verh_left">Популярные товары</div>
+      <div class="container_7_verh_right">Посмотреть все товары</div>
+    </div>
+    <div class="container_7_niz">
+      <div class="container_7_cards">
+        <div class="container_krug_1">
+          <div class="discount_button_1">
+            <button class="discount_1">
+              <img src="/assets/discound.svg" alt="" />
+            </button>
+            <img src="/assets/heart_button_1.svg" alt="" />
+          </div>
+          <div class="description_1">Круг зачистной 125х6х22</div>
+          <div class="article_number">Артикул 00004</div>
+          <div class="price_1">
+            <div class="card_price_1">Цена за штуку</div>
+            <div class="mani_1">
+              <div class="mani_rub_1">52 руб.</div>
+              <div class="mani_rub_2">48 руб.</div>
+            </div>
+          </div>
+          <div class="quantity_1">
+            <div class="button_niz_right">
+              <div class="card_1_quantity">
+                Количество
+                <div class="number_of_goods">
+                  <div>-</div>
+                  <div>1</div>
+                  <div>+</div>
+                </div>
+              </div>
+              <div>
+                <button class="add_to_cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container_7_cards">
+        <div class="container_krug_2">
+          <div class="discount_button_1">
+            <button class="discount_1">
+              <img src="/assets/discound.svg" alt="" />
+            </button>
+            <img src="/assets/heart_button_1.svg" alt="" />
+          </div>
+          <div class="description_1">Круг зачистной 125х6х22</div>
+          <div class="article_number">Артикул 00004</div>
+          <div class="price_1">
+            <div class="card_price_1">Цена за штуку</div>
+            <div class="mani_1">
+              <div class="mani_rub_1">52 руб.</div>
+              <div class="mani_rub_2">48 руб.</div>
+            </div>
+          </div>
+          <div class="quantity_1">
+            <div class="button_niz_right">
+              <div class="card_1_quantity">
+                Количество
+                <div class="number_of_goods">
+                  <div>-</div>
+                  <div>1</div>
+                  <div>+</div>
+                </div>
+              </div>
+              <div>
+                <button class="add_to_cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container_7_cards">
+        <div class="container_krug_3">
+          <div class="discount_button_1">
+            <!-- <button class="card_3_discount_button">
+              <img src="/assets/discound.svg" alt="">
+            </button> -->
+            <button class="card_3_nev_1">Новинка</button>
+            <img src="/assets/heart_button_1.svg" alt="" />
+          </div>
+          <button class="card_3_button">
+            <img src="/assets/discound.svg" alt="">
+          </button>
+          <div class="description_3">Круг зачистной 125х6х22</div>
+          <div class="article_number">Артикул 00004</div>
+          <div class="price_1">
+            <div class="card_price_1">Цена за штуку</div>
+            <div class="mani_1">
+              <div class="mani_rub_1">52 руб.</div>
+              <div class="mani_rub_2">48 руб.</div>
+            </div>
+          </div>
+          <div class="quantity_1">
+            <div class="button_niz_right">
+              <div class="card_1_quantity">
+                Количество
+                <div class="number_of_goods">
+                  <div>-</div>
+                  <div>1</div>
+                  <div>+</div>
+                </div>
+              </div>
+              <div>
+                <button class="add_to_cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container_7_cards">
+        <div class="container_krug_4">
+          <div class="discount_button_1">
+            <button class="card_4_nev_2">Новинка</button>
+            <img src="/assets/heart_button_1.svg" alt="" />
+          </div>
+          <div class="description_4">Круг зачистной 125х6х22</div>
+          <div class="article_number">Артикул 00004</div>
+          <div class="price_1">
+            <div class="card_price_1">Цена за штуку</div>
+            <div class="mani_1">
+              <!-- <div class="mani_rub_1">52 руб.</div> -->
+              <div class="mani_rub_2">52 руб.</div>
+            </div>
+          </div>
+          <div class="quantity_1">
+            <div class="button_niz_right">
+              <div class="card_1_quantity">
+                Количество
+                <div class="number_of_goods">
+                  <div>-</div>
+                  <div>1</div>
+                  <div>+</div>
+                </div>
+              </div>
+              <div>
+                <button class="add_to_cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container_8">
+    <div class="banner_2_men_right">
+      <div class="banner_2_text_verh">
+        <span class="banner_2_names_goods">БОЛЕЕ 10 000 НАИМЕНОВАНИЙ</span>
+        <div class="banner_2_tool">Инструмент для вашего бизнеса, разнообразных марок</div>
+        <div class="banner_2_text_niz">
+          <a class="banner_2_catalog">Перейти в каталог</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container_9">
+    <div class="container_9_text">
+      <div class="container_9_text_left">Новинки</div>
+      <div class="container_9_text_right">Посмотреть все товары</div>
+    </div>
+    <div class="container_9_verh">
+      <div class="container_9_niz">
+        <div class="container_9_krug">
+          <div class="container_krug_4">
+            <div class="discount_button_1">
+              <button class="card_4_nev_2">Новинка</button>
+              <img src="/assets/heart_button_1.svg" alt="" />
+            </div>
+            <div class="description_1">Круг зачистной 125х6х22</div>
+            <div class="article_number">Артикул 00004</div>
+            <div class="price_1">
+              <div class="card_price_1">Цена за штуку</div>
+              <div class="mani_1">
+                <!-- <div class="mani_rub_1">52 руб.</div> -->
+                <div class="mani_rub_2">52 руб.</div>
+              </div>
+            </div>
+            <div class="quantity_1">
+              <div class="button_niz_right">
+                <div class="card_1_quantity">
+                  Количество
+                  <div class="number_of_goods">
+                    <div>-</div>
+                    <div>1</div>
+                    <div>+</div>
+                  </div>
+                </div>
+                <div>
+                  <button class="add_to_cart">В корзину</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container_9_krug">
+          <div class="container_krug_4">
+            <div class="discount_button_1">
+              <button class="card_4_nev_2">Новинка</button>
+              <img src="/assets/heart_button_1.svg" alt="" />
+            </div>
+            <div class="description_1">Круг зачистной 125х6х22</div>
+            <div class="article_number">Артикул 00004</div>
+            <div class="price_1">
+              <div class="card_price_1">Цена за штуку</div>
+              <div class="mani_1">
+                <!-- <div class="mani_rub_1">52 руб.</div> -->
+                <div class="mani_rub_2">52 руб.</div>
+              </div>
+            </div>
+            <div class="quantity_1">
+              <div class="button_niz_right">
+                <div class="card_1_quantity">
+                  Количество
+                  <div class="number_of_goods">
+                    <div>-</div>
+                    <div>1</div>
+                    <div>+</div>
+                  </div>
+                </div>
+                <div>
+                  <button class="add_to_cart">В корзину</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container_9_krug">
+          <div class="container_krug_4">
+            <div class="discount_button_1">
+              <button class="card_4_nev_2">Новинка</button>
+              <img src="/assets/heart_button_1.svg" alt="" />
+            </div>
+            <div class="description_1">Круг зачистной 125х6х22</div>
+            <div class="article_number">Артикул 00004</div>
+            <div class="price_1">
+              <div class="card_price_1">Цена за штуку</div>
+              <div class="mani_1">
+                <!-- <div class="mani_rub_1">52 руб.</div> -->
+                <div class="mani_rub_2">52 руб.</div>
+              </div>
+            </div>
+            <div class="quantity_1">
+              <div class="button_niz_right">
+                <div class="card_1_quantity">
+                  Количество
+                  <div class="number_of_goods">
+                    <div>-</div>
+                    <div>1</div>
+                    <div>+</div>
+                  </div>
+                </div>
+                <div>
+                  <button class="add_to_cart">В корзину</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container_9_krug">
+          <div class="container_krug_4">
+            <div class="discount_button_1">
+              <button class="card_4_nev_2">Новинка</button>
+              <img src="/assets/heart_button_1.svg" alt="" />
+            </div>
+            <div class="description_1">Круг зачистной 125х6х22</div>
+            <div class="article_number">Артикул 00004</div>
+            <div class="price_1">
+              <div class="card_price_1">Цена за штуку</div>
+              <div class="mani_1">
+                <!-- <div class="mani_rub_1">52 руб.</div> -->
+                <div class="mani_rub_2">52 руб.</div>
+              </div>
+            </div>
+            <div class="quantity_1">
+              <div class="button_niz_right">
+                <div class="card_1_quantity">
+                  Количество
+                  <div class="number_of_goods">
+                    <div>-</div>
+                    <div>1</div>
+                    <div>+</div>
+                  </div>
+                </div>
+                <div>
+                  <button class="add_to_cart">В корзину</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

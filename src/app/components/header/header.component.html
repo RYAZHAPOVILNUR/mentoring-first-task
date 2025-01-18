@@ -1,0 +1,58 @@
+<div class="container_1">
+    <div class="header">
+    <div class="header_left">
+      <img src="/assets/Frame.svg" alt="" />
+      <nav class="nav_left">
+        <button class="nav_header_left" routerLink="">{{headeritem1}}</button>
+        <button class="nav_header_left">{{headeritem2}}</button>
+        <button class="nav_header_left" *ngIf="isShowCatalog">{{headeritem3}}</button>
+      </nav>
+      <button class="button_true_false" (click)="isShowCatalog = !isShowCatalog">Скрыть/Показать каталог</button>
+      <button class="button_Change_text" (click)="changeMenuText()">Изменить текст</button>
+      <button class="button_Change_text" routerLink="users">Users</button>
+      <button class="button_Change_text" routerLink="todos">Todos</button>
+    </div>
+    <div class="header_right">
+      <img class="phone" src="/assets/Phone.svg" alt="" />
+      <div class="number">+7 (965) 084-29-29</div>
+      <img class="heart" src="/assets/Vector.svg" alt="" />
+      <button class="search">
+        <img class="basket" src="/assets/Mask_group.svg" alt="" />
+        <div class="pusto">Пусто</div>
+      </button>
+    </div>
+    </div>
+  </div>
+  
+  
+  <div class="container_2">
+    <div class="header-2">
+    <div class="container_2_header_left">
+      <img src="/assets/light.svg" alt="" />
+      <div class="container_2button_text" *ngFor="let item of menuItems">{{item}}</div>
+      <!-- <nav class="nav_left_2">
+        <div class="nav_container_2_left">{{header2item1}}</div>
+        <div class="nav_container_2_left">{{header2item2}}</div>
+        <div class="nav_container_2_left">{{header2item3}}</div>
+        <div class="nav_container_2_left">{{header2item4}}</div>
+        <div class="nav_container_2_left">{{header2item5}}</div>
+      </nav> -->
+    </div>
+    <div class="container_2_header_right">
+      <form class="input_search">
+        <input
+          class="container_2_right_search"
+          type="search"
+          placeholder="Поиск, например Круг зачистной"
+        />
+        <img
+          class="container_2_right_magnifier"
+          src="/assets/Search.svg"
+          alt=""
+        />
+      </form>
+      <img src="/assets/location.svg" alt="" />
+      <div class="city">Москва</div>
+    </div>
+    </div>
+  </div>

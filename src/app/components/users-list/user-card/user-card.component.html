@@ -1,0 +1,7 @@
+<div class="user_box">
+    <p>{{$any(user).name}}</p>
+    <p>{{$any(user).email}}</p>
+    <p>{{$any(user).website}}</p>
+    <p>{{$any(user).company.name}}</p>
+    <button class="delete_users" (click)="onDeleteUser(user.id)">Удалить юзера</button>
+</div>

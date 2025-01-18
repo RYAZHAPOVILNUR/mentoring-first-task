@@ -1,0 +1,31 @@
+.users {
+    width: 1270px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    gap: 5px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.cards_users {
+    width: 250px;
+    height: 210px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    padding: 25px;
+}
+
+.delete_users {
+    background-color: #4b565e;
+    color: white;
+    border-radius: 30px;
+    border: solid 1px  #4b565e;
+
+}
+
+.container_user {
+    height: 500px;
+}
