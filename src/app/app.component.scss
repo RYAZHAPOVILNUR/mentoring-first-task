@@ -1,0 +1,88 @@
+.body {
+    font-family: 'Inter';
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px; 
+    color: white;
+    background-color: #4B565E;
+    padding: 0 240px;
+    }
+.header-left { 
+    display: flex;
+    align-items: center;
+    }
+.header-logo {
+    margin-right: 20px;
+}
+.header-nav {
+    display: flex;
+}
+.header-nav-item {
+    margin-right: 20px;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.phone-logo {
+    margin-right: 10px;
+}
+.phone-number {
+    margin-right: 40px;
+}
+.fav-icon {
+    margin-right: 40px;
+}
+.subheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    background-color: #f0ad4e;
+    color: #3C3C3B;
+    padding: 10px 240px;
+}
+.subheader-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.subheader nav {
+    display: flex;
+}
+.subheader-nav-item {
+    margin-right: 20px;
+}
+.subheader-right{
+    display: flex;
+    align-items: center;
+}
+.search {
+    display: flex;
+    align-items: center;
+}
+.search input {
+    border: none;
+    border-bottom: 2px solid #3C3C3B;
+    outline: none;
+    padding: 5px;
+    background-color: #f0ad4e;
+}
+.city-name {
+    color: #FFFFFF;
+}
+.menu-icon {
+    margin-right: 10px;
+}
+.search-icon {
+    margin-right: 20px;
+    border-bottom: 2px solid #3C3C3B;
+    padding: 0px;
+}
+.map-pin {
+    margin-right: 5px;
+}
