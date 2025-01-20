@@ -1,0 +1,5 @@
+<div class="todos-container">
+  <div class="todos-card" *ngFor="let todo of todos">
+    <app-todo-card [todo] = "todo" (deleteTodo)="deleteTodo($event)"></app-todo-card>
+  </div>
+</div>

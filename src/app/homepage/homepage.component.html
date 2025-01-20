@@ -1,0 +1,360 @@
+<button (click)="isShowImg = !isShowImg">Скрыть/Показать баннер</button>
+<div *ngIf="isShowImg">
+  <img src="/assets/banner.png" alt="backgraund-large" style="width: 100%;">
+</div>
+
+<div class="content-container">
+  <div class="mask-group">
+      <div class="mask-group-block">
+          <div>
+              <img src="assets/assortment.svg">
+          </div>
+          <div>
+              <span class="mask-group-text" style="margin-right: 30px;">Большой ассортимент</span>
+              <span class="mask-group-text" gray> строительных материалов всегда в наличии</span>
+          </div>
+      </div>
+      <div class="mask-group-block">
+          <div>
+            <img src="/assets/auto.svg">
+          </div>
+          <div style="padding-right: 50px;">
+              <span class="mask-group-text" style="margin-right: 30px;">Доставка стройматериалов</span>
+              <span class="mask-group-text gray"> в течении четырех часов или в любое удобное время</span>
+            </div>
+        </div>
+        <div class="mask-group-block">
+            <div>
+                <img src="/assets/like.svg">
+            </div>
+            <div>
+                <span class="mask-group-text gray">Многоуровневая</span>
+                <span class="mask-group-text"> система управления качеством</span>
+                <span class="mask-group-text gray"> по стандарту ISO 9001</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-cards">
+        <div class="item-cards__pagination">
+            <button class="item-cards__pagination-button active-button" *ngFor="let item of newPages">{{item}}</button>
+        </div>
+        <div class="item-cards__grid">
+            <div class="item-cards__grid-left">
+                <span class="item-cards__grid-left-text">
+                    Строительный отделочный инструмент
+                </span>
+                <div class="item-cards__grid-left-action">
+                    <span style="margin-right: 10px;">Перейти в каталог</span>
+                    <a class="item-cards__grid-left-action-link">
+                        <img src="assets/arrow-catalog.svg" alt="перейти в каталог">
+                    </a>
+                </div>
+            </div>
+            <div class="item-cards__grid-right">
+                <div class="item-cards__grid-right-enamel">
+                    <span class="item-cards__grid-right-enamel-name">
+                        Эмали
+                    </span>
+                    <div class="item-cards__grid-right-enamel-action">
+                        <span style="margin-right: 10px;">Перейти в каталог</span>
+                        <a class="item-cards__grid-right-enamel-action-link">
+                            <img src="assets/arrow-catalog.svg" alt="перейти в каталог">
+                        </a>
+                    </div>
+                </div>
+                <div class="item-cards__grid-right-paint">
+                    <span class="item-cards__grid-right-paint-name">
+                        Лакокрасочные материалы
+                    </span>
+                    <div class="item-cards__grid-right-paint-action">
+                        <span style="margin-right: 10px;">Перейти в каталог</span>
+                        <a class="item-cards__grid-right-paint-action-link">
+                            <img src="assets/arrow-catalog.svg" alt="перейти в каталог">
+                        </a>
+                    </div>
+                </div>
+                <div class="item-cards__grid-right-sealant">
+                    <span class="item-cards__grid-right-sealant-name">
+                        Пены, клеи и герметики
+                    </span>
+                    <div class="item-cards__grid-right-sealant-action">
+                        <span style="margin-right: 10px;">Перейти в каталог</span>
+                        <a class="item-cards__grid-right-sealant-action-link">
+                            <img src="assets/arrow-catalog.svg" alt="перейти в каталог">
+                        </a>
+                    </div>
+                </div>
+                <div class="item-cards__grid-right-socket">
+                    <span class="item-cards__grid-right-socket-name">
+                        Розетки и выключатели
+                    </span>
+                    <div class="item-cards__grid-right-socket-action">
+                        <span style="margin-right: 10px;">Перейти в каталог</span>
+                        <a class="item-cards__grid-right-socket-action-link">
+                            <img src="assets/arrow-catalog.svg" alt="перейти в каталог">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popular-products-header">
+        <span class="popular-products-header_left">Популярные товары</span>
+        <a class="popular-products-header_right">Посмотреть все товары</a>
+    </div>
+
+    <div class="popular-products-grid">
+        <button class="scrolling-left">
+            <img src="assets/arrow-slider.svg" alt="прокрутка влево">
+        </button>
+        <button class="scrolling-right">
+            <img src="assets/arrow-slider.svg" alt="прокрутка вправо" style="transform: rotate(180deg);">
+        </button>
+        <div class="products-cards">
+            <div class="sale-favour">
+                <div class="sale">%</div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner">
+                    <div class="products-old_price">52 руб.</div>
+                    <div class="products-current_price">48 руб.</div>
+                </div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+        <div class="products-cards">
+            <div class="sale-favour">
+                <div class="sale">%</div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner">
+                    <div class="products-old_price">52 руб.</div>
+                    <div class="products-current_price">48 руб.</div>
+                </div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+        <div class="products-cards">
+            <div class="new-favour">
+                <div class="new-sale">
+                    <div class="new-point">Новинка</div>
+                    <div class="sale" style="width: 15px;">%</div>
+                </div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner">
+                    <div class="products-old_price">52 руб.</div>
+                    <div class="products-current_price">48 руб.</div>
+                </div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+        <div class="products-cards">
+            <div class="new-favour">
+                <div class="new-point">Новинка</div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner products-current_price">52 руб.</div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="catalog">
+        <div>
+            <div class="catalog-name">Более 10 000 наименований </div>
+            <div class="catalog-item">Инструмент для вашего бизнеса, разнообразных марок</div>
+        </div>
+        <a class="catalog-link">
+            <span class="catalog-link-text">Перейти в каталог</span>
+        </a>
+    </div>
+
+    <div class="new-products-header">
+        <span class="new-products-header_left">Новинки</span>
+        <a class="new-products-header_right">Посмотреть все товары</a>
+    </div>
+
+    <div class="new-products-grid">
+        <button class="scrolling-left">
+            <img src="assets/arrow-slider.svg" alt="прокрутка влево">
+        </button>
+        <button class="scrolling-right">
+            <img src="assets/arrow-slider.svg" alt="прокрутка вправо" style="transform: rotate(180deg);">
+        </button>
+        <div class="products-cards">
+            <div class="new-favour">
+                <div class="new-point">Новинка</div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner products-current_price">52 руб.</div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+        <div class="products-cards">
+            <div class="new-favour">
+                <div class="new-point">Новинка</div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner products-current_price">52 руб.</div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+        <div class="products-cards">
+            <div class="new-favour">
+                <div class="new-point">Новинка</div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner products-current_price">52 руб.</div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+        <div class="products-cards">
+            <div class="new-favour">
+                <div class="new-point">Новинка</div>
+                <button style="background-color: white; border: none;">
+                    <img src="assets/heart.svg" alt="избранное">
+                </button>
+            </div>
+            <img src="assets/product-disk.png" alt="диск">
+            <div class="products-name">Круг зачистной 125х6х22</div>
+            <div class="products-article"> Артикул 00004</div>
+            <div class="products-price-wrap">
+                <div class="products-price_per_piece">Цена за штуку</div>
+                <div class="products-price-inner products-current_price">52 руб.</div>
+            </div>
+            <div class="products-quantity-wrap">
+                <div class="products-quantity-inner">
+                    <div class="products-quantity">Количество</div>
+                    <div class="products-quantity_select">
+                        <button style="border: none; background-color: white;">-</button>
+                        <span>1</span>
+                        <button style="border: none; background-color: white;">+</button>
+                    </div>
+                </div>
+                <button class="products_basket">В корзину</button>
+            </div>
+        </div>
+    </div>
+</div>
