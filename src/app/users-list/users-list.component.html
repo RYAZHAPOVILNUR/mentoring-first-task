@@ -1,0 +1,7 @@
+<div class="users-container">
+    <div class="users-card" *ngFor="let user of usersService.usersSubject | async">
+        <app-user-card [user] = "user"></app-user-card>
+        <button (click)="deleteUser(user.id)">Удалить</button>
+    </div>
+</div>
+

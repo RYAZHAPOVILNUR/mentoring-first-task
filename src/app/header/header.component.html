@@ -1,0 +1,58 @@
+<div class="header">
+  <div class="content-container_header">
+      <div class="header-left">
+          <div class="header-logo">
+              <img src="/assets/logo.svg" alt="Логотип компании">
+          </div>
+          <nav class="header-nav">
+              <a class="header-nav-item" routerLink="/">{{headerItem1}}</a>
+              <a class="header-nav-item">{{headerItem2}}</a>
+              <a class="header-nav-item" *ngIf="isShowCatalog">{{headerItem3}}</a>
+              <a class="header-nav-item" routerLink="users">{{headerItem4}}</a>
+              <a class="header-nav-item" routerLink="todos">{{headerItem5}}</a>
+          </nav>
+      </div>
+      <button (click)="isShowCatalog = !isShowCatalog">Скрыть/Показать каталог</button>
+      <button (click)="changeMenuText()">Изменить текст</button>
+
+      <div class="header-right">
+          <div class="header-Phone">
+              <div>
+                  <img src="/assets/phone.svg" alt="телефон">
+              </div>
+              <a href="tel:+79650842929" class="number">+7 (965) 084 29 29</a>
+          </div>
+          <a class="favour">
+              <img src="/assets/favour.svg" alt="избранное">
+          </a>
+          <button class="basket">
+              <div>
+                  <img src="/assets/basket.svg" alt="корзина">
+              </div>
+              <span>Пусто </span>
+          </button>
+      </div>
+  </div>
+</div>
+
+<div class="menu">
+  <div class="content-container_header">
+      <div class="menu-left">
+          <div>
+              <img src="/assets/menu.svg" alt="знак меню">
+          </div>
+          <div class="menu-left-punkt" *ngFor="let item of menuItems">{{item}}</div>
+      </div>
+
+      <div class="menu-right">
+          <form class="menu-right-search">
+              <input class="search" type="search" placeholder="Поиск, например Круг зачистной">
+              <img src="/assets/search.svg" alt="знак поиска" style="width: 24px; height: 24px;">
+          </form>
+          <div class="menu-right-plece">
+              <img src="/assets/map.svg" alt="место">
+              <span>Москва</span>
+          </div>
+      </div>
+  </div>
+</div>

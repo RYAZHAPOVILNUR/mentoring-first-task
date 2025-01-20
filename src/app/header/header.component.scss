@@ -1,0 +1,110 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  color: white;
+  background-color: #4B565E;
+
+  &-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &-logo {
+      margin-right: 20px;
+  }
+
+  &-nav {
+      display: flex;
+
+      &-item {
+        margin-right: 20px;
+      }
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+
+  &-Phone {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.content-container_header {
+  width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.number {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  color: #FFFFFF;
+  margin-left: 15px;
+}
+
+.favour {
+  margin-left: 50px;
+  align-items: center;
+}
+
+.basket {
+  border-color: #F0BA4E;
+  background-color: #4B565E;
+  border-style: solid;
+  border-radius: 25px;
+  border-width: 1px;
+  color: white;
+  align-items: center;
+  display: flex;
+  margin-left: 50px;
+  height: 48px;
+  width: 126px;
+  justify-content: space-around;
+}
+
+.menu {
+  background-color: #F0BA4E;
+  height: 48px;
+  align-items: center;
+  display: flex;
+
+  &-left {
+    display: flex;
+    align-items: center;
+
+    &-punkt {
+      margin-left: 15px;
+    }
+  }
+
+  &-right {
+      display: flex;
+      align-items: center;
+
+      &-search {
+          width: 400px;
+          height: 28px;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid #3C3C3B;
+      }
+
+      &-plece {
+          display: flex;
+          width: 69px;
+          height: 14px;
+          gap: 6px;
+          color: white;
+          margin-left: 20px;
+      }
+  }
+}
+
