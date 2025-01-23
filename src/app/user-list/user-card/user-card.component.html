@@ -1,0 +1,8 @@
+<div style="width: 200px; height: 200px; border: 1px solid black; margin: 5px; padding: 10px">
+  <p>{{ user.name }}</p>
+  <p>{{ user.email }}</p>
+  <p>{{ user.phone }}</p>
+  <p>{{ user.company?.name }}</p>
+  <button (click)="onDeleteUser(user.id)">Удалить юзера</button>
+  <button style="margin-top: 10px" (click)="openDialog()">Редактировать юзера</button>
+</div>

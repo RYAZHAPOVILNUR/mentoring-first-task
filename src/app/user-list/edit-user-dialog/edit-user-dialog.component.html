@@ -1,0 +1,68 @@
+<div>
+  <form style="display: flex; flex-direction: column; padding: 50px" [formGroup]="form">
+    <div>
+      <p>Name:</p>
+      <input type="text" class="form-input" formControlName="name" />
+      <div
+        *ngIf="
+          form.controls['name'].invalid &&
+          (form.controls['name'].dirty || form.controls['name'].touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="form.controls['name'].errors">Name введено неправильно</div>
+      </div>
+    </div>
+
+    <div>
+      <p>Email:</p>
+      <input type="text" class="form-input" formControlName="email" />
+      <div
+        *ngIf="
+          form.controls['email'].invalid &&
+          (form.controls['email'].dirty || form.controls['email'].touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="form.controls['email'].errors">Email введено неправильно</div>
+      </div>
+    </div>
+
+    <div>
+      <p>Website:</p>
+      <input type="text" class="form-input" formControlName="website" />
+      <div
+        *ngIf="
+          form.controls['website'].invalid &&
+          (form.controls['website'].dirty || form.controls['website'].touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="form.controls['website'].errors">Имя введено неправильно</div>
+      </div>
+    </div>
+
+    <div>
+      <p>CompanyName:</p>
+      <input type="text" class="form-input" formControlName="companyName" />
+      <div
+        *ngIf="
+          form.controls['companyName'].invalid &&
+          (form.controls['companyName'].dirty || form.controls['companyName'].touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="form.controls['companyName'].errors">Имя введено неправильно</div>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      style="margin-top: 20px; width: 150px"
+      [disabled]="form.invalid"
+      [mat-dialog-close]="formWithId"
+    >
+      Редактировать
+    </button>
+  </form>
+</div>
