@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-card appearance="outlined" class="mat-card">
+    <mat-card-content class="container-content">
+      <mat-card-title class="card-title">
+        {{ user.name }}
+      </mat-card-title>
+
+      <mat-card-subtitle class="mat-card-subtitle">
+        {{ user.email }}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle class="mat-card-subtitle">
+        {{ user.website }}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle class="mat-card-subtitle">
+        {{ user.company.name }}
+      </mat-card-subtitle>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        style="width: 150px"
+        (click)="onDeleteUser(user.id)"
+      >
+        УДАЛИТЬ ЮЗЕРА
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        style="width: 150px; margin-top: 5px"
+        (click)="editUser.emit(user)"
+      >
+        РЕДАКТИРОВАТЬ ЮЗЕРА
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
