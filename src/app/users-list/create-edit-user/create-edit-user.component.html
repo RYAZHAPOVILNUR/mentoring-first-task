@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <form [formGroup]="form">
+    <div class="formControl">
+      <p>Name:</p>
+      <input type="text" autocomplete="name" name="name" id="name" formControlName="name">
+    </div>
+    <div class="formControl">
+      <p>Username:</p>
+      <input type="text" autocomplete="username" name="username" id="username" formControlName="username">
+    </div>
+    <div class="formControl">
+      <p>Email:</p>
+      <input type="email" autocomplete="email" name="email" id="email" formControlName="email">
+    </div>
+    <div class="formControl">
+      <p>Company name:</p>
+      <input type="text" autocomplete="work" name="companyName" id="companyName" formControlName="companyName">
+    </div>
+    <div class="formControl">
+      <button type="button" (click)="cancel()">
+        Cancel
+      </button>
+      <button
+        [disabled]="form.invalid"
+        (click)="save()"
+        >
+        {{data ? "Edit" : "Create"}}
+      </button>
+    </div>
+  </form>
+</div>

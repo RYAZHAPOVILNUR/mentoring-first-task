@@ -1,0 +1,17 @@
+<button (click)="openDialog()">Create User</button>
+
+
+<div>
+  {{error$ | async}}
+</div>
+
+<div class="container">
+  <div *ngFor="let user of users$ | async">
+    <app-user-card
+      [user]="user"
+      (deleteUser)="onDeleteUser($event)"
+      (editUser)="onEditUser($event)"
+    >
+    </app-user-card>
+  </div>
+</div>

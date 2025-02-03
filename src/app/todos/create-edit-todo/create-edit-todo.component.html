@@ -1,0 +1,31 @@
+
+<div class="wrapper">
+  <form [formGroup]="form">
+    <div class="formControl">
+      <p>UserId:</p>
+      <input type="number" autocomplete="userId" name="userId" id="userId" formControlName="userId">
+    </div>
+    <div class="formControl">
+      <p>Title:</p>
+      <input type="text" autocomplete="title" name="title" id="title" formControlName="title">
+    </div>
+    <div class="formControl">
+      <p>Completed:</p>
+      <select name="completed" id="completed" formControlName="completed">
+        <option [value]=true>Yes, completed</option>
+        <option [value]=false>No, not completed</option>
+      </select>
+    </div>
+    <div class="formControl">
+      <button type="button" (click)="cancel()">
+        Cancel
+      </button>
+      <button
+        [disabled]="form.invalid"
+        [mat-dialog-close]="formWithFields"
+        >
+        {{data ? "Edit" : "Create"}}
+      </button>
+    </div>
+  </form>
+</div>
