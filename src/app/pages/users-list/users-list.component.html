@@ -1,0 +1,16 @@
+<div class="users">
+  <div>
+    <button mat-raised-button (click)="openDialog()">
+      Добавить пользователя
+    </button>
+  </div>
+  
+  @for (user of users$ | async; track user.id) {
+  <user-card
+    class="users-card"
+    (onEdit)="onEdit($event)"
+    (onDelete)="onDelete($event)"
+    [user]="user"
+  ></user-card>
+  }
+</div>

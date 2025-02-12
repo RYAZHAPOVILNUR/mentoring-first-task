@@ -1,0 +1,17 @@
+<mat-card class="card" (click)="onEdit.emit(user)">
+  <div class="card-user">
+    <mat-card-header>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Фамилия: {{ user.username }}</p>
+      <p>Телефон: {{ user.phone }}</p>
+      <p>Почта: {{ user.email }}</p>
+    </mat-card-content>
+  </div>
+  <div class="card-delete">
+    <button mat-mini-fab (click)="onDelete.emit([user.id, $event])">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</mat-card>
