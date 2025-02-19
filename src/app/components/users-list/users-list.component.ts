@@ -1,37 +1,29 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UsersApiService } from '../../services/users-api.service';
-import { NgFor } from '@angular/common';
+import { AsyncPipe, NgFor } from '@angular/common';
 import { UserCardComponent } from '../user-card/user-card.component';
-import { User } from '../../interface/user';
+import { UsersService } from '../../services/users.service';
 
 @Component({
     selector: 'app-users-list',
     standalone: true,
-    imports: [NgFor, UserCardComponent],
+    imports: [NgFor, UserCardComponent, AsyncPipe],
     templateUrl: './users-list.component.html',
-    styleUrl: './users-list.component.scss'
+    styleUrl: './users-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
     readonly usersApiService = inject(UsersApiService);
-    users: User[] = [];
-
+    readonly usersService = inject(UsersService);
     constructor() {
         this.usersApiService.getUsers().subscribe(
-            (Response: any) => {
-                this.users = Response;
+            (response: any) => {
+                this.usersService.setUsers(response);
             }
         )
     }
 
     deleteUser(id: number) {
-        this.users = this.users.filter(
-            user => {
-                if (id === user.id) {
-                    return false
-                } else {
-                    return true;
-                }
-            }
-        )
+        this.usersService.deleteUser(id);
     }
 }
