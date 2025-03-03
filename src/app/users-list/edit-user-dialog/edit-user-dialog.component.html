@@ -1,0 +1,56 @@
+<form style="display: flex; flex-direction: column" [formGroup]="form">
+  <p>NAME:</p>
+  <input type="text" class="form-input" formControlName="name" />
+  <div
+    *ngIf="
+      form.controls['name'].invalid &&
+      (form.controls['name'].dirty || form.controls['name'].touched)
+    "
+    class="alert"
+  >
+    <div *ngIf="form.controls['name'].errors">ИМЯ ВВЕДЕНО НЕ ПРАВИЛЬНО</div>
+  </div>
+  <p>EMAIL:</p>
+  <input type="text" class="form-input" formControlName="email" />
+  <div
+    *ngIf="
+      form.controls['email'].invalid &&
+      (form.controls['email'].dirty || form.controls['email'].touched)
+    "
+    class="alert"
+  >
+    <div *ngIf="form.controls['email'].errors">EMAIL ВВЕДЕН НЕ ПРАВИЛЬНО</div>
+  </div>
+  <p>WEBSITE:</p>
+  <input type="text" class="form-input" formControlName="website" />
+  <div
+    *ngIf="
+      form.controls['website'].invalid &&
+      (form.controls['website'].dirty || form.controls['website'].touched)
+    "
+    class="alert"
+  >
+    <div *ngIf="form.controls['website'].errors">EMAIL ВВЕДЕН НЕ ПРАВИЛЬНО</div>
+  </div>
+  <p>COMPANY NAME:</p>
+  <input type="text" class="form-input" formControlName="companyName" />
+  <div
+    *ngIf="
+      form.controls['companyName'].invalid &&
+      (form.controls['companyName'].dirty ||
+        form.controls['companyName'].touched)
+    "
+    class="alert"
+  >
+    <div *ngIf="form.controls['companyName'].errors">
+      EMAIL ВВЕДЕН НЕ ПРАВИЛЬНО
+    </div>
+  </div>
+  <button
+    style="width: 150px; margin-top: 20px"
+    [disabled]="form.invalid"
+    [mat-dialog-close]="userWithUpdateFields"
+  >
+    CREATE USER
+  </button>
+</form>
