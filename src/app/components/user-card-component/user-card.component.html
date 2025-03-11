@@ -1,0 +1,8 @@
+<div class="user-card">
+  <p>{{ user.name }}</p>
+  <p>{{ user.email }}</p>
+  <p>{{ user.website }}</p>
+  <p>{{ user.company.name }}</p>
+  <button class="card-btn" (click)="onDeleteUser(user.id)">Удалить пользователя</button>
+  <button class="card-btn" (click)="onEditUser(user)" >Редактировать пользователя</button>
+</div>

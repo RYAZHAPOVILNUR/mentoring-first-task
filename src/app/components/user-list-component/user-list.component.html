@@ -1,0 +1,9 @@
+
+<div class="user-list">
+  <div>
+    <button class="addUserBtn" (click)="openDialog()">Добавить пользователя</button>
+  </div>
+  <div *ngFor="let users of users$ | async">
+    <app-user-card [user]="users" (deleteUser)="onDeleteUsers($event)" (editUser)="openDialog($event)"></app-user-card>
+  </div>                    
+</div>

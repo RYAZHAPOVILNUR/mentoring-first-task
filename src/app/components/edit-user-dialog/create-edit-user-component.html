@@ -1,0 +1,13 @@
+<form class="create-form" style="display: flex; flex-direction: column; padding: 50px; margin: 50px;" [formGroup]="form">
+    <p>Name:</p>
+    <input class="form-input" type="text" formControlName="name">
+    <p>Email:</p>
+    <input class="form-input" type="text" formControlName="email">
+    <p>Website:</p>
+    <input class="form-input" type="text" formControlName="website">
+    <div formGroupName="company" class="company-input">
+        <p>Company name:</p>
+        <input class="form-input" type="text" formControlName="name">
+    </div>
+    <button [disabled]="form.invalid" class="edit-btn" (click)="onSubmit()" mat-button>{{ data.isEdit ? 'Редактировать пользователя' : 'Добавить пользователя' }}</button>
+</form>
