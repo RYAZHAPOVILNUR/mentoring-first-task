@@ -1,0 +1,21 @@
+// <!-- Angular Material تنسيقي مع استخدام  -->
+mat-form-field{
+    width: 400px; ;
+
+}
+.btn-create{
+    width: 400px;
+    height: 50px;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    padding: 10px; /* إضافة حواف داخلية */
+}
+.btn-create:hover{
+    color: white;
+    background-color:#f0ba4e ;
+    font-size: larger;
+}
+.btn-create mat-icon {
+    margin-left: 5px; /* إضافة مسافة بين النص والأيقونة */
+}

@@ -1,0 +1,42 @@
+<app-create-user-form (createUser)="createUser($event)"></app-create-user-form>
+<h1 align="center">users-list-card</h1>
+   <div style="display: flex;width: 85%;flex-wrap: wrap;padding-left: 230px;">
+      <div *ngFor="let user of usersService.users$ | async">
+
+      <app-user-card [user]="user" 
+      (deleteUser)="deletUser($event)"
+      (editUser)="editUser($event)"
+      ></app-user-card>
+        </div>
+     </div>
+        <!-- <div style="height: 1000px;margin-top: 1000px;"></div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1 align="center">user-list-card</h1>
+<div style="display: flex;width: 85%;flex-wrap: wrap;padding-left: 230px;">
+<div style="width: 200px; height: 200px; 
+border: 1px solid black;margin: 5px;  padding: 10px;
+" *ngFor="let item of users">
+
+<app-user-card [user]="item"></app-user-card>
+     <button style="background-color: bisque;" (click)="deletUser(item.id)">УДАЛИТЬ ЮЗЕРА</button>
+</div>
+</div>
+<div style="height: 1000px;">
+
+</div> -->

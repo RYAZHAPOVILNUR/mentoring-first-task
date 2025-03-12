@@ -1,0 +1,23 @@
+
+<div style="border-radius: 50px; width: 270px; height: 300px; 
+border: 1px solid #F0BA4E;margin: 5px; padding: 10px;
+">
+<h1>card</h1>
+<p>{{user.name}}</p>
+<p> {{user.email}}</p>
+<p>{{user.website}}</p>
+<p>{{user.company.name}}</p>
+</div>
+
+<button class="btn-delete" (click)="onDeleteUser(user.id)">
+      <pre>  </pre>  Delete
+    <mat-icon style="margin-left: 10px;margin-right: 10px;">delete</mat-icon>
+</button>
+
+<br><br><br>
+
+<button class="btn-edit" (click)="openDialog()">
+  <pre>  </pre> Edit
+<mat-icon style="margin-left: 10px;margin-right: 10px;">edit</mat-icon>
+</button>
+

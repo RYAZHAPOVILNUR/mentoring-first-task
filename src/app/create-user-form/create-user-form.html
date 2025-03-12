@@ -1,0 +1,97 @@
+<!-- Angular Material اكواد مع استخدام  -->
+<br>
+<div  style=" border-radius: 30px; margin-left: 235px;border: 2px solid #F0BA4E; width: 400px; padding: 20px;">
+    <h1>create user form</h1>
+    <form  [formGroup]="form">
+        
+
+        <mat-form-field>
+            <mat-label>user name:</mat-label>
+            <input matInput formControlName="name">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Your email:</mat-label>
+            <input matInput formControlName="email">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Your website:</mat-label>
+            <input matInput formControlName="website">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Your companyName:</mat-label>
+            <input matInput formControlName="companyName">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+        
+      
+        <button type="submit" (click)="submitFrom()" class="btn-create" matIconSuffix mat-raised-button [disabled]="form.invalid">
+            Add User
+            <mat-icon style="font-size: 25px; margin-right: 5px;">person_add</mat-icon>
+        </button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Angular Material اكواد بدون استخدام  -->
+
+<!-- <br>
+<div  style=" border-radius: 30px; margin-left: 235px;border: 2px solid #F0BA4E; width: 230px; padding: 20px;">
+    <h1>create user form</h1>
+    <form  [formGroup]="form" (ngSubmit)="submitFrom()">
+
+        <p>NAME:</p><br>
+        <input style="width: 200px;" type="text" formControlName="name"/>
+
+        <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls        ['name'].touched)" class="alert">
+        <div *ngIf="form.controls['name'].errors">error</div>
+        </div>
+ 
+
+        <p >EMAIL:</p><br>
+        <input style="width: 200px;" type="text" formControlName="email"/>
+
+        <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="alert">
+            <div *ngIf="form.controls['email'].errors">error</div>
+            </div>
+
+
+        <p>WEBSITE:</p><br>
+        <input style="width: 200px;" type="text" formControlName="website"/>
+
+        <div *ngIf="form.controls['website'].invalid && (form.controls['website'].dirty || form.controls['website'].touched)" class="alert">
+            <div *ngIf="form.controls['website'].errors">error</div>
+            </div>
+
+        
+        <p>COMPANY NAME:</p><br>
+        <input style="width: 200px;" type="text" formControlName="companyName"/>
+
+        <div *ngIf="form.controls['companyName'].invalid && (form.controls['companyName'].dirty || form.controls['companyName'].touched)" class="alert">
+            <div *ngIf="form.controls['companyName'].errors">error</div>
+            </div>
+
+
+        <br>
+        <button class="btn-create"  type="submit" [disabled]="form.invalid">Create User</button>
+
+    </form>
+</div> -->

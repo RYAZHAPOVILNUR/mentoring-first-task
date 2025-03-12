@@ -1,0 +1,32 @@
+.btn-delete{
+    border-radius: 50px;  background-color: white; border: 3px solid #f0ba4e;  height: 45px;
+    color: #232321;
+    margin-left: 30px;
+    margin-top: -74px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+}
+.btn-delete:hover{
+    color: white;
+    background-color:#f0ba4e ;
+    font-size: large;
+}
+
+
+.btn-edit{
+    border-radius: 50px;  background-color: white; border: 3px solid #f0ba4e;  height: 45px;
+    color: #232321;
+    margin-left: 160px;
+    margin-top: -130px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+}
+.btn-edit:hover{
+    color: white;
+    background-color:#f0ba4e ;
+    font-size: large;
+}

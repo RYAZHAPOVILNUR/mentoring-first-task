@@ -1,0 +1,15 @@
+<app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
+
+<h1 align="center">todos-list-cards</h1>
+<div style="display: flex;width: 100%;flex-wrap: wrap;padding-left: 100px;">
+<div *ngFor="let todo of todosService.todos$ | async">
+<app-todo-card [todo]="todo"></app-todo-card>
+<button class="btn-delete" (click)="deletUser(todo.id)">
+    <pre>  </pre>  Delete
+    <mat-icon style="margin-left: 10px;margin-right: 10px;">delete</mat-icon>
+</button>
+
+</div>
+</div>
+<br>
+<!-- <div style="height: 1000px;"></div> -->

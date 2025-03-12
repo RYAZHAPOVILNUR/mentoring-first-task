@@ -1,0 +1,42 @@
+
+<div  style=" border: 2px solid #F0BA4E; width: 400px; padding: 20px;">
+    <h1>edit user form</h1>
+    <form  [formGroup]="form">
+        
+
+        <mat-form-field>
+            <mat-label>user name:</mat-label>
+            <input matInput formControlName="name">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Your email:</mat-label>
+            <input matInput formControlName="email">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Your website:</mat-label>
+            <input matInput formControlName="website">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Your companyName:</mat-label>
+            <input matInput formControlName="companyName">
+            <mat-error>error</mat-error>
+        </mat-form-field>
+        
+      
+        
+        <button type="submit"  class="btn-create" matIconSuffix mat-raised-button [disabled]="form.invalid" 
+        [mat-dialog-close]="userWithUpdatedFields">
+            Edit User
+            <mat-icon style="font-size: 20px; margin-right: 5px;">edit</mat-icon>
+        </button>
+    </form>
+</div>

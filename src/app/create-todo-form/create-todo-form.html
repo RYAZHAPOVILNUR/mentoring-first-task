@@ -1,0 +1,80 @@
+<!-- Angular Material اكواد مع استخدام  -->
+<br>
+
+<form  class="form2" style=" border-radius: 30px; margin-left: 235px;border: 2px solid #F0BA4E; width: 400px; padding: 20px;" [formGroup]="formTodo" >
+    
+    <h2>Create todo form</h2>
+    
+    <mat-form-field>
+        <mat-label>Текст задачи</mat-label>
+        <input  matInput type="text" formControlName="title">
+        <mat-error>error</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Автор задачи</mat-label>
+        <textarea style="max-height: 300px;" type="text" formControlName="userId" matInput placeholder="Автор задачи"></textarea>
+        <mat-error>error</mat-error>
+      </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Задача решена?</mat-label>
+        <input  matInput type="text"  formControlName="completed">
+        <mat-error>error</mat-error>
+    </mat-form-field>
+
+
+
+
+    <button type="submit" (click)="submitForm()" class="btn-create" [disabled]="formTodo.invalid">
+        Add Todo
+
+        <mat-icon style="font-size: 25px;">add</mat-icon>
+      </button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Angular Material اكواد بدون استخدام  -->
+
+<!-- <br>
+
+<form  class="form2" style=" border-radius: 30px; margin-left: 235px;border: 2px solid #F0BA4E;width: 210px; padding: 15px;" [formGroup]="formTodo" (ngSubmit)="submitForm()">
+    
+    <h2>Create todo form</h2><div class="wrap">
+        <p>Текст задачи</p>
+        <input type="text" formControlName="title">
+        <div *ngIf="formTodo.controls['title'].invalid && (formTodo.controls['title'].dirty || formTodo.controls['title'].touched)">
+            <div *ngIf="formTodo.controls['title'].errors"  class="alert">
+                Текст задачи введен не правильно
+            </div>
+        </div>
+        <p>Автор задачи</p>
+        <input type="text" formControlName="userId">
+        <div *ngIf="formTodo.controls['userId'].invalid && (formTodo.controls['userId'].dirty || formTodo.controls['userId'].touched)">
+            <div *ngIf="formTodo.controls['userId'].errors"  class="alert">
+                Автор введен не правильно
+            </div>
+        </div>
+        <p>Задача решена?</p>
+        <input type="text" placeholder=" да / нет" formControlName="completed">
+        <div *ngIf="formTodo.controls['completed'].invalid && (formTodo.controls['completed'].dirty || formTodo.controls['completed'].touched)">
+            <div *ngIf="formTodo.controls['completed'].errors"  class="alert">
+                Ответ некорректен
+            </div>
+        </div>
+
+        <button class="btn-create" [disabled]="formTodo.invalid">Create todo</button>
+    </div>
+</form> -->
