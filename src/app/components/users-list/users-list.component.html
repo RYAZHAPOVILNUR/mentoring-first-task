@@ -1,0 +1,16 @@
+<div class="app-users-list">
+    <div *ngIf="users.length === 0" class="empty-users-list-message">
+        <h1>No users found. Please create a new user.</h1>
+      </div>
+    <div class="users-list-container" *ngFor="let user of users">
+        <app-user-card 
+            [user]="user"
+            (deleteUser)="deleteUser($event)"
+            (editUser)="editUser(user)">
+        </app-user-card>
+    </div>
+</div>
+
+<div>
+    <button class="users-list-container__create-button" mat-raised-button (click)="openDialog()">Create new user</button>
+</div>

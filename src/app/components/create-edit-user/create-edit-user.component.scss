@@ -1,0 +1,22 @@
+h1 {
+    color: #000;
+    font: bold;
+}
+
+.create-edit-user-container {
+    padding: 10px;
+    background-color: rgb(213, 227, 169);
+    
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+    }
+    
+    &__form-field {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}

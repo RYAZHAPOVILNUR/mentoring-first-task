@@ -1,0 +1,10 @@
+<div class="user-card-wrap">
+    <h3>Name: {{ user?.name | uppercase }}</h3>
+    <p>Email: {{ user?.email }}</p>
+    <p>Website: {{ user?.website }}</p>
+    <p>Phone: {{ user?.phone }}</p>
+    <div class="user-card-wrap__buttons">
+        <button mat-raised-button (click)="onDeleteUser()">Delete User</button>
+        <button mat-raised-button (click)="onEditUser()">Edit User</button>
+    </div>
+</div>
