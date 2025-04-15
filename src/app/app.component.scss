@@ -1,0 +1,165 @@
+.header {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header__top {
+  width: 100%;
+  background-color: #4b565e;
+}
+
+.header__menu {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding-inline: 12px;
+}
+
+.header__logo {
+  margin-right: 40px;
+}
+
+.navbar__menu-list {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.navbar__menu-item {
+  margin-right: 24px;
+}
+
+.navbar__menu-link {
+  font-size: 16px;
+  color: #f9fafb;
+  text-decoration: none;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header__phone-link {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 40px;
+}
+
+.header__favorites {
+  display: inline-flex;
+  margin-right: 40px;
+}
+
+.header__basket {
+  width: 106px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  border: 1px solid #f0ba4e;
+  border-radius: 50px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.header__basket span {
+  font-size: 16px;
+  color: #f9fafb;
+}
+
+.header__bottom {
+  width: 100%;
+  background: #f0ba4e;
+  margin: 0 auto;
+}
+
+.header__catalog {
+  max-width: 1440px;
+  height: 48px;
+  margin: 0 auto;
+  padding-inline: 12px;
+
+}
+
+.header__catalog {
+  display: flex;
+  align-items: center;
+}
+
+.header__btn-menu {
+  background: #f0ba4e;
+  border: none;
+  margin-right: 10px;
+}
+
+.navbar__catalog-list {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__catalog-item {
+  margin-right: 24px;
+}
+
+.navbar__catalog-link {
+  text-decoration: none;
+  color: #3c3c3b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header-search__bar {
+  margin-left: auto;
+}
+
+.header-search__bar {
+  display: flex;
+  align-items: center;
+}
+
+.header__search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header__search-input {
+  width: 400px;
+  height: 28px;
+  color: #4b565e99;
+  font-size: 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #3c3c3b;
+}
+
+.header__search-link {
+  position: relative;
+  left: -22px;
+  top: 3px;
+}
+
+.header__location {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.header__location span {
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+}

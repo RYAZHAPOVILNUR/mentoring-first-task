@@ -1,336 +1,295 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<style>
-  :host {
-    --bright-blue: oklch(51.01% 0.274 263.83);
-    --electric-violet: oklch(53.18% 0.28 296.97);
-    --french-violet: oklch(47.66% 0.246 305.88);
-    --vivid-pink: oklch(69.02% 0.277 332.77);
-    --hot-red: oklch(61.42% 0.238 15.34);
-    --orange-red: oklch(63.32% 0.24 31.68);
-
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
-
-    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --pill-accent: var(--bright-blue);
-
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1 {
-    font-size: 3.125rem;
-    color: var(--gray-900);
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: -0.125rem;
-    margin: 0;
-    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-  }
-
-  p {
-    margin: 0;
-    color: var(--gray-700);
-  }
-
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
-  .angular-logo {
-    max-width: 9.2rem;
-  }
-
-  .content {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 3rem;
-  }
-
-  .content h1 {
-    margin-top: 1.75rem;
-  }
-
-  .content p {
-    margin-top: 1.5rem;
-  }
-
-  .divider {
-    width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
-    margin-inline: 0.5rem;
-  }
-
-  .pill-group {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-  }
-
-  .pill {
-    display: flex;
-    align-items: center;
-    --pill-accent: var(--bright-blue);
-    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
-    color: var(--pill-accent);
-    padding-inline: 0.75rem;
-    padding-block: 0.375rem;
-    border-radius: 2.75rem;
-    border: 0;
-    transition: background 0.3s ease;
-    font-family: var(--inter-font);
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.4rem;
-    letter-spacing: -0.00875rem;
-    text-decoration: none;
-  }
-
-  .pill:hover {
-    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
-  }
-
-  .pill-group .pill:nth-child(6n + 1) {
-    --pill-accent: var(--bright-blue);
-  }
-  .pill-group .pill:nth-child(6n + 2) {
-    --pill-accent: var(--french-violet);
-  }
-  .pill-group .pill:nth-child(6n + 3),
-  .pill-group .pill:nth-child(6n + 4),
-  .pill-group .pill:nth-child(6n + 5) {
-    --pill-accent: var(--hot-red);
-  }
-
-  .pill-group svg {
-    margin-inline-start: 0.25rem;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: center;
-    gap: 0.73rem;
-    margin-top: 1.5rem;
-  }
-
-  .social-links path {
-    transition: fill 0.3s ease;
-    fill: var(--gray-400);
-  }
-
-  .social-links a:hover svg path {
-    fill: var(--gray-900);
-  }
-
-  @media screen and (max-width: 650px) {
-    .content {
-      flex-direction: column;
-      width: max-content;
-    }
-
-    .divider {
-      height: 1px;
-      width: 100%;
-      background: var(--red-to-pink-to-purple-horizontal-gradient);
-      margin-block: 1.5rem;
-    }
-  }
-</style>
-
-<main class="main">
-  <div class="content">
-    <div class="left-side">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 982 239"
-        fill="none"
-        class="angular-logo"
-      >
-        <g clip-path="url(#a)">
-          <path
-            fill="url(#b)"
-            d="M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
-          />
-          <path
-            fill="url(#c)"
-            d="M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
-          />
-        </g>
-        <defs>
-          <radialGradient
-            id="c"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientTransform="rotate(118.122 171.182 60.81) scale(205.794)"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#FF41F8" />
-            <stop offset=".707" stop-color="#FF41F8" stop-opacity=".5" />
-            <stop offset="1" stop-color="#FF41F8" stop-opacity="0" />
-          </radialGradient>
-          <linearGradient
-            id="b"
-            x1="0"
-            x2="982"
-            y1="192"
-            y2="192"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#F0060B" />
-            <stop offset="0" stop-color="#F0070C" />
-            <stop offset=".526" stop-color="#CC26D5" />
-            <stop offset="1" stop-color="#7702FF" />
-          </linearGradient>
-          <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
-        </defs>
-      </svg>
-      <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
-    </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side">
-      <div class="pill-group">
-        @for (item of [
-          { title: 'Explore the Docs', link: 'https://angular.dev' },
-          { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
-          { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
-          { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
-        ]; track item.title) {
-          <a
-            class="pill"
-            [href]="item.link"
-            target="_blank"
-            rel="noopener"
-          >
-            <span>{{ item.title }}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              viewBox="0 -960 960 960"
-              width="14"
-              fill="currentColor"
-            >
-              <path
-                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
-              />
-            </svg>
-          </a>
-        }
-      </div>
-      <div class="social-links">
-        <a
-          href="https://github.com/angular/angular"
-          aria-label="Github"
-          target="_blank"
-          rel="noopener"
+<header class="header">
+  <!-- <div class="container"> -->
+  <div class="header__top">
+    <div class="header__menu">
+      <a href="" class="header__logo">
+        <svg
+          width="61"
+          height="40"
+          viewBox="0 0 61 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
+          <g clip-path="url(#clip0_5_59)">
+            <path
+              d="M23.8532 10.126V14.6163H20.081V11.9918L12.2396 5.51478L4.77063 11.6838V36.7927H20.9691V40H0V10.126L12.2594 0L23.8532 10.126Z"
+              fill="#F0BA4E"
+            />
+            <path
+              d="M23.8531 15.8076H7.35388V20.0001H23.8531V15.8076Z"
+              fill="#C9CFCC"
+            />
+            <path
+              d="M7.35388 23.1387H23.8531V27.5373H11.9265V30.1948H23.8531V34.4101H7.35388V23.1387Z"
+              fill="#C9CFCC"
+            />
+            <path d="M61 15.8076H44.5007V20.0001H61V15.8076Z" fill="#C9CFCC" />
+            <path
+              d="M44.5007 23.1387H61V27.5373H49.0734V30.1948H61V34.4101H44.5007V23.1387Z"
+              fill="#C9CFCC"
+            />
+            <path
+              d="M43.5579 25.0172C43.5581 27.1259 42.8138 29.1708 41.4494 30.8103C40.085 32.4498 38.1832 33.5846 36.0615 34.0252C33.9399 34.4657 31.727 34.1854 29.7924 33.2309C27.8579 32.2765 26.3189 30.7057 25.4325 28.781C24.5461 26.8564 24.366 24.6944 24.9223 22.6562C25.4786 20.618 26.7376 18.8271 28.489 17.5825C30.2404 16.338 32.3781 15.7153 34.545 15.8184C36.7119 15.9215 38.7768 16.7441 40.3948 18.149L36.7932 21.6495C35.9874 21.1228 35.0375 20.8429 34.0663 20.8461C33.0952 20.8494 32.1473 21.1356 31.3452 21.6677C30.5431 22.1999 29.9235 22.9535 29.5665 23.8314C29.2096 24.7092 29.1316 25.671 29.3427 26.5923C29.5537 27.5137 30.0442 28.3524 30.7507 29.0001C31.4571 29.6478 32.3472 30.0748 33.3058 30.2258C34.2645 30.3769 35.2477 30.2451 36.1285 29.8475C37.0093 29.45 37.7473 28.8048 38.247 27.9955H32.4327V24.4216H43.5381C43.5513 24.6189 43.5579 24.8175 43.5579 25.0172Z"
+              fill="#C9CFCC"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_5_59">
+              <rect width="61" height="40" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </a>
+
+      <nav class="navbar__menu">
+        <ul class="navbar__menu-list">
+          <li class="navbar__menu-item">
+            <a href="" class="navbar__menu-link">Главная</a>
+          </li>
+
+          <li class="navbar__menu-item">
+            <a href="" class="navbar__menu-link">О компании</a>
+          </li>
+
+          <li class="navbar__menu-item">
+            <a href="" class="navbar__menu-link">Каталог</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="" class="header__phone-link">
           <svg
-            width="25"
-            height="24"
-            viewBox="0 0 25 24"
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            alt="Github"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
           >
-            <path
-              d="M12.3047 0C5.50634 0 0 5.50942 0 12.3047C0 17.7423 3.52529 22.3535 8.41332 23.9787C9.02856 24.0946 9.25414 23.7142 9.25414 23.3871C9.25414 23.0949 9.24389 22.3207 9.23876 21.2953C5.81601 22.0377 5.09414 19.6444 5.09414 19.6444C4.53427 18.2243 3.72524 17.8449 3.72524 17.8449C2.61064 17.082 3.81137 17.0973 3.81137 17.0973C5.04697 17.1835 5.69604 18.3647 5.69604 18.3647C6.79321 20.2463 8.57636 19.7029 9.27978 19.3881C9.39052 18.5924 9.70736 18.0499 10.0591 17.7423C7.32641 17.4347 4.45429 16.3765 4.45429 11.6618C4.45429 10.3185 4.9311 9.22133 5.72065 8.36C5.58222 8.04931 5.16694 6.79833 5.82831 5.10337C5.82831 5.10337 6.85883 4.77319 9.2121 6.36459C10.1965 6.09082 11.2424 5.95546 12.2883 5.94931C13.3342 5.95546 14.3801 6.09082 15.3644 6.36459C17.7023 4.77319 18.7328 5.10337 18.7328 5.10337C19.3942 6.79833 18.9789 8.04931 18.8559 8.36C19.6403 9.22133 20.1171 10.3185 20.1171 11.6618C20.1171 16.3888 17.2409 17.4296 14.5031 17.7321C14.9338 18.1012 15.3337 18.8559 15.3337 20.0084C15.3337 21.6552 15.3183 22.978 15.3183 23.3779C15.3183 23.7009 15.5336 24.0854 16.1642 23.9623C21.0871 22.3484 24.6094 17.7341 24.6094 12.3047C24.6094 5.50942 19.0999 0 12.3047 0Z"
+            <rect
+              id="Phone"
+              width="28"
+              height="28"
+              fill="url(#pattern0_5_158)"
             />
+            <defs>
+              <pattern
+                id="pattern0_5_158"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+              >
+                <use xlink:href="#image0_5_158" transform="scale(0.01)" />
+              </pattern>
+              <image
+                id="image0_5_158"
+                width="100"
+                height="100"
+                preserveAspectRatio="none"
+                xlink:href="data:image/png;base64,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"
+              />
+            </defs>
           </svg>
+          <span class="header__phone-number">+7 (965) 084-29-29</span>
         </a>
-        <a
-          href="https://twitter.com/angular"
-          aria-label="Twitter"
-          target="_blank"
-          rel="noopener"
-        >
+
+        <a href="" class="header__favorites">
           <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            alt="Twitter"
           >
             <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              d="M20.84 4.61012C20.3292 4.09912 19.7228 3.69376 19.0554 3.4172C18.3879 3.14064 17.6725 2.99829 16.95 2.99829C16.2275 2.99829 15.5121 3.14064 14.8446 3.4172C14.1772 3.69376 13.5708 4.09912 13.06 4.61012L12 5.67012L10.94 4.61012C9.9083 3.57842 8.50903 2.99883 7.05 2.99883C5.59096 2.99883 4.19169 3.57842 3.16 4.61012C2.1283 5.64181 1.54871 7.04108 1.54871 8.50012C1.54871 9.95915 2.1283 11.3584 3.16 12.3901L4.22 13.4501L12 21.2301L19.78 13.4501L20.84 12.3901C21.351 11.8794 21.7563 11.2729 22.0329 10.6055C22.3095 9.93801 22.4518 9.2226 22.4518 8.50012C22.4518 7.77763 22.3095 7.06222 22.0329 6.39476C21.7563 5.7273 21.351 5.12087 20.84 4.61012V4.61012Z"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             />
           </svg>
         </a>
-        <a
-          href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw"
-          aria-label="Youtube"
-          target="_blank"
-          rel="noopener"
-        >
+
+        <a class="header__basket">
           <svg
-            width="29"
-            height="20"
-            viewBox="0 0 29 20"
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            alt="Youtube"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
           >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M27.4896 1.52422C27.9301 1.96749 28.2463 2.51866 28.4068 3.12258C29.0004 5.35161 29.0004 10 29.0004 10C29.0004 10 29.0004 14.6484 28.4068 16.8774C28.2463 17.4813 27.9301 18.0325 27.4896 18.4758C27.0492 18.9191 26.5 19.2389 25.8972 19.4032C23.6778 20 14.8068 20 14.8068 20C14.8068 20 5.93586 20 3.71651 19.4032C3.11363 19.2389 2.56449 18.9191 2.12405 18.4758C1.68361 18.0325 1.36732 17.4813 1.20683 16.8774C0.613281 14.6484 0.613281 10 0.613281 10C0.613281 10 0.613281 5.35161 1.20683 3.12258C1.36732 2.51866 1.68361 1.96749 2.12405 1.52422C2.56449 1.08095 3.11363 0.76113 3.71651 0.596774C5.93586 0 14.8068 0 14.8068 0C14.8068 0 23.6778 0 25.8972 0.596774C26.5 0.76113 27.0492 1.08095 27.4896 1.52422ZM19.3229 10L11.9036 5.77905V14.221L19.3229 10Z"
-            />
+            <mask
+              id="mask0_5_152"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="28"
+              height="28"
+            >
+              <rect width="28" height="28" fill="url(#pattern0_5_152)" />
+            </mask>
+            <g mask="url(#mask0_5_152)">
+              <rect width="28" height="28" fill="#F9FAFB" />
+            </g>
+            <defs>
+              <pattern
+                id="pattern0_5_152"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+              >
+                <use xlink:href="#image0_5_152" transform="scale(0.01)" />
+              </pattern>
+              <image
+                id="image0_5_152"
+                width="100"
+                height="100"
+                preserveAspectRatio="none"
+                xlink:href="data:image/png;base64,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"
+              />
+            </defs>
           </svg>
+          <span>Пусто</span>
         </a>
       </div>
     </div>
   </div>
-</main>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <div class="header__bottom">
+    <div class="header__catalog">
+      <button class="header__btn-menu">
+        <svg
+          width="16"
+          height="24"
+          viewBox="0 0 16 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M0 12C0 11.4477 0.447715 11 1 11H15C15.5523 11 16 11.4477 16 12C16 12.5523 15.5523 13 15 13H1C0.447715 13 0 12.5523 0 12Z"
+            fill="#3C3C3B"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M0 16C0 15.4477 0.335786 15 0.75 15H11.25C11.6642 15 12 15.4477 12 16C12 16.5523 11.6642 17 11.25 17H0.75C0.335786 17 0 16.5523 0 16Z"
+            fill="#3C3C3B"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M0 8C0 7.44772 0.447715 7 1 7H15C15.5523 7 16 7.44772 16 8C16 8.55228 15.5523 9 15 9H1C0.447715 9 0 8.55228 0 8Z"
+            fill="#3C3C3B"
+          />
+        </svg>
+      </button>
 
+      <nav class="navbar__catalog">
+        <ul class="navbar__catalog-list">
+          <li class="navbar__catalog-item">
+            <a href="" class="navbar__catalog-link">Каталог</a>
+          </li>
+          <li class="navbar__catalog-item">
+            <a href="" class="navbar__catalog-link">Стройматериалы</a>
+          </li>
+          <li class="navbar__catalog-item">
+            <a href="" class="navbar__catalog-link">Инструменты</a>
+          </li>
+          <li class="navbar__catalog-item">
+            <a href="" class="navbar__catalog-link">Электрика</a>
+          </li>
+          <li class="navbar__catalog-item">
+            <a href="" class="navbar__catalog-link">Интерьер и отделка</a>
+          </li>
+        </ul>
+      </nav>
 
-<router-outlet />
+      <div class="header-search__bar">
+        <div class="header__search">
+          <input
+            type="text"
+            class="header__search-input"
+            placeholder="Поиск, например Круг зачистной "
+          />
+          <a href="" class="header__search-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <mask
+                id="mask0_144_4618"
+                style="mask-type: alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+              >
+                <rect width="24" height="24" fill="url(#pattern0_144_4618)" />
+              </mask>
+              <g mask="url(#mask0_144_4618)">
+                <rect width="24" height="24" fill="#3C3C3B" />
+              </g>
+              <defs>
+                <pattern
+                  id="pattern0_144_4618"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use xlink:href="#image0_144_4618" transform="scale(0.01)" />
+                </pattern>
+                <image
+                  id="image0_144_4618"
+                  width="100"
+                  height="100"
+                  preserveAspectRatio="none"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABmJLR0QA/wD/AP+gvaeTAAAG4ElEQVR4nO2dSYwVRRjH/yWbERc4GDUxEkFQE0GFqOwSL64YBYnx4sWocU2MB2OMywFvLjEmqAfjQYJ68aACMaJcMAZUPBkFlKAIaARm2AY35uehHs7z6+55PfO6X9WbqV8yh5p0uv7f+7+u6tq+JyUSiUQikUgkqseFFnASYLqkuZIukTRD0nRJZ0iaLGli47JjknokHZG0Q9J2Sd9J2uyc29FpzXUQzBDgVEm3SFoq6TpJ57d5y92SNkr6QNJHzrk/27zf6ACYDbwOHKQ+DgKvAVeGjjdagAXAh0B/jUbksQm4LnT8Zam9yQKmSXpV0o0tLj0qaZOkrZK2Nf5+l+8zjjWumSjfp5ytgb5mtqRFGuhnilgr6VHn3M6hRzECAMYDzwLHB/n27gVewD8949qoa1zjHi827llEH/AMML7KWKMHmAp8OcgH8ylwIzCmhrrHADc16ihiC3Bh1XVHCbAM6C34ID4GrumglnnAJwVaeoDbOqUlCMDDwImc4PcAdwfUtRT4KUdXP/B4KF21ATjg+YJv4mrgjAg0ngmsKdC4EohmkNw2BWb0AfeE1mYB7iP/RWNlaG2VADyYE1wPsCi0tiKAucD+HN2PhdbWFvgO3PYZ+4BZobW1ApjV0NrMCbq1owemAAdMQL3AFaG1lQW4jOwUTg/d9kqMH/TZcUZfzM1UEcC1ZPuUzXTT4BF4Lqf9ja4DLwtwf048T4fWVQpgWs436t3QutoFeDvniZ8aWldLgHVG+G4iGGe0C36c8ouJ7cPQugYFPxVhWR5aV1UAd+bEtyC0rkKA9Ubsx6E1VQ2wwcS4NrSmXPArfZa5oXVVDTDfxNhPjCuP+GXXZjaE1lQXwEYT66rQmv4HcCrZAVSrFcCuBb+e0swBYEJoXf8BrDAC91LD4lIsAGPJTqss60Tdp5S8bqkpr3bOnahaTCw45/6R9I759y0htOSCH2s0Mz+0proBFpmYd4XWJEkCZhhhR2hjQ0K3gJ+vO2pin1Z3vWWaLLsGvsk593cdYmLCOfeXpM/Nv2t/zS9jyCWm/HUdQiJlqylfXHeFZQyxIrbVISRSbKxRGGLbze11CIkUa8hFdVdYxpDJpvxrHUIixcZqP4vKKWOInVo/UoeQSLGx1r7MUMaQ0035aB1CIiVKQxID1L6Zrowh9omwT8xIpuPNdRlDOv7YRsSZplx7c13GkB5TPq8OIZFyrinvr7vCMob8aMoz6hASKXYgaD+LyiljyPemXPtoNSKiNMSOVufUISRSZpvyt0FUNANMN1PQx+imbZbDpGD6fUpoXZIk4GcjLN69ShUBLDYx7+lEvWUHhhtN+faqhUSIjTGeXTbAHebbMho2OfxqYr41tK7/ACaQ3QZ0U2hddQHcbGI9jM/NEg9kN8p9GlpTXZDdKPdGaE0ZgCvJ5imZF1pX1eAzQlhmhtaVC9mjCJ+E1lQ1wGdd0xLgT69aVoTWVRXAXTnxxf2KD3xkBP8C2FnRrgM4C59xopkPQutqCT6xTJ8Rvia0rnYB3jMx/QFcGlpXKfApjiz3htY1XIAHcuJ5KrSu0uDnebaYAI4Di0NrGyrAksbT0MxWum27LHAB2cQBh4jxtFEBwEyyA97DXdNUWYDb6N7UGpeTPQPST0xTJMMBeCSn/e2JuflqNFN5Sdb6gIWh9bUNPt+U5ThwX2htFnwHbvsM22TFPfZoBT6BWZ4p4JOGBR+n4McZ9tV25JoiScBD5Kf420v4FH92ka0VR4EloTRXBr6j7ykIcgMdPA6Hnyi0c1ND4XAn9dYGcCE+xVERn+GPHteRJnYsfj3DTqE38w3+aN6oMmU88DTZaZZm9gEv4Q9YDnvjRKOuxcDLZFf6mvkDeLJh2sLGh12GQ3RoqaETqcanSnpFrY8V92kg1fh2+f1gv0nq1cAWztMlTZJ0jgZSjc+RtEDSaS3u/76kJ5xzPzRpWyhpncptjz0s6Qbn3Bclro0ffA6RtXQ2GX8/fg2ncGyB72eie1I6Bn7lcRXZaZcqOdioo9SMAUM3ZcQl3Tm5cWIZ8BawqwIT9gBvAssZxoYE/BMc3JRosjnjD+U3/+TRRfL9xST5vmOMfDveJ2mfpJ8k7ZTvc75q7hva0DBf0npljyHkcUjS9c65ze3WmxgEfNa8Q6GflEQTwBzK/yRTLx38xYdRSzIlQpIpEZJMiZCGKWXHTcmUToDPyjoUU64OrXnEk0yJkGRKhCRTIiSZEiH4meuypvQAV4XWPOJJpkRIlaakfFkV4Jz7RtL1yibqyWOSpK75OfGupvGk5P0+YjPPhtY5qgCuGMSUZEYICkxJZoTEmJLMiAH84PGJ0DoSiUQikUgkEv8C7FnJXJxjv74AAAAASUVORK5CYII="
+                />
+              </defs>
+            </svg>
+          </a>
+        </div>
+
+        <div class="header__location">
+          <a href="" class="header__location-link">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.5 5C10.5 8.5 6 11.5 6 11.5C6 11.5 1.5 8.5 1.5 5C1.5 3.80653 1.97411 2.66193 2.81802 1.81802C3.66193 0.974106 4.80653 0.5 6 0.5C7.19347 0.5 8.33807 0.974106 9.18198 1.81802C10.0259 2.66193 10.5 3.80653 10.5 5Z"
+                stroke="#4B565E"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M6 6.5C6.82843 6.5 7.5 5.82843 7.5 5C7.5 4.17157 6.82843 3.5 6 3.5C5.17157 3.5 4.5 4.17157 4.5 5C4.5 5.82843 5.17157 6.5 6 6.5Z"
+                fill="#4B565E"
+                stroke="#4B565E"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <span>Москва</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- </div> -->
+</header>
