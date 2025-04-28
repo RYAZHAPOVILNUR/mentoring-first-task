@@ -1,0 +1,125 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    height: 80px;
+    background-color: #4B565E;
+    padding: 0px 240px;
+}
+
+.header-left {
+    align-items: center;
+    display: flex;
+}
+
+.header-logo {
+    margin-right: 20px;
+}
+
+.header-nav {
+    display: flex;
+}
+
+.header-nav-item {
+    margin-right: 20px;
+}
+
+.header-right {
+    align-items: center;
+    display: flex;
+}
+
+.header-logo-phone {
+    position: relative;
+    top: 1px;
+    margin-left: 10px;
+    width: 28px;
+    height: 28px;
+}
+
+.header-nav-number {
+    margin-left: 10px;
+}
+
+.header-logo-heart {
+    position: relative;
+    top: 3px;
+    margin-left: 40px;
+}
+
+.header-cart {
+    margin-left: 40px;
+    border: 1px solid #F0BA4E;
+    border-radius: 30px;
+    padding: 9px 20px;
+    display: flex;
+    background-color: #4B565E;
+}
+
+.header-nav-empty {
+    color: white;
+    position: relative;
+    top: 4px;
+    margin-left: 10px;
+}
+
+.header-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    color: black;
+    background-color: #F0BA4E;
+    padding: 0px 240px;
+}
+
+.header-left-2 {
+    align-items: center;
+    display: flex;
+}
+
+.header-2-logo {
+    display: flex;
+    margin: 0px;
+}
+
+.header-nav-item-0 {
+    margin: 10px;
+}
+
+.header-2-nav {
+    display: flex;
+}
+
+.header-nav-item-1 {
+    margin: 10px;
+}
+
+.header-right-2 {
+    align-items: center;
+    display: flex;
+}
+
+.header-2-search {
+    border-bottom: 1px solid #3C3C3B;
+}
+
+input[type="search"] {
+    width: 300px;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: #F0BA4E;
+    border: none;
+}
+
+.input-icon {
+    position: relative;
+    top: 5px;
+}
+
+.header-2-logo-Moscov {
+    position: relative;
+    top: 4px;
+    margin-left: 25px;
+}
