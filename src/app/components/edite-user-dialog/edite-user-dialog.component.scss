@@ -1,0 +1,28 @@
+.mat-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 600px;
+    color: black;
+}
+
+.title {
+    text-align: center;
+    margin: 0;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.flat-btn {
+    &__edit {
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+
+    &__cancel {
+        margin-top: 10px;
+        margin-left: 15px;
+    }
+}

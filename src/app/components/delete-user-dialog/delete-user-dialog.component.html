@@ -1,0 +1,8 @@
+<mat-dialog-content class="mat-delete">
+    <h2 class="title">Вы действительно хотите удалить пользователя: {{data.user.name}}?</h2>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button class="button" color="warn" [mat-dialog-close]="true">Удалить</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Отменить</button>
+</mat-dialog-actions>

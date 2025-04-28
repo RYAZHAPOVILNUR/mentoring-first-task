@@ -1,0 +1,11 @@
+<mat-card appearance="raised" class="card-name">
+    <h2>{{user.name}}</h2>
+    <h4>{{user.email}}</h4>
+    <h4>{{user.website}}</h4>
+    <h4>{{user.company.name}}</h4>
+
+    <mat-card-actions>
+        <button mat-flat-button color="warn" (click)="openDeleteDialog()">Удалить</button>
+        <button mat-flat-button color="primary" class="flat-btn" (click)="openEditeDialog()">Редактировать</button>
+    </mat-card-actions>
+</mat-card>

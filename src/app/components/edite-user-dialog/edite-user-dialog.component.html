@@ -1,0 +1,73 @@
+<mat-dialog-content class="mat-dialog">
+  <h2 mat-dialog-title class="title">
+    Редактировать пользователя: {{ data.user.name }}?
+  </h2>
+  <form [formGroup]="editeForm">
+    <p>Имя пользователя:</p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="editeForm.controls['name']!.hasError('required')"
+        >Имя пользователя является обязательным</mat-error
+      >
+    </mat-form-field>
+
+    <p>Эл.почта пользователя:</p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="editeForm.controls['email']!.hasError('required')"
+        >Электронная почта является обязательной</mat-error
+      >
+      <mat-error *ngIf="editeForm.controls['email']!.hasError('email')"
+        >Пожалуйста, введите действительную электронную почту</mat-error
+      >
+    </mat-form-field>
+
+    <p>Веб-сайт пользователя:</p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Website</mat-label>
+      <input matInput formControlName="website" />
+      <mat-error *ngIf="editeForm.controls['website']!.hasError('required')"
+        >Веб-сайт является обязательным</mat-error
+      >
+    </mat-form-field>
+
+    <div formGroupName="company">
+      <p>Название компании:</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Company name</mat-label>
+        <input matInput type="text" formControlName="name" />
+        <mat-error
+          *ngIf="
+            editeForm.controls['company']!.controls['name']!.hasError(
+              'required'
+            )
+          "
+          >Название компании является обязательным</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <mat-dialog-actions align="center">
+      <button
+        mat-flat-button
+        color="primary"
+        class="flat-btn__edit"
+        [disabled]="editeForm.invalid"
+        [mat-dialog-close]="userWithUpdatedField"
+      >
+        Сохранить
+      </button>
+      <button
+        mat-flat-button
+        color="warn"
+        class="flat-btn__cancel"
+        (click)="onCancel()"
+        [mat-dialog-close]="false"
+      >
+        Отменить
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
