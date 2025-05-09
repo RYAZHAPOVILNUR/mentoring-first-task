@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onCreateTodo()">
+    <div>
+        <p class="todo-form"> Введите userId</p>
+        <input formControlName="userId" class="todo-form">
+        <p class="todo-form"> Введите id</p>
+        <input formControlName="id" class="todo-form">
+        <p class="todo-form"> Введите название</p>
+        <input formControlName="title" class="todo-form">
+        <p class="todo-form"> Введите состояние выполнения</p>
+        <input formControlName="completed" class="todo-form">
+        <button style="display: flex; margin-top: 20px;" class="todo-form" > Добавить пользователя</button>
+    </div>
+</form> 

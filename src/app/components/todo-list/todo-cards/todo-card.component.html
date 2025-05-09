@@ -1,0 +1,5 @@
+<h3> {{todo.userId}} </h3>
+<p>{{todo.id}} </p>
+<p>{{todo.title | minLengthPipe}} </p>
+<p> {{todo.completed}} </p>
+<button (click)="onDeleteTodo(todo.title)"> Удалить собаку</button>

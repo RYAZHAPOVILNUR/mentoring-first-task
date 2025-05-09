@@ -1,0 +1,6 @@
+<h3> {{user.name}} </h3>
+<p> {{user.email}} </p>
+<p> {{user.phone}} </p>
+<p> {{user.address.city}} </p>
+<button  matTooltipPosition="right" matTooltip="Удалить пользователя" class="button-label" mat-flat-button mat-stroked-button (click)="openSnackBar()" (click)="onDeleteUser(user.id)"> Удалить пользователя</button>
+<button   (click)="openDialog()" mat-button class="button-label"> Изменитель пользователя </button>

@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="onCreateUser()" class="user-form-container">
+    
+    <div>
+        <mat-form-field class="user-form">
+            <mat-label class="user-form">Введите имя</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="user-form">
+            <mat-label class="user-form">Введите емаил</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="user-form">
+            <mat-label class="user-form">Введите телефон</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field class="user-form" formGroupName="address">
+            <mat-label class="user-form">Введите адрес</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="city">
+        </mat-form-field>
+
+        <button mat-button style="display: flex; margin-top: 20px;" mat-flat-button class="user-form"
+            (click)="openSecondSnackBar()"> Добавить
+            пользователя</button>
+    </div>
+</form>

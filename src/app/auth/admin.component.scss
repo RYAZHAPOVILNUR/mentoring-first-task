@@ -1,0 +1,122 @@
+/* Общие стили для карточки */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    max-width: 400px;
+    margin: 50px auto;
+    position: relative; /* Для позиционирования "Sign Up" */
+  }
+  
+  /* Заголовок карточки */
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Ссылка "Sign Up" */
+  /* Ссылка "Sign Up" */
+  .float-right.btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem; /* Уменьшаем размер шрифта */
+    color: #007bff; /* Синий цвет текста */
+    border: 1px solid #007bff; /* Уменьшаем толщину границы */
+    padding: 3px 8px; /* Уменьшаем внутренние отступы */
+    border-radius: 4px; /* Менее округлённые углы */
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .float-right.btn:hover {
+    background-color: #007bff; /* Синий фон при наведении */
+    color: #fff; /* Белый текст при наведении */
+    border-color: #0056b3; /* Более тёмная граница при наведении */
+  }
+  
+  /* Поля ввода */
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    width: 100%; /* Растягиваем на всю ширину */
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Ссылка "Forgot?" */
+  .float-right {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    margin-top: -10px; /* Поднимаем ссылку ближе к полю ввода */
+    margin-bottom: 15px;
+    color: #007bff; /* Синий цвет текста */
+    border: 1px solid #007bff; /* Синяя граница */
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    bottom: 10px; /* Располагаем у нижней границы */
+    right: 10px; /* Располагаем справа */
+  }
+  
+  .float-right:hover {
+    background-color: #007bff; /* Синий фон при наведении */
+    color: #fff; /* Белый текст при наведении */
+  }
+  
+  /* Чекбокс и кнопка "LOGIN" */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем содержимое */
+    margin-bottom: 20px;
+  }
+  
+  .checkbox {
+    margin-bottom: 10px; /* Отступ между чекбоксом и кнопкой */
+  }
+  
+  .checkbox label {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Кнопка "LOGIN" */
+ 
+  
+
+.float-right.btn-outline-primary {
+    position: absolute; 
+    top: 10px; /* Отступ сверху */
+    right: 10px; /* Отступ справа */
+    font-size: 0.9rem; /* Размер шрифта */
+    color: #007bff; /* Синий цвет текста */
+    border: 1px solid #007bff; /* Синяя граница */
+    padding: 5px 10px; /* Внутренние отступы */
+    border-radius: 4px; /* Скруглённые углы */
+    text-decoration: none; /* Убираем подчёркивание */
+    background-color: transparent; /* Прозрачный фон */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .float-right.btn-outline-primary:hover {
+    background-color: #007bff; /* Синий фон при наведении */
+    color: #fff; /* Белый текст при наведении */
+    border-color: #0056b3; /* Более тёмная граница при наведении */
+  }

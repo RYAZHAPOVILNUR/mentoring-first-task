@@ -1,0 +1,72 @@
+<section>
+  <div>
+    <img class="background-big" src="/assets/main/main_man.png" alt="555">
+  </div>
+</section>
+
+<section>
+  <div class="content-contaier">
+    <div class="frame">
+      <div class="frame_card">
+        <img class="frame_card-img" src="/assets/main/main_car.svg" alt="12345">
+        <span class="frame_card-text">
+          <span class="frame_card-text-1">Большой ассортимент</span>
+          <span class="frame_card-text-2">строительных материалов всегда в наличии</span>
+        </span>
+      </div>
+      <div class="frame_card">
+        <img class="frame_card-img" src="/assets/main/main_bricks.svg" alt="">
+        <span class="frame_card-text">
+          <span class="frame_card-text-1">Доставка стройматериалов</span>
+          <span class="frame_card-text-2">в течении четырех часов или в любое удобное время</span>
+        </span>
+      </div>
+      <div class="frame_card">
+        <img class="frame_card-img" src="/assets/main/main_like.svg" alt="">
+        <span class="frame_card-text">
+          <span class="frame_card-text-1">Многоуровневая система</span>
+          <span class="frame_card-text-2">управления качеством по стандарту ISO 9001</span>
+        </span>
+
+      </div>
+    </div>
+    <div class="item-cards">
+      <div class="item-cards-pagination">
+
+        <div class="item-cards-pagination-button" *ngFor="let item of switchFunction()"> {{item}} </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="content-contaier-2">
+    <div class="item-cards__grid">
+      <div class="item-cards__grid-left">
+        <div class="item-cards__grid-left-text">
+          Строительный отделочный инструмент
+        </div>
+        <div class="item-cards__grid-left-action">
+          <span>Перейти в каталог</span>
+          <a class="item-cards__grid-left-action-link">
+            <img src="/assets/main/unkown_item.svg" alt="123455555555555555555555555">
+          </a>
+        </div>
+      </div>
+      <div class="item-cards__grid-right">
+        <div class="item-cards__grid-right-block-t-l">
+          <span class="item-cards__grid-right-block-t-l-text">Эмали</span>
+        </div>
+        <div class="item-cards__grid-right-block-t-r">
+          <span class="item-cards__grid-right-block-t-r-text">Лакокрасочные материалы</span>
+        </div>
+        <div class="item-cards__grid-right-block-b-l">
+          <span class="item-cards__grid-right-block-b-l-text">Пены, клеи и герметики</span>
+        </div>
+        <div class="item-cards__grid-right-block-b-r">
+          <span class="item-cards__grid-right-block-b-r-text">Розетки и выключатели</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

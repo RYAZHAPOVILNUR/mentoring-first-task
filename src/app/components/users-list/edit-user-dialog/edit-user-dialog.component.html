@@ -1,0 +1,70 @@
+<form [formGroup]="form" class="user-form-container">
+    <mat-form-field>
+        <mat-label>Введите имя</mat-label>
+        <input matTooltipPosition="right" matTooltip="Редактировать имя" matInput placeholder="Введите имя" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Введите email</mat-label>
+        <input matTooltipPosition="right" matTooltip="Редактировать email" matInput placeholder="Введите email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Введите телефон</mat-label>
+        <input matTooltipPosition="right" matTooltip="Редактировать телефон" matInput placeholder="Введите телефон" formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field formGroupName="address">
+        <mat-label>Введите адрес</mat-label>
+        <input matTooltipPosition="right" matTooltip="Редактировать адрес" matInput placeholder="Введите адрес" formControlName="city">
+    </mat-form-field>
+
+    <button mat-flat-button mat-stroked-button color="primary" [mat-dialog-close]="userWithUpdateFields"  (click)="openSnackBar()">Сохранить</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+<form [formGroup]="form" (ngSubmit)="editedUser()" class="user-form-container" style="display: flex; flex-direction: column;">
+    <div>
+        <mat-form-field class="user-form">
+            <mat-label class="user-form">Введите имя</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="user-form">
+            <mat-label class="user-form">Введите емаил</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="user-form">
+            <mat-label class="user-form">Введите телефон</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field class="user-form">
+            <mat-label class="user-form">Введите адрес</mat-label>
+            <input matInput placeholder="" value="" class="user-form" formControlName="address">
+        </mat-form-field>
+
+        <button style="display: flex; margin-top: 20px;" mat-flat-button class="user-form"> Добавить
+            пользователя</button>
+    </div>
+</form> -->

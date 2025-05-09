@@ -1,0 +1,42 @@
+.item-cards__grid-left{
+    box-sizing: border-box;
+    padding: 15px;
+    box-shadow: 0px 20px 50px 0px #2e2e2d12;
+    height: 228px;
+    width: 221px;
+    max-height: 428px;
+    max-width: 421px;
+
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-position-y: bottom;
+    background-position-x: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+  flex-direction: column; /* Расположить элементы вертикально */
+  align-items: center; /* Центрировать карточки по горизонтали */
+  justify-content: center; /* Центрировать карточки по вертикали */
+  margin: 10px; /* Добавить отступы между карточками */
+  border: 1px solid #ccc; /* Пример рамки для карточки */
+  padding: 20px; /* Внутренние отступы */
+  border-radius: 8px; /* Скруглённые углы */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    
+  }
+  
+  .item-cards__grid-left-text{
+    font-size: 28px;
+    font-family: Inter;
+    color: #3C3C3B;
+    font-weight: 600;
+    line-height: 33.89px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет переносить карточки на новую строку */
+    justify-content: center; /* Центрировать карточки по горизонтали */
+    align-items: center; /* Центрировать карточки по вертикали */
+    min-height: 100vh; /* Занять всю высоту экрана */
+  }
