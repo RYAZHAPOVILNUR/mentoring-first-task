@@ -1,0 +1,97 @@
+.header {
+  display: flex;
+  color: white;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 240px;
+  background-color: #4b565e;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.header-logo {
+  margin-right: 20px;
+}
+.header-nav1 {
+  display: flex;
+  width: 273px;
+  height: 19px;
+}
+.header-nav-item1 {
+  margin-right: 20px;
+  font-family: inter;
+  font-size: 16px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+.header-logo2 {
+  display: flex;
+  align-items: center;
+}
+.header-nav-item2 {
+  margin-right: 20px;
+  font-family: inter;
+}
+.button {
+  width: 126;
+  height: 48;
+  gap: 10px;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  border-width: 1px;
+  border-radius: 50px;
+  //border: 1px solid #F0BA4E
+  background-color: #4b565e;
+}
+
+.header-buttom {
+  display: flex;
+  height: 48px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 240px;
+  background: #f0ba4e;
+}
+.header-buttom-left {
+  display: flex;
+  width: 696px;
+  height: 17px;
+  align-items: center;
+}
+.buttom-logo {
+  margin-right: 20px;
+}
+.header-nav3 {
+  display: flex;
+}
+.header-nav4 {
+  display: flex;
+}
+.header-buttom-right {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+.header-nav-item3 {
+  margin-right: 20px;
+  font-family: inter;
+  font-size: 14px;
+}
+.header-nav-item4 {
+  margin-left: 30px;
+  font-family: inter;
+  font-size: 14px;
+  color: white;
+}
+.input {
+  font-family: inter;
+  font-size: 16px;
+  background: #f0ba4e;
+}
