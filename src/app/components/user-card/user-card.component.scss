@@ -1,0 +1,15 @@
+.user-card-wrap {
+    border: 3px solid rgb(107, 122, 56);
+    border-radius: 10px;
+    padding: 5px;
+    background-color: rgb(213, 227, 169);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+}
