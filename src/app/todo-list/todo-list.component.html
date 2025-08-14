@@ -1,0 +1,10 @@
+
+
+<app-todo-form (createTodo)="createTodo($event)"> </app-todo-form>
+<div style="display: flex; flex-wrap: wrap;">
+  <div *ngFor="let item of todoService.todoSubject | async" style="width: 200px; height: 200px; border: 1px solid black; margin: 5px;">
+
+   <app-todo-card [todo]="item" (onDelete)="deleteTodo($event)"> </app-todo-card>
+   
+  </div>
+</div>

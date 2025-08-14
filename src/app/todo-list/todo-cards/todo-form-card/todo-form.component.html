@@ -1,0 +1,14 @@
+
+
+<div style="margin: 30px 30px 30px 620px"> 
+<form  style="display: flex; flex-direction: column;" [formGroup]="todoForm">
+
+    <input type="text" formControlName="userId" class="form-input">
+    <input type="text" formControlName="id" class="form-input">
+    <input type="text" formControlName="title" class="form-input">
+    <input type="text" formControlName="completed" class="form-input">
+    <button (click)="onCreate()" style="width: 100px; margin-top: 20px; margin-left: 35px;" > Создать тодошку</button>
+
+</form>
+
+</div>

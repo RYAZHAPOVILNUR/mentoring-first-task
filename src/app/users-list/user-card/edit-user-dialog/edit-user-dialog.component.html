@@ -1,0 +1,16 @@
+
+<form style="display: flex; flex-direction: column;" [formGroup]="form"> 
+    <p> Name</p>
+    <input type="text" class="form-input" formControlName="name"> 
+     <p> Email</p>
+    <input type="text" class="form-input" formControlName="email">
+     <p> Website</p>
+    <input type="text" class="form-input" formControlName="website">
+     <p> Company</p>
+    <input type="text" class="form-input" formControlName="companyName">
+    <button style="width: 100px; margin-top: 20px;" [mat-dialog-close]="userWithUpdatedFields" [disabled]="form.invalid">
+        Create user
+    </button>
+    
+
+</form>
