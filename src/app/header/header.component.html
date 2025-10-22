@@ -1,0 +1,64 @@
+<div class="header">
+  <div class="content-container">
+    <div class="header-left">
+      <div class="header-logo"><img src="/assets/Frame.svg" alt="logo" /></div>
+      <nav class="header-nav-item">
+        <div class="header-nav-item">{{ headerItem1 }}</div>
+        <div class="header-nav-item">{{ aboutCompany }}</div>
+        <div class="header-nav-item" *ngIf="isShowCatalog">
+          {{ headerItem3 }}
+        </div>
+      </nav>
+      <button (click)="isShowCatalog = !isShowCatalog">
+        Скрыть/Показать Католог
+      </button>
+      <button (click)="changeMenuText()">Изменить текст</button>
+    </div>
+    <div class="header-right">
+      <img class="header-right-item" src="/assets/Phone.svg" alt="ph" />
+      <a href="tel:+79650842929" class="header-right-item">+7-965-084-29-29</a>
+      <img class="header-right-item" src="/assets/heart 1.svg" alt="h" />
+      <div class="header-right-item">
+        <button class="header-right-item-button">
+          <img
+            class="header-right-item-button-img"
+            src="/assets/Maskgroup.svg"
+            alt="rh"
+          />
+          <div class="header-right-item-button-text">Пусто</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="header2">
+  <div class="content-container">
+    <div class="header2__items">
+      <img class="header2__item" src="/assets/light.svg" alt="ck" />
+      <button class="header2__item" *ngFor="let item of menuItems">
+        {{ item }}
+      </button>
+    </div>
+    <div class="header2__search">
+      <form class="place" action="" method="get">
+        <input
+          class="search"
+          name="s"
+          placeholder="Поиск, например Круг зачистной"
+          type="search"
+        />
+        <div>
+          <img
+            class="search-img"
+            src="/assets/search.svg"
+            alt="sh"
+            type="text"
+          />
+        </div>
+      </form>
+      <img class="search-gps" src="/assets/map-pin (2) 1.svg" alt="" />
+      <span class="search-name" style="color: white">Москва</span>
+    </div>
+  </div>
+</div>
