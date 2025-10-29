@@ -1,0 +1,20 @@
+<p>create-user-form works!</p>
+<div style="margin: 30px">
+  <form
+    style="display: flex; flex-direction: column"
+    [formGroup]="form"
+    (ngSubmit)="submitForm()"
+  >
+    <p>Name</p>
+    <input type="text" class="form-input" formControlName="name" />
+    <p>User name</p>
+    <input type="text" class="form-input" formControlName="username" />
+    <p>Email</p>
+    <input type="text" class="form-input" formControlName="email" />
+    <p>Company name</p>
+    <input type="text" class="form-input" formControlName="companyName" />
+    <button style="width: 150px; margin-top: 20px" [disabled]="form.invalid">
+      Create user
+    </button>
+  </form>
+</div>

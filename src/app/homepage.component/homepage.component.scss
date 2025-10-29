@@ -1,0 +1,168 @@
+.poster {
+  position: relative;
+  background-image: url("/assets/Rectangle 5.svg");
+  width: 100%;
+  background-color: black;
+  height: 720px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.poster__img-1 {
+  color: #f0ba4e;
+  font-size: 30px;
+  text-align: center;
+  width: 800px;
+  font-family: inter;
+}
+
+.adv-container {
+  display: flex;
+  width: 1319px;
+  font-size: 18px;
+  font-family: inter;
+  justify-content: center;
+}
+
+.cards-adv {
+  display: flex;
+  justify-content: center;
+  width: 1319;
+}
+
+.cards-adv-item {
+  width: 421px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+  margin-left: 16px;
+}
+
+.text {
+  padding-left: 16px;
+}
+
+.title {
+  color: #000000;
+}
+
+.child {
+  color: #a1a0a0;
+}
+
+.item-cards {
+  display: flex;
+  justify-content: center;
+}
+
+.item-cards__pagination {
+  display: flex;
+  justify-content: flex-end;
+  width: 1319px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.active-button {
+  color: #4b565b;
+  font-weight: 600;
+  border: none;
+  background-color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 421px 421px 421px;
+  grid-template-rows: 214px 214px 214px;
+  grid-column-gap: 29px;
+  justify-content: center;
+}
+
+.grid_1 {
+  width: 100%;
+  height: 100%;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  max-height: 428px;
+  max-width: 421px;
+  width: 421px;
+  height: 428px;
+  background-image: url("/assets/image_19.png");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  box-shadow: 0px 20px 50px 0px #3c3c3b12;
+  background-position-x: left;
+  background-position-y: bottom;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-cards__grid-left-action {
+  align-self: end;
+  display: flex;
+  align-items: center;
+}
+
+.item-cards__grid-left-action-link {
+  margin-right: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.item-cards__grid-left-text {
+  font-family: inter;
+  color: #000000;
+  font-size: 28px;
+  font-weight: 600;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.grid_2 {
+  background-color: rgb(255, 0, 0);
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  max-width: 421px;
+  width: 421px;
+  height: 200px;
+}
+
+.grid_3 {
+  background-color: rgb(0, 255, 76);
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  max-width: 421px;
+  width: 421px;
+  height: 200px;
+}
+
+.grid_4 {
+  background-color: rgb(38, 0, 255);
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  max-width: 421px;
+  width: 421px;
+  height: 200px;
+}
+
+.grid_5 {
+  background-color: rgb(255, 136, 0);
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  max-width: 421px;
+  width: 421px;
+  height: 200px;
+}
+
+.test-1 {
+  display: flex;
+}

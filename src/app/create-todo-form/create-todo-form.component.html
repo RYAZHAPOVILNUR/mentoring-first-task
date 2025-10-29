@@ -1,0 +1,12 @@
+<p>create-todo-form works!</p>
+<div style="margin: 30px" [formGroup]="form" (ngSubmit)="submitForm()">
+  <form style="display: flex; flex-direction: column">
+    <p>ТЕКСТ ЗАДАЧИ:</p>
+    <input type="text" class="form-input" formControlName="title" />
+    <p>АВТОР ЗАДАЧИ:</p>
+    <input type="text" class="form-input" formControlName="userId" />
+    <p>ЗАДАЧА ЗАВЕРШЕНА:</p>
+    <input type="text" class="form-input" formControlName="completed" />
+    <button class="form-button" [disabled]="form.invalid">Create</button>
+  </form>
+</div>
