@@ -1,0 +1,34 @@
+<p>create-todo-form works!</p>
+<div style="margin: 30px" [formGroup]="form">
+  <form style="display: flex; flex-direction: column">
+    <mat-form-field class="form-input">
+      <mat-label>ТЕКСТ ЗАДАЧИ:</mat-label>
+      <input matInput formControlName="title" class="form-input" />
+      <mat-error>Введите текст</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-input">
+      <mat-label>АВТОР ЗАДАЧИ:</mat-label>
+      <input matInput formControlName="userId" class="form-input" />
+      <mat-error>Введите Автора</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-input">
+      <mat-label>ЗАДАЧА ЗАВЕРШЕНА:</mat-label>
+      <input matInput formControlName="completed" class="form-input" />
+      <mat-error>Введите текст</mat-error>
+    </mat-form-field>
+    <button
+      class="form-button"
+      matIconSuffix
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid"
+      type="submit"
+      (click)="submitForm()"
+    >
+      <mat-icon>note</mat-icon>
+      <mat-icon>add</mat-icon>
+      Create
+    </button>
+  </form>
+</div>
