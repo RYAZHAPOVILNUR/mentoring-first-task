@@ -1,0 +1,9 @@
+
+
+    <p><strong>{{ user.name }}</strong></p>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.phone }}</p>
+    <p>Website: {{ user.website }}</p>
+    <button class="delete-btn" (click)="onDeleteUser(user.id)">Delete User</button>
+    <button class="edit-btn" (click)="openDialog()">Edit User</button>
