@@ -15,11 +15,9 @@ export class UsersEffects {
       mergeMap(() =>
         this.api.getUsers().pipe(
           map((users) => UsersActions.loadUsersSuccess({ users })),
-          catchError((error) => of(UsersActions.loadUsersFailure({ error })))
-        )
-      )
-    )
+          catchError((error) => of(UsersActions.loadUsersFailure({ error }))),
+        ),
+      ),
+    ),
   );
-
-  
 }

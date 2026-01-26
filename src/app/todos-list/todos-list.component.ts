@@ -1,30 +1,33 @@
-import { Component, inject } from '@angular/core';
-import { TodosApiService } from './todos-api.service';
-import { Todo } from './models/todos.model';
-import { NgFor } from '@angular/common';
+import { AsyncPipe, NgFor } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { TodosCardComponent } from './todos-card/todos-card.component';
+
+import { TodosListActions } from './store/todos-list.actions';
+import { selectTodos } from './store/todos-list.selectors';
 
 @Component({
   selector: 'app-todos-list',
   templateUrl: './todos-list.component.html',
   styleUrl: './todos-list.component.scss',
-  imports: [NgFor, TodosCardComponent],
+  imports: [NgFor, TodosCardComponent, AsyncPipe],
   standalone: true,
 })
-export class TodosListComponent {
-  readonly todosApiService = inject(TodosApiService);
+export class TodosListComponent implements OnInit {
+  private readonly store = inject(Store);
 
-  todos: Todo[] = [];
+  readonly todos$ = this.store.select(selectTodos);
 
-  constructor() {
-    this.todosApiService.getTodos().subscribe((response) => {
-      this.todos = response;
-    });
+  ngOnInit(): void {
+    this.store.dispatch(TodosListActions.loadTodos());
   }
 
   deleteTodo(todoId: number): void {
-    this.todosApiService.deleteTodo(todoId).subscribe(() => {
-      this.todos = this.todos.filter((todo) => todo.id !== todoId);
-    });
+    this.store.dispatch(TodosListActions.deleteTodo({ todoId }));
   }
+
+  editTodo(updatedTodo: any): void {
+    this.store.dispatch(TodosListActions.editTodo({ todo: updatedTodo }));
+  }
+
 }
