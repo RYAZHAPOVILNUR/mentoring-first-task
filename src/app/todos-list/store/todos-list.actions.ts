@@ -10,7 +10,6 @@ export const TodosListActions = createActionGroup({
 
     'Delete Todo': props<{ todoId: number }>(),
     
-    'Edit Todo': props<{ todo: Todo }>(),
   },
   
 });

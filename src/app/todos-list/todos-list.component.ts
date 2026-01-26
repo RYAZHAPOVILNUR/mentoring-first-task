@@ -26,8 +26,4 @@ export class TodosListComponent implements OnInit {
     this.store.dispatch(TodosListActions.deleteTodo({ todoId }));
   }
 
-  editTodo(updatedTodo: any): void {
-    this.store.dispatch(TodosListActions.editTodo({ todo: updatedTodo }));
-  }
-
 }

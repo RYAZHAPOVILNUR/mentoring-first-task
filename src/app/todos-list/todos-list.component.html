@@ -2,8 +2,7 @@
   <div class="todo-card" *ngFor="let todo of (todos$ | async) ?? []">
     <app-todos-card
       [todo]="todo"
-      (deleteTodo)="deleteTodo($event)">
-      (editTodo)="editTodo($event)">
+      (deleteTodo)="deleteTodo($event)">]
     </app-todos-card>
   </div>
 </div>

@@ -17,8 +17,5 @@ export class TodosCardComponent {
     onDeleteTodo(todoId: number) {
         this.deleteTodo.emit(todoId);
     }
-    onEditTodo() {
-        this.editTodo.emit(this.todo);
-    }
 
 }

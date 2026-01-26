@@ -42,10 +42,6 @@ export const todosListReducer = createReducer(
     todos: state.todos.filter(todo => todo.id !== todoId),
   })),
 
-    on(TodosListActions.editTodo, (state, { todo }) => ({
-    ...state,
-    todos: state.todos.map(t => t.id === todo.id ? todo : t),
-  })),
 
 
 );
