@@ -1,0 +1,5 @@
+<p>
+  <strong>{{ todo.title }}</strong>
+</p>
+<p>Completed: {{ todo.completed }}</p>
+<button class="delete-btn" (click)="onDeleteTodo(todo.id)">Delete</button>

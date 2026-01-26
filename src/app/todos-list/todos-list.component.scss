@@ -1,0 +1,98 @@
+.todo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  padding: 14px;
+
+  background:
+    radial-gradient(900px 500px at 10% 0%, rgba(59, 130, 246, 0.14), transparent 60%),
+    radial-gradient(700px 450px at 90% 20%, rgba(16, 185, 129, 0.12), transparent 55%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.03), rgba(15, 23, 42, 0));
+  border-radius: 16px;
+}
+
+.todo-card {
+  padding: 14px 14px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.10),
+    0 1px 0 rgba(255, 255, 255, 0.60) inset;
+
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59, 130, 246, 0.35);
+    box-shadow:
+      0 18px 45px rgba(15, 23, 42, 0.16),
+      0 1px 0 rgba(255, 255, 255, 0.65) inset;
+  }
+
+  p {
+    margin: 0 0 8px;
+    line-height: 1.25;
+    font-size: 0.94rem;
+    color: rgba(15, 23, 42, 0.86);
+
+    strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: 0.2px;
+      color: rgba(15, 23, 42, 0.92);
+      margin-bottom: 2px;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  // Красивый статус справа как “chip”
+  p:nth-child(3) {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    &::after {
+      content: attr(data-status); // запасной вариант, но т.к. атрибута нет — ниже делаем через span-стиль текста
+    }
+  }
+
+  // Т.к. в HTML статус как текст, делаем “chip” через обёртку строки
+  // Строка выглядит так: "Status: {{ todo.status }}"
+  // Стили “chip” навесим на всю строку, а не на кусок текста
+  p:nth-child(3) {
+    padding: 10px 10px;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+}
+
+/* Адаптивные мелочи */
+@media (max-width: 420px) {
+  .todo-list {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .todo-card {
+    padding: 12px;
+    border-radius: 14px;
+    display : flex; 
+    
+  }
+  .app-todos-card {
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

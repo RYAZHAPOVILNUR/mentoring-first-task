@@ -1,0 +1,9 @@
+<div class="users-list">
+  <div class="user-card" *ngFor="let user of (users$ | async) ?? []">
+    <app-users-card
+      [user]="user"
+      (deleteUser)="deleteUser($event)"
+      (editUser)="editUser($event)"
+    ></app-users-card>
+  </div>
+</div>
