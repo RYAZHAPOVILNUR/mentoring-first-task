@@ -1,0 +1,14 @@
+<div class="cards">
+  <p shadow>{{ user.name }}</p>
+  <p shadow>{{ user.username }}</p>
+  <p shadow>{{ user.email }}</p>
+  <p shadow>{{ user.phone | changed_phone }}</p>
+  <p shadow>{{ user.company.name }}</p>
+
+  <button shadow class="card-button" (click)="openDialogDeleteUser()">
+    Удалить пользователя
+  </button>
+  <button shadow class="card-button" (click)="openDialogEditUser()">
+    Редактировать пользователя
+  </button>
+</div>
