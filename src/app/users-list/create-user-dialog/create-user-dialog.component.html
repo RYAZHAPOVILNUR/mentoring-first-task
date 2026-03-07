@@ -1,0 +1,42 @@
+<div style="margin: 30px">
+  <form
+    style="display: flex; flex-direction: column"
+    [formGroup]="form"
+    class="form"
+  >
+    <mat-form-field class="form-input">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error>No Name</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-input">
+      <mat-label>username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error>No username</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-input">
+      <mat-label>email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error>No email</mat-error>
+    </mat-form-field>
+     <div formGroupName="company">
+      <mat-form-field class="form-input">
+        <mat-label>companyName</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error>No companyName</mat-error>
+      </mat-form-field>
+    </div>
+    <button
+      class="form-input"
+      matIconSuffix
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid"
+      type="submit"
+      [mat-dialog-close]="form.value"
+    >
+      Create
+      <mat-icon>edit</mat-icon>
+    </button>
+  </form>
+</div>

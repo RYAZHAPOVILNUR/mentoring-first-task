@@ -1,0 +1,15 @@
+<div class="container">
+  <button mat-raised-button (click)="openCreateTodosDialog()" class="todo-btn">
+    <mat-icon>add</mat-icon>
+    Добавить задачу
+  </button>
+  <div class="todo-list">
+    <div *ngFor="let todo of todosService.todos$ | async">
+      <app-todo-card
+        [todo]="todo"
+        (deleteTodo)="deleteTodo($event)"
+        (editTodo)="editTodo($event)"
+      ></app-todo-card>
+    </div>
+  </div>
+</div>

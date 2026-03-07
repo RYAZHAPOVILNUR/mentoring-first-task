@@ -1,0 +1,7 @@
+<mat-dialog-content>
+    <h2 mat-dialog-title>Удалить todo: {{ this.data.todo.title }}</h2>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-dialog-close mat-raised-button>Отмена</button>
+    <button matButton cdkFocusInitial mat-raised-button color="primary" [mat-dialog-close]="true">Удалить</button>
+</mat-dialog-actions>

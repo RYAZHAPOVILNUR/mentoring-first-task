@@ -1,0 +1,13 @@
+<div class="cards">
+  <p>{{ user.name }}</p>
+  <p>{{ user.username }}</p>
+  <p>{{ user.email }}</p>
+  <p>{{ user.phone |return }}</p>
+  <p>{{ user.company.name }}</p>
+  <button class="card-button" (click)="openDialogDeleteUser()">
+    Удалить пользователя
+  </button>
+  <button class="card-button" (click)="openDialogEditUser()">
+    Редактировать пользователя
+  </button>
+</div>

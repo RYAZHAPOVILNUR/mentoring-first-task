@@ -1,0 +1,11 @@
+<div class="cards">
+  <p>ТЕКСТ ЗАДАЧИ:</p>
+  <div>{{ todo.title | limit }}</div>
+  <p>АВТОР ЗАДАЧИ:</p>
+  <div>{{ todo.userId }}</div>
+  <p>ЗАДАЧА ЗАВЕРШЕНА:</p>
+  <div>{{ todo.completed ? "ДА" : "НЕТ" }}</div>
+  
+  <button (click)="openDeleteDialog()">Интервенция</button>
+  <button (click)="openEditDialog()">Революция</button>
+</div>
