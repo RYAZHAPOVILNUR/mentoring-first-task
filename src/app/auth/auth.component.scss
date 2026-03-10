@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button {
+  width: 150px;
+}
+
+.title {
+  margin: 20px;
+}

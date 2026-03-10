@@ -1,0 +1,29 @@
+<form class="form_todo" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>ТЕКСТ ЗАДАЧИ</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>АВТОР ЗАДАЧИ</mat-label>
+    <input matInput formControlName="userId" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>ЗАДАЧА ЗАВЕРШЕНА</mat-label>
+
+    <input matInput formControlName="completed" />
+  </mat-form-field>
+  <mat-card-actions>
+    <button
+      class="form-button"
+      matIconSuffix
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid"
+      [mat-dialog-close]="todoUp"
+    >
+      <mat-icon>note</mat-icon>
+      <mat-icon>add</mat-icon>
+      Create todo
+    </button>
+  </mat-card-actions>
+</form>
