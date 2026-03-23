@@ -1,0 +1,17 @@
+<div class="user-list">
+  <div *ngFor="let user of users$ | async">
+    <app-user-card
+      [user]="user"
+      (deleteUser)="deleteUser($event)"
+      (editUser)="editUser($event)"
+    ></app-user-card>
+  </div>
+
+ 
+  
+</div>
+ <button mat-raised-button 
+ (click)="openDialogCreateUser()">
+    <mat-icon> add </mat-icon>
+    СОЗДАТЬ ПОЛЬЗОВАТЕЛЯ
+  </button>
